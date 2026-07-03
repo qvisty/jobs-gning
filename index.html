@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Jobsøgning · adgangskode</title>
+  <style>
+    :root { color-scheme: light dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%); color: #e2e8f0;
+      display: flex; align-items: center; justify-content: center; padding: 24px;
+    }
+    .gate { width: 100%; max-width: 380px; background: rgba(15,23,42,.6); border: 1px solid #334155;
+      border-radius: 16px; padding: 32px 28px; box-shadow: 0 20px 60px rgba(0,0,0,.4); backdrop-filter: blur(6px); }
+    .gate h1 { margin: 0 0 4px; font-size: 22px; }
+    .gate p { margin: 0 0 20px; color: #94a3b8; font-size: 14px; }
+    .gate label { display: block; font-size: 13px; margin-bottom: 6px; color: #cbd5e1; }
+    .gate input { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid #475569;
+      background: #0b1220; color: #f1f5f9; font-size: 15px; }
+    .gate input:focus { outline: 2px solid #6366f1; border-color: #6366f1; }
+    .gate button { width: 100%; margin-top: 16px; padding: 12px; border: 0; border-radius: 10px;
+      background: #6366f1; color: white; font-size: 15px; font-weight: 600; cursor: pointer; }
+    .gate button:hover { background: #4f46e5; }
+    .gate button:disabled { opacity: .6; cursor: default; }
+    .err { color: #f87171; font-size: 13px; margin-top: 12px; min-height: 18px; }
+    /* Beskyttet indhold-styling (vises efter dekryptering) */
+    .protected { max-width: 720px; margin: 40px auto; padding: 0 20px; }
+    .protected .eyebrow { text-transform: uppercase; letter-spacing: .08em; font-size: 12px; color: #818cf8; }
+    .protected .hero h1 { font-size: 40px; margin: 4px 0 8px; }
+    .protected .lead { font-size: 18px; color: #cbd5e1; }
+    .protected .card { background: rgba(30,41,59,.6); border: 1px solid #334155; border-radius: 14px;
+      padding: 20px 24px; margin: 20px 0; }
+    .protected .card h2 { margin-top: 0; }
+    .protected code { background: #0b1220; padding: 2px 6px; border-radius: 6px; font-size: 90%; }
+    .protected .foot { color: #64748b; font-size: 13px; margin: 40px 0; text-align: center; }
+    body.unlocked { display: block; background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%); }
+  </style>
+</head>
+<body>
+  <div class="gate" id="gate">
+    <h1>🔒 Adgangskode</h1>
+    <p>Denne side er privat. Indtast adgangskoden for at få adgang.</p>
+    <form id="form" autocomplete="off">
+      <label for="pw">Adgangskode</label>
+      <input type="password" id="pw" autofocus autocomplete="current-password" />
+      <button type="submit" id="submit">Lås op</button>
+      <div class="err" id="err" role="alert"></div>
+    </form>
+  </div>
+
+  <script id="payload" type="application/json">{"v":1,"iterations":250000,"salt":"ZgWflVEWyGEg+4MCBX1nnw==","iv":"WK71IAmxscPW5qUK","ct":"rErD5Kk/JMcY4m0aspP5bLEmb3ZtGfYNgUO49BwQutSlmQtw1TP1/6+WCeB/obvsQtMjKzZ/XQR/JTUJQh5m+G2dlZlN8PRV+4MuDZjWZq6X6FCFx8aQ+eoUcYEQz4DftlA6jdn8kXEvqpgT/Mok9FInFcTRk3o0Nd8jMx628JM/IJRA1grTuEDCasyq26AAdF58lXu0QlMwKy/QYp9UrfhOprGTx3h/LwtQy6PBQZ+gTLBHsN1RZ/7KolU/E0yl/B4K5x3Z4YOXuZe+IGJ/fQ75s/t237zR6Ro8hC+ja2HFrMDFAvzU6XB847/19/yOOflU30ivQDdq2QBbQpIdlvU4gwT8N5ug80kMAL758NZDmtmPwVxM71mFHD9PYcyaRqPWVuoA4JD+myIVds6RXYvShz7mcHkFjeGitWN0VLEMdNtnWBgcm2+uObNrb3awebGB/iL65iPCQVno2eOZGCgSB9FTUFSOOJNrfNHOv5RBHfcLyd7yTVUa/+xYxLHbtWdVkceOEQUNuIJ9id5mbWARgkQeIXYGGowIKHcAGdSdNT5CBLYP22VQABE5vt/c0u1HCEUSXw/cAYNFlTa4MOLDWhJK6JPP3+GJhWQnWjvnY+n7IgaEFWIPtdYQ8JAEV4TOC9Ck2ch5T/riYUSy145yFQGwWMnR11PWsRvlb8YDtLyDLlaBWbxtUS0oNx9qZxFx6fmYhVAErdd2f7Xs9cZ77d9B9K0k88+NKJN79fW7r0lFd0vamK5fq+aP4tvjdf9eDYMiswBYIxUOxnvijd/kHz99ZQPx7FPQq6Em1LfNtLFxm8rPNmjYEopkeni4znNL+H355+AtkPoBsNDnlusRD9zwCWQjhU5Z7ozvnwRl3Wz+XyAcyIAaQYdUGdiCJPZr6uEOAlDQda0Bu3DzzHkJ6ffpvQ8IXpNsdWfp7s16Iyo73uDIFA8VEvgyzckKP4zOeUKICWHNbvdceTfnY6g4rB6/d0grJlsuAYPcPatEm/o5PlCBksoaMuFMn2DKCpRL2mWWxqES/Ocr99akOjqakKRfLvNP2OFQS0OHy+BZoHLC8EtJdQWVyYwzOOovNi7KkYXRKFSCOBzfnwzFfKjBkCNtVxktpXmSH+eG8itNh9HYDqOUZcn8O0LmqqaP944lbz5zlYJukiqlyid2aqBSkTDLstaD52Twt0yx26fJDivnbeE+3UuQI+zGRMgWxAELboleV0jD8O9mLNlfp4eSIretcU6TgFsgXVSQ2sCo8KFUakT6q/Vc2ndxnCP+FP2JZ8dKCrsS+DUb77BMcO76Q7MPoJPy4N03yNjqo5Kqi38Mu8Fdfp9mO59jSs1VMpcEluh2FyYyLOpUFKeabNWn0vePxb7guktRn8Q2w9T9Phyz0Lcu1p0pd6Qgk4xK1me1qP1r52hPYXKVXtut6VwRa5Pgiq/oUsJKGpCSpq0fpDRXExnGzzd6WKEIrEtLsxNzr4qxP1oXNXWW0OEe6uIjh3M3an4RpX05bmPxPQEzlOXzJjMOfWwl+hmuduUe5G5HFZFvznT0uWYjwkLVDLcAnB/PSTf8GzX5CDGQDdv3jkgUpHPYW54t/vF/OpTbe/DUixYY+Q=="}</script>
+  <script>
+    (function () {
+      const data = JSON.parse(document.getElementById('payload').textContent);
+      const b64ToBytes = (b64) => Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
+      const form = document.getElementById('form');
+      const pwInput = document.getElementById('pw');
+      const errEl = document.getElementById('err');
+      const submitBtn = document.getElementById('submit');
+
+      async function decrypt(password) {
+        const enc = new TextEncoder();
+        const baseKey = await crypto.subtle.importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']);
+        const key = await crypto.subtle.deriveKey(
+          { name: 'PBKDF2', salt: b64ToBytes(data.salt), iterations: data.iterations, hash: 'SHA-256' },
+          baseKey,
+          { name: 'AES-GCM', length: 256 },
+          false,
+          ['decrypt']
+        );
+        const plainBuf = await crypto.subtle.decrypt(
+          { name: 'AES-GCM', iv: b64ToBytes(data.iv) },
+          key,
+          b64ToBytes(data.ct)
+        );
+        return new TextDecoder().decode(plainBuf);
+      }
+
+      function reveal(html) {
+        document.body.classList.add('unlocked');
+        document.body.innerHTML = '<div class="protected">' + html + '</div>';
+      }
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        errEl.textContent = '';
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Låser op…';
+        try {
+          const html = await decrypt(pwInput.value);
+          reveal(html);
+        } catch (_) {
+          errEl.textContent = 'Forkert adgangskode. Prøv igen.';
+          pwInput.value = '';
+          pwInput.focus();
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Lås op';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
