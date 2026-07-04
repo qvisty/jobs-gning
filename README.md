@@ -32,5 +32,10 @@ telefonsamtale, ansøgning, samtaleforberedelse (inkl. STAR-, domæne- og
 
 ## Ny stilling
 
-Opret `src/jobs/<navn>.html` (kopiér strukturen fra en eksisterende underside),
+Kopiér `src/jobs/_skabelon.html` til `src/jobs/<navn>.html`, udfyld
+pladsholderne, giv tjeklister og noter et unikt præfiks (erstat `jobX-`),
 tilføj siden i `pages`-listen i `build.mjs`, og link til den fra forsiden.
+
+Undersiderne er anonymiserede: personlige data står som pladsholdere
+([DIT NAVN] osv.) og indsættes kun i den version, der faktisk sendes.
+Flueben og noter gemmes lokalt i browserens localStorage.

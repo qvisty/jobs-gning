@@ -1,31 +1,159 @@
 <!-- Underside: Ungecenterleder · Sønderborg. Genereres til soenderborg.html af build.mjs. -->
-<p class="backlink"><a href="index.html">← Tilbage til forsiden</a></p>
 <header class="hero">
   <p class="eyebrow">Stilling · status: kladde</p>
   <h1>🧭 Ungecenterleder · Sønderborg Kommune</h1>
   <p class="lead">Frist 11. august 2026 · 1. samtale 19. august (med case) · 2. samtale 24. august (Garuda) · tiltrædelse 1. oktober 2026.</p>
   <p class="commute">🚗 <strong>Kørsel fra Aabenraa:</strong> ca. 35 min · ca. 32 km hver vej (rute 8/41). Uproblematisk daglig pendling.</p>
+  <p class="anonote">🔒 <strong>Pladsholdere:</strong> Personlige oplysninger er erstattet med [DIT NAVN], [ALDER], [DIN NUVÆRENDE SKOLE] og [DIN TIDLIGERE SKOLE] — indsæt de rigtige data i den version, du sender.</p>
 </header>
 
 <main>
-  <section class="card">
-    <h2>🧭 Faserne · fra første kontakt til lønforhandling</h2>
-    <p>Hele forløbet trin for trin. Du er i starten af forløbet: Har du ikke ringet til kontaktpersonen endnu, så start ved fase 1. Har du, så spring til fase 4 og 5.</p>
-    <ol>
-      <li><a href="#fase-1">Research før kontakt</a></li>
-      <li><a href="#fase-2">SMS-udkast · første kontakt</a></li>
-      <li><a href="#fase-3">Den første telefonsamtale</a></li>
-      <li><a href="#fase-4">Fra telefonsamtale til ansøgning</a></li>
-      <li><a href="#fase-5">Ansøgningen (frist 11. august)</a></li>
-      <li><a href="#fase-6">1. samtale · med case (19. august)</a></li>
-      <li><a href="#fase-7">2. samtale · Garuda (24. august)</a></li>
-      <li><a href="#fase-8">Lønforhandling</a></li>
-    </ol>
-    <p><a href="#modeller">🧩 Se også: Forberedelsesmodeller — STAR, Domæne, 4D, CMM og Karl Tomm</a></p>
-  </section>
+  <nav class="fasebar">
+    <a class="home" href="index.html">← Forside</a>
+    <a href="#fase-1">1 · Research</a>
+    <a href="#fase-2">2 · SMS</a>
+    <a href="#fase-3">3 · Opkald</a>
+    <a href="#fase-4">4 · Noter</a>
+    <a href="#fase-5">5 · Ansøgning</a>
+    <a href="#modeller">🧩 Modeller</a>
+    <a href="#fase-6">6 · Samtale 1</a>
+    <a href="#fase-7">7 · Samtale 2</a>
+    <a href="#fase-8">8 · Løn</a>
+    <a href="#noter">📝 Noter</a>
+    <button id="toggle-all" type="button">Åbn alle</button>
+  </nav>
+  <div class="progress"><div class="progress-track"><div id="prog-fill" class="progress-fill"></div></div><span id="prog-text"></span></div>
 
-  <section class="card" id="modeller">
-    <h2>🧩 Forberedelsesmodeller · STAR + fire systemiske alternativer</h2>
+
+  <details class="card fase" id="fase-1">
+    <summary><h2>1️⃣ Research før kontakt</h2></summary>
+    <div class="fase-body">
+    <p>Formålet med de første tre faser er dobbelt: at blive husket positivt, allerede før ansøgningerne læses — og at få viden, der gør din ansøgning skarpere end de andres.</p>
+    <ul>
+      <li>Kerneviden fra opslaget: udfasningen af 10. klasse frem mod 2030, de nationale mål (90 procent skal have en ungdomsuddannelse som 25-årige, andelen af unge uden tilknytning skal halveres) og de fire centerledere (UU, ungdomsskole, 10. klasse, STU).</li>
+      <li>Kontaktperson: sundheds- og ungedirektør Lene Gram Herborg.</li>
+      <li>Genopfrisk dit lokalkendskab: seks år på [DIN TIDLIGERE SKOLE] og pladsen i kommunens digitaliseringsstyregruppe — det er din åbning i samtalen.</li>
+      <li>Forbered 2–3 spørgsmål, som IKKE kan besvares ved at læse opslaget — se fase 3.</li>
+      <li>Hav din 20-sekunders præsentation klar: navn, nuværende rolle, én sætning om hvorfor netop denne stilling.</li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-2">
+    <summary><h2>2️⃣ SMS-udkast · første kontakt</h2></summary>
+    <div class="fase-body">
+    <p>Ring hellere direkte på en hverdag mellem 8 og 15. Får du ikke svar, eller vil du hellere åbne blødt, så send en SMS. Udkast:</p>
+    <blockquote><p>Hej Lene Gram Herborg. Jeg hedder [DIT NAVN] og er forstander og skoleleder på [DIN NUVÆRENDE SKOLE] — og tidligere souschef på [DIN TIDLIGERE SKOLE] i Sønderborg. Jeg overvejer at søge stillingen som ungecenterleder og vil gerne høre, om du har 10 minutter til en kort telefonsamtale om stillingen? Jeg ringer, når det passer dig. Venlig hilsen [DIT NAVN]</p></blockquote>
+    <p>Kortere variant, hvis du allerede har ringet forgæves:</p>
+    <blockquote><p>Hej Lene Gram Herborg. Jeg har forsøgt at ringe vedrørende stillingen som ungecenterleder. Jeg vil gerne høre lidt mere om stillingen — hvornår passer det bedst, at jeg ringer? Venlig hilsen [DIT NAVN], forstander, [DIN NUVÆRENDE SKOLE]</p></blockquote>
+    <ul>
+      <li>Send på en hverdag mellem 8 og 15 — undgå fredag eftermiddag og weekend.</li>
+      <li>Nævn [DIN TIDLIGERE SKOLE] — dit lokalkendskab gør dig umiddelbart relevant og let at placere.</li>
+      <li>Bed om et kort opkald, ikke et møde. Det er let at sige ja til.</li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-3">
+    <summary><h2>3️⃣ Den første telefonsamtale</h2></summary>
+    <div class="fase-body">
+    <p>Hold den på 10–15 minutter. Struktur: kort præsentation (20 sekunder) → dine 2–3 spørgsmål → tak og en positiv afrunding ("samtalen bekræfter mig i, at jeg søger").</p>
+    <h4>Spørgsmål du kan vælge imellem</h4>
+    <ol>
+      <li>Hvad bliver efter din vurdering den vigtigste opgave for ungecenterlederen i det første år?</li>
+      <li>Hvor langt er I i tankerne om, hvad Ungecenteret skal tilbyde, når 10. klasse udfases mod 2030 — hvad ligger fast, og hvad skal den nye leder selv forme?</li>
+      <li>Hvad kendetegner lederteamet af de fire centerledere — og hvor er samarbejdet på tværs stærkest og svagest i dag?</li>
+      <li>Hvilken profil lykkes efter jeres vurdering bedst i stillingen?</li>
+      <li>Udleveres casen til første samtale på forhånd, eller får vi den på dagen?</li>
+    </ol>
+    <h4>Lyttepunkter · det skal du fange undervejs</h4>
+    <ul>
+      <li><strong>Gentagne ord:</strong> De ord, der går igen (fx "sammenhæng", "følgeskab", "helhed"), er de ord, din ansøgning skal bruge.</li>
+      <li><strong>Den nævnte udfordring:</strong> Nævner hun noget svært (siloer, økonomi, 2030-omstillingen), er det din ansøgnings vigtigste afsnit.</li>
+      <li><strong>Prioritering:</strong> Hvad nævner hun FØRST, når du spørger om den vigtigste opgave? Det er den reelle topprioritet.</li>
+      <li><strong>Profil-ord:</strong> De ledelsesord hun bruger om den ønskede profil ("beslutningskraft", "tillid", "ro") — spejl dem i ansøgningen.</li>
+    </ul>
+    <p><em>Skriv dine noter ned STRAKS efter opkaldet — brug tjeklisten i fase 4.</em></p>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-4">
+    <summary><h2>4️⃣ Fra telefonsamtale til ansøgning</h2></summary>
+    <div class="fase-body">
+    <p>Oversæt dine lyttepunkter til konkrete ændringer i ansøgningen (fase 5), inden du sender:</p>
+    <ul class="checklist">
+      <li><label><input type="checkbox" data-check-id="son-f4-noter" /><span>Notér de tre vigtigste ord/temaer fra samtalen, mens de er friske</span></label></li>
+      <li><label><input type="checkbox" data-check-id="son-f4-indledning" /><span>Tilføj "efter en god samtale med Lene Gram Herborg …" i ansøgningens indledning</span></label></li>
+      <li><label><input type="checkbox" data-check-id="son-f4-udfordring" /><span>Adressér den udfordring, hun nævnte, i ét af ansøgningens afsnit</span></label></li>
+      <li><label><input type="checkbox" data-check-id="son-f4-ord" /><span>Brug mindst ét af deres egne gentagne ord i motivationsafsnittet</span></label></li>
+      <li><label><input type="checkbox" data-check-id="son-f4-vaegt" /><span>Justér vægtningen: giv det, hun nævnte først, mest plads</span></label></li>
+    </ul>
+    <p><em>Ordene og prioriteterne fra samtalen skal også bruges i casen og til samtalerne i fase 6 og 7.</em></p>
+    <h4>Dine noter fra telefonsamtalen</h4>
+    <textarea class="notes" data-notes="soenderborg-opkald" rows="6" placeholder="Skriv lyttepunkterne her, lige når du har lagt på. Gemmes kun i din browser."></textarea>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-5">
+    <summary><h2>5️⃣ Ansøgningen · frist 11. august</h2></summary>
+    <div class="fase-body">
+<p>Lene Gram Herborg Sundheds- og ungedirektør Sønderborg Kommune</p>
+<p>Aabenraa, den 4. juli 2026</p>
+<h4>Ansøgning til stillingen som ungecenterleder ved Ungecenter Sønderborg</h4>
+<p>Efter at have læst jeres stillingsopslag søger jeg hermed stillingen som ungecenterleder ved Ungecenter Sønderborg. Jeg kan i særlig grad se mig selv i opgaven med at sætte retning, lede gennem fire centerledere og udvikle fremtidens ungeindsats i en tid, hvor 10. klasse forandres frem mod 2030.</p>
+<p>Jeg hedder [DIT NAVN], er [ALDER] år og bosat i Aabenraa. Jeg har arbejdet med ledelse siden 2018 og er i dag forstander og skoleleder. Jeg har erfaring med drift, personale, økonomi og organisatorisk udvikling på både almenområdet og specialområdet. Sønderborg er velkendt for mig. Jeg var i seks år afdelingsleder og souschef på [DIN TIDLIGERE SKOLE] og sad i kommunens digitaliseringsstyregruppe.</p>
+<h4>Motivation og forandringen mod 2030</h4>
+<p>Stillingen rammer præcist den ledelsesopgave, jeg søger. Jeg er drevet af at stå i spidsen for en kompleks organisation, hvor faglig kvalitet, drift, økonomi og strategi skal hænge sammen tæt på de unges hverdag. Netop nu er ungeområdet i bevægelse. Udfasningen af 10. klasse frem mod 2030 flytter opgaver mod FGU og stiller nye krav til, hvad Ungecenteret skal tilbyde. Jeg søger stillingen på grund af den forandring, ikke på trods af den. De nationale mål om, at 90 procent skal have en ungdomsuddannelse som 25-årige, og at andelen af unge uden tilknytning skal halveres, er den ramme, jeg gerne vil sætte retning efter sammen med lederteamet.</p>
+<h4>Ledelse af ledere og fælles retning</h4>
+<p>Opgaven med at lede gennem andre tiltaler mig i særlig grad. Som souschef ledede jeg på tværs af en stor specialskole, og i dag står jeg i spidsen for en hel organisation. Jeg ser ungecenterlederrollen som en opgave, hvor man sætter tydelig retning og rammer, men lader de fire centerledere lede deres egne enheder. Særligt vil jeg arbejde for et fælles sprog og fælles ansvar for helheden, så UU, ungdomsskole, 10. klasse og STU trækker i samme retning frem for at fungere som silør. Tillid, følgeskab og relationer på tværs er for mig fundamentet under enhver beslutning.</p>
+<h4>Drift, økonomi og digital udvikling</h4>
+<p>Jeg leverer på både drift og udvikling. Jeg har haft betydeligt budgetansvar, senest 47 mio. kr., og erfaring med at skabe overblik, prioritere og følge op i komplekse organisationer. Samtidig har jeg en stærk digital profil. Jeg er uddannet inden for IT, har drevet digitalisering gennem Microsoft 365 og Power Platform og siddet i Sønderborg Kommunes digitaliseringsstyregruppe. Det ser jeg som en konkret styrke i en ungeindsats, hvor bedre overblik på tværs af tilbud og data om de unges vej kan understøtte både faglighed og effektiv drift.</p>
+<h4>Menneskesyn og ledelsesstil</h4>
+<p>For mig skabes resultater gennem tydelig retning, gode relationer og et blik for de unges potentialer frem for deres begrænsninger. Jeg tror på nærværende og ordentlig ledelse. Tæt nok på praksis til at forstå hverdagen, men uden at overtage ledernes rum. Beslutninger skal træffes med ro, også under kompleksitet, og bæres igennem med følgeskab.</p>
+<h4>Afslutning</h4>
+<p>Stillingen ligger tæt på det, jeg motiveres af som leder, og på den vej, jeg ønsker at gå mod ledelse af ledere i en kommune. Jeg uddyber meget gerne, hvordan mine erfaringer kan bringes i spil i udviklingen af Ungecenter Sønderborg.</p>
+<p>Med venlig hilsen</p>
+<p>[DIT NAVN]<br /><em>[Adresse, telefon og mail indsættes ved afsendelse]</em></p>
+
+    <hr style="border:0;border-top:1px solid #334155;margin:24px 0" />
+    <h3>CV-tilpasning</h3>
+<h4>CV-tilpasning: Ungecenterleder, Ungecenter Sønderborg</h4>
+<p>Formålet er at få dit eksisterende CV til at "tale" opslagets sprog: <strong>ledelse af ledere</strong>, <strong>tillid, relationer og følgeskab</strong>, <strong>drift, strategi og udvikling</strong> samt <strong>beslutningskraft</strong>. Din digitale profil er den gennemgående differentiator. Der tilføjes ingen ny erfaring. Kun titel, profiltekst og rækkefølge samt formulering justeres.</p>
+<h4>1. Titel under navnet (erstat den nuværende)</h4>
+<ul>
+<li>Nuværende: <em>"Skoleleder med ansvar for drift, personale og digital udvikling"</em></li>
+<li>Forslag: <strong>"Leder af ledere med fokus på strategisk udvikling, tillid og digital drift på ungeområdet"</strong></li>
+</ul>
+<h4>2. Profiltekst (målrettet ungecenterlederrollen)</h4>
+<blockquote><p>Erfaren leder med baggrund i at lede gennem andre ledere og skabe fælles retning i komplekse, politisk styrede organisationer. Har ansvar for drift, personale, økonomi og strategisk udvikling og motiveres af at oversætte overordnede mål til konkret handling sammen med et lederteam.</p>
+<p>Bygger ledelse på tillid, følgeskab og tydelige rammer og har blik for både drift og udvikling, herunder forandringsopgaver på ungeområdet. Har en stærk digital profil og driver datadrevet udvikling gennem Microsoft 365 og Power Platform, så systemer understøtter faglighed, overblik og effektiv drift.</p>
+<p>Kendetegnet ved ro under kompleksitet, tydelig beslutningskraft og et potentialeorienteret menneskesyn.</p></blockquote>
+<h4>3. Fremhæv disse punkter (flyt op og gør tydelige)</h4>
+<ul>
+<li><strong>Souschef og stedfortræder samt indirekte ledelse af 115 medarbejdere</strong> ([DIN TIDLIGERE SKOLE]). Formuler som <em>"ledelse af ledere og ledelse gennem andre"</em>. Dette er opslagets vigtigste krav.</li>
+<li><strong>Budgetansvar 47 mio. kr.</strong> Drift, økonomistyring og beslutningskraft i stor skala.</li>
+<li><strong>Repræsentant i Sønderborg Kommunes Digitaliseringsstyregruppe (2019 til 2025) samt Microsoft 365 og Power Platform.</strong> Din digitale differentiator. Ingen anden ansøger har den kombination.</li>
+<li><strong>Diplom i ledelse (fuldført, afgangsprojekt 2023).</strong> Forandringsledelse og organisationsledelse.</li>
+<li><strong>Tilknytning til Sønderborg</strong> (seks år på [DIN TIDLIGERE SKOLE]). Lokalkendskab til kommunen og området.</li>
+</ul>
+<h4>4. Nøgleord der bør fremgå af CV'ets ordvalg</h4>
+<p>ledelse af ledere, følgeskab, tillid, tværgående sammenhæng, forandringsledelse, strategi og drift, beslutningskraft, potentialesyn.</p>
+<h4>5. Til overvejelse</h4>
+<p>Overvej en kort linje under profilteksten om <strong>forandringsopgaven mod 2030</strong> (udfasning af 10. klasse, målet om 90 procent), så CV'et signalerer, at du kender den konkrete opgave. Det binder CV og ansøgning sammen.</p>
+    <h4>Tjekliste før afsendelse</h4>
+    <ul class="checklist">
+      <li><label><input type="checkbox" data-check-id="son-send-dato" /><span>Opdatér datoen i ansøgningen til afsendelsesdagen</span></label></li>
+      <li><label><input type="checkbox" data-check-id="son-send-kontaktinfo" /><span>Indsæt adresse, telefon og mail i underskriften (er fjernet fra denne offentlige side)</span></label></li>
+      <li><label><input type="checkbox" data-check-id="son-send-lytte" /><span>Indarbejd lyttepunkterne fra fase 4, hvis du har ringet først</span></label></li>
+      <li><label><input type="checkbox" data-check-id="son-send-cv" /><span>Tilpas CV'et efter CV-tilpasningen ovenfor (titel, profiltekst, rækkefølge)</span></label></li>
+      <li><label><input type="checkbox" data-check-id="son-send" /><span>Send ansøgning + CV senest 11. august og notér afsendelsesdatoen</span></label></li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="modeller">
+    <summary><h2>🧩 Forberedelsesmodeller · STAR + fire systemiske alternativer</h2></summary>
+    <div class="fase-body">
     <p>STAR-eksemplerne i fase 6 er én måde at strukturere dine svar på. Her er fire alternativer med rod i den systemiske ledelsesteori, du kender fra diplom i ledelse. Forbered dine vigtigste eksempler i den model, der føles rigtig — eller skift model efter spørgsmålets type (se skemaet nederst).</p>
 
     <h3>Model 1 · STAR (klassisk kompetencemodel)</h3>
@@ -94,124 +222,12 @@
 
     <p><strong>Og den anden vej:</strong> Genkend panelets spørgsmålstype, og vælg din svarmodel efter den — lineære spørgsmål ("giv et eksempel") kalder på STAR, cirkulære ("hvordan vil medarbejderne opleve …") på domænemodellen, refleksive ("hvor ser du skolen om to år") på 4D.</p>
     <p><em>Praktisk: Tag dine 2–3 bedste eksempler og skriv dem i model 1–3. Til samtalen vælger du den version, der passer til spørgsmålet — indholdet kan du udenad, kun formen skifter. Og vælg på forhånd 2–3 af dine egne spørgsmål fra model 4.</em></p>
-  </section>
+    </div>
+  </details>
 
-  <section class="card" id="fase-1">
-    <h2>1️⃣ Research før kontakt</h2>
-    <p>Formålet med de første tre faser er dobbelt: at blive husket positivt, allerede før ansøgningerne læses — og at få viden, der gør din ansøgning skarpere end de andres.</p>
-    <ul>
-      <li>Kerneviden fra opslaget: udfasningen af 10. klasse frem mod 2030, de nationale mål (90 procent skal have en ungdomsuddannelse som 25-årige, andelen af unge uden tilknytning skal halveres) og de fire centerledere (UU, ungdomsskole, 10. klasse, STU).</li>
-      <li>Kontaktperson: sundheds- og ungedirektør Lene Gram Herborg.</li>
-      <li>Genopfrisk dit lokalkendskab: seks år på [DIN TIDLIGERE SKOLE] og pladsen i kommunens digitaliseringsstyregruppe — det er din åbning i samtalen.</li>
-      <li>Forbered 2–3 spørgsmål, som IKKE kan besvares ved at læse opslaget — se fase 3.</li>
-      <li>Hav din 20-sekunders præsentation klar: navn, nuværende rolle, én sætning om hvorfor netop denne stilling.</li>
-    </ul>
-  </section>
-
-  <section class="card" id="fase-2">
-    <h2>2️⃣ SMS-udkast · første kontakt</h2>
-    <p>Ring hellere direkte på en hverdag mellem 8 og 15. Får du ikke svar, eller vil du hellere åbne blødt, så send en SMS. Udkast:</p>
-    <blockquote><p>Hej Lene Gram Herborg. Jeg hedder [DIT NAVN] og er forstander og skoleleder på [DIN NUVÆRENDE SKOLE] — og tidligere souschef på [DIN TIDLIGERE SKOLE] i Sønderborg. Jeg overvejer at søge stillingen som ungecenterleder og vil gerne høre, om du har 10 minutter til en kort telefonsamtale om stillingen? Jeg ringer, når det passer dig. Venlig hilsen [DIT NAVN]</p></blockquote>
-    <p>Kortere variant, hvis du allerede har ringet forgæves:</p>
-    <blockquote><p>Hej Lene Gram Herborg. Jeg har forsøgt at ringe vedrørende stillingen som ungecenterleder. Jeg vil gerne høre lidt mere om stillingen — hvornår passer det bedst, at jeg ringer? Venlig hilsen [DIT NAVN], forstander, [DIN NUVÆRENDE SKOLE]</p></blockquote>
-    <ul>
-      <li>Send på en hverdag mellem 8 og 15 — undgå fredag eftermiddag og weekend.</li>
-      <li>Nævn [DIN TIDLIGERE SKOLE] — dit lokalkendskab gør dig umiddelbart relevant og let at placere.</li>
-      <li>Bed om et kort opkald, ikke et møde. Det er let at sige ja til.</li>
-    </ul>
-  </section>
-
-  <section class="card" id="fase-3">
-    <h2>3️⃣ Den første telefonsamtale</h2>
-    <p>Hold den på 10–15 minutter. Struktur: kort præsentation (20 sekunder) → dine 2–3 spørgsmål → tak og en positiv afrunding ("samtalen bekræfter mig i, at jeg søger").</p>
-    <h4>Spørgsmål du kan vælge imellem</h4>
-    <ol>
-      <li>Hvad bliver efter din vurdering den vigtigste opgave for ungecenterlederen i det første år?</li>
-      <li>Hvor langt er I i tankerne om, hvad Ungecenteret skal tilbyde, når 10. klasse udfases mod 2030 — hvad ligger fast, og hvad skal den nye leder selv forme?</li>
-      <li>Hvad kendetegner lederteamet af de fire centerledere — og hvor er samarbejdet på tværs stærkest og svagest i dag?</li>
-      <li>Hvilken profil lykkes efter jeres vurdering bedst i stillingen?</li>
-      <li>Udleveres casen til første samtale på forhånd, eller får vi den på dagen?</li>
-    </ol>
-    <h4>Lyttepunkter · det skal du fange undervejs</h4>
-    <ul>
-      <li><strong>Gentagne ord:</strong> De ord, der går igen (fx "sammenhæng", "følgeskab", "helhed"), er de ord, din ansøgning skal bruge.</li>
-      <li><strong>Den nævnte udfordring:</strong> Nævner hun noget svært (siloer, økonomi, 2030-omstillingen), er det din ansøgnings vigtigste afsnit.</li>
-      <li><strong>Prioritering:</strong> Hvad nævner hun FØRST, når du spørger om den vigtigste opgave? Det er den reelle topprioritet.</li>
-      <li><strong>Profil-ord:</strong> De ledelsesord hun bruger om den ønskede profil ("beslutningskraft", "tillid", "ro") — spejl dem i ansøgningen.</li>
-    </ul>
-    <p><em>Skriv dine noter ned STRAKS efter opkaldet — brug tjeklisten i fase 4.</em></p>
-  </section>
-
-  <section class="card" id="fase-4">
-    <h2>4️⃣ Fra telefonsamtale til ansøgning</h2>
-    <p>Oversæt dine lyttepunkter til konkrete ændringer i ansøgningen (fase 5), inden du sender:</p>
-    <ul class="checklist">
-      <li><label><input type="checkbox" data-check-id="son-f4-noter" /><span>Notér de tre vigtigste ord/temaer fra samtalen, mens de er friske</span></label></li>
-      <li><label><input type="checkbox" data-check-id="son-f4-indledning" /><span>Tilføj "efter en god samtale med Lene Gram Herborg …" i ansøgningens indledning</span></label></li>
-      <li><label><input type="checkbox" data-check-id="son-f4-udfordring" /><span>Adressér den udfordring, hun nævnte, i ét af ansøgningens afsnit</span></label></li>
-      <li><label><input type="checkbox" data-check-id="son-f4-ord" /><span>Brug mindst ét af deres egne gentagne ord i motivationsafsnittet</span></label></li>
-      <li><label><input type="checkbox" data-check-id="son-f4-vaegt" /><span>Justér vægtningen: giv det, hun nævnte først, mest plads</span></label></li>
-    </ul>
-    <p><em>Ordene og prioriteterne fra samtalen skal også bruges i casen og til samtalerne i fase 6 og 7.</em></p>
-  </section>
-
-  <section class="card" id="fase-5">
-    <h2>5️⃣ Ansøgningen · frist 11. august</h2>
-<p>Lene Gram Herborg Sundheds- og ungedirektør Sønderborg Kommune</p>
-<p>Aabenraa, den 4. juli 2026</p>
-<h4>Ansøgning til stillingen som ungecenterleder ved Ungecenter Sønderborg</h4>
-<p>Efter at have læst jeres stillingsopslag søger jeg hermed stillingen som ungecenterleder ved Ungecenter Sønderborg. Jeg kan i særlig grad se mig selv i opgaven med at sætte retning, lede gennem fire centerledere og udvikle fremtidens ungeindsats i en tid, hvor 10. klasse forandres frem mod 2030.</p>
-<p>Jeg hedder [DIT NAVN], er [ALDER] år og bosat i Aabenraa. Jeg har arbejdet med ledelse siden 2018 og er i dag forstander og skoleleder. Jeg har erfaring med drift, personale, økonomi og organisatorisk udvikling på både almenområdet og specialområdet. Sønderborg er velkendt for mig. Jeg var i seks år afdelingsleder og souschef på [DIN TIDLIGERE SKOLE] og sad i kommunens digitaliseringsstyregruppe.</p>
-<h4>Motivation og forandringen mod 2030</h4>
-<p>Stillingen rammer præcist den ledelsesopgave, jeg søger. Jeg er drevet af at stå i spidsen for en kompleks organisation, hvor faglig kvalitet, drift, økonomi og strategi skal hænge sammen tæt på de unges hverdag. Netop nu er ungeområdet i bevægelse. Udfasningen af 10. klasse frem mod 2030 flytter opgaver mod FGU og stiller nye krav til, hvad Ungecenteret skal tilbyde. Jeg søger stillingen på grund af den forandring, ikke på trods af den. De nationale mål om, at 90 procent skal have en ungdomsuddannelse som 25-årige, og at andelen af unge uden tilknytning skal halveres, er den ramme, jeg gerne vil sætte retning efter sammen med lederteamet.</p>
-<h4>Ledelse af ledere og fælles retning</h4>
-<p>Opgaven med at lede gennem andre tiltaler mig i særlig grad. Som souschef ledede jeg på tværs af en stor specialskole, og i dag står jeg i spidsen for en hel organisation. Jeg ser ungecenterlederrollen som en opgave, hvor man sætter tydelig retning og rammer, men lader de fire centerledere lede deres egne enheder. Særligt vil jeg arbejde for et fælles sprog og fælles ansvar for helheden, så UU, ungdomsskole, 10. klasse og STU trækker i samme retning frem for at fungere som silør. Tillid, følgeskab og relationer på tværs er for mig fundamentet under enhver beslutning.</p>
-<h4>Drift, økonomi og digital udvikling</h4>
-<p>Jeg leverer på både drift og udvikling. Jeg har haft betydeligt budgetansvar, senest 47 mio. kr., og erfaring med at skabe overblik, prioritere og følge op i komplekse organisationer. Samtidig har jeg en stærk digital profil. Jeg er uddannet inden for IT, har drevet digitalisering gennem Microsoft 365 og Power Platform og siddet i Sønderborg Kommunes digitaliseringsstyregruppe. Det ser jeg som en konkret styrke i en ungeindsats, hvor bedre overblik på tværs af tilbud og data om de unges vej kan understøtte både faglighed og effektiv drift.</p>
-<h4>Menneskesyn og ledelsesstil</h4>
-<p>For mig skabes resultater gennem tydelig retning, gode relationer og et blik for de unges potentialer frem for deres begrænsninger. Jeg tror på nærværende og ordentlig ledelse. Tæt nok på praksis til at forstå hverdagen, men uden at overtage ledernes rum. Beslutninger skal træffes med ro, også under kompleksitet, og bæres igennem med følgeskab.</p>
-<h4>Afslutning</h4>
-<p>Stillingen ligger tæt på det, jeg motiveres af som leder, og på den vej, jeg ønsker at gå mod ledelse af ledere i en kommune. Jeg uddyber meget gerne, hvordan mine erfaringer kan bringes i spil i udviklingen af Ungecenter Sønderborg.</p>
-<p>Med venlig hilsen</p>
-<p>[DIT NAVN]<br /><em>[Adresse, telefon og mail indsættes ved afsendelse]</em></p>
-
-    <hr style="border:0;border-top:1px solid #334155;margin:24px 0" />
-    <h3>CV-tilpasning</h3>
-<h4>CV-tilpasning: Ungecenterleder, Ungecenter Sønderborg</h4>
-<p>Formålet er at få dit eksisterende CV til at "tale" opslagets sprog: <strong>ledelse af ledere</strong>, <strong>tillid, relationer og følgeskab</strong>, <strong>drift, strategi og udvikling</strong> samt <strong>beslutningskraft</strong>. Din digitale profil er den gennemgående differentiator. Der tilføjes ingen ny erfaring. Kun titel, profiltekst og rækkefølge samt formulering justeres.</p>
-<h4>1. Titel under navnet (erstat den nuværende)</h4>
-<ul>
-<li>Nuværende: <em>"Skoleleder med ansvar for drift, personale og digital udvikling"</em></li>
-<li>Forslag: <strong>"Leder af ledere med fokus på strategisk udvikling, tillid og digital drift på ungeområdet"</strong></li>
-</ul>
-<h4>2. Profiltekst (målrettet ungecenterlederrollen)</h4>
-<blockquote><p>Erfaren leder med baggrund i at lede gennem andre ledere og skabe fælles retning i komplekse, politisk styrede organisationer. Har ansvar for drift, personale, økonomi og strategisk udvikling og motiveres af at oversætte overordnede mål til konkret handling sammen med et lederteam.</p>
-<p>Bygger ledelse på tillid, følgeskab og tydelige rammer og har blik for både drift og udvikling, herunder forandringsopgaver på ungeområdet. Har en stærk digital profil og driver datadrevet udvikling gennem Microsoft 365 og Power Platform, så systemer understøtter faglighed, overblik og effektiv drift.</p>
-<p>Kendetegnet ved ro under kompleksitet, tydelig beslutningskraft og et potentialeorienteret menneskesyn.</p></blockquote>
-<h4>3. Fremhæv disse punkter (flyt op og gør tydelige)</h4>
-<ul>
-<li><strong>Souschef og stedfortræder samt indirekte ledelse af 115 medarbejdere</strong> ([DIN TIDLIGERE SKOLE]). Formuler som <em>"ledelse af ledere og ledelse gennem andre"</em>. Dette er opslagets vigtigste krav.</li>
-<li><strong>Budgetansvar 47 mio. kr.</strong> Drift, økonomistyring og beslutningskraft i stor skala.</li>
-<li><strong>Repræsentant i Sønderborg Kommunes Digitaliseringsstyregruppe (2019 til 2025) samt Microsoft 365 og Power Platform.</strong> Din digitale differentiator. Ingen anden ansøger har den kombination.</li>
-<li><strong>Diplom i ledelse (fuldført, afgangsprojekt 2023).</strong> Forandringsledelse og organisationsledelse.</li>
-<li><strong>Tilknytning til Sønderborg</strong> (seks år på [DIN TIDLIGERE SKOLE]). Lokalkendskab til kommunen og området.</li>
-</ul>
-<h4>4. Nøgleord der bør fremgå af CV'ets ordvalg</h4>
-<p>ledelse af ledere, følgeskab, tillid, tværgående sammenhæng, forandringsledelse, strategi og drift, beslutningskraft, potentialesyn.</p>
-<h4>5. Til overvejelse</h4>
-<p>Overvej en kort linje under profilteksten om <strong>forandringsopgaven mod 2030</strong> (udfasning af 10. klasse, målet om 90 procent), så CV'et signalerer, at du kender den konkrete opgave. Det binder CV og ansøgning sammen.</p>
-    <h4>Tjekliste før afsendelse</h4>
-    <ul class="checklist">
-      <li><label><input type="checkbox" data-check-id="son-send-dato" /><span>Opdatér datoen i ansøgningen til afsendelsesdagen</span></label></li>
-      <li><label><input type="checkbox" data-check-id="son-send-kontaktinfo" /><span>Indsæt adresse, telefon og mail i underskriften (er fjernet fra denne offentlige side)</span></label></li>
-      <li><label><input type="checkbox" data-check-id="son-send-lytte" /><span>Indarbejd lyttepunkterne fra fase 4, hvis du har ringet først</span></label></li>
-      <li><label><input type="checkbox" data-check-id="son-send-cv" /><span>Tilpas CV'et efter CV-tilpasningen ovenfor (titel, profiltekst, rækkefølge)</span></label></li>
-      <li><label><input type="checkbox" data-check-id="son-send" /><span>Send ansøgning + CV senest 11. august og notér afsendelsesdatoen</span></label></li>
-    </ul>
-  </section>
-
-  <section class="card" id="fase-6">
-    <h2>6️⃣ 1. samtale · med case · 19. august</h2>
+  <details class="card fase" id="fase-6">
+    <summary><h2>6️⃣ 1. samtale · med case · 19. august</h2></summary>
+    <div class="fase-body">
 <h4>Samtaleforberedelse: Ungecenterleder, Ungecenter Sønderborg</h4>
 <p>Forberedelse til de to samtaler. Første samtale er 19. august med en case. Anden samtale er 24. august med Garuda profil. Kontaktperson og formodet panelformand er sundheds og ungedirektør Lene Gram Herborg. Tiltrædelse 1. oktober 2026.</p>
 <p>Materialet er inspiration. Det er skrevet i din stemme, så du kan tale ud fra det med dine egne ord. Det bygger på research briefen fra CLIA-3715, din ansøgning og dit CV. De få steder, hvor et helt præcist tal eller resultat vil løfte svaret, har jeg markeret med [EJER UDFYLDER], så du selv kan sætte din stemme på.</p>
@@ -332,10 +348,12 @@
       <li><label><input type="checkbox" data-check-id="son-100dage" /><span>Hav 100-dages-planen klar som backup til casen</span></label></li>
       <li><label><input type="checkbox" data-check-id="son-panel" /><span>Vælg 2–3 spørgsmål, du selv vil stille panelet</span></label></li>
     </ul>
-  </section>
+    </div>
+  </details>
 
-  <section class="card" id="fase-7">
-    <h2>7️⃣ 2. samtale · Garuda-profil · 24. august</h2>
+  <details class="card fase" id="fase-7">
+    <summary><h2>7️⃣ 2. samtale · Garuda-profil · 24. august</h2></summary>
+    <div class="fase-body">
 <h4>Kort om anden samtale (24. august, Garuda profil)</h4>
 <p>Garuda er et dansk profilværktøj. Det er en selvbeskrivende personprofil, ikke en test man kan bestå eller dumpe. Du udfylder et spørgeskema før samtalen, og resultatet drøftes i anden runde, ofte med en konsulent til stede.</p>
 <ul>
@@ -349,10 +367,12 @@
     <ul class="checklist">
       <li><label><input type="checkbox" data-check-id="son-garuda" /><span>Udfyld Garuda-spørgeskemaet, så snart det kommer (før 24. august)</span></label></li>
     </ul>
-  </section>
+    </div>
+  </details>
 
-  <section class="card" id="fase-8">
-    <h2>8️⃣ Lønforhandling</h2>
+  <details class="card fase" id="fase-8">
+    <summary><h2>8️⃣ Lønforhandling</h2></summary>
+    <div class="fase-body">
     <p>Ungecenterleder er en leder-af-ledere-stilling — lønniveauet ligger derfor typisk over en almindelig skolelederstilling. Lønnen forhandles mellem kommunen og din forhandlingsberettigede organisation, men dit forarbejde afgør resultatet. Den konkrete snak tager du først, når de har sagt, at de vil have dig.</p>
     <h4>Før forhandlingen</h4>
     <ul>
@@ -380,7 +400,16 @@
       <li>Sig aldrig ja på stedet. Bed om at sove på tilbuddet, og vend det med din organisation.</li>
       <li>Får du ikke det ønskede i grundløn, så hent det i tillæg, pension eller vilkår.</li>
     </ul>
-  </section>
+    </div>
+  </details>
+
+  <details class="card fase" id="noter">
+    <summary><h2>📝 Private noter</h2></summary>
+    <div class="fase-body">
+      <p>Aftaler, datoer og tanker undervejs. Noterne gemmes kun i denne browser (localStorage) — de sendes aldrig ud på nettet. Skriv ikke følsomme oplysninger her.</p>
+      <textarea class="notes" data-notes="soenderborg-general" rows="8" placeholder="Skriv noter her …"></textarea>
+    </div>
+  </details>
 </main>
 
 <footer class="foot">
