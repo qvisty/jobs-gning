@@ -58,7 +58,7 @@
   </style>
 </head>
 <body>
-  <div class="gate" id="gate">
+  <div class="gate" id="gate" hidden>
     <h1>🔒 Adgangskode</h1>
     <p>Denne side er privat. Indtast adgangskoden for at få adgang.</p>
     <form id="form" autocomplete="off">
@@ -74,21 +74,33 @@
     (function () {
       const data = JSON.parse(document.getElementById('payload').textContent);
       const b64ToBytes = (b64) => Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
+      const bytesToB64 = (buf) => btoa(String.fromCharCode.apply(null, new Uint8Array(buf)));
+      const gateEl = document.getElementById('gate');
       const form = document.getElementById('form');
       const pwInput = document.getElementById('pw');
       const errEl = document.getElementById('err');
       const submitBtn = document.getElementById('submit');
 
-      async function decrypt(password) {
+      // Session-huskning: efter korrekt adgangskode gemmer vi den AFLEDTE AES-nøgle
+      // (ikke selve adgangskoden) i sessionStorage. Så husker fanen adgangen ved
+      // genindlæsning/navigation, uden at koden skal tastes igen. sessionStorage er
+      // isoleret til den enkelte fane og ryddes automatisk når fanen lukkes — en ny
+      // fane eller genåbnet browser kræver derfor koden igen.
+      const SESSION_KEY = 'jobsoegning:unlock-key:v1';
+
+      async function deriveKey(password) {
         const enc = new TextEncoder();
         const baseKey = await crypto.subtle.importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']);
-        const key = await crypto.subtle.deriveKey(
+        return crypto.subtle.deriveKey(
           { name: 'PBKDF2', salt: b64ToBytes(data.salt), iterations: data.iterations, hash: 'SHA-256' },
           baseKey,
           { name: 'AES-GCM', length: 256 },
-          false,
+          true, // extractable — nødvendigt for at kunne gemme nøglen i sessionStorage
           ['decrypt']
         );
+      }
+
+      async function decryptWithKey(key) {
         const plainBuf = await crypto.subtle.decrypt(
           { name: 'AES-GCM', iv: b64ToBytes(data.iv) },
           key,
@@ -102,13 +114,39 @@
         document.body.innerHTML = '<div class="protected">' + html + '</div>';
       }
 
+      async function rememberKey(key) {
+        try {
+          const raw = await crypto.subtle.exportKey('raw', key);
+          sessionStorage.setItem(SESSION_KEY, bytesToB64(raw));
+        } catch (_) { /* sessionStorage utilgængelig — huskning springes bare over */ }
+      }
+
+      // Forsøg at genoprette adgang fra en tidligere korrekt indtastning i denne fane.
+      async function restoreFromSession() {
+        let stored = null;
+        try { stored = sessionStorage.getItem(SESSION_KEY); } catch (_) { return false; }
+        if (!stored) return false;
+        try {
+          const key = await crypto.subtle.importKey(
+            'raw', b64ToBytes(stored), { name: 'AES-GCM' }, false, ['decrypt']
+          );
+          reveal(await decryptWithKey(key));
+          return true;
+        } catch (_) {
+          try { sessionStorage.removeItem(SESSION_KEY); } catch (_) {}
+          return false;
+        }
+      }
+
       form.addEventListener('submit', async function (e) {
         e.preventDefault();
         errEl.textContent = '';
         submitBtn.disabled = true;
         submitBtn.textContent = 'Låser op…';
         try {
-          const html = await decrypt(pwInput.value);
+          const key = await deriveKey(pwInput.value);
+          const html = await decryptWithKey(key);
+          await rememberKey(key);
           reveal(html);
         } catch (_) {
           errEl.textContent = 'Forkert adgangskode. Prøv igen.';
@@ -116,6 +154,14 @@
           pwInput.focus();
           submitBtn.disabled = false;
           submitBtn.textContent = 'Lås op';
+        }
+      });
+
+      // Ved indlæsning: vis kun adgangskode-prompten hvis fanen ikke allerede er låst op.
+      restoreFromSession().then(function (unlocked) {
+        if (!unlocked) {
+          gateEl.hidden = false;
+          pwInput.focus();
         }
       });
     })();
