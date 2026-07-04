@@ -4,167 +4,45 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Jobsøgning · adgangskode</title>
+  <title>Jobsøgning</title>
   <style>
     :root { color-scheme: light dark; }
     * { box-sizing: border-box; }
     body {
       margin: 0; min-height: 100vh; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%); color: #e2e8f0;
-      display: flex; align-items: center; justify-content: center; padding: 24px;
+      display: block;
     }
-    .gate { width: 100%; max-width: 380px; background: rgba(15,23,42,.6); border: 1px solid #334155;
-      border-radius: 16px; padding: 32px 28px; box-shadow: 0 20px 60px rgba(0,0,0,.4); backdrop-filter: blur(6px); }
-    .gate h1 { margin: 0 0 4px; font-size: 22px; }
-    .gate p { margin: 0 0 20px; color: #94a3b8; font-size: 14px; }
-    .gate label { display: block; font-size: 13px; margin-bottom: 6px; color: #cbd5e1; }
-    .gate input { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid #475569;
-      background: #0b1220; color: #f1f5f9; font-size: 15px; }
-    .gate input:focus { outline: 2px solid #6366f1; border-color: #6366f1; }
-    .gate button { width: 100%; margin-top: 16px; padding: 12px; border: 0; border-radius: 10px;
-      background: #6366f1; color: white; font-size: 15px; font-weight: 600; cursor: pointer; }
-    .gate button:hover { background: #4f46e5; }
-    .gate button:disabled { opacity: .6; cursor: default; }
-    .err { color: #f87171; font-size: 13px; margin-top: 12px; min-height: 18px; }
-    /* Beskyttet indhold-styling (vises efter dekryptering) */
-    .protected { max-width: 720px; margin: 40px auto; padding: 0 20px; }
-    .protected .eyebrow { text-transform: uppercase; letter-spacing: .08em; font-size: 12px; color: #818cf8; }
-    .protected .hero h1 { font-size: 40px; margin: 4px 0 8px; }
-    .protected .lead { font-size: 18px; color: #cbd5e1; }
-    .protected .card { background: rgba(30,41,59,.6); border: 1px solid #334155; border-radius: 14px;
+    .content { max-width: 720px; margin: 40px auto; padding: 0 20px; }
+    .content .eyebrow { text-transform: uppercase; letter-spacing: .08em; font-size: 12px; color: #818cf8; }
+    .content .hero h1 { font-size: 40px; margin: 4px 0 8px; }
+    .content .lead { font-size: 18px; color: #cbd5e1; }
+    .content .card { background: rgba(30,41,59,.6); border: 1px solid #334155; border-radius: 14px;
       padding: 20px 24px; margin: 20px 0; }
-    .protected .card h2 { margin-top: 0; }
-    .protected code { background: #0b1220; padding: 2px 6px; border-radius: 6px; font-size: 90%; }
-    .protected .foot { color: #64748b; font-size: 13px; margin: 40px 0; text-align: center; }
+    .content .card h2 { margin-top: 0; }
+    .content code { background: #0b1220; padding: 2px 6px; border-radius: 6px; font-size: 90%; }
+    .content .foot { color: #64748b; font-size: 13px; margin: 40px 0; text-align: center; }
     /* Kalender / tidslinje */
-    .protected .timeline { list-style: none; margin: 8px 0 0; padding: 0; }
-    .protected .event { display: flex; gap: 16px; padding: 16px 0; border-top: 1px solid #334155; }
-    .protected .event:first-child { border-top: 0; }
-    .protected .event-date { flex: 0 0 64px; text-align: center; background: #0b1220;
+    .content .timeline { list-style: none; margin: 8px 0 0; padding: 0; }
+    .content .event { display: flex; gap: 16px; padding: 16px 0; border-top: 1px solid #334155; }
+    .content .event:first-child { border-top: 0; }
+    .content .event-date { flex: 0 0 64px; text-align: center; background: #0b1220;
       border: 1px solid #334155; border-radius: 10px; padding: 8px 4px; align-self: flex-start; }
-    .protected .event-date .day { display: block; font-size: 22px; font-weight: 700; line-height: 1.1; color: #f1f5f9; }
-    .protected .event-date .mon { display: block; font-size: 11px; text-transform: uppercase;
+    .content .event-date .day { display: block; font-size: 22px; font-weight: 700; line-height: 1.1; color: #f1f5f9; }
+    .content .event-date .mon { display: block; font-size: 11px; text-transform: uppercase;
       letter-spacing: .05em; color: #94a3b8; }
-    .protected .event-body { flex: 1 1 auto; }
-    .protected .event-body h3 { margin: 6px 0 4px; font-size: 17px; }
-    .protected .event-body p { margin: 0; color: #cbd5e1; font-size: 14px; }
-    .protected .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 9px;
+    .content .event-body { flex: 1 1 auto; }
+    .content .event-body h3 { margin: 6px 0 4px; font-size: 17px; }
+    .content .event-body p { margin: 0; color: #cbd5e1; font-size: 14px; }
+    .content .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 9px;
       border-radius: 999px; text-transform: uppercase; letter-spacing: .04em; }
-    .protected .tag--frist { background: rgba(248,113,113,.15); color: #fca5a5; border: 1px solid #f87171; }
-    .protected .tag--samtale { background: rgba(129,140,248,.15); color: #a5b4fc; border: 1px solid #818cf8; }
-    .protected .tag--tiltraedelse { background: rgba(52,211,153,.15); color: #6ee7b7; border: 1px solid #34d399; }
-    .protected .tag--opfoelgning { background: rgba(251,191,36,.15); color: #fcd34d; border: 1px solid #fbbf24; }
-    body.unlocked { display: block; background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%); }
+    .content .tag--frist { background: rgba(248,113,113,.15); color: #fca5a5; border: 1px solid #f87171; }
+    .content .tag--samtale { background: rgba(129,140,248,.15); color: #a5b4fc; border: 1px solid #818cf8; }
+    .content .tag--tiltraedelse { background: rgba(52,211,153,.15); color: #6ee7b7; border: 1px solid #34d399; }
+    .content .tag--opfoelgning { background: rgba(251,191,36,.15); color: #fcd34d; border: 1px solid #fbbf24; }
   </style>
 </head>
 <body>
-  <div class="gate" id="gate" hidden>
-    <h1>🔒 Adgangskode</h1>
-    <p>Denne side er privat. Indtast adgangskoden for at få adgang.</p>
-    <form id="form" autocomplete="off">
-      <label for="pw">Adgangskode</label>
-      <input type="password" id="pw" autofocus autocomplete="current-password" />
-      <button type="submit" id="submit">Lås op</button>
-      <div class="err" id="err" role="alert"></div>
-    </form>
-  </div>
-
-  <script id="payload" type="application/json">__ENCRYPTED_PAYLOAD__</script>
-  <script>
-    (function () {
-      const data = JSON.parse(document.getElementById('payload').textContent);
-      const b64ToBytes = (b64) => Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
-      const bytesToB64 = (buf) => btoa(String.fromCharCode.apply(null, new Uint8Array(buf)));
-      const gateEl = document.getElementById('gate');
-      const form = document.getElementById('form');
-      const pwInput = document.getElementById('pw');
-      const errEl = document.getElementById('err');
-      const submitBtn = document.getElementById('submit');
-
-      // Session-huskning: efter korrekt adgangskode gemmer vi den AFLEDTE AES-nøgle
-      // (ikke selve adgangskoden) i sessionStorage. Så husker fanen adgangen ved
-      // genindlæsning/navigation, uden at koden skal tastes igen. sessionStorage er
-      // isoleret til den enkelte fane og ryddes automatisk når fanen lukkes — en ny
-      // fane eller genåbnet browser kræver derfor koden igen.
-      const SESSION_KEY = 'jobsoegning:unlock-key:v1';
-
-      async function deriveKey(password) {
-        const enc = new TextEncoder();
-        const baseKey = await crypto.subtle.importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']);
-        return crypto.subtle.deriveKey(
-          { name: 'PBKDF2', salt: b64ToBytes(data.salt), iterations: data.iterations, hash: 'SHA-256' },
-          baseKey,
-          { name: 'AES-GCM', length: 256 },
-          true, // extractable — nødvendigt for at kunne gemme nøglen i sessionStorage
-          ['decrypt']
-        );
-      }
-
-      async function decryptWithKey(key) {
-        const plainBuf = await crypto.subtle.decrypt(
-          { name: 'AES-GCM', iv: b64ToBytes(data.iv) },
-          key,
-          b64ToBytes(data.ct)
-        );
-        return new TextDecoder().decode(plainBuf);
-      }
-
-      function reveal(html) {
-        document.body.classList.add('unlocked');
-        document.body.innerHTML = '<div class="protected">' + html + '</div>';
-      }
-
-      async function rememberKey(key) {
-        try {
-          const raw = await crypto.subtle.exportKey('raw', key);
-          sessionStorage.setItem(SESSION_KEY, bytesToB64(raw));
-        } catch (_) { /* sessionStorage utilgængelig — huskning springes bare over */ }
-      }
-
-      // Forsøg at genoprette adgang fra en tidligere korrekt indtastning i denne fane.
-      async function restoreFromSession() {
-        let stored = null;
-        try { stored = sessionStorage.getItem(SESSION_KEY); } catch (_) { return false; }
-        if (!stored) return false;
-        try {
-          const key = await crypto.subtle.importKey(
-            'raw', b64ToBytes(stored), { name: 'AES-GCM' }, false, ['decrypt']
-          );
-          reveal(await decryptWithKey(key));
-          return true;
-        } catch (_) {
-          try { sessionStorage.removeItem(SESSION_KEY); } catch (_) {}
-          return false;
-        }
-      }
-
-      form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        errEl.textContent = '';
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Låser op…';
-        try {
-          const key = await deriveKey(pwInput.value);
-          const html = await decryptWithKey(key);
-          await rememberKey(key);
-          reveal(html);
-        } catch (_) {
-          errEl.textContent = 'Forkert adgangskode. Prøv igen.';
-          pwInput.value = '';
-          pwInput.focus();
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Lås op';
-        }
-      });
-
-      // Ved indlæsning: vis kun adgangskode-prompten hvis fanen ikke allerede er låst op.
-      restoreFromSession().then(function (unlocked) {
-        if (!unlocked) {
-          gateEl.hidden = false;
-          pwInput.focus();
-        }
-      });
-    })();
-  </script>
+  <div class="content">__CONTENT__</div>
 </body>
 </html>
