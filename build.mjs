@@ -17,6 +17,10 @@ const pages = [
   { src: 'src/jobs/damagerskolen.html', out: 'damagerskolen.html', title: 'Skoleleder · Damagerskolen og Greve 10. klasse' },
   { src: 'src/jobs/saltum.html', out: 'saltum.html', title: 'Skoleleder · Saltum Skole (Jammerbugt)' },
   { src: 'src/jobs/randers.html', out: 'randers.html', title: 'Områdeleder · Skoleområdet · Randers Kommune' },
+  // Runde 3 · tre nye lederstillinger, en pr. mål
+  { src: 'src/jobs/frederiksberg.html', out: 'frederiksberg.html', title: 'Digitaliseringschef · Frederiksberg Kommune' },
+  { src: 'src/jobs/koebenhavn-city.html', out: 'koebenhavn-city.html', title: 'Skoleleder · Copenhagen City School (København)' },
+  { src: 'src/jobs/gribskov.html', out: 'gribskov.html', title: 'Centerchef · Dagtilbud og Skole · Gribskov Kommune' },
 ];
 
 const template = await readFile('src/template.html', 'utf8');
