@@ -20,6 +20,8 @@
     .content .card { background: rgba(30,41,59,.6); border: 1px solid #334155; border-radius: 14px;
       padding: 20px 24px; margin: 20px 0; }
     .content .card h2 { margin-top: 0; }
+    .content .commute { color: #94a3b8; font-size: 14px; margin: -6px 0 18px; }
+    .content .commute strong { color: #cbd5e1; }
     .content code { background: #0b1220; padding: 2px 6px; border-radius: 6px; font-size: 90%; }
     .content .foot { color: #64748b; font-size: 13px; margin: 40px 0; text-align: center; }
     /* Kalender / tidslinje */
@@ -56,6 +58,7 @@
     <p>Alt dit jobsøgnings-materiale samlet ét sted. Spring direkte til:</p>
     <ul>
       <li><a href="#kalender">Kalender · vigtige datoer</a></li>
+      <li><a href="#koerselstid">Kørselstid · fra Aabenraa til hvert job</a></li>
       <li><a href="#vonsild">Skoleleder · Vonsild Specialskole (Kolding)</a>: ansøgning + samtaleforberedelse</li>
       <li><a href="#sonderborg">Ungecenterleder · Sønderborg Kommune</a>: ansøgning, CV-tilpasning + samtaleforberedelse</li>
       <li><strong>Runde 2 · fem nye ansøgninger:</strong></li>
@@ -178,9 +181,67 @@
     </ol>
   </section>
 
+  <section class="card" id="koerselstid">
+    <h2>🚗 Kørselstid · fra Aabenraa til hvert job</h2>
+    <p>Kørsel i bil fra [ADRESSE], 6200 Aabenraa. Ca.-tal hver vej uden for myldretid — tjek den konkrete dag før samtaler. Sorteret efter afstand:</p>
+    <ol class="timeline">
+      <li class="event">
+        <div class="event-date"><span class="day">~35</span><span class="mon">min</span></div>
+        <div class="event-body">
+          <h3><a href="#sonderborg">Ungecenterleder · Sønderborg</a></h3>
+          <p>Ca. 32 km via rute 8/41. Uproblematisk daglig pendling.</p>
+        </div>
+      </li>
+      <li class="event">
+        <div class="event-date"><span class="day">~40</span><span class="mon">min</span></div>
+        <div class="event-body">
+          <h3><a href="#vonsild">Skoleleder · Vonsild Specialskole (Kolding)</a></h3>
+          <p>Ca. 50 km via E45 (Vonsild ligger i det sydlige Kolding, tæt på afkørslen). Fin daglig pendling.</p>
+        </div>
+      </li>
+      <li class="event">
+        <div class="event-date"><span class="day">~1:50</span><span class="mon">timer</span></div>
+        <div class="event-body">
+          <h3><a href="#randers">Områdeleder · Skoleområdet (Randers)</a></h3>
+          <p>Ca. 175 km via E45. For langt til daglig pendling (3½–4 timer i bil pr. dag) — kræver flytning eller delvist hjemmearbejde.</p>
+        </div>
+      </li>
+      <li class="event">
+        <div class="event-date"><span class="day">~1:35</span><span class="mon">–2 timer</span></div>
+        <div class="event-body">
+          <h3><a href="#region-midtjylland">Leder · Sekretariat og Porteføljestyring (Region Midtjylland)</a></h3>
+          <p>Aarhus (Olof Palmes Allé): ca. 1 time 35 min · 140 km. Viborg (regionshuset): ca. 2 timer · 175 km. Afklar primært arbejdssted — det afgør, om pendling er realistisk (evt. kombineret med hjemmearbejdsdage i en administrativ rolle).</p>
+        </div>
+      </li>
+      <li class="event">
+        <div class="event-date"><span class="day">~2:25</span><span class="mon">timer</span></div>
+        <div class="event-body">
+          <h3><a href="#damagerskolen">Skoleleder · Damagerskolen (Greve)</a></h3>
+          <p>Ca. 230 km via E20 og Storebæltsbroen (broafgift begge veje). Kræver reelt flytning.</p>
+        </div>
+      </li>
+      <li class="event">
+        <div class="event-date"><span class="day">~2:45</span><span class="mon">timer</span></div>
+        <div class="event-body">
+          <h3><a href="#skovshoved">Skoleleder · Skovshoved Skole (Gentofte)</a></h3>
+          <p>Ca. 260 km via E20 og Storebæltsbroen (broafgift begge veje) + myldretid ind mod København. Kræver reelt flytning.</p>
+        </div>
+      </li>
+      <li class="event">
+        <div class="event-date"><span class="day">~2:50</span><span class="mon">timer</span></div>
+        <div class="event-body">
+          <h3><a href="#saltum">Skoleleder · Saltum Skole (Jammerbugt)</a></h3>
+          <p>Ca. 285 km via E45 forbi Aalborg og videre mod Blokhus/Saltum. Kræver reelt flytning.</p>
+        </div>
+      </li>
+    </ol>
+    <p><em>Til samtaledage på Sjælland: overvej tog (Rødekro st. → København H er typisk ca. 3 timer) eller kør dagen før, så du møder frisk op.</em></p>
+  </section>
+
   <section class="card" id="vonsild">
     <h2>🏫 Skoleleder · Vonsild Specialskole (Kolding)</h2>
     <p class="lead">Frist 11. august 2026. Samtaler 19. og 25. august.</p>
+    <p class="commute">🚗 <strong>Kørsel fra Aabenraa:</strong> ca. 40 min · ca. 50 km hver vej (E45). Fin daglig pendling.</p>
     <h3>Ansøgning</h3>
 <h4>Ansøgning til stillingen som skoleleder ved Vonsild Specialskole</h4>
 <p><strong>Kolding Kommune, att. skolechef Karen Albrechtsen</strong> Aabenraa, den [DATO. EJER UDFYLDER, senest 11. august 2026]</p>
@@ -325,6 +386,7 @@
   <section class="card" id="sonderborg">
     <h2>🧭 Ungecenterleder · Sønderborg Kommune</h2>
     <p class="lead">Frist 11. august 2026. Samtaler 19. og 24. august. Tiltrædelse 1. oktober 2026.</p>
+    <p class="commute">🚗 <strong>Kørsel fra Aabenraa:</strong> ca. 35 min · ca. 32 km hver vej (rute 8/41). Uproblematisk daglig pendling.</p>
     <h3>Ansøgning</h3>
 <p>Lene Gram Herborg Sundheds- og ungedirektør Sønderborg Kommune</p>
 <p>Aabenraa, den 4. juli 2026</p>
@@ -500,6 +562,7 @@
   <section class="card" id="skovshoved">
     <h2>🏫 Skoleleder · Skovshoved Skole (Gentofte)</h2>
     <p class="lead">Frist 9. august 2026. Ansøgning i din egen stemme med CV-vinkling og noter til udfyldelse.</p>
+    <p class="commute">🚗 <strong>Kørsel fra Aabenraa:</strong> ca. 2 timer 45 min · ca. 260 km hver vej (E20 + Storebæltsbroen, broafgift). Kræver reelt flytning.</p>
     <h3>Ansøgning</h3>
 <h4>Ansøgning til stillingen som skoleleder ved Skovshoved Skole</h4>
 <p><strong>Gentofte Kommune, att. skolechef Susanne Poulsen</strong> Aabenraa, den [DATO. EJER UDFYLDER, senest 9. august 2026]</p>
@@ -527,6 +590,7 @@
   <section class="card" id="damagerskolen">
     <h2>🏫 Skoleleder · Damagerskolen og Greve 10. klasse</h2>
     <p class="lead">Frist 16. august 2026. Ansøgning i din egen stemme med CV-vinkling og noter til udfyldelse.</p>
+    <p class="commute">🚗 <strong>Kørsel fra Aabenraa:</strong> ca. 2 timer 25 min · ca. 230 km hver vej (E20 + Storebæltsbroen, broafgift). Kræver reelt flytning.</p>
     <h3>Ansøgning</h3>
 <h4>Ansøgning til stillingen som skoleleder ved Damagerskolen og Greve 10. klasse</h4>
 <p><strong>Greve Kommune, att. souschef Mette Harder</strong> Aabenraa, den [DATO. EJER UDFYLDER, senest 16. august 2026]</p>
@@ -554,6 +618,7 @@
   <section class="card" id="saltum">
     <h2>🏫 Skoleleder · Saltum Skole (Jammerbugt)</h2>
     <p class="lead">Frist 12. august 2026. Ansøgning i din egen stemme med CV-vinkling og noter til udfyldelse.</p>
+    <p class="commute">🚗 <strong>Kørsel fra Aabenraa:</strong> ca. 2 timer 50 min · ca. 285 km hver vej (E45 forbi Aalborg). Kræver reelt flytning.</p>
     <h3>Ansøgning</h3>
 <h4>Ansøgning til stillingen som skoleleder ved Saltum Skole</h4>
 <p><strong>Jammerbugt Kommune, att. skole- og dagtilbudschef Helle Nørgaard Pedersen</strong> Aabenraa, den [DATO. EJER UDFYLDER, senest 12. august 2026]</p>
@@ -581,6 +646,7 @@
   <section class="card" id="randers">
     <h2>🧭 Områdeleder · Skoleområdet · Randers Kommune</h2>
     <p class="lead">Frist 12. august 2026. Ansøgning i din egen stemme med CV-vinkling og noter til udfyldelse.</p>
+    <p class="commute">🚗 <strong>Kørsel fra Aabenraa:</strong> ca. 1 time 50 min · ca. 175 km hver vej (E45). For langt til daglig pendling — kræver flytning eller hjemmearbejdsdage.</p>
     <h3>Ansøgning</h3>
 <h4>Ansøgning til stillingen som områdeleder til skoleområdet</h4>
 <p><strong>Randers Kommune, Skoleafdelingen</strong> Aabenraa, den [DATO. EJER UDFYLDER, senest 12. august 2026]</p>
@@ -608,6 +674,7 @@
   <section class="card" id="region-midtjylland">
     <h2>🖥️ Leder · Sekretariat og Porteføljestyring · Region Midtjylland</h2>
     <p class="lead">Frist 16. august 2026. Ansøgning i din egen stemme med CV-vinkling og noter til udfyldelse.</p>
+    <p class="commute">🚗 <strong>Kørsel fra Aabenraa:</strong> Aarhus ca. 1 time 35 min (140 km) · Viborg ca. 2 timer (175 km) hver vej. Afklar primært arbejdssted og mulighed for hjemmearbejdsdage.</p>
     <h3>Ansøgning</h3>
 <h4>Ansøgning. Strategisk og relationel leder til Sekretariat og Porteføljestyring i Digitalisering og It</h4>
 <p><strong>Region Midtjylland, Digitalisering og It</strong> Aabenraa, den [DATO. EJER UDFYLDER, senest 16. august 2026]</p>
