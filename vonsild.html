@@ -7,6 +7,7 @@
   <title>Skoleleder · Vonsild Specialskole</title>
   <style>
     :root { color-scheme: light dark; }
+    html { scroll-behavior: smooth; }
     * { box-sizing: border-box; }
     body {
       margin: 0; min-height: 100vh; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -22,6 +23,39 @@
     .content .card h2 { margin-top: 0; }
     .content .commute { color: #94a3b8; font-size: 14px; margin: -6px 0 18px; }
     .content .commute strong { color: #cbd5e1; }
+    .content .anonote { color: #94a3b8; font-size: 14px; margin: -6px 0 18px; }
+    .content .anonote strong { color: #fcd34d; }
+    /* Sticky fasemenu på undersider */
+    .content .fasebar { position: sticky; top: 0; z-index: 20; display: flex; flex-wrap: wrap; align-items: center;
+      gap: 6px; padding: 12px 0 10px; margin: 0 0 4px; border-bottom: 1px solid #334155;
+      background: linear-gradient(160deg, rgba(15,23,42,.97) 0%, rgba(30,41,59,.97) 100%); }
+    .content .fasebar a { padding: 5px 11px; border: 1px solid #334155; border-radius: 999px; font-size: 13px;
+      color: #cbd5e1; text-decoration: none; white-space: nowrap; }
+    .content .fasebar a:hover { border-color: #6366f1; }
+    .content .fasebar a.active { border-color: #6366f1; background: rgba(99,102,241,.18); color: #fff; }
+    .content .fasebar .home { color: #a5b4fc; }
+    .content .fasebar button { margin-left: auto; padding: 5px 11px; border: 1px solid #475569; border-radius: 999px;
+      background: transparent; color: #cbd5e1; font-size: 13px; cursor: pointer; }
+    .content .fasebar button:hover { border-color: #6366f1; }
+    /* Fremdrift for tjeklister */
+    .content .progress { display: flex; align-items: center; gap: 12px; margin: 10px 0 0; }
+    .content .progress-track { flex: 1 1 auto; height: 8px; border-radius: 999px; background: #0b1220;
+      border: 1px solid #334155; overflow: hidden; }
+    .content .progress-fill { height: 100%; width: 0; background: #6366f1; border-radius: 999px; transition: width .3s; }
+    .content .progress span { font-size: 13px; color: #94a3b8; white-space: nowrap; }
+    /* Sammenklappelige fase-kort */
+    .content details.card { scroll-margin-top: 76px; }
+    .content details.card summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 12px; }
+    .content details.card summary::-webkit-details-marker { display: none; }
+    .content details.card summary h2 { margin: 0; flex: 1 1 auto; }
+    .content details.card summary::after { content: '▸'; color: #64748b; font-size: 18px; flex: 0 0 auto;
+      transition: transform .2s; }
+    .content details.card[open] summary::after { transform: rotate(90deg); }
+    .content details.card .fase-body { margin-top: 14px; }
+    /* Private noter (gemmes kun i browserens localStorage) */
+    .content .notes { width: 100%; border: 1px solid #475569; border-radius: 12px; padding: 12px;
+      background: #0b1220; color: #f1f5f9; font: inherit; font-size: 14px; resize: vertical; }
+    .content .notes:focus { outline: 2px solid #6366f1; border-color: #6366f1; }
     .content a { color: #a5b4fc; }
     .content .backlink { font-size: 14px; margin: 28px 0 -24px; }
     .content .backlink a { text-decoration: none; }
@@ -66,33 +100,143 @@
 </head>
 <body>
   <div class="content"><!-- Underside: Skoleleder · Vonsild Specialskole. Genereres til vonsild.html af build.mjs. -->
-<p class="backlink"><a href="index.html">← Tilbage til forsiden</a></p>
 <header class="hero">
   <p class="eyebrow">Stilling · status: kladde</p>
   <h1>🏫 Skoleleder · Vonsild Specialskole</h1>
   <p class="lead">Kolding Kommune · frist 11. august 2026 · 1. samtale 19. august · 2. samtale 25. august.</p>
   <p class="commute">🚗 <strong>Kørsel fra Aabenraa:</strong> ca. 40 min · ca. 50 km hver vej (E45). Fin daglig pendling.</p>
+  <p class="anonote">🔒 <strong>Pladsholdere:</strong> Personlige oplysninger er erstattet med [DIT NAVN], [ALDER], [DIN NUVÆRENDE SKOLE] og [DIN TIDLIGERE SKOLE] — indsæt de rigtige data i den version, du sender.</p>
 </header>
 
 <main>
-  <section class="card">
-    <h2>🧭 Faserne · fra første kontakt til lønforhandling</h2>
-    <p>Hele forløbet trin for trin. Du er i starten af forløbet: Har du ikke ringet til skolechefen endnu, så start ved fase 1. Har du, så spring til fase 4 og 5.</p>
-    <ol>
-      <li><a href="#fase-1">Research før kontakt</a></li>
-      <li><a href="#fase-2">SMS-udkast · første kontakt</a></li>
-      <li><a href="#fase-3">Den første telefonsamtale</a></li>
-      <li><a href="#fase-4">Fra telefonsamtale til ansøgning</a></li>
-      <li><a href="#fase-5">Ansøgningen (frist 11. august)</a></li>
-      <li><a href="#fase-6">1. samtale (19. august)</a></li>
-      <li><a href="#fase-7">2. samtale · case (25. august)</a></li>
-      <li><a href="#fase-8">Lønforhandling</a></li>
-    </ol>
-    <p><a href="#modeller">🧩 Se også: Forberedelsesmodeller — STAR, Domæne, 4D, CMM og Karl Tomm</a></p>
-  </section>
+  <nav class="fasebar">
+    <a class="home" href="index.html">← Forside</a>
+    <a href="#fase-1">1 · Research</a>
+    <a href="#fase-2">2 · SMS</a>
+    <a href="#fase-3">3 · Opkald</a>
+    <a href="#fase-4">4 · Noter</a>
+    <a href="#fase-5">5 · Ansøgning</a>
+    <a href="#modeller">🧩 Modeller</a>
+    <a href="#fase-6">6 · Samtale 1</a>
+    <a href="#fase-7">7 · Samtale 2</a>
+    <a href="#fase-8">8 · Løn</a>
+    <a href="#noter">📝 Noter</a>
+    <button id="toggle-all" type="button">Åbn alle</button>
+  </nav>
+  <div class="progress"><div class="progress-track"><div id="prog-fill" class="progress-fill"></div></div><span id="prog-text"></span></div>
 
-  <section class="card" id="modeller">
-    <h2>🧩 Forberedelsesmodeller · STAR + fire systemiske alternativer</h2>
+
+  <details class="card fase" id="fase-1">
+    <summary><h2>1️⃣ Research før kontakt</h2></summary>
+    <div class="fase-body">
+    <p>Formålet med de første tre faser er dobbelt: at blive husket positivt, allerede før ansøgningerne læses — og at få viden, der gør din ansøgning skarpere end de andres.</p>
+    <ul>
+      <li>Læs stillingsopslaget og en eventuel job- og personprofil grundigt. Notér de ord, der går igen (her: selvstændig skole pr. 1. januar 2027, KRAP, ro og tryghed, ca. 70 medarbejdere, ny bestyrelse).</li>
+      <li>Orientér dig i Kolding Kommunes børne- og ungesyn ("alle børn og unge gør deres bedste") og i det, der er offentligt tilgængeligt om udskillelsen af specialskolen.</li>
+      <li>Find kontaktpersonens navn og nummer i opslaget: skolechef Karen Albrechtsen.</li>
+      <li>Forbered 2–3 spørgsmål, som IKKE kan besvares ved at læse opslaget — se fase 3. Det viser overskud og reel interesse.</li>
+      <li>Hav din 20-sekunders præsentation klar: navn, nuværende rolle, én sætning om hvorfor netop denne stilling.</li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-2">
+    <summary><h2>2️⃣ SMS-udkast · første kontakt</h2></summary>
+    <div class="fase-body">
+    <p>Ring hellere direkte på en hverdag mellem 8 og 15. Får du ikke svar, eller vil du hellere åbne blødt, så send en SMS. Udkast:</p>
+    <blockquote><p>Hej Karen Albrechtsen. Jeg hedder [DIT NAVN] og er forstander og skoleleder på [DIN NUVÆRENDE SKOLE]. Jeg overvejer at søge stillingen som skoleleder for Vonsild Specialskole og vil gerne høre, om du har 10 minutter til en kort telefonsamtale om stillingen? Jeg ringer, når det passer dig. Venlig hilsen [DIT NAVN]</p></blockquote>
+    <p>Kortere variant, hvis du allerede har ringet forgæves:</p>
+    <blockquote><p>Hej Karen Albrechtsen. Jeg har forsøgt at ringe vedrørende skolelederstillingen på Vonsild Specialskole. Jeg vil gerne høre lidt mere om stillingen — hvornår passer det bedst, at jeg ringer? Venlig hilsen [DIT NAVN], forstander, [DIN NUVÆRENDE SKOLE]</p></blockquote>
+    <ul>
+      <li>Send på en hverdag mellem 8 og 15 — undgå fredag eftermiddag og weekend (og vær opmærksom på skolernes sommerferie frem til ca. 1. august).</li>
+      <li>Nævn din nuværende titel. Den gør dig let at placere og åbner døren.</li>
+      <li>Bed om et kort opkald, ikke et møde. Det er let at sige ja til.</li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-3">
+    <summary><h2>3️⃣ Den første telefonsamtale</h2></summary>
+    <div class="fase-body">
+    <p>Hold den på 10–15 minutter. Struktur: kort præsentation (20 sekunder) → dine 2–3 spørgsmål → tak og en positiv afrunding ("samtalen bekræfter mig i, at jeg søger").</p>
+    <h4>Spørgsmål du kan vælge imellem</h4>
+    <ol>
+      <li>Hvad bliver efter din vurdering den vigtigste opgave for skolelederen i det første halve år?</li>
+      <li>Hvor langt er I i processen med udskillelsen — hvad ligger allerede fast, og hvad skal den nye leder selv forme?</li>
+      <li>Hvad kendetegner medarbejdergruppen, og hvordan har de taget imod nyheden om den selvstændige skole?</li>
+      <li>Hvilken profil lykkes efter jeres vurdering bedst i stillingen?</li>
+      <li>Hvordan bliver samspillet mellem skoleleder, forvaltning og den nye bestyrelse?</li>
+    </ol>
+    <h4>Lyttepunkter · det skal du fange undervejs</h4>
+    <ul>
+      <li><strong>Gentagne ord:</strong> De ord, der går igen (fx "ro", "tryghed", "kultur"), er de ord, din ansøgning skal bruge.</li>
+      <li><strong>Den nævnte udfordring:</strong> Nævner hun noget svært (usikkerhed i personalegruppen, rekruttering, økonomi), er det din ansøgnings vigtigste afsnit.</li>
+      <li><strong>Prioritering:</strong> Hvad nævner hun FØRST, når du spørger om den vigtigste opgave? Det er den reelle topprioritet.</li>
+      <li><strong>Profil-ord:</strong> De ledelsesord hun bruger om den ønskede profil ("nærværende", "robust", "tydelig") — spejl dem i ansøgningen.</li>
+    </ul>
+    <p><em>Skriv dine noter ned STRAKS efter opkaldet — brug tjeklisten i fase 4.</em></p>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-4">
+    <summary><h2>4️⃣ Fra telefonsamtale til ansøgning</h2></summary>
+    <div class="fase-body">
+    <p>Oversæt dine lyttepunkter til konkrete ændringer i ansøgningen (fase 5), inden du sender:</p>
+    <ul class="checklist">
+      <li><label><input type="checkbox" data-check-id="von-f4-noter" /><span>Notér de tre vigtigste ord/temaer fra samtalen, mens de er friske</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-f4-indledning" /><span>Tilføj "efter en god samtale med skolechef Karen Albrechtsen …" i ansøgningens indledning</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-f4-udfordring" /><span>Adressér den udfordring, hun nævnte, i ét af ansøgningens afsnit</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-f4-ord" /><span>Brug mindst ét af deres egne gentagne ord i motivationsafsnittet</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-f4-vaegt" /><span>Justér vægtningen: giv det, hun nævnte først, mest plads</span></label></li>
+    </ul>
+    <h4>Dine noter fra telefonsamtalen</h4>
+    <textarea class="notes" data-notes="vonsild-opkald" rows="6" placeholder="Skriv lyttepunkterne her, lige når du har lagt på. Gemmes kun i din browser."></textarea>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-5">
+    <summary><h2>5️⃣ Ansøgningen · frist 11. august</h2></summary>
+    <div class="fase-body">
+<h4>Ansøgning til stillingen som skoleleder ved Vonsild Specialskole</h4>
+<p><strong>Kolding Kommune, att. skolechef Karen Albrechtsen</strong> Aabenraa, den [DATO. EJER UDFYLDER, senest 11. august 2026]</p>
+<p>Jeg søger hermed stillingen som skoleleder for den nye, selvstændige Vonsild Specialskole. Opgaven er at bygge en selvstændig specialskole op fra bunden med egen ledelse, egen bestyrelse og egen kultur. Samtidig skal der sikres ro og stærk faglighed for eleverne. Det rammer præcist den type ledelse, jeg motiveres af.</p>
+<p>Jeg hedder [DIT NAVN], er [ALDER] år og forstander og skoleleder ved [DIN NUVÆRENDE SKOLE]. Jeg har arbejdet med ledelse på skole- og specialområdet siden 2018 og har erfaring med drift, personale, økonomi, specialpædagogik og organisatorisk udvikling. Senest med ansvar for at drive en selvstændig institution med egen bestyrelse.</p>
+<h4>Motivation for stillingen</h4>
+<p>En helt ny selvstændig skole pr. 1. januar 2027 skal have opbygget ledelsesstruktur, bestyrelsessamarbejde, administration og ikke mindst en fælles kultur og identitet. Det er en sjælden mulighed for at forme en skole fra bunden. Og for at gøre det, så eleverne oplever mere ro, tryghed og kvalitet i hverdagen. For mig er det en meningsfuld og vigtig opgave at stå i spidsen for et sted, hvor vi sammen skaber rammer for, at eleverne kan mestre mere, deltage mere og have en hverdag med mening.</p>
+<h4>At bygge en ny skole. Tæt på driften og med strategisk overblik</h4>
+<p>Som forstander står jeg i dag i spidsen for en selvstændig institution med ansvar for økonomi, personale og bestyrelsessamarbejde. Tidligere var jeg souschef og afdelingsleder på [DIN TIDLIGERE SKOLE] i Sønderborg, blandt andet med personaleansvar for autismeafdelingen (36 medarbejdere og budgetansvar på op til 47 mio. kr.). Jeg ved derfor, hvad det kræver at etablere tydelig struktur, sund økonomistyring og fælles retning. Og hvad det kræver at forvalte en betydelig ramme ansvarligt fra dag et. Jeg kan begge dele. Jeg kan være nærværende i den daglige drift og samtidig spille strategisk ind til skolechef og udvalg.</p>
+<h4>Specialpædagogisk faglighed og læringssyn</h4>
+<p>Jeg har konkret erfaring med elever med omfattende behov og med KRAP og LA2 som fælles fagligt sprog. Jeg har senere bragt KRAP ind i trivselsarbejdet på [DIN NUVÆRENDE SKOLE], fordi metoden giver et fælles sprog for faglig refleksion, konkrete handlemuligheder og samarbejde omkring den enkelte. Mit læringssyn hviler på, at eleven mødes som et helt menneske. Med afsæt i styrker frem for mangler og med trivsel som forudsætning for læring. Det spejler både skolens anerkendende, ressourcefokuserede fundament og Koldings fælles børne- og ungesyn om, at alle børn og unge gør deres bedste.</p>
+<h4>Ledelse med hjertet og hjernen</h4>
+<p>Jeg leder tæt på driften, nærværende og tydeligt. Jeg bruger data og systemer til at understøtte gode beslutninger og effektiv drift, uden at teknikken nogensinde bliver et mål i sig selv. Som IT-specialiseret leder kan jeg styrke dokumentation, datainformeret praksis og forældresamarbejde, blandt andet via Aula, så mere tid og ro frigøres til kerneopgaven. For mig er ledelse både det, man beslutter, og den måde, man møder mennesker på i hverdagen.</p>
+<h4>Ro, følgeskab og fælles retning</h4>
+<p>Udskillelsen skaber både muligheder og usikkerhed for de omkring 70 medarbejdere. Jeg vil skabe tryghed gennem klare og gennemsigtige rammer og en tydelig retning, som medarbejderne vil følge. Og gennem et stærkt fagligt miljø, der både tiltrækker og fastholder dygtige kolleger. Jeg tror på, at stærke resultater skabes gennem tydelig retning, gode relationer og en kultur, hvor vi både tør tale om det, der lykkes, og det, der er svært.</p>
+<p>Jeg uddyber meget gerne, hvordan mine erfaringer kan bringes i spil i opbygningen af Vonsild Specialskole.</p>
+<p>Med venlig hilsen</p>
+<p>[DIT NAVN]<br /><em>[Telefon og mail indsættes ved afsendelse]</em></p>
+<blockquote><p><strong>[EJER UDFYLDER. personlig tilpasning før afsendelse]</strong></p>
+<ul>
+<li><strong>Indledning:</strong> Hvis du har haft kontakt eller en indledende samtale med skolechef Karen Albrechtsen, så nævn det i første afsnit (som i din Autismecenter Syd-ansøgning: "efter en god samtale med ...").</li>
+<li><strong>Lokal tilknytning:</strong> Overvej en kort, personlig sætning om din tilknytning til Kolding-området eller Sønderjylland-Trekantsområdet, hvis relevant.</li>
+<li><strong>Dato:</strong> Indsæt afsendelsesdato.</li>
+<li><strong>Konkret eksempel:</strong> Du kan eventuelt tilføje et kort, konkret resultat fra din ledelsespraksis (STAR-form). Fx en forandring eller opbygning du står bag. Det gør "byg fra bunden"-pointen endnu stærkere.</li>
+</ul></blockquote>
+
+    <h4>Tjekliste før afsendelse</h4>
+    <ul class="checklist">
+      <li><label><input type="checkbox" data-check-id="von-dato" /><span>Indsæt afsendelsesdato i ansøgningen</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-kontakt" /><span>Har du haft kontakt med skolechef Karen Albrechtsen? Nævn det i første afsnit</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-lokal" /><span>Overvej en kort, personlig sætning om tilknytning til Kolding/Trekantområdet</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-star" /><span>Tilføj ét konkret resultat i STAR-form, der viser "byg fra bunden"-erfaring</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-kontaktinfo" /><span>Indsæt telefon og mail i underskriften (er fjernet fra denne offentlige side)</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-send" /><span>Send ansøgning + CV senest 11. august og notér afsendelsesdatoen</span></label></li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="modeller">
+    <summary><h2>🧩 Forberedelsesmodeller · STAR + fire systemiske alternativer</h2></summary>
+    <div class="fase-body">
     <p>STAR-eksemplerne i fase 6 er én måde at strukturere dine svar på. Her er fire alternativer med rod i den systemiske ledelsesteori, du kender fra diplom i ledelse. Forbered dine vigtigste eksempler i den model, der føles rigtig — eller skift model efter spørgsmålets type (se skemaet nederst).</p>
 
     <h3>Model 1 · STAR (klassisk kompetencemodel)</h3>
@@ -161,106 +305,12 @@
 
     <p><strong>Og den anden vej:</strong> Genkend panelets spørgsmålstype, og vælg din svarmodel efter den — lineære spørgsmål ("giv et eksempel") kalder på STAR, cirkulære ("hvordan vil medarbejderne opleve …") på domænemodellen, refleksive ("hvor ser du skolen om to år") på 4D.</p>
     <p><em>Praktisk: Tag dine 2–3 bedste eksempler og skriv dem i model 1–3. Til samtalen vælger du den version, der passer til spørgsmålet — indholdet kan du udenad, kun formen skifter. Og vælg på forhånd 2–3 af dine egne spørgsmål fra model 4.</em></p>
-  </section>
+    </div>
+  </details>
 
-  <section class="card" id="fase-1">
-    <h2>1️⃣ Research før kontakt</h2>
-    <p>Formålet med de første tre faser er dobbelt: at blive husket positivt, allerede før ansøgningerne læses — og at få viden, der gør din ansøgning skarpere end de andres.</p>
-    <ul>
-      <li>Læs stillingsopslaget og en eventuel job- og personprofil grundigt. Notér de ord, der går igen (her: selvstændig skole pr. 1. januar 2027, KRAP, ro og tryghed, ca. 70 medarbejdere, ny bestyrelse).</li>
-      <li>Orientér dig i Kolding Kommunes børne- og ungesyn ("alle børn og unge gør deres bedste") og i det, der er offentligt tilgængeligt om udskillelsen af specialskolen.</li>
-      <li>Find kontaktpersonens navn og nummer i opslaget: skolechef Karen Albrechtsen.</li>
-      <li>Forbered 2–3 spørgsmål, som IKKE kan besvares ved at læse opslaget — se fase 3. Det viser overskud og reel interesse.</li>
-      <li>Hav din 20-sekunders præsentation klar: navn, nuværende rolle, én sætning om hvorfor netop denne stilling.</li>
-    </ul>
-  </section>
-
-  <section class="card" id="fase-2">
-    <h2>2️⃣ SMS-udkast · første kontakt</h2>
-    <p>Ring hellere direkte på en hverdag mellem 8 og 15. Får du ikke svar, eller vil du hellere åbne blødt, så send en SMS. Udkast:</p>
-    <blockquote><p>Hej Karen Albrechtsen. Jeg hedder [DIT NAVN] og er forstander og skoleleder på [DIN NUVÆRENDE SKOLE]. Jeg overvejer at søge stillingen som skoleleder for Vonsild Specialskole og vil gerne høre, om du har 10 minutter til en kort telefonsamtale om stillingen? Jeg ringer, når det passer dig. Venlig hilsen [DIT NAVN]</p></blockquote>
-    <p>Kortere variant, hvis du allerede har ringet forgæves:</p>
-    <blockquote><p>Hej Karen Albrechtsen. Jeg har forsøgt at ringe vedrørende skolelederstillingen på Vonsild Specialskole. Jeg vil gerne høre lidt mere om stillingen — hvornår passer det bedst, at jeg ringer? Venlig hilsen [DIT NAVN], forstander, [DIN NUVÆRENDE SKOLE]</p></blockquote>
-    <ul>
-      <li>Send på en hverdag mellem 8 og 15 — undgå fredag eftermiddag og weekend (og vær opmærksom på skolernes sommerferie frem til ca. 1. august).</li>
-      <li>Nævn din nuværende titel. Den gør dig let at placere og åbner døren.</li>
-      <li>Bed om et kort opkald, ikke et møde. Det er let at sige ja til.</li>
-    </ul>
-  </section>
-
-  <section class="card" id="fase-3">
-    <h2>3️⃣ Den første telefonsamtale</h2>
-    <p>Hold den på 10–15 minutter. Struktur: kort præsentation (20 sekunder) → dine 2–3 spørgsmål → tak og en positiv afrunding ("samtalen bekræfter mig i, at jeg søger").</p>
-    <h4>Spørgsmål du kan vælge imellem</h4>
-    <ol>
-      <li>Hvad bliver efter din vurdering den vigtigste opgave for skolelederen i det første halve år?</li>
-      <li>Hvor langt er I i processen med udskillelsen — hvad ligger allerede fast, og hvad skal den nye leder selv forme?</li>
-      <li>Hvad kendetegner medarbejdergruppen, og hvordan har de taget imod nyheden om den selvstændige skole?</li>
-      <li>Hvilken profil lykkes efter jeres vurdering bedst i stillingen?</li>
-      <li>Hvordan bliver samspillet mellem skoleleder, forvaltning og den nye bestyrelse?</li>
-    </ol>
-    <h4>Lyttepunkter · det skal du fange undervejs</h4>
-    <ul>
-      <li><strong>Gentagne ord:</strong> De ord, der går igen (fx "ro", "tryghed", "kultur"), er de ord, din ansøgning skal bruge.</li>
-      <li><strong>Den nævnte udfordring:</strong> Nævner hun noget svært (usikkerhed i personalegruppen, rekruttering, økonomi), er det din ansøgnings vigtigste afsnit.</li>
-      <li><strong>Prioritering:</strong> Hvad nævner hun FØRST, når du spørger om den vigtigste opgave? Det er den reelle topprioritet.</li>
-      <li><strong>Profil-ord:</strong> De ledelsesord hun bruger om den ønskede profil ("nærværende", "robust", "tydelig") — spejl dem i ansøgningen.</li>
-    </ul>
-    <p><em>Skriv dine noter ned STRAKS efter opkaldet — brug tjeklisten i fase 4.</em></p>
-  </section>
-
-  <section class="card" id="fase-4">
-    <h2>4️⃣ Fra telefonsamtale til ansøgning</h2>
-    <p>Oversæt dine lyttepunkter til konkrete ændringer i ansøgningen (fase 5), inden du sender:</p>
-    <ul class="checklist">
-      <li><label><input type="checkbox" data-check-id="von-f4-noter" /><span>Notér de tre vigtigste ord/temaer fra samtalen, mens de er friske</span></label></li>
-      <li><label><input type="checkbox" data-check-id="von-f4-indledning" /><span>Tilføj "efter en god samtale med skolechef Karen Albrechtsen …" i ansøgningens indledning</span></label></li>
-      <li><label><input type="checkbox" data-check-id="von-f4-udfordring" /><span>Adressér den udfordring, hun nævnte, i ét af ansøgningens afsnit</span></label></li>
-      <li><label><input type="checkbox" data-check-id="von-f4-ord" /><span>Brug mindst ét af deres egne gentagne ord i motivationsafsnittet</span></label></li>
-      <li><label><input type="checkbox" data-check-id="von-f4-vaegt" /><span>Justér vægtningen: giv det, hun nævnte først, mest plads</span></label></li>
-    </ul>
-  </section>
-
-  <section class="card" id="fase-5">
-    <h2>5️⃣ Ansøgningen · frist 11. august</h2>
-<h4>Ansøgning til stillingen som skoleleder ved Vonsild Specialskole</h4>
-<p><strong>Kolding Kommune, att. skolechef Karen Albrechtsen</strong> Aabenraa, den [DATO. EJER UDFYLDER, senest 11. august 2026]</p>
-<p>Jeg søger hermed stillingen som skoleleder for den nye, selvstændige Vonsild Specialskole. Opgaven er at bygge en selvstændig specialskole op fra bunden med egen ledelse, egen bestyrelse og egen kultur. Samtidig skal der sikres ro og stærk faglighed for eleverne. Det rammer præcist den type ledelse, jeg motiveres af.</p>
-<p>Jeg hedder [DIT NAVN], er [ALDER] år og forstander og skoleleder ved [DIN NUVÆRENDE SKOLE]. Jeg har arbejdet med ledelse på skole- og specialområdet siden 2018 og har erfaring med drift, personale, økonomi, specialpædagogik og organisatorisk udvikling. Senest med ansvar for at drive en selvstændig institution med egen bestyrelse.</p>
-<h4>Motivation for stillingen</h4>
-<p>En helt ny selvstændig skole pr. 1. januar 2027 skal have opbygget ledelsesstruktur, bestyrelsessamarbejde, administration og ikke mindst en fælles kultur og identitet. Det er en sjælden mulighed for at forme en skole fra bunden. Og for at gøre det, så eleverne oplever mere ro, tryghed og kvalitet i hverdagen. For mig er det en meningsfuld og vigtig opgave at stå i spidsen for et sted, hvor vi sammen skaber rammer for, at eleverne kan mestre mere, deltage mere og have en hverdag med mening.</p>
-<h4>At bygge en ny skole. Tæt på driften og med strategisk overblik</h4>
-<p>Som forstander står jeg i dag i spidsen for en selvstændig institution med ansvar for økonomi, personale og bestyrelsessamarbejde. Tidligere var jeg souschef og afdelingsleder på [DIN TIDLIGERE SKOLE] i Sønderborg, blandt andet med personaleansvar for autismeafdelingen (36 medarbejdere og budgetansvar på op til 47 mio. kr.). Jeg ved derfor, hvad det kræver at etablere tydelig struktur, sund økonomistyring og fælles retning. Og hvad det kræver at forvalte en betydelig ramme ansvarligt fra dag et. Jeg kan begge dele. Jeg kan være nærværende i den daglige drift og samtidig spille strategisk ind til skolechef og udvalg.</p>
-<h4>Specialpædagogisk faglighed og læringssyn</h4>
-<p>Jeg har konkret erfaring med elever med omfattende behov og med KRAP og LA2 som fælles fagligt sprog. Jeg har senere bragt KRAP ind i trivselsarbejdet på [DIN NUVÆRENDE SKOLE], fordi metoden giver et fælles sprog for faglig refleksion, konkrete handlemuligheder og samarbejde omkring den enkelte. Mit læringssyn hviler på, at eleven mødes som et helt menneske. Med afsæt i styrker frem for mangler og med trivsel som forudsætning for læring. Det spejler både skolens anerkendende, ressourcefokuserede fundament og Koldings fælles børne- og ungesyn om, at alle børn og unge gør deres bedste.</p>
-<h4>Ledelse med hjertet og hjernen</h4>
-<p>Jeg leder tæt på driften, nærværende og tydeligt. Jeg bruger data og systemer til at understøtte gode beslutninger og effektiv drift, uden at teknikken nogensinde bliver et mål i sig selv. Som IT-specialiseret leder kan jeg styrke dokumentation, datainformeret praksis og forældresamarbejde, blandt andet via Aula, så mere tid og ro frigøres til kerneopgaven. For mig er ledelse både det, man beslutter, og den måde, man møder mennesker på i hverdagen.</p>
-<h4>Ro, følgeskab og fælles retning</h4>
-<p>Udskillelsen skaber både muligheder og usikkerhed for de omkring 70 medarbejdere. Jeg vil skabe tryghed gennem klare og gennemsigtige rammer og en tydelig retning, som medarbejderne vil følge. Og gennem et stærkt fagligt miljø, der både tiltrækker og fastholder dygtige kolleger. Jeg tror på, at stærke resultater skabes gennem tydelig retning, gode relationer og en kultur, hvor vi både tør tale om det, der lykkes, og det, der er svært.</p>
-<p>Jeg uddyber meget gerne, hvordan mine erfaringer kan bringes i spil i opbygningen af Vonsild Specialskole.</p>
-<p>Med venlig hilsen</p>
-<p>[DIT NAVN]<br /><em>[Telefon og mail indsættes ved afsendelse]</em></p>
-<blockquote><p><strong>[EJER UDFYLDER. personlig tilpasning før afsendelse]</strong></p>
-<ul>
-<li><strong>Indledning:</strong> Hvis du har haft kontakt eller en indledende samtale med skolechef Karen Albrechtsen, så nævn det i første afsnit (som i din Autismecenter Syd-ansøgning: "efter en god samtale med ...").</li>
-<li><strong>Lokal tilknytning:</strong> Overvej en kort, personlig sætning om din tilknytning til Kolding-området eller Sønderjylland-Trekantsområdet, hvis relevant.</li>
-<li><strong>Dato:</strong> Indsæt afsendelsesdato.</li>
-<li><strong>Konkret eksempel:</strong> Du kan eventuelt tilføje et kort, konkret resultat fra din ledelsespraksis (STAR-form). Fx en forandring eller opbygning du står bag. Det gør "byg fra bunden"-pointen endnu stærkere.</li>
-</ul></blockquote>
-
-    <h4>Tjekliste før afsendelse</h4>
-    <ul class="checklist">
-      <li><label><input type="checkbox" data-check-id="von-dato" /><span>Indsæt afsendelsesdato i ansøgningen</span></label></li>
-      <li><label><input type="checkbox" data-check-id="von-kontakt" /><span>Har du haft kontakt med skolechef Karen Albrechtsen? Nævn det i første afsnit</span></label></li>
-      <li><label><input type="checkbox" data-check-id="von-lokal" /><span>Overvej en kort, personlig sætning om tilknytning til Kolding/Trekantområdet</span></label></li>
-      <li><label><input type="checkbox" data-check-id="von-star" /><span>Tilføj ét konkret resultat i STAR-form, der viser "byg fra bunden"-erfaring</span></label></li>
-      <li><label><input type="checkbox" data-check-id="von-kontaktinfo" /><span>Indsæt telefon og mail i underskriften (er fjernet fra denne offentlige side)</span></label></li>
-      <li><label><input type="checkbox" data-check-id="von-send" /><span>Send ansøgning + CV senest 11. august og notér afsendelsesdatoen</span></label></li>
-    </ul>
-  </section>
-
-  <section class="card" id="fase-6">
-    <h2>6️⃣ 1. samtale · 19. august</h2>
+  <details class="card fase" id="fase-6">
+    <summary><h2>6️⃣ 1. samtale · 19. august</h2></summary>
+    <div class="fase-body">
 <h4>Samtaleforberedelse: Skoleleder, Vonsild Specialskole (Kolding)</h4>
 <p>Materialet er inspiration til dig, ikke en manual. Alt er forankret i researchen på CLIA-3714, din ansøgning på CLIA-3717 og dit CV. Vælg det, der føles rigtigt i din egen stemme.</p>
 <p><strong>Kort om processen:</strong> 1. samtale 19. august (motivation, ledelsessyn, værdimatch). 2. samtale 25. august (case og ofte personprofiltest). Din strategiske modpart er skolechef Karen Albrechtsen.</p>
@@ -361,10 +411,12 @@
       <li><label><input type="checkbox" data-check-id="von-oev" /><span>Øv svar på spørgsmål 1, 2 og 4 højt</span></label></li>
       <li><label><input type="checkbox" data-check-id="von-panel" /><span>Vælg 3–4 spørgsmål, du selv vil stille panelet</span></label></li>
     </ul>
-  </section>
+    </div>
+  </details>
 
-  <section class="card" id="fase-7">
-    <h2>7️⃣ 2. samtale · case og personprofil · 25. august</h2>
+  <details class="card fase" id="fase-7">
+    <summary><h2>7️⃣ 2. samtale · case og personprofil · 25. august</h2></summary>
+    <div class="fase-body">
 <h4>3. Oplæg til case og præsentation (2. samtale, 25. august)</h4>
 <p>Casen præsenteres typisk mundtligt for udvalget eller ansættelsesteamet. Det mest sandsynlige tema er en 100-dages-plan eller vision for opstarten pr. 1. januar 2027.</p>
 <h5>Forslag til struktur (ca. 8 til 10 minutter)</h5>
@@ -385,10 +437,12 @@
 <li><strong>Bestyrelse og forældre som medspillere.</strong> En ny selvstændig bestyrelse og et aktivt forældresamarbejde er ikke en formalitet, men en kraft, der styrker skolen.</li>
 </ol>
 <p><em>(Vælg de 3 til 4 pointer, der ligger bedst i din stemme. Færre og skarpere slår flere og tyndere.)</em></p>
-  </section>
+    </div>
+  </details>
 
-  <section class="card" id="fase-8">
-    <h2>8️⃣ Lønforhandling</h2>
+  <details class="card fase" id="fase-8">
+    <summary><h2>8️⃣ Lønforhandling</h2></summary>
+    <div class="fase-body">
     <p>Lønnen for en kommunal skoleleder forhandles typisk mellem kommunen og den forhandlingsberettigede organisation (for skoleledere: Skolelederforeningen) — men dit eget forarbejde afgør resultatet. Den konkrete lønsnak tager du først, når de har sagt, at de vil have dig. Dér er din position stærkest.</p>
     <h4>Før forhandlingen</h4>
     <ul>
@@ -416,7 +470,16 @@
       <li>Sig aldrig ja på stedet. Bed om at sove på tilbuddet, og vend det med Skolelederforeningen.</li>
       <li>Får du ikke det ønskede i grundløn, så hent det i tillæg, pension eller vilkår.</li>
     </ul>
-  </section>
+    </div>
+  </details>
+
+  <details class="card fase" id="noter">
+    <summary><h2>📝 Private noter</h2></summary>
+    <div class="fase-body">
+      <p>Aftaler, datoer og tanker undervejs. Noterne gemmes kun i denne browser (localStorage) — de sendes aldrig ud på nettet. Skriv ikke følsomme oplysninger her.</p>
+      <textarea class="notes" data-notes="vonsild-general" rows="8" placeholder="Skriv noter her …"></textarea>
+    </div>
+  </details>
 </main>
 
 <footer class="foot">
@@ -424,19 +487,96 @@
 </footer>
 </div>
   <script>
-    // Husk flueben i tjeklisterne mellem besøg (gemmes kun lokalt i browseren).
+    // Tjeklister (flueben huskes i browseren), fremdrift, sammenklappelige faser og fasemenu.
     (function () {
+      var page = location.pathname.split('/').pop() || 'index';
+
+      // Flueben + fremdrift
       var KEY = 'jobhub:checklist:v1';
       var state = {};
       try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
-      document.querySelectorAll('input[type=checkbox][data-check-id]').forEach(function (box) {
+      var boxes = document.querySelectorAll('input[type=checkbox][data-check-id]');
+      function updateProgress() {
+        var bar = document.getElementById('prog-fill');
+        var txt = document.getElementById('prog-text');
+        if (!bar || !boxes.length) return;
+        var done = 0;
+        boxes.forEach(function (b) { if (b.checked) done++; });
+        bar.style.width = Math.round(100 * done / boxes.length) + '%';
+        if (txt) txt.textContent = done + ' af ' + boxes.length + ' punkter klaret';
+      }
+      boxes.forEach(function (box) {
         var id = box.getAttribute('data-check-id');
         box.checked = !!state[id];
         box.addEventListener('change', function () {
           state[id] = box.checked;
           try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+          updateProgress();
         });
       });
+      updateProgress();
+
+      // Private noter: gemmes kun lokalt i browseren
+      document.querySelectorAll('textarea.notes[data-notes]').forEach(function (t) {
+        var nkey = 'jobhub:notes:' + t.getAttribute('data-notes');
+        try { t.value = localStorage.getItem(nkey) || ''; } catch (e) {}
+        t.addEventListener('input', function () {
+          try { localStorage.setItem(nkey, t.value); } catch (e) {}
+        });
+      });
+
+      // Sammenklappelige faser: åben/lukket huskes pr. side
+      var OPENKEY = 'jobhub:open:' + page;
+      var openState = null;
+      try { openState = JSON.parse(localStorage.getItem(OPENKEY)); } catch (e) {}
+      var faser = document.querySelectorAll('details.fase');
+      faser.forEach(function (d, i) {
+        if (openState && (d.id in openState)) d.open = !!openState[d.id];
+        else if (!openState && i === 0) d.open = true;
+        d.addEventListener('toggle', function () {
+          var st = {};
+          faser.forEach(function (x) { st[x.id] = x.open; });
+          try { localStorage.setItem(OPENKEY, JSON.stringify(st)); } catch (e) {}
+        });
+      });
+
+      // Ankerlinks skal åbne den fase, de peger på
+      function openFromHash() {
+        if (!location.hash) return;
+        var el;
+        try { el = document.querySelector(location.hash); } catch (e) { return; }
+        if (!el) return;
+        var d = el.tagName === 'DETAILS' ? el : (el.closest && el.closest('details'));
+        if (d && !d.open) d.open = true;
+        el.scrollIntoView();
+      }
+      window.addEventListener('hashchange', openFromHash);
+      openFromHash();
+
+      // Åbn alle / luk alle
+      var toggleAll = document.getElementById('toggle-all');
+      if (toggleAll) toggleAll.addEventListener('click', function () {
+        var anyClosed = false;
+        faser.forEach(function (d) { if (!d.open) anyClosed = true; });
+        faser.forEach(function (d) { d.open = anyClosed; });
+        toggleAll.textContent = anyClosed ? 'Luk alle' : 'Åbn alle';
+      });
+
+      // Markér aktiv fase i menuen under scroll
+      var links = document.querySelectorAll('.fasebar a[href^="#"]');
+      if ('IntersectionObserver' in window && links.length) {
+        var map = {};
+        links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting && map[en.target.id]) {
+              links.forEach(function (a) { a.classList.remove('active'); });
+              map[en.target.id].classList.add('active');
+            }
+          });
+        }, { rootMargin: '-15% 0px -70% 0px' });
+        faser.forEach(function (d) { if (map[d.id]) obs.observe(d); });
+      }
     })();
   </script>
 </body>

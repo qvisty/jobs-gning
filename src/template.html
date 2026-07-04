@@ -7,6 +7,7 @@
   <title>__TITLE__</title>
   <style>
     :root { color-scheme: light dark; }
+    html { scroll-behavior: smooth; }
     * { box-sizing: border-box; }
     body {
       margin: 0; min-height: 100vh; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -22,6 +23,39 @@
     .content .card h2 { margin-top: 0; }
     .content .commute { color: #94a3b8; font-size: 14px; margin: -6px 0 18px; }
     .content .commute strong { color: #cbd5e1; }
+    .content .anonote { color: #94a3b8; font-size: 14px; margin: -6px 0 18px; }
+    .content .anonote strong { color: #fcd34d; }
+    /* Sticky fasemenu på undersider */
+    .content .fasebar { position: sticky; top: 0; z-index: 20; display: flex; flex-wrap: wrap; align-items: center;
+      gap: 6px; padding: 12px 0 10px; margin: 0 0 4px; border-bottom: 1px solid #334155;
+      background: linear-gradient(160deg, rgba(15,23,42,.97) 0%, rgba(30,41,59,.97) 100%); }
+    .content .fasebar a { padding: 5px 11px; border: 1px solid #334155; border-radius: 999px; font-size: 13px;
+      color: #cbd5e1; text-decoration: none; white-space: nowrap; }
+    .content .fasebar a:hover { border-color: #6366f1; }
+    .content .fasebar a.active { border-color: #6366f1; background: rgba(99,102,241,.18); color: #fff; }
+    .content .fasebar .home { color: #a5b4fc; }
+    .content .fasebar button { margin-left: auto; padding: 5px 11px; border: 1px solid #475569; border-radius: 999px;
+      background: transparent; color: #cbd5e1; font-size: 13px; cursor: pointer; }
+    .content .fasebar button:hover { border-color: #6366f1; }
+    /* Fremdrift for tjeklister */
+    .content .progress { display: flex; align-items: center; gap: 12px; margin: 10px 0 0; }
+    .content .progress-track { flex: 1 1 auto; height: 8px; border-radius: 999px; background: #0b1220;
+      border: 1px solid #334155; overflow: hidden; }
+    .content .progress-fill { height: 100%; width: 0; background: #6366f1; border-radius: 999px; transition: width .3s; }
+    .content .progress span { font-size: 13px; color: #94a3b8; white-space: nowrap; }
+    /* Sammenklappelige fase-kort */
+    .content details.card { scroll-margin-top: 76px; }
+    .content details.card summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 12px; }
+    .content details.card summary::-webkit-details-marker { display: none; }
+    .content details.card summary h2 { margin: 0; flex: 1 1 auto; }
+    .content details.card summary::after { content: '▸'; color: #64748b; font-size: 18px; flex: 0 0 auto;
+      transition: transform .2s; }
+    .content details.card[open] summary::after { transform: rotate(90deg); }
+    .content details.card .fase-body { margin-top: 14px; }
+    /* Private noter (gemmes kun i browserens localStorage) */
+    .content .notes { width: 100%; border: 1px solid #475569; border-radius: 12px; padding: 12px;
+      background: #0b1220; color: #f1f5f9; font: inherit; font-size: 14px; resize: vertical; }
+    .content .notes:focus { outline: 2px solid #6366f1; border-color: #6366f1; }
     .content a { color: #a5b4fc; }
     .content .backlink { font-size: 14px; margin: 28px 0 -24px; }
     .content .backlink a { text-decoration: none; }
@@ -67,19 +101,96 @@
 <body>
   <div class="content">__CONTENT__</div>
   <script>
-    // Husk flueben i tjeklisterne mellem besøg (gemmes kun lokalt i browseren).
+    // Tjeklister (flueben huskes i browseren), fremdrift, sammenklappelige faser og fasemenu.
     (function () {
+      var page = location.pathname.split('/').pop() || 'index';
+
+      // Flueben + fremdrift
       var KEY = 'jobhub:checklist:v1';
       var state = {};
       try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
-      document.querySelectorAll('input[type=checkbox][data-check-id]').forEach(function (box) {
+      var boxes = document.querySelectorAll('input[type=checkbox][data-check-id]');
+      function updateProgress() {
+        var bar = document.getElementById('prog-fill');
+        var txt = document.getElementById('prog-text');
+        if (!bar || !boxes.length) return;
+        var done = 0;
+        boxes.forEach(function (b) { if (b.checked) done++; });
+        bar.style.width = Math.round(100 * done / boxes.length) + '%';
+        if (txt) txt.textContent = done + ' af ' + boxes.length + ' punkter klaret';
+      }
+      boxes.forEach(function (box) {
         var id = box.getAttribute('data-check-id');
         box.checked = !!state[id];
         box.addEventListener('change', function () {
           state[id] = box.checked;
           try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+          updateProgress();
         });
       });
+      updateProgress();
+
+      // Private noter: gemmes kun lokalt i browseren
+      document.querySelectorAll('textarea.notes[data-notes]').forEach(function (t) {
+        var nkey = 'jobhub:notes:' + t.getAttribute('data-notes');
+        try { t.value = localStorage.getItem(nkey) || ''; } catch (e) {}
+        t.addEventListener('input', function () {
+          try { localStorage.setItem(nkey, t.value); } catch (e) {}
+        });
+      });
+
+      // Sammenklappelige faser: åben/lukket huskes pr. side
+      var OPENKEY = 'jobhub:open:' + page;
+      var openState = null;
+      try { openState = JSON.parse(localStorage.getItem(OPENKEY)); } catch (e) {}
+      var faser = document.querySelectorAll('details.fase');
+      faser.forEach(function (d, i) {
+        if (openState && (d.id in openState)) d.open = !!openState[d.id];
+        else if (!openState && i === 0) d.open = true;
+        d.addEventListener('toggle', function () {
+          var st = {};
+          faser.forEach(function (x) { st[x.id] = x.open; });
+          try { localStorage.setItem(OPENKEY, JSON.stringify(st)); } catch (e) {}
+        });
+      });
+
+      // Ankerlinks skal åbne den fase, de peger på
+      function openFromHash() {
+        if (!location.hash) return;
+        var el;
+        try { el = document.querySelector(location.hash); } catch (e) { return; }
+        if (!el) return;
+        var d = el.tagName === 'DETAILS' ? el : (el.closest && el.closest('details'));
+        if (d && !d.open) d.open = true;
+        el.scrollIntoView();
+      }
+      window.addEventListener('hashchange', openFromHash);
+      openFromHash();
+
+      // Åbn alle / luk alle
+      var toggleAll = document.getElementById('toggle-all');
+      if (toggleAll) toggleAll.addEventListener('click', function () {
+        var anyClosed = false;
+        faser.forEach(function (d) { if (!d.open) anyClosed = true; });
+        faser.forEach(function (d) { d.open = anyClosed; });
+        toggleAll.textContent = anyClosed ? 'Luk alle' : 'Åbn alle';
+      });
+
+      // Markér aktiv fase i menuen under scroll
+      var links = document.querySelectorAll('.fasebar a[href^="#"]');
+      if ('IntersectionObserver' in window && links.length) {
+        var map = {};
+        links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting && map[en.target.id]) {
+              links.forEach(function (a) { a.classList.remove('active'); });
+              map[en.target.id].classList.add('active');
+            }
+          });
+        }, { rootMargin: '-15% 0px -70% 0px' });
+        faser.forEach(function (d) { if (map[d.id]) obs.observe(d); });
+      }
     })();
   </script>
 </body>
