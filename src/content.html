@@ -1,600 +1,127 @@
 <!-- Beskyttet indhold. Alt herinde krypteres af build.mjs og kan kun ses efter korrekt adgangskode. -->
-<!-- Genereret hub: ansøgninger + kalender + samtaleforberedelse (CLIA-3744). -->
 <header class="hero">
-  <p class="eyebrow">Privat · adgangskodebeskyttet</p>
-  <h1>Din jobsøgnings-hub</h1>
-  <p class="lead">Alt dit ansøgningsmateriale samlet ét sted. Runde 1 er de to første stillinger med fuld samtaleforberedelse. Runde 2 er fem nye lederstillinger med ansøgning og CV-vinkling. Materialet er inspiration i din egen stemme. Brug det, der føles rigtigt.</p>
+  <p class="eyebrow">Privat · adgangskodebeskyttet · noindex</p>
+  <h1>Jobsøgnings-hub</h1>
+  <p class="lead">En anonymiseret og genbrugelig arbejdsflade til jobsøgning. Udfyld pladsholderne, prioriter dine jobmuligheder, hold styr på deadlines og brug skabelonerne til ansøgning, CV og samtaleforberedelse.</p>
 </header>
 
+<nav class="hub-nav" aria-label="Hovedmenu">
+  <a href="#dashboard">Dashboard</a>
+  <a href="#proces">Proces</a>
+  <a href="#job-1">Job 1</a>
+  <a href="#job-2">Job 2</a>
+  <a href="#job-3">Job 3</a>
+  <a href="#skabeloner">Skabeloner</a>
+  <a href="#noter">Noter</a>
+</nav>
+
 <main>
-  <section class="card" id="oversigt">
-    <h2>🧭 Hurtig oversigt</h2>
-    <p>Alt dit jobsøgnings-materiale samlet ét sted. Spring direkte til:</p>
-    <ul>
-      <li><a href="#kalender">Kalender · vigtige datoer</a></li>
-      <li><a href="#vonsild">Skoleleder · Vonsild Specialskole (Kolding)</a>: ansøgning + samtaleforberedelse</li>
-      <li><a href="#sonderborg">Ungecenterleder · Sønderborg Kommune</a>: ansøgning, CV-tilpasning + samtaleforberedelse</li>
-      <li><strong>Runde 2 · fem nye ansøgninger:</strong></li>
-      <li><a href="#skovshoved">Skoleleder · Skovshoved Skole (Gentofte)</a>: ansøgning + CV-vinkling</li>
-      <li><a href="#damagerskolen">Skoleleder · Damagerskolen og Greve 10. klasse</a>: ansøgning + CV-vinkling</li>
-      <li><a href="#saltum">Skoleleder · Saltum Skole (Jammerbugt)</a>: ansøgning + CV-vinkling</li>
-      <li><a href="#randers">Områdeleder · Skoleområdet · Randers Kommune</a>: ansøgning + CV-vinkling</li>
-      <li><a href="#region-midtjylland">Leder · Sekretariat og Porteføljestyring · Region Midtjylland</a>: ansøgning + CV-vinkling</li>
-    </ul>
+  <section class="card" id="dashboard">
+    <h2>🧭 Dashboard</h2>
+    <p>Brug dashboardet som første stop. Det giver overblik over status, prioritet, frister og næste handling uden at indeholde konkrete private data.</p>
+    <div class="toolbar" role="group" aria-label="Filtrer jobkort">
+      <button class="filter-btn is-active" type="button" data-filter="all">Alle</button>
+      <button class="filter-btn" type="button" data-filter="kladde">Kladde</button>
+      <button class="filter-btn" type="button" data-filter="klar">Klar</button>
+      <button class="filter-btn" type="button" data-filter="sendt">Sendt</button>
+      <button class="filter-btn" type="button" data-filter="samtale">Samtale</button>
+    </div>
+    <div class="job-grid">
+      <article class="job-card" data-status="kladde">
+        <p class="meta">Status: <span class="tag tag--opfoelgning">Kladde</span></p>
+        <h3>[JOBTITEL 1] · [ARBEJDSSTED 1]</h3>
+        <p>[Kort vurdering af hvorfor jobbet er relevant.]</p>
+        <ul class="compact-list">
+          <li><strong>Frist:</strong> [DD. måned ÅÅÅÅ]</li>
+          <li><strong>Prioritet:</strong> [Høj/Mellem/Lav]</li>
+          <li><strong>Næste handling:</strong> [Ring, skriv, tilpas CV eller send]</li>
+        </ul>
+        <a class="button-link" href="#job-1">Åbn jobside</a>
+      </article>
+      <article class="job-card" data-status="klar">
+        <p class="meta">Status: <span class="tag tag--tiltraedelse">Klar</span></p>
+        <h3>[JOBTITEL 2] · [ARBEJDSSTED 2]</h3>
+        <p>[Kort vurdering af match, motivation og eventuelle forbehold.]</p>
+        <ul class="compact-list">
+          <li><strong>Frist:</strong> [DD. måned ÅÅÅÅ]</li>
+          <li><strong>Prioritet:</strong> [Høj/Mellem/Lav]</li>
+          <li><strong>Næste handling:</strong> [Send eller kvalitetstjek]</li>
+        </ul>
+        <a class="button-link" href="#job-2">Åbn jobside</a>
+      </article>
+      <article class="job-card" data-status="samtale">
+        <p class="meta">Status: <span class="tag tag--samtale">Samtale</span></p>
+        <h3>[JOBTITEL 3] · [ARBEJDSSTED 3]</h3>
+        <p>[Kort samtalefokus og vigtigste budskab.]</p>
+        <ul class="compact-list">
+          <li><strong>Samtale:</strong> [DD. måned ÅÅÅÅ kl. TT:MM]</li>
+          <li><strong>Prioritet:</strong> [Høj/Mellem/Lav]</li>
+          <li><strong>Næste handling:</strong> [Øv svar, case eller spørgsmål]</li>
+        </ul>
+        <a class="button-link" href="#job-3">Åbn jobside</a>
+      </article>
+    </div>
   </section>
 
-  <section class="card" id="kalender">
-    <h2>📅 Kalender · vigtige datoer</h2>
-    <p>Frister, samtaler og opfølgning for de to aktuelle ansøgninger. Datoer opdateres, når endelige indkaldelser kommer.</p>
+  <section class="card" id="proces">
+    <h2>✅ Anbefalet rækkefølge</h2>
+    <p>Hver jobside følger samme rækkefølge, så du hurtigt kan gå fra vurdering til færdig ansøgning.</p>
     <ol class="timeline">
-      <li class="event">
-        <div class="event-date"><span class="day">09</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--frist">Ansøgningsfrist</span>
-          <h3>Skoleleder · Skovshoved Skole (Gentofte)</h3>
-          <p>Gentofte Kommune. Ansøgning og CV afsendes senest denne dag.</p>
-        </div>
-      </li>
-      <li class="event">
-        <div class="event-date"><span class="day">11</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--frist">Ansøgningsfrist</span>
-          <h3>Skoleleder · Vonsild Specialskole</h3>
-          <p>Kolding Kommune. Ansøgning og CV skal være afsendt senest denne dag.</p>
-        </div>
-      </li>
-      <li class="event">
-        <div class="event-date"><span class="day">11</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--frist">Ansøgningsfrist</span>
-          <h3>Ungecenterleder · Sønderborg Kommune</h3>
-          <p>Ansøgning og CV skal være afsendt senest denne dag.</p>
-        </div>
-      </li>
-      <li class="event">
-        <div class="event-date"><span class="day">12</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--frist">Ansøgningsfrist</span>
-          <h3>Skoleleder · Saltum Skole (Jammerbugt)</h3>
-          <p>Jammerbugt Kommune. Ansøgning og CV afsendes senest denne dag.</p>
-        </div>
-      </li>
-      <li class="event">
-        <div class="event-date"><span class="day">12</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--frist">Ansøgningsfrist</span>
-          <h3>Områdeleder · Skoleområdet (Randers)</h3>
-          <p>Randers Kommune. Ansøgning og CV afsendes senest denne dag.</p>
-        </div>
-      </li>
-      <li class="event">
-        <div class="event-date"><span class="day">16</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--frist">Ansøgningsfrist</span>
-          <h3>Skoleleder · Damagerskolen og Greve 10. klasse</h3>
-          <p>Greve Kommune. Ansøgning og CV afsendes senest denne dag.</p>
-        </div>
-      </li>
-      <li class="event">
-        <div class="event-date"><span class="day">16</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--frist">Ansøgningsfrist</span>
-          <h3>Leder · Sekretariat og Porteføljestyring (Region Midtjylland)</h3>
-          <p>Region Midtjylland. Ansøgning og CV afsendes senest denne dag.</p>
-        </div>
-      </li>
-      <li class="event">
-        <div class="event-date"><span class="day">19</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--samtale">1. samtale</span>
-          <h3>Ungecenterleder · Sønderborg</h3>
-          <p>Første samtale med case på ungeområdet. Kontakt: sundheds- og ungedirektør Lene Gram Herborg.</p>
-        </div>
-      </li>
-      <li class="event">
-        <div class="event-date"><span class="day">19</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--samtale">1. samtale</span>
-          <h3>Skoleleder · Vonsild</h3>
-          <p>Motivation, ledelsessyn og værdimatch. Strategisk modpart: skolechef Karen Albrechtsen.</p>
-        </div>
-      </li>
-      <li class="event">
-        <div class="event-date"><span class="day">24</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--samtale">2. samtale</span>
-          <h3>Ungecenterleder · Sønderborg</h3>
-          <p>Anden samtale med Garuda-profil. Udfyld spørgeskemaet i forvejen.</p>
-        </div>
-      </li>
-      <li class="event">
-        <div class="event-date"><span class="day">25</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--samtale">2. samtale</span>
-          <h3>Skoleleder · Vonsild</h3>
-          <p>Case og ofte personprofiltest.</p>
-        </div>
-      </li>
-      <li class="event">
-        <div class="event-date"><span class="day">01</span><span class="mon">okt 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--tiltraedelse">Tiltrædelse</span>
-          <h3>Forventet opstart</h3>
-          <p>Forventet startdato. Vonsild Specialskole bliver selvstændig pr. 1. januar 2027.</p>
-        </div>
-      </li>
-      <li class="event">
-        <div class="event-date"><span class="day">·</span><span class="mon">løbende</span></div>
-        <div class="event-body">
-          <span class="tag tag--opfoelgning">Opfølgning</span>
-          <h3>Kontakt og netværk</h3>
-          <p>Ring eller skriv til kontaktperson efter fristen. Notér aftaler og deadlines her.</p>
-        </div>
-      </li>
+      <li class="event"><div class="event-date"><span class="day">1</span><span class="mon">match</span></div><div class="event-body"><h3>Vurder jobbet</h3><p>Motivation, krav, pendlertid, usikkerheder og beslutning: søg, afvent eller fravælg.</p></div></li>
+      <li class="event"><div class="event-date"><span class="day">2</span><span class="mon">kontakt</span></div><div class="event-body"><h3>Afklar spørgsmål</h3><p>Notér spørgsmål til kontaktperson, svar og hvad der skal indarbejdes i materialet.</p></div></li>
+      <li class="event"><div class="event-date"><span class="day">3</span><span class="mon">tekst</span></div><div class="event-body"><h3>Skriv ansøgning og CV-vinkel</h3><p>Start med motivation, match, dokumentation og afslut med en tydelig næste-skridt-formulering.</p></div></li>
+      <li class="event"><div class="event-date"><span class="day">4</span><span class="mon">send</span></div><div class="event-body"><h3>Kvalitetstjek og afsend</h3><p>Brug tjeklisten, gem PDF, registrér dato og planlæg opfølgning.</p></div></li>
+      <li class="event"><div class="event-date"><span class="day">5</span><span class="mon">samtale</span></div><div class="event-body"><h3>Forbered samtale</h3><p>Lav tre hovedbudskaber, STAR-eksempler, spørgsmål til panelet og noter efter samtalen.</p></div></li>
     </ol>
   </section>
 
-  <section class="card" id="vonsild">
-    <h2>🏫 Skoleleder · Vonsild Specialskole (Kolding)</h2>
-    <p class="lead">Frist 11. august 2026. Samtaler 19. og 25. august.</p>
-    <h3>Ansøgning</h3>
-<h4>Ansøgning til stillingen som skoleleder ved Vonsild Specialskole</h4>
-<p><strong>Kolding Kommune, att. skolechef Karen Albrechtsen</strong> Aabenraa, den [DATO. EJER UDFYLDER, senest 11. august 2026]</p>
-<p>Jeg søger hermed stillingen som skoleleder for den nye, selvstændige Vonsild Specialskole. Opgaven er at bygge en selvstændig specialskole op fra bunden med egen ledelse, egen bestyrelse og egen kultur. Samtidig skal der sikres ro og stærk faglighed for eleverne. Det rammer præcist den type ledelse, jeg motiveres af.</p>
-<p>Jeg hedder Jesper Qvist, er 48 år og forstander og skoleleder ved Emmerske Efterskole. Jeg har arbejdet med ledelse på skole- og specialområdet siden 2018 og har erfaring med drift, personale, økonomi, specialpædagogik og organisatorisk udvikling. Senest med ansvar for at drive en selvstændig institution med egen bestyrelse.</p>
-<h4>Motivation for stillingen</h4>
-<p>En helt ny selvstændig skole pr. 1. januar 2027 skal have opbygget ledelsesstruktur, bestyrelsessamarbejde, administration og ikke mindst en fælles kultur og identitet. Det er en sjælden mulighed for at forme en skole fra bunden. Og for at gøre det, så eleverne oplever mere ro, tryghed og kvalitet i hverdagen. For mig er det en meningsfuld og vigtig opgave at stå i spidsen for et sted, hvor vi sammen skaber rammer for, at eleverne kan mestre mere, deltage mere og have en hverdag med mening.</p>
-<h4>At bygge en ny skole. Tæt på driften og med strategisk overblik</h4>
-<p>Som forstander står jeg i dag i spidsen for en selvstændig institution med ansvar for økonomi, personale og bestyrelsessamarbejde. Tidligere var jeg souschef og afdelingsleder på Kløver-Skolen i Sønderborg, blandt andet med personaleansvar for autismeafdelingen (36 medarbejdere og budgetansvar på op til 47 mio. kr.). Jeg ved derfor, hvad det kræver at etablere tydelig struktur, sund økonomistyring og fælles retning. Og hvad det kræver at forvalte en betydelig ramme ansvarligt fra dag et. Jeg kan begge dele. Jeg kan være nærværende i den daglige drift og samtidig spille strategisk ind til skolechef og udvalg.</p>
-<h4>Specialpædagogisk faglighed og læringssyn</h4>
-<p>Jeg har konkret erfaring med elever med omfattende behov og med KRAP og LA2 som fælles fagligt sprog. Jeg har senere bragt KRAP ind i trivselsarbejdet på Emmerske Efterskole, fordi metoden giver et fælles sprog for faglig refleksion, konkrete handlemuligheder og samarbejde omkring den enkelte. Mit læringssyn hviler på, at eleven mødes som et helt menneske. Med afsæt i styrker frem for mangler og med trivsel som forudsætning for læring. Det spejler både skolens anerkendende, ressourcefokuserede fundament og Koldings fælles børne- og ungesyn om, at alle børn og unge gør deres bedste.</p>
-<h4>Ledelse med hjertet og hjernen</h4>
-<p>Jeg leder tæt på driften, nærværende og tydeligt. Jeg bruger data og systemer til at understøtte gode beslutninger og effektiv drift, uden at teknikken nogensinde bliver et mål i sig selv. Som IT-specialiseret leder kan jeg styrke dokumentation, datainformeret praksis og forældresamarbejde, blandt andet via Aula, så mere tid og ro frigøres til kerneopgaven. For mig er ledelse både det, man beslutter, og den måde, man møder mennesker på i hverdagen.</p>
-<h4>Ro, følgeskab og fælles retning</h4>
-<p>Udskillelsen skaber både muligheder og usikkerhed for de omkring 70 medarbejdere. Jeg vil skabe tryghed gennem klare og gennemsigtige rammer og en tydelig retning, som medarbejderne vil følge. Og gennem et stærkt fagligt miljø, der både tiltrækker og fastholder dygtige kolleger. Jeg tror på, at stærke resultater skabes gennem tydelig retning, gode relationer og en kultur, hvor vi både tør tale om det, der lykkes, og det, der er svært.</p>
-<p>Jeg uddyber meget gerne, hvordan mine erfaringer kan bringes i spil i opbygningen af Vonsild Specialskole.</p>
-<p>Med venlig hilsen</p>
-<p>Jesper Qvist Tlf. 29 92 31 01 . jgq@live.dk</p>
-<blockquote><p><strong>[EJER UDFYLDER. personlig tilpasning før afsendelse]</strong></p>
-<ul>
-<li><strong>Indledning:</strong> Hvis du har haft kontakt eller en indledende samtale med skolechef Karen Albrechtsen, så nævn det i første afsnit (som i din Autismecenter Syd-ansøgning: "efter en god samtale med ...").</li>
-<li><strong>Lokal tilknytning:</strong> Overvej en kort, personlig sætning om din tilknytning til Kolding-området eller Sønderjylland-Trekantsområdet, hvis relevant.</li>
-<li><strong>Dato:</strong> Indsæt afsendelsesdato.</li>
-<li><strong>Konkret eksempel:</strong> Du kan eventuelt tilføje et kort, konkret resultat fra din ledelsespraksis (STAR-form). Fx en forandring eller opbygning du står bag. Det gør "byg fra bunden"-pointen endnu stærkere.</li>
-</ul></blockquote>
-    <hr style="border:0;border-top:1px solid #334155;margin:24px 0" />
-    <h3>Samtale- og caseforberedelse</h3>
-<h4>Samtaleforberedelse: Skoleleder, Vonsild Specialskole (Kolding)</h4>
-<p>Materialet er inspiration til dig, ikke en manual. Alt er forankret i researchen på CLIA-3714, din ansøgning på CLIA-3717 og dit CV. Vælg det, der føles rigtigt i din egen stemme.</p>
-<p><strong>Kort om processen:</strong> 1. samtale 19. august (motivation, ledelsessyn, værdimatch). 2. samtale 25. august (case og ofte personprofiltest). Din strategiske modpart er skolechef Karen Albrechtsen.</p>
-<h4>1. Forventede samtalespørgsmål (12 stk.)</h4>
-<p>Til hvert spørgsmål står en kort note om, hvad de reelt lytter efter, så du kan ramme kernen.</p>
-<p><strong>Om motivation og match</strong></p>
-<ol start="1">
-<li>Hvorfor søger du netop denne stilling, og hvorfor specialområdet i Kolding? <em>(De vil høre, at du har valgt dem bevidst. Kobl til Vonsilds KRAP-fundament og kommunens børne- og ungesyn om, at alle børn og unge gør deres bedste.)</em></li>
-<li>Du er forstander i dag. Hvorfor vil du skifte, og hvad tager du med dig ind i opbygningen af en ny selvstændig skole? <em>(De tester, om skiftet er velovervejet, og om din forstander-erfaring er reel opbygningserfaring.)</em></li>
-<li>Hvad er din ledelsesfilosofi, og hvordan ser den ud på en helt almindelig onsdag? <em>(De vil have det konkrete billede, ikke overskrifter. Beskriv nærvær, tydelige rammer og synlighed i driften.)</em></li>
-</ol>
-<p><strong>Om opbygning og forandring</strong></p>
-<ol start="4">
-<li>Skolen bliver selvstændig pr. 1. januar 2027. Hvordan griber du de første 100 dage an? <em>(Din 100-dages-plan. Struktur, bestyrelse, medarbejderinddragelse, kultur og kvitteringspunkter.)</em></li>
-<li>70 medarbejdere skal igennem en udskillelse med både muligheder og usikkerhed. Hvordan skaber du ro og følgeskab? <em>(De efterspørger tryghed og klare rammer. Vis, at du planlægger kommunikation og inddragelse, ikke bare håber på det bedste.)</em></li>
-<li>Hvordan bygger du en helt ny kultur og identitet, samtidig med at du bevarer det, der allerede virker fagligt? <em>(Balancen mellem fornyelse og respekt for medarbejdernes ejerskab.)</em></li>
-<li>En ny skolebestyrelse skal etableres. Hvordan ser et godt bestyrelsessamarbejde ud for dig? <em>(Din forstander-erfaring med bestyrelse er guld her.)</em></li>
-</ol>
-<p><strong>Om faglighed og elever</strong></p>
-<ol start="8">
-<li>Hvad er dit læringssyn, og hvordan omsætter du det til praksis for elever med omfattende behov? <em>(Eleven som helt menneske, styrker frem for mangler, trivsel som forudsætning for læring.)</em></li>
-<li>Skolen bygger på KRAP. Hvad er din erfaring med KRAP, og hvordan vil du udvikle praksissen videre? <em>(Nævn LA2 og hvordan du selv har båret metoden. Vis, at du kan løfte og dokumentere effekt, ikke bare kende ordet.)</em></li>
-<li>Du er IT-specialiseret leder. Hvordan kommer det eleverne til gode uden at blive teknik for teknikkens skyld? <em>(Hold det i elevens tjeneste. Dokumentation, datainformeret praksis, forældresamarbejde via Aula, frigjort tid til kerneopgaven.)</em></li>
-</ol>
-<p><strong>Om drift og samarbejde</strong></p>
-<ol start="11">
-<li>Skolen får en betydelig tildelingsramme. Hvordan sikrer du sund økonomistyring koblet til de pædagogiske mål? <em>(Din budgeterfaring fra Kløver-Skolen op til 47 mio. kr. hører til her.)</em></li>
-<li>Hvordan tiltrækker og fastholder du dygtige medarbejdere på et presset specialområde? <em>(Stærkt fagligt miljø, tydelig retning, anerkendende kultur.)</em></li>
-</ol>
-<p><strong>Bonus, hvis der er tid til det:</strong> Hvordan håndterer du en utilfreds forælder til et barn med omfattende behov? Og hvad gør du, når en dygtig medarbejder åbent modarbejder forandringen?</p>
-<h4>2. Talepunkter og STAR-eksempler</h4>
-<p>STAR står for Situation, Opgave, Handling, Resultat. Brug dem som råmateriale. Du kender detaljerne bedst, så juster tal og forløb, så de er præcise.</p>
-<h5>Dine bærende talepunkter (den røde tråd)</h5>
-<ul>
-<li><strong>Jeg har provet at drive en selvstændig institution.</strong> Som forstander står jeg i spidsen for økonomi, personale og bestyrelse. Ikke en afdeling, men en helhed. Det er præcis det, en ny selvstændig specialskole skal have.</li>
-<li><strong>Jeg kan både det nære og det strategiske.</strong> Nærværende relationsledelse i hverdagen og samtidig spille ind til skolechef og udvalg.</li>
-<li><strong>Ledelse og pædagogik trækker samme vej hos mig.</strong> Min anerkendende, ressourcefokuserede stil spejler KRAP og kommunens børne- og ungesyn.</li>
-<li><strong>Min IT-profil er en løftestang, ikke et sidespor.</strong> Den frigør tid og ro til kerneopgaven.</li>
-<li><strong>Jeg er brobygger.</strong> Baggrund i både det almene skolevæsen og specialområdet. Jeg taler begge sprog.</li>
-</ul>
-<h5>STAR-eksempel 1: At drive en selvstændig institution fra lederrollen</h5>
-<ul>
-<li><strong>Situation:</strong> Som forstander og skoleleder ved Emmerske Efterskole overtog jeg ansvaret for en selvstændig institution med egen bestyrelse, egen økonomi og eget personale.</li>
-<li><strong>Opgave:</strong> At sikre stabil drift og tydelig retning, samtidig med at fagligheden og trivslen blev løftet.</li>
-<li><strong>Handling:</strong> Jeg satte klare rammer for økonomi og struktur, arbejdede tæt sammen med bestyrelsen om retning, og var synlig i den daglige drift, så medarbejderne oplevede nærvær og tydelighed.</li>
-<li><strong>Resultat:</strong> En institution med sund drift og en ledelse, der både er tæt på hverdagen og har det strategiske overblik. (Indsæt gerne et konkret tal eller en målbar forbedring, du står bag.)</li>
-</ul>
-<h5>STAR-eksempel 2: Personaleansvar og budget i stor skala</h5>
-<ul>
-<li><strong>Situation:</strong> Som souschef og afdelingsleder på Kløver-Skolen i Sønderborg havde jeg personaleansvar for autismeafdelingen med 36 medarbejdere.</li>
-<li><strong>Opgave:</strong> At lede en stor faggruppe på specialområdet med et budgetansvar på op til 47 mio. kr. forsvarligt og fagligt.</li>
-<li><strong>Handling:</strong> Jeg etablerede tydelig struktur og økonomistyring og holdt fokus på, at ressourcerne fulgte de pædagogiske mål og elevernes behov.</li>
-<li><strong>Resultat:</strong> Erfaring med at forvalte en betydelig ramme ansvarligt fra dag et. Netop det, en skole i øverste takstniveau med samlet tildeling på 31,9 mio. kr. har brug for. (Tilføj gerne et konkret resultat.)</li>
-</ul>
-<h5>STAR-eksempel 3: KRAP båret ind i et nyt fagligt miljø</h5>
-<ul>
-<li><strong>Situation:</strong> Jeg har konkret erfaring med elever med omfattende behov og med KRAP og LA2 som fælles fagligt sprog.</li>
-<li><strong>Opgave:</strong> At gøre den anerkendende, ressourcefokuserede tilgang til et fælles arbejdssprog og ikke kun en metode på papiret.</li>
-<li><strong>Handling:</strong> Jeg bragte senere KRAP ind i trivselsarbejdet på Emmerske Efterskole, fordi metoden giver et fælles sprog for faglig refleksion, konkrete handlemuligheder og samarbejde om den enkelte.</li>
-<li><strong>Resultat:</strong> Et fælles fagligt sprog, der styrker samarbejdet om den enkelte elev. På Vonsild vil jeg både bære og videreudvikle KRAP-praksissen og hjælpe med at dokumentere effekten.</li>
-</ul>
-<h5>STAR-eksempel 4: IT i elevens tjeneste</h5>
-<ul>
-<li><strong>Situation:</strong> Som IT-specialiseret leder ser jeg dagligt, hvor meget tid der bindes i dokumentation og administration.</li>
-<li><strong>Opgave:</strong> At bruge data og systemer til at understøtte gode beslutninger og frigøre tid til kerneopgaven, uden at teknikken bliver et mål i sig selv.</li>
-<li><strong>Handling:</strong> Jeg styrker dokumentation, datainformeret praksis og forældresamarbejde, blandt andet via Aula.</li>
-<li><strong>Resultat:</strong> Mere tid og ro til det, der betyder noget for eleverne. Et kort få andre kandidater kan spille, men altid holdt i elevens tjeneste.</li>
-</ul>
-<h5>STAR-eksempel 5: Ro og følgeskab i en forandring</h5>
-<ul>
-<li><strong>Situation:</strong> En udskillelse skaber både muligheder og usikkerhed for medarbejderne.</li>
-<li><strong>Opgave:</strong> At skabe tryghed og en tydelig retning, som medarbejderne vil følge.</li>
-<li><strong>Handling:</strong> Jeg arbejder med klare og gennemsigtige rammer, synlig ledelse og en kultur, hvor vi både tør tale om det, der lykkes, og det, der er svært.</li>
-<li><strong>Resultat:</strong> Følgeskab og et stærkt fagligt miljø, der både tiltrækker og fastholder dygtige kolleger. (Har du et konkret eksempel på en forandring, du har ført medarbejdere trygt igennem, så er det stærkt her.)</li>
-</ul>
-<h4>3. Oplæg til case og præsentation (2. samtale, 25. august)</h4>
-<p>Casen præsenteres typisk mundtligt for udvalget eller ansættelsesteamet. Det mest sandsynlige tema er en 100-dages-plan eller vision for opstarten pr. 1. januar 2027.</p>
-<h5>Forslag til struktur (ca. 8 til 10 minutter)</h5>
-<ol start="1">
-<li><strong>Åbning (30 sekunder).</strong> En kort, personlig ramme om hvorfor opgaven betyder noget for dig. Sæt tonen med nærvær.</li>
-<li><strong>Mit blik på opgaven (1 til 2 minutter).</strong> Hvad ser du som kernen i at bygge en selvstændig specialskole. Ro, kvalitet og et stærkt fagligt fællesskab for eleverne.</li>
-<li><strong>De bærende pointer (4 til 5 minutter).</strong> 3 til 5 pointer, se nedenfor. Byg hver pointe op som lille fortælling med et konkret greb.</li>
-<li><strong>De første 100 dage (2 minutter).</strong> En simpel tidslinje. Lyt og lær først, sæt rammer, inddrag medarbejdere og bestyrelse, sæt kvitteringspunkter.</li>
-<li><strong>Afslutning (30 sekunder).</strong> Bind sløjfe tilbage til åbningen. Vis retning uden at overtrumfe medarbejdernes ejerskab.</li>
-</ol>
-<p>Medbring gerne oplægget som en enkelt A4-side. Læn dig på kommunens egne formuleringer. Alle børn og unge gør deres bedste. Borgeren i centrum. Rum for alle. Det viser research og kulturmatch.</p>
-<h5>3 til 5 bærende pointer om at udvikle en specialskole</h5>
-<ol start="1">
-<li><strong>Byg fundamentet før du bygger huset.</strong> Struktur, roller, økonomi og kommunikationsveje skal være tydelige fra dag et, så der er tryghed at handle ud fra. Ro kommer af klare rammer.</li>
-<li><strong>Medarbejderne ejer fagligheden. Jeg rammesætter den.</strong> Kulturen bygges med medarbejderne, ikke for dem. Min opgave er retning, rammer og følgeskab, så deres faglighed får plads.</li>
-<li><strong>KRAP som fælles rygrad.</strong> En fælles anerkendende og ressourcefokuseret praksis giver et fælles sprog om den enkelte elev og gør kvaliteten synlig og udviklingsbar.</li>
-<li><strong>Data og teknologi som stille hjælper.</strong> Bruge systemer til at frigøre tid, styrke dokumentation og lette forældresamarbejdet, så mere ro og tid går til eleverne.</li>
-<li><strong>Bestyrelse og forældre som medspillere.</strong> En ny selvstændig bestyrelse og et aktivt forældresamarbejde er ikke en formalitet, men en kraft, der styrker skolen.</li>
-</ol>
-<p><em>(Vælg de 3 til 4 pointer, der ligger bedst i din stemme. Færre og skarpere slår flere og tyndere.)</em></p>
-<h4>4. Gode spørgsmål du selv kan stille panelet</h4>
-<p>At stille skarpe spørgsmål signalerer, at du tænker som leder allerede. Vælg 3 til 4.</p>
-<ol start="1">
-<li>Hvad er jeres vigtigste forventninger til de første to år, og hvordan ser I selv et vellykket første år?</li>
-<li>Hvordan forestiller I jer, at den nye skolebestyrelse etableres og sammensættes, og hvilken rolle ønsker I, at lederen spiller i den proces?</li>
-<li>Hvordan skal ledelsesteamet omkring skolelederen se ud, og hvor meget frihed får lederen til selv at forme det?</li>
-<li>Hvad er de vigtigste kvalitetsmål, I gerne vil kunne se på specialskolen om to år?</li>
-<li>Hvad er efter jeres vurdering den største udfordring i overgangen til selvstændig skole, og hvor ønsker I, at lederen sætter først ind?</li>
-</ol>
-<h4>Sidste tjek før samtalen</h4>
-<ul>
-<li>Hav 2 til 3 konkrete eksempler fra din egen praksis klar i STAR-form, helst med tal eller effekt.</li>
-<li>Medbring en kort vision på en side.</li>
-<li>Øv dine svar på spørgsmål 1, 2 og 4 højt. De er de mest sandsynlige åbninger.</li>
-<li>Husk kontakten til Karen Albrechtsen. Har du haft en indledende samtale, så nævn den tidligt.</li>
-</ul>
-<p>Held og lykke. Du har en profil, få andre kandidater kan matche.</p>
+  <section class="card job-page" id="job-1">
+    <h2>💼 [JOBTITEL 1] · [ARBEJDSSTED 1]</h2>
+    <p class="lead">[Kort resume af jobbet og hvorfor det er relevant.]</p>
+    <div class="info-grid">
+      <p><strong>Frist:</strong> [DD. måned ÅÅÅÅ]</p><p><strong>Status:</strong> [Kladde/Klar/Sendt/Samtale]</p><p><strong>Kontakt:</strong> [NAVN/TITEL]</p><p><strong>Kørselstid:</strong> [XX min. én vej]</p>
+    </div>
+    <details open><summary>1. Beslutningsgrundlag</summary><ul><li><strong>Motivation:</strong> [Hvorfor søger jeg?]</li><li><strong>Stærkeste match:</strong> [Kompetence/erfaring]</li><li><strong>Risiko eller forbehold:</strong> [Pendling, rolle, krav eller timing]</li><li><strong>Beslutning:</strong> [Søg/afvent/fravælg]</li></ul></details>
+    <details><summary>2. Kontaktperson og research uden søgemaskiner</summary><p>Brug stillingsopslag, organisationens egen hjemmeside, direkte kontaktpersoner, egne noter og netværk. Undgå at lægge private data eller følsomme noter ind i eksterne søgemaskiner.</p><ul><li><strong>Spørgsmål 1:</strong> [Hvad er vigtigst at lykkes med første år?]</li><li><strong>Spørgsmål 2:</strong> [Hvilke udfordringer fylder mest?]</li><li><strong>Noter fra dialog:</strong> [Indsæt korte noter.]</li></ul></details>
+    <details><summary>3. Ansøgning</summary><div class="draft"><p><strong>[MODTAGER/ORGANISATION]</strong><br>[BY], den [DATO]</p><p>Jeg søger stillingen som [JOBTITEL], fordi [MOTIVATION]. Opgaven med [KERNEOPGAVE] matcher min erfaring med [RELEVANT ERFARING].</p><p>Jeg kan især bidrage med [STYRKE 1], [STYRKE 2] og [STYRKE 3]. Det vil jeg omsætte til [KONKRET VÆRDI FOR ORGANISATIONEN].</p><p>Jeg uddyber gerne, hvordan min profil kan bringes i spil hos jer.</p><p>Med venlig hilsen<br>[NAVN]<br>[TELEFON] · [E-MAIL]</p></div></details>
+    <details><summary>4. CV-vinkling</summary><ul><li><strong>Profiltekst:</strong> [2-3 linjer målrettet jobbet.]</li><li><strong>Erfaring øverst:</strong> [De 3 vigtigste erfaringer.]</li><li><strong>Sprog fra opslaget:</strong> [Nøgleord der skal afspejles.]</li></ul></details>
+    <details><summary>5. Afsendelsestjek</summary><ul class="checklist" data-list="job-1"><li><label><input type="checkbox"> Dato, modtager og jobtitel er korrekt</label></li><li><label><input type="checkbox"> Konkrete eksempler er indsat</label></li><li><label><input type="checkbox"> CV er vinklet til stillingen</label></li><li><label><input type="checkbox"> PDF og filnavne er tjekket</label></li><li><label><input type="checkbox"> Opfølgning er planlagt</label></li></ul></details>
+    <p><a href="#dashboard">Tilbage til dashboard</a></p>
   </section>
 
-  <section class="card" id="sonderborg">
-    <h2>🧭 Ungecenterleder · Sønderborg Kommune</h2>
-    <p class="lead">Frist 11. august 2026. Samtaler 19. og 24. august. Tiltrædelse 1. oktober 2026.</p>
-    <h3>Ansøgning</h3>
-<p>Lene Gram Herborg Sundheds- og ungedirektør Sønderborg Kommune</p>
-<p>Aabenraa, den 4. juli 2026</p>
-<h4>Ansøgning til stillingen som ungecenterleder ved Ungecenter Sønderborg</h4>
-<p>Efter at have læst jeres stillingsopslag søger jeg hermed stillingen som ungecenterleder ved Ungecenter Sønderborg. Jeg kan i særlig grad se mig selv i opgaven med at sætte retning, lede gennem fire centerledere og udvikle fremtidens ungeindsats i en tid, hvor 10. klasse forandres frem mod 2030.</p>
-<p>Jeg hedder Jesper Qvist, er 48 år og bosat i Aabenraa. Jeg har arbejdet med ledelse siden 2018 og er i dag forstander og skoleleder. Jeg har erfaring med drift, personale, økonomi og organisatorisk udvikling på både almenområdet og specialområdet. Sønderborg er velkendt for mig. Jeg var i seks år afdelingsleder og souschef på Kløver-Skolen og sad i kommunens digitaliseringsstyregruppe.</p>
-<h4>Motivation og forandringen mod 2030</h4>
-<p>Stillingen rammer præcist den ledelsesopgave, jeg søger. Jeg er drevet af at stå i spidsen for en kompleks organisation, hvor faglig kvalitet, drift, økonomi og strategi skal hænge sammen tæt på de unges hverdag. Netop nu er ungeområdet i bevægelse. Udfasningen af 10. klasse frem mod 2030 flytter opgaver mod FGU og stiller nye krav til, hvad Ungecenteret skal tilbyde. Jeg søger stillingen på grund af den forandring, ikke på trods af den. De nationale mål om, at 90 procent skal have en ungdomsuddannelse som 25-årige, og at andelen af unge uden tilknytning skal halveres, er den ramme, jeg gerne vil sætte retning efter sammen med lederteamet.</p>
-<h4>Ledelse af ledere og fælles retning</h4>
-<p>Opgaven med at lede gennem andre tiltaler mig i særlig grad. Som souschef ledede jeg på tværs af en stor specialskole, og i dag står jeg i spidsen for en hel organisation. Jeg ser ungecenterlederrollen som en opgave, hvor man sætter tydelig retning og rammer, men lader de fire centerledere lede deres egne enheder. Særligt vil jeg arbejde for et fælles sprog og fælles ansvar for helheden, så UU, ungdomsskole, 10. klasse og STU trækker i samme retning frem for at fungere som silør. Tillid, følgeskab og relationer på tværs er for mig fundamentet under enhver beslutning.</p>
-<h4>Drift, økonomi og digital udvikling</h4>
-<p>Jeg leverer på både drift og udvikling. Jeg har haft betydeligt budgetansvar, senest 47 mio. kr., og erfaring med at skabe overblik, prioritere og følge op i komplekse organisationer. Samtidig har jeg en stærk digital profil. Jeg er uddannet inden for IT, har drevet digitalisering gennem Microsoft 365 og Power Platform og siddet i Sønderborg Kommunes digitaliseringsstyregruppe. Det ser jeg som en konkret styrke i en ungeindsats, hvor bedre overblik på tværs af tilbud og data om de unges vej kan understøtte både faglighed og effektiv drift.</p>
-<h4>Menneskesyn og ledelsesstil</h4>
-<p>For mig skabes resultater gennem tydelig retning, gode relationer og et blik for de unges potentialer frem for deres begrænsninger. Jeg tror på nærværende og ordentlig ledelse. Tæt nok på praksis til at forstå hverdagen, men uden at overtage ledernes rum. Beslutninger skal træffes med ro, også under kompleksitet, og bæres igennem med følgeskab.</p>
-<h4>Afslutning</h4>
-<p>Stillingen ligger tæt på det, jeg motiveres af som leder, og på den vej, jeg ønsker at gå mod ledelse af ledere i en kommune. Jeg uddyber meget gerne, hvordan mine erfaringer kan bringes i spil i udviklingen af Ungecenter Sønderborg.</p>
-<p>Med venlig hilsen</p>
-<p>Jesper Qvist Frueløkke 503, 6200 Aabenraa Telefon 2992 3101 jgq@live.dk</p>
-    <hr style="border:0;border-top:1px solid #334155;margin:24px 0" />
-    <h3>CV-tilpasning</h3>
-<h4>CV-tilpasning: Ungecenterleder, Ungecenter Sønderborg</h4>
-<p>Formålet er at få dit eksisterende CV til at "tale" opslagets sprog: <strong>ledelse af ledere</strong>, <strong>tillid, relationer og følgeskab</strong>, <strong>drift, strategi og udvikling</strong> samt <strong>beslutningskraft</strong>. Din digitale profil er den gennemgående differentiator. Der tilføjes ingen ny erfaring. Kun titel, profiltekst og rækkefølge samt formulering justeres.</p>
-<h4>1. Titel under navnet (erstat den nuværende)</h4>
-<ul>
-<li>Nuværende: <em>"Skoleleder med ansvar for drift, personale og digital udvikling"</em></li>
-<li>Forslag: <strong>"Leder af ledere med fokus på strategisk udvikling, tillid og digital drift på ungeområdet"</strong></li>
-</ul>
-<h4>2. Profiltekst (målrettet ungecenterlederrollen)</h4>
-<blockquote><p>Erfaren leder med baggrund i at lede gennem andre ledere og skabe fælles retning i komplekse, politisk styrede organisationer. Har ansvar for drift, personale, økonomi og strategisk udvikling og motiveres af at oversætte overordnede mål til konkret handling sammen med et lederteam.</p>
-<p>Bygger ledelse på tillid, følgeskab og tydelige rammer og har blik for både drift og udvikling, herunder forandringsopgaver på ungeområdet. Har en stærk digital profil og driver datadrevet udvikling gennem Microsoft 365 og Power Platform, så systemer understøtter faglighed, overblik og effektiv drift.</p>
-<p>Kendetegnet ved ro under kompleksitet, tydelig beslutningskraft og et potentialeorienteret menneskesyn.</p></blockquote>
-<h4>3. Fremhæv disse punkter (flyt op og gør tydelige)</h4>
-<ul>
-<li><strong>Souschef og stedfortræder samt indirekte ledelse af 115 medarbejdere</strong> (Kløver-Skolen). Formuler som <em>"ledelse af ledere og ledelse gennem andre"</em>. Dette er opslagets vigtigste krav.</li>
-<li><strong>Budgetansvar 47 mio. kr.</strong> Drift, økonomistyring og beslutningskraft i stor skala.</li>
-<li><strong>Repræsentant i Sønderborg Kommunes Digitaliseringsstyregruppe (2019 til 2025) samt Microsoft 365 og Power Platform.</strong> Din digitale differentiator. Ingen anden ansøger har den kombination.</li>
-<li><strong>Diplom i ledelse (fuldført, afgangsprojekt 2023).</strong> Forandringsledelse og organisationsledelse.</li>
-<li><strong>Tilknytning til Sønderborg</strong> (seks år på Kløver-Skolen). Lokalkendskab til kommunen og området.</li>
-</ul>
-<h4>4. Nøgleord der bør fremgå af CV'ets ordvalg</h4>
-<p>ledelse af ledere, følgeskab, tillid, tværgående sammenhæng, forandringsledelse, strategi og drift, beslutningskraft, potentialesyn.</p>
-<h4>5. Til overvejelse</h4>
-<p>Overvej en kort linje under profilteksten om <strong>forandringsopgaven mod 2030</strong> (udfasning af 10. klasse, målet om 90 procent), så CV'et signalerer, at du kender den konkrete opgave. Det binder CV og ansøgning sammen.</p>
-    <hr style="border:0;border-top:1px solid #334155;margin:24px 0" />
-    <h3>Samtale- og caseforberedelse</h3>
-<h4>Samtaleforberedelse: Ungecenterleder, Ungecenter Sønderborg</h4>
-<p>Forberedelse til de to samtaler. Første samtale er 19. august med en case. Anden samtale er 24. august med Garuda profil. Kontaktperson og formodet panelformand er sundheds og ungedirektør Lene Gram Herborg. Tiltrædelse 1. oktober 2026.</p>
-<p>Materialet er inspiration. Det er skrevet i din stemme, så du kan tale ud fra det med dine egne ord. Det bygger på research briefen fra CLIA-3715, din afsendte ansøgning og dit CV. De få steder, hvor et helt præcist tal eller resultat vil løfte svaret, har jeg markeret med [EJER UDFYLDER], så du selv kan sætte din stemme på.</p>
-<p>Den røde tråd i hele forberedelsen er to ting. Du søger stillingen fordi du vil lede gennem andre ledere, altså de fire centerledere. Og du søger den fordi forandringen mod 2030 er selve opgaven, ikke en forhindring.</p>
-<h4>Del 1. Forventede samtalespørgsmål (15 stk.)</h4>
-<p>Her er de spørgsmål, du med størst sandsynlighed møder til første samtale, grundet i opslagets nøgleord og i det, en sundheds og ungedirektør typisk vil høre fra en kommende leder af ledere. Under hvert spørgsmål står en kort note om, hvad de reelt spørger om.</p>
-<p><strong>Om ledelse af ledere</strong></p>
-<ol start="1">
-<li>Du skal lede fire erfarne centerledere. Hvordan leder du gennem andre ledere frem for at lede enhederne selv? Note. De tester om du kan holde fingrene fra driften og i stedet sætte retning og rammer.</li>
-<li>Hvordan bygger du tillid og følgeskab hos ledere, der har været i huset længe og kan deres område bedre end dig? Note. Ordret fra opslaget. De vil høre din konkrete metode, ikke en floskel.</li>
-<li>En af dine centerledere er fagligt dygtig, men trækker i sin egen retning og ikke mod helheden. Hvad gør du? Note. Konflikt og retning på samme tid. Vis at du både rummer og er tydelig.</li>
-<li>Hvordan sikrer du, at UU, ungdomsskolen, 10. klasse og STU trækker i samme retning og ikke bliver fire silør? Note. Sammenhængskraft. Kernen i hvorfor stillingen findes.</li>
-</ol>
-<p><strong>Om forandringen mod 2030</strong></p>
-<ol start="5">
-<li>Udfasningen af 10. klasse frem mod 2030 flytter opgaver mod FGU. Hvordan vil du udvikle Ungecenterets tilbud i den bevægelse? Note. Det vigtigste spørgsmål. Her afgøres om du har forstået opgaven.</li>
-<li>Hvordan vil du konkret arbejde med de nationale mål om, at 90 procent skal have en ungdomsuddannelse som 25 årige, og at unge uden tilknytning skal halveres? Note. Kender du tallene området måles på, og kan du omsætte dem til handling.</li>
-<li>Prøv at beskrive dine første 100 dage i stillingen. Note. Klassiker. De vil se en plan, der starter med at lytte, ikke med at lave om.</li>
-<li>Hvordan holder du drift og kvalitet i luften samtidig med, at du udvikler fremtidens tilbud? Note. Drift og strategi på en gang. Hjertet og hjernen.</li>
-</ol>
-<p><strong>Om beslutningskraft, økonomi og robusthed</strong></p>
-<ol start="9">
-<li>Fortæl om en svær beslutning, du har truffet under uklarhed, hvor ikke alle var enige. Note. Beslutningskraft og ro under kompleksitet. Hav en STAR klar.</li>
-<li>Du får ansvar for økonomi og ressourcer på tværs af enhederne. Hvordan prioriterer du, når der ikke er penge til det hele? Note. Budgetdisciplin og mod til at vælge fra.</li>
-<li>Ungeområdet er politisk styret. Hvordan oversætter du politiske mål til drift, og hvordan håndterer du politisk bevågenhed? Note. Kan du navigere mellem direktion, byråd og hverdag.</li>
-</ol>
-<p><strong>Om menneskesyn og person</strong></p>
-<ol start="12">
-<li>Hvad er dit syn på de unge, I er sat i verden for, særligt de udsatte og frafaldstruede? Note. Potentialesyn frem for mangelsyn. Vis et menneskesyn, ikke systemdrift.</li>
-<li>Hvorfor søger du netop denne stilling nu, og hvorfor Sønderborg? Note. Motivation og forankring. Din tilknytning til Kløver-Skolen er guld her.</li>
-<li>Din baggrund er stærkt digital. Hvordan undgår du, at det digitale kommer til at overskygge menneskeledelsen? Note. De vil sikre sig, at IT er et middel for dig, ikke målet.</li>
-<li>Hvad er dine udviklingspunkter som leder, og hvor vil du selv være opmærksom i denne rolle? Note. Selvindsigt. Bygger bro til Garuda profilen i anden runde.</li>
-</ol>
-<h4>Del 2. Talepunkter og STAR eksempler</h4>
-<p>STAR står for Situation, Opgave, Handling og Resultat. Brug rammen når de beder om et konkret eksempel. Sig situationen kort, hvad din opgave var, hvad DU gjorde, og hvad der kom ud af det. Herunder er fem eksempler forankret i dit CV. Vinklen er hele vejen ledelse af ledere og forandring mod 2030.</p>
-<h5>STAR 1. Ledelse gennem andre ledere</h5>
-<ul>
-<li><strong>Situation.</strong> På Kløver-Skolen i Sønderborg var jeg souschef og stedfortræder med indirekte ledelse af 115 medarbejdere gennem afdelingsledere.</li>
-<li><strong>Opgave.</strong> Jeg skulle få flere afdelinger til at trække i samme retning uden at overtage den daglige ledelse af hver enhed.</li>
-<li><strong>Handling.</strong> Jeg satte fælles mål og rammer, holdt fast i tydelige aftaler og gav lederne rum til at løse opgaven på deres egen måde. Jeg brugte tid på relationen først, så følgeskabet var på plads, før vi ændrede praksis.</li>
-<li><strong>Resultat.</strong> [EJER UDFYLDER med et konkret resultat, for eksempel bedre samarbejde på tværs, lavere sygefravær eller en fælles indsats, der lykkedes.] Pointen til panelet. Jeg ledede gennem lederne, ikke udenom dem.</li>
-</ul>
-<h5>STAR 2. Forandringsledelse i praksis</h5>
-<ul>
-<li><strong>Situation.</strong> Som forstander og skoleleder stod jeg i spidsen for en organisation, der skulle bygges op og udvikles, samtidig med at driften skulle køre.</li>
-<li><strong>Opgave.</strong> Jeg skulle skabe retning og tryghed i en foranderlig hverdag og få medarbejdere og ledere med på forandringen.</li>
-<li><strong>Handling.</strong> Jeg lagde en plan i faser, startede med at lytte og kortlægge, fandt to til tre tidlige gevinster og satte derefter en fælles retning. Mit afgangsprojekt på diplom i ledelse i 2023 handlede netop om forandrings og organisationsledelse, og jeg brugte den tilgang direkte.</li>
-<li><strong>Resultat.</strong> [EJER UDFYLDER med et konkret resultat fra forløbet.] Pointen til panelet. Det er præcis den bevægelse, Ungecenteret skal igennem mod 2030, og jeg søger stillingen på grund af den opgave.</li>
-</ul>
-<h5>STAR 3. Drift og økonomi under ansvar</h5>
-<ul>
-<li><strong>Situation.</strong> Jeg har haft betydeligt budgetansvar, senest på 47 millioner kroner.</li>
-<li><strong>Opgave.</strong> Jeg skulle holde økonomien, prioritere ressourcerne og stadig levere kvalitet i en kompleks organisation.</li>
-<li><strong>Handling.</strong> Jeg skabte overblik, prioriterede tydeligt, fulgte op løbende og turde vælge fra, hvor det var nødvendigt. Jeg traf beslutningerne i ro, også når billedet var uklart, og bar dem igennem med følgeskab.</li>
-<li><strong>Resultat.</strong> [EJER UDFYLDER, for eksempel budget i balance eller en omprioritering, der frigjorde midler til det vigtigste.] Pointen til panelet. Jeg leverer på både drift og økonomi, ikke kun på udvikling.</li>
-</ul>
-<h5>STAR 4. Digital udvikling som konkurrencefordel</h5>
-<ul>
-<li><strong>Situation.</strong> Jeg sad i Sønderborg Kommunes digitaliseringsstyregruppe fra 2019 til 2025 og har drevet digitalisering gennem Microsoft 365 og Power Platform.</li>
-<li><strong>Opgave.</strong> Jeg skulle bruge det digitale til at skabe bedre overblik og mere effektiv drift uden at gøre teknik til et mål i sig selv.</li>
-<li><strong>Handling.</strong> Jeg byggede løsninger, der gav ledere og medarbejdere overblik og lettede arbejdsgange, og jeg holdt fokus på, at systemerne skulle understøtte fagligheden.</li>
-<li><strong>Resultat.</strong> [EJER UDFYLDER med et konkret eksempel på en løsning og dens effekt.] Pointen til panelet. I en ungeindsats med mange tilbud kan bedre data på tværs af UU, 10. klasse, STU og FGU snitfladen styrke både faglighed og drift. Det er en styrke, få andre ansøgere har.</li>
-</ul>
-<h5>STAR 5. Tillid og følgeskab hos erfarne ledere</h5>
-<ul>
-<li><strong>Situation.</strong> Jeg har flere gange skullet vinde tillid hos erfarne fagfolk og ledere, der kendte deres område bedre end mig.</li>
-<li><strong>Opgave.</strong> Jeg skulle skabe følgeskab uden at have den faglige detailviden, de havde.</li>
-<li><strong>Handling.</strong> Jeg lyttede først, anerkendte deres faglighed, var tydelig om retning og rammer og holdt mine aftaler. Jeg gav dem mandat og bakkede dem op, også udadtil.</li>
-<li><strong>Resultat.</strong> [EJER UDFYLDER med et konkret eksempel på, at en leder eller et team fulgte med.] Pointen til panelet. Tillid, udvikling og kommunikation er kernen i min ledelse, og det matcher opslagets ord om tillid, relationer og følgeskab på tværs.</li>
-</ul>
-<p><strong>Korte talepunkter du altid kan falde tilbage på</strong></p>
-<ul>
-<li>Jeg vil lede gennem de fire centerledere, sætte retning og rammer og lade dem lede deres enheder.</li>
-<li>Jeg søger stillingen på grund af forandringen mod 2030, ikke på trods af den.</li>
-<li>Jeg leverer på både drift og udvikling, hjertet og hjernen.</li>
-<li>Min digitale profil er en konkret styrke, men den er et middel, ikke målet.</li>
-<li>Jeg er lokalt forankret gennem seks år på Kløver-Skolen og kender kommunen.</li>
-</ul>
-<h4>Del 3. Oplæg til case og præsentation (første samtale, 19. august)</h4>
-<p>Casen bliver med stor sandsynlighed en forandrings eller strategicase på ungeområdet, sandsynligvis netop 10. klasse udfasningen eller spørgsmålet om, hvordan du udvikler fremtidens Ungecenter mod 2030. Du kan ikke vide den præcise ordlyd på forhånd, men du kan træne en struktur, du kan lægge ned over hvad som helst.</p>
-<h5>Forslag til struktur (fem trin du altid kan bruge)</h5>
-<ol start="1">
-<li><strong>Situation og mål.</strong> Rammesæt kort. KUI opgaven, de nationale 2030 mål og den konkrete forandring, casen handler om.</li>
-<li><strong>Interessenter.</strong> Nævn dem, du skal have med. De unge, de fire centerledere, direktion og byråd, FGU, erhvervslivet og forældrene.</li>
-<li><strong>Handlemuligheder.</strong> Skitser to til tre veje med åbne fordele og ulemper, så panelet ser, at du tænker i alternativer og ikke kun en løsning.</li>
-<li><strong>Din anbefaling.</strong> Vælg en retning og begrund den. Vis vigtigst af alt, hvordan du fører den ud gennem de fire centerledere frem for selv.</li>
-<li><strong>Måling af succes.</strong> Sig hvordan du ved, at det virker. Kobl til de tal, området styres efter.</li>
-</ol>
-<h5>Fem bærende pointer om at lede et ungecenter gennem forandring</h5>
-<ol start="1">
-<li><strong>Forandringen er opgaven, ikke støjen.</strong> Jeg går til 2030 som en mulighed for at gentænke tilbuddet, og jeg starter med at lytte og kortlægge, før jeg laver om.</li>
-<li><strong>Jeg leder gennem lederne.</strong> Retningen sættes af mig, men enhederne ledes af de fire centerledere med mandat og opbakning. Det holder både tempo og følgeskab.</li>
-<li><strong>Sammenhæng slår silør.</strong> Jeg bygger et fælles sprog og et fælles ansvar for helheden, så UU, ungdomsskole, 10. klasse og STU spiller sammen om den unges vej.</li>
-<li><strong>Drift og udvikling på en gang.</strong> Jeg holder økonomi og kvalitet i luften, mens vi udvikler. Tidlige gevinster skaber tro på den større forandring.</li>
-<li><strong>Data og menneskesyn følges ad.</strong> Bedre overblik på tværs støtter fagligheden, men målet er altid den unges potentiale, ikke systemet.</li>
-</ol>
-<h5>Praktiske råd til selve fremlæggelsen</h5>
-<ul>
-<li>Hold dig til få slides eller helt uden. Tal i stedet ud fra strukturen ovenfor.</li>
-<li>Sig højt, hvordan du vil involvere centerlederne. Casen tester netop, om du overtager opgaven selv eller leder gennem dine ledere.</li>
-<li>Hav en første 100 dages plan som backup. Lyt og kortlæg, byg tillid i lederteamet, find to til tre tidlige gevinster, sæt fælles retning mod 2030.</li>
-<li>Slut med at knytte det til dig selv. Hvorfor du, og hvorfor nu.</li>
-</ul>
-<h4>Del 4. Gode spørgsmål du selv kan stille panelet</h4>
-<p>Gode spørgsmål viser, at du har forstået opgaven, og de giver dig vigtig viden. Vælg to til tre, der passer til stemningen.</p>
-<ol start="1">
-<li>Når I ser tilbage om to år og siger, at ansættelsen af den nye ungecenterleder var rigtig, hvad er der så lykkedes?</li>
-<li>Hvordan ser I forholdet mellem Ungecenterets eget 10. klasse tilbud og FGU udvikle sig frem mod 2030, og hvor meget af den retning er allerede lagt?</li>
-<li>Hvad er efter jeres vurdering den største styrke og den største udfordring i det nuværende lederteam af fire centerledere?</li>
-<li>Hvordan arbejder direktionen og byrådet sammen med Ungecenteret om de nationale mål, og hvor har lederen reelt handlerum?</li>
-<li>Hvis I skal fremhæve en ting, den kommende leder skal lykkes med i det første år, hvad er den så?</li>
-</ol>
-<h4>Kort om anden samtale (24. august, Garuda profil)</h4>
-<p>Garuda er et dansk profilværktøj. Det er en selvbeskrivende personprofil, ikke en test man kan bestå eller dumpe. Du udfylder et spørgeskema før samtalen, og resultatet drøftes i anden runde, ofte med en konsulent til stede.</p>
-<ul>
-<li>Svar ærligt og konsistent. Profilen måles op mod det, du sagde i første runde, så lad de to hænge sammen.</li>
-<li>Kend dine styrker. Relation, kommunikation, udvikling og tillid. Hav et konkret eksempel klar for hver.</li>
-<li>Kend dine udviklingspunkter og hav en ærlig refleksion klar. En leder af ledere profil vægter typisk helhedssyn, delegering, tillid og robusthed.</li>
-<li>Vær klar til at tale om, hvordan din profil passer til netop dette lederteam og til forandringsopgaven.</li>
-</ul>
+  <section class="card job-page" id="job-2">
+    <h2>💼 [JOBTITEL 2] · [ARBEJDSSTED 2]</h2>
+    <p class="lead">[Kort resume af jobbet og de vigtigste argumenter for at søge.]</p>
+    <div class="info-grid"><p><strong>Frist:</strong> [DD. måned ÅÅÅÅ]</p><p><strong>Status:</strong> [Kladde/Klar/Sendt/Samtale]</p><p><strong>Kontakt:</strong> [NAVN/TITEL]</p><p><strong>Kørselstid:</strong> [XX min. én vej]</p></div>
+    <details open><summary>1. Prioritering</summary><p><strong>Score:</strong> [1-5] · <strong>Hvorfor:</strong> [Kort begrundelse.]</p></details>
+    <details><summary>2. Materiale</summary><p><strong>Ansøgning:</strong> [Indsæt eller skriv udkast.]</p><p><strong>CV-vinkel:</strong> [Indsæt de vigtigste tilpasninger.]</p></details>
+    <details><summary>3. Samtaleforberedelse</summary><ul><li><strong>Hovedbudskab:</strong> [Det de skal huske.]</li><li><strong>STAR-eksempel:</strong> [Situation, opgave, handling, resultat.]</li><li><strong>Spørgsmål til panelet:</strong> [Spørgsmål 1-3.]</li></ul></details>
+    <details><summary>4. Tjekliste</summary><ul class="checklist" data-list="job-2"><li><label><input type="checkbox"> Motivation er tydelig</label></li><li><label><input type="checkbox"> Krav fra opslaget er dækket</label></li><li><label><input type="checkbox"> Kontaktperson-noter er indarbejdet</label></li></ul></details>
+    <p><a href="#dashboard">Tilbage til dashboard</a></p>
   </section>
 
-  <section class="card" id="runde2">
-    <h2>🆕 Runde 2 · fem nye lederstillinger</h2>
-    <p class="lead">Fem nye ansøgninger klar til afsendelse. Hver med en tilpasset CV-vinkling og noter til udfyldelse før afsendelse.</p>
+  <section class="card job-page" id="job-3">
+    <h2>💼 [JOBTITEL 3] · [ARBEJDSSTED 3]</h2>
+    <p class="lead">[Brug denne side til en aktiv samtaleproces eller en ansøgning, der allerede er sendt.]</p>
+    <div class="info-grid"><p><strong>Samtaledato:</strong> [DD. måned ÅÅÅÅ]</p><p><strong>Status:</strong> [Samtale]</p><p><strong>Panel:</strong> [ROLLER/NAVNE]</p><p><strong>Næste handling:</strong> [Forbered case/spørgsmål]</p></div>
+    <details open><summary>1. Tre budskaber</summary><ol><li>[Budskab 1]</li><li>[Budskab 2]</li><li>[Budskab 3]</li></ol></details>
+    <details><summary>2. Forventede spørgsmål</summary><ol><li>Hvorfor søger du denne rolle?</li><li>Hvad vil du prioritere de første 100 dage?</li><li>Hvordan skaber du følgeskab i forandringer?</li><li>Hvordan arbejder du med drift, kvalitet og økonomi?</li></ol></details>
+    <details><summary>3. Efter samtalen</summary><ul class="checklist" data-list="job-3"><li><label><input type="checkbox"> Notér hvad panelet lagde vægt på</label></li><li><label><input type="checkbox"> Send tak/opfølgning hvis relevant</label></li><li><label><input type="checkbox"> Opdatér næste frist</label></li></ul></details>
+    <p><a href="#dashboard">Tilbage til dashboard</a></p>
   </section>
 
-  <section class="card" id="skovshoved">
-    <h2>🏫 Skoleleder · Skovshoved Skole (Gentofte)</h2>
-    <p class="lead">Frist 9. august 2026. Ansøgning i din egen stemme med CV-vinkling og noter til udfyldelse.</p>
-    <h3>Ansøgning</h3>
-<h4>Ansøgning til stillingen som skoleleder ved Skovshoved Skole</h4>
-<p><strong>Gentofte Kommune, att. skolechef Susanne Poulsen</strong> Aabenraa, den [DATO. EJER UDFYLDER, senest 9. august 2026]</p>
-<p>Jeg søger hermed stillingen som skoleleder ved Skovshoved Skole. En etableret folkeskole med omkring 600 elever, cirka 80 medarbejdere, et stærkt ledelsesteam og en engageret bestyrelse. At stå i spidsen for en velfungerende skole i en ambitiøs kommune, hvor skoleledelsen løfter hinanden i fællesskab, er en opgave jeg motiveres stærkt af.</p>
-<p>Jeg hedder Jesper Qvist, er 48 år og arbejder i dag som forstander og skoleleder. Jeg har arbejdet med ledelse på skoleområdet siden 2018 med ansvar for drift, personale, økonomi og organisatorisk udvikling. Senest med ansvar for at drive en selvstændig institution med egen bestyrelse.</p>
-<h4>Motivation for stillingen</h4>
-<p>Skovshoved Skole står et stærkt sted og skal fortsat udvikles inden for Gentoftes nye skolevision. Det tiltaler mig at lede en skole, der ikke skal reddes, men løftes videre. Med afsæt i en solid faglighed, et kompetent ledelsesteam og en kommune, der bevidst investerer i et stærkt skolelederfællesskab. Jeg vil være en synlig, retningssættende leder, der sætter en tydelig kurs sammen med medarbejdere, elever, forældre og bestyrelse.</p>
-<h4>Synlig og retningssættende ledelse</h4>
-<p>Gentofte søger en synlig, retningssættende leder og en dygtig kommunikator. Det er kernen i min ledelsesstil. Jeg leder tæt på driften, nærværende og tydeligt, og jeg kommunikerer klart om både retning og forventninger. Som leder af en selvstændig institution har jeg ansvaret for økonomi, personale og bestyrelsessamarbejde. Tidligere var jeg souschef og afdelingsleder på Kløver-Skolen i Sønderborg med personaleansvar for op til 36 medarbejdere og budgetansvar på op til 47 mio. kr. Jeg ved, hvad der skal til for at holde en stor organisation på ret kurs og samtidig give ledelsesteamet rum til at lykkes.</p>
-<h4>At løfte en skole i fællesskab</h4>
-<p>Jeg tror på distribueret ledelse. En dygtig skole skabes af et ledelsesteam, der trækker i samme retning, og af medarbejdere, der oplever tillid og faglig frihed inden for en tydelig ramme. Jeg vil styrke det faglige miljø, så skolen både tiltrækker og fastholder dygtige kolleger, og jeg vil bruge skolelederfællesskabet i Gentofte aktivt. At lære af og bidrage til de øvrige skoler.</p>
-<h4>Ledelse med hjertet og hjernen</h4>
-<p>Jeg bruger data og systemer til at understøtte gode beslutninger og god drift, uden at teknikken bliver et mål i sig selv. Som IT-specialiseret leder kan jeg styrke dokumentation, datainformeret praksis og forældresamarbejde, blandt andet via Aula, så mere tid frigøres til kerneopgaven. For mig er ledelse både det, man beslutter, og den måde, man møder mennesker på i hverdagen.</p>
-<p>Jeg uddyber meget gerne, hvordan mine erfaringer kan bringes i spil på Skovshoved Skole.</p>
-<p>Med venlig hilsen</p>
-<p>Jesper Qvist</p>
-<p>Tlf. 29 92 31 01 . jgq@live.dk</p>
-<hr style="border:0;border-top:1px solid #334155;margin:24px 0" />
-<blockquote><p><strong>[EJER UDFYLDER før afsendelse]</strong></p><ul><li><strong>Lokal tilknytning:</strong> Skolen ligger i Gentofte, langt fra Sønderjylland. Overvej en kort, ærlig sætning om din motivation for at søge mod hovedstadsområdet eller din indstilling til flytning.</li><li><strong>Kontakt/dialog:</strong> Hvis du har talt med skolechef Susanne Poulsen eller Henning Meldgaard fra Genitor, så nævn det i første afsnit.</li><li><strong>Konkret resultat:</strong> Tilføj gerne et kort eksempel (STAR-form) på en udvikling du har stået bag, som viser dig som retningssættende leder.</li><li><strong>Dato:</strong> Indsæt afsendelsesdato.</li></ul></blockquote>
-<hr style="border:0;border-top:1px solid #334155;margin:24px 0" />
-<h4>CV-vinkling til denne stilling (skoleleder-sporet)</h4>
-<ul><li><strong>Overskrift/titel:</strong> "Forstander og skoleleder" med undertitel om ledelse af større skoler og ledelsesteam.</li><li><strong>Fremhæv øverst:</strong> Erfaring med at lede et ledelsesteam, personaleledelse i større skala (op til 36 medarbejdere), bestyrelsessamarbejde og økonomiansvar.</li><li><strong>Match kommunens sprog:</strong> Synlig og retningssættende ledelse, stærk kommunikation, udvikling af et velfungerende skoleområde.</li><li><strong>Behold:</strong> Din IT-specialiserede profil som et plus, men lad ledelse af folkeskole og ledelsesteam fylde mest.</li></ul>
+  <section class="card" id="skabeloner">
+    <h2>🧩 Skabeloner</h2>
+    <details open><summary>Ansøgningsstruktur</summary><ol><li><strong>Motivation:</strong> hvorfor netop denne rolle.</li><li><strong>Match:</strong> de vigtigste krav og din dokumentation.</li><li><strong>Værdi:</strong> hvad organisationen får ud af at vælge dig.</li><li><strong>Personlig afslutning:</strong> kort, konkret og i din egen stemme.</li></ol></details>
+    <details><summary>STAR-eksempel</summary><p><strong>Situation:</strong> [Kontekst]. <strong>Opgave:</strong> [Ansvar]. <strong>Handling:</strong> [Hvad gjorde du?]. <strong>Resultat:</strong> [Effekt].</p></details>
+    <details><summary>Spørgsmål til kontaktperson</summary><ul><li>Hvad skal den nye medarbejder/leder især lykkes med det første år?</li><li>Hvilke udfordringer fylder mest i rollen lige nu?</li><li>Hvad kendetegner en stærk ansøgning til jer?</li></ul></details>
   </section>
 
-  <section class="card" id="damagerskolen">
-    <h2>🏫 Skoleleder · Damagerskolen og Greve 10. klasse</h2>
-    <p class="lead">Frist 16. august 2026. Ansøgning i din egen stemme med CV-vinkling og noter til udfyldelse.</p>
-    <h3>Ansøgning</h3>
-<h4>Ansøgning til stillingen som skoleleder ved Damagerskolen og Greve 10. klasse</h4>
-<p><strong>Greve Kommune, att. souschef Mette Harder</strong> Aabenraa, den [DATO. EJER UDFYLDER, senest 16. august 2026]</p>
-<p>Jeg søger hermed stillingen som skoleleder for Damagerskolen og Greve 10. klasse. En skole med omkring 380 elever og 52 medarbejdere samt et 10. klasse-center med et højt fagligt niveau og stærke resultater. Kombinationen af folkeskole og 10. klasse-center giver et bredt ledelsesansvar, og det er præcis den type sammensatte ledelsesopgave, jeg trives med.</p>
-<p>Jeg hedder Jesper Qvist, er 48 år og arbejder i dag som forstander og skoleleder. Jeg har arbejdet med ledelse på skole- og specialområdet siden 2018 med ansvar for drift, personale, økonomi og organisatorisk udvikling. Senest med ansvar for at drive en selvstændig institution med egen bestyrelse.</p>
-<h4>Motivation for stillingen</h4>
-<p>Damagerskolen bygger på nærvær, fællesskab og faglig kvalitet, og GTI leverer stærke resultater for de unge. Det tiltaler mig at lede en skole, der allerede har fat i det væsentlige, og løfte den videre sammen med to afdelingsledere og en leder af 10. klasse-centret. Jeg motiveres af at få et ledelsesteam til at spille sammen og af at binde folkeskole og 10. klasse tættere op om en fælles retning.</p>
-<h4>Ledelse af et ledelsesteam og en bred opgave</h4>
-<p>Som forstander står jeg i spidsen for en selvstændig institution med ansvar for økonomi, personale og bestyrelse. Tidligere var jeg souschef og afdelingsleder på Kløver-Skolen i Sønderborg, blandt andet med personaleansvar for autismeafdelingen (36 medarbejdere) og budgetansvar på op til 47 mio. kr. Jeg har selv stået i souschef-rollen og kender vejen op i skoleledelsen indefra. Derfor ved jeg, hvad det kræver at lede ledere, at fordele ansvar klogt og at holde en samlet retning på tværs af afdelinger og et 10. klasse-center.</p>
-<h4>Nærvær, fællesskab og faglig kvalitet</h4>
-<p>Jeg deler skolens værdier. Medarbejderinddragelse er ikke en floskel for mig, men en forudsætning for gode beslutninger og for trivsel. Jeg leder tæt på, er oprigtigt interesseret i medarbejdernes arbejde og trivsel og arbejder løsningsorienteret. Jeg vil styrke det tætte samarbejde mellem lærere og pædagoger og bakke op om skolens indsatser inden for blandt andet matematik og makerspaces, så den faglige kvalitet løftes yderligere.</p>
-<h4>Ledelse med hjertet og hjernen</h4>
-<p>Jeg bruger data og systemer til at understøtte gode beslutninger og effektiv drift, uden at teknikken bliver et mål i sig selv. Som IT-specialiseret leder kan jeg styrke dokumentation, datainformeret praksis og forældresamarbejde, blandt andet via Aula. For mig er ledelse både det, man beslutter, og den måde, man møder mennesker på i hverdagen.</p>
-<p>Jeg uddyber meget gerne, hvordan mine erfaringer kan bringes i spil på Damagerskolen og i Greve 10. klasse.</p>
-<p>Med venlig hilsen</p>
-<p>Jesper Qvist</p>
-<p>Tlf. 29 92 31 01 . jgq@live.dk</p>
-<hr style="border:0;border-top:1px solid #334155;margin:24px 0" />
-<blockquote><p><strong>[EJER UDFYLDER før afsendelse]</strong></p><ul><li><strong>Ledelsesdiplom:</strong> Opslaget nævner, at lederuddannelse (diplom eller tilsvarende) forventes eller skal påbegyndes. Nævn kort din lederuddannelse, eller din plan om at tage den.</li><li><strong>Lokal tilknytning:</strong> Greve ligger på Sjælland. Overvej en kort sætning om din motivation for stedet eller indstilling til flytning.</li><li><strong>Kontakt/dialog:</strong> Hvis du har talt med souschef Mette Harder, så nævn det.</li><li><strong>Konkret resultat:</strong> Tilføj gerne et kort STAR-eksempel på en faglig løft eller et samarbejde du har stået bag.</li><li><strong>Dato:</strong> Indsæt afsendelsesdato.</li></ul></blockquote>
-<hr style="border:0;border-top:1px solid #334155;margin:24px 0" />
-<h4>CV-vinkling til denne stilling (skoleleder-sporet, bred profil)</h4>
-<ul><li><strong>Fremhæv øverst:</strong> Ledelse af ledere og af en sammensat organisation. Din souschef- og afdelingslederbaggrund er et direkte plus her, fordi opgaven omfatter to afdelingsledere og en GTI-leder.</li><li><strong>Match opslagets sprog:</strong> Nærvær, fællesskab, faglig kvalitet, løsningsorienteret, medarbejderinddragelse.</li><li><strong>Faglig bredde:</strong> Vis erfaring med både almen- og specialområdet, da Greve arbejder med specialundervisningsreform.</li><li><strong>Behold:</strong> IT-specialiseret profil som plus.</li></ul>
-  </section>
-
-  <section class="card" id="saltum">
-    <h2>🏫 Skoleleder · Saltum Skole (Jammerbugt)</h2>
-    <p class="lead">Frist 12. august 2026. Ansøgning i din egen stemme med CV-vinkling og noter til udfyldelse.</p>
-    <h3>Ansøgning</h3>
-<h4>Ansøgning til stillingen som skoleleder ved Saltum Skole</h4>
-<p><strong>Jammerbugt Kommune, att. skole- og dagtilbudschef Helle Nørgaard Pedersen</strong> Aabenraa, den [DATO. EJER UDFYLDER, senest 12. august 2026]</p>
-<p>Jeg søger hermed stillingen som skoleleder ved Saltum Skole. En integreret organisation med vuggestue, børnehave, skole fra 0. til 9. klasse og SFO, omkring 180 elever og 30 medarbejdere samt en afdelingsleder. At stå i spidsen for et sted, hvor fællesskab, trivsel og faglighed går hånd i hånd på tværs af aldre, er en opgave, der ligger mit ledelsessyn nært.</p>
-<p>Jeg hedder Jesper Qvist, er 48 år og arbejder i dag som forstander og skoleleder. Jeg har arbejdet med ledelse på skole- og specialområdet siden 2018 med ansvar for drift, personale, økonomi og organisatorisk udvikling. Senest med ansvar for at drive en selvstændig institution med egen bestyrelse.</p>
-<h4>Motivation for stillingen</h4>
-<p>Saltum Skole står i et smukt lokalområde med et stærkt lokalt fællesskab, ro og høj livskvalitet. En integreret organisation fra vuggestue til 9. klasse kræver en leder, der kan holde helheden og samtidig se det enkelte barn og den enkelte medarbejder. Det er den slags ledelse, jeg trives med. Nærværende, samlende og med blik for både individ og fællesskab.</p>
-<h4>Både drive og udvikle en samlet organisation</h4>
-<p>Som forstander står jeg i dag i spidsen for en selvstændig institution med ansvar for økonomi, personale og bestyrelsessamarbejde. Tidligere var jeg souschef og afdelingsleder på Kløver-Skolen i Sønderborg. Jeg ved, hvad det kræver at holde en sund drift og samtidig udvikle organisationen, og jeg har erfaring med at lede tæt sammen med en afdelingsleder, så ansvaret fordeles klogt. Jeg kan både holde skibet på ret kurs i hverdagen og sætte en tydelig retning for, hvor vi skal hen.</p>
-<h4>Fællesskab på tværs</h4>
-<p>Opslaget sætter fællesskaber i centrum. Mellem skolens afdelinger, mellem børn og voksne og mellem skole og det omgivende samfund. Det er en ledelsesopgave, jeg brænder for. Jeg vil bygge bro mellem dagtilbud, skole og SFO, så overgange bliver trygge og sammenhængende for børnene, og jeg vil være en synlig skoleleder i lokalsamfundet, fordi en landsbyskole lever i tæt samspil med sit område.</p>
-<h4>Ledelse med hjertet og hjernen</h4>
-<p>Jeg leder tæt på, nærværende og tydeligt. Jeg bruger data og systemer til at understøtte gode beslutninger og god drift, uden at teknikken bliver et mål i sig selv. Som IT-specialiseret leder kan jeg styrke dokumentation og forældresamarbejde, blandt andet via Aula, så mere tid frigøres til børnene. For mig er ledelse både det, man beslutter, og den måde, man møder mennesker på i hverdagen.</p>
-<p>Jeg uddyber meget gerne, hvordan mine erfaringer kan bringes i spil på Saltum Skole.</p>
-<p>Med venlig hilsen</p>
-<p>Jesper Qvist</p>
-<p>Tlf. 29 92 31 01 . jgq@live.dk</p>
-<hr style="border:0;border-top:1px solid #334155;margin:24px 0" />
-<blockquote><p><strong>[EJER UDFYLDER før afsendelse]</strong></p><ul><li><strong>Dagtilbud:</strong> Opslaget vægter indsigt i dagtilbudsområdet. Har du konkret erfaring med vuggestue/børnehave-ledelse eller overgange dagtilbud-skole, så fremhæv det. Ellers vær ærlig om din læringsvilje på netop den del.</li><li><strong>Lokal tilknytning:</strong> Jammerbugt ligger i Nordjylland. Overvej en kort, ærlig sætning om din motivation for stedet eller indstilling til flytning.</li><li><strong>Kontakt/dialog:</strong> Hvis du har talt med Helle Nørgaard Pedersen eller Jesper Lund Madsen fra Genitor, så nævn det.</li><li><strong>Dato:</strong> Indsæt afsendelsesdato.</li></ul></blockquote>
-<hr style="border:0;border-top:1px solid #334155;margin:24px 0" />
-<h4>CV-vinkling til denne stilling (skoleleder-sporet, integreret institution)</h4>
-<ul><li><strong>Fremhæv øverst:</strong> Erfaring med at lede en samlet, selvstændig institution og med at drive OG udvikle. Det matcher opslagets krav ordret.</li><li><strong>Match opslagets sprog:</strong> Fællesskab, trivsel, faglighed, nærvær, samlende, blik for både individ og fællesskab.</li><li><strong>Dagtilbud:</strong> Vis eventuel erfaring eller flade med 0-6-års-området, da organisationen omfatter vuggestue og børnehave.</li><li><strong>Behold:</strong> IT-specialiseret profil som et diskret plus. Denne skole er mindre, så læg vægt på nærvær og lokalt følgeskab frem for stor-skala-styring.</li></ul>
-  </section>
-
-  <section class="card" id="randers">
-    <h2>🧭 Områdeleder · Skoleområdet · Randers Kommune</h2>
-    <p class="lead">Frist 12. august 2026. Ansøgning i din egen stemme med CV-vinkling og noter til udfyldelse.</p>
-    <h3>Ansøgning</h3>
-<h4>Ansøgning til stillingen som områdeleder til skoleområdet</h4>
-<p><strong>Randers Kommune, Skoleafdelingen</strong> Aabenraa, den [DATO. EJER UDFYLDER, senest 12. august 2026]</p>
-<p>Jeg søger hermed en af de to nyoprettede stillinger som områdeleder til skoleområdet. En områdelederrolle, der indgår i et samlet ledelsesteam med skoledirektøren og bærer ansvar på tværs af hele skoleområdet, er et stort skridt op ad ledelsesstigen. Det er præcis den type chef-nære, tværgående ledelse, jeg arbejder målrettet hen imod.</p>
-<p>Jeg hedder Jesper Qvist, er 48 år og arbejder i dag som forstander og skoleleder. Jeg har arbejdet med ledelse på skole- og specialområdet siden 2018 med ansvar for drift, personale, økonomi og organisatorisk udvikling. Senest med ansvar for at drive en selvstændig institution med egen bestyrelse.</p>
-<h4>Motivation for stillingen</h4>
-<p>At to nye områdelederstillinger oprettes, signalerer, at Randers vil styrke den samlede ledelse af skoleområdet og bygge et tættere ledelsesteam omkring skoledirektøren. Jeg motiveres af at løfte blikket fra den enkelte skole til hele området. At sætte fælles retning, understøtte skoleledere i at lykkes og bygge bro mellem forvaltning, skoler og udviklingscenter. Det er den udvikling, jeg er klar til.</p>
-<h4>Fra skoleledelse til områdeledelse</h4>
-<p>Jeg leder i dag en selvstændig institution med fuldt ansvar for økonomi, personale og bestyrelsessamarbejde. Tidligere var jeg souschef og afdelingsleder på Kløver-Skolen i Sønderborg med personaleansvar for op til 36 medarbejdere og budgetansvar på op til 47 mio. kr. Jeg har altså prøvet både at stå i souschef-rollen og at bære det fulde lederansvar, og jeg kender skolelederens hverdag indefra. Det gør mig i stand til at understøtte og udfordre skoleledere fagligt, fordi jeg selv har siddet med opgaverne. Som områdeleder vil jeg bruge den erfaring til at lede gennem andre ledere og til at holde en samlet retning på tværs.</p>
-<h4>Tværgående ledelse og strategisk medspil</h4>
-<p>En områdeleder skal kunne begge dele. Være tæt nok på til at forstå skolernes virkelighed og strategisk nok til at spille ind til skoledirektør og udvalg. Jeg er vant til at levere beslutningsgrundlag, holde tal og fremdrift ajour og omsætte politiske og strategiske mål til konkret praksis på skolerne. Jeg bruger data og systemer til at skabe overblik og til at understøtte gode beslutninger, så udviklingen bygger på mere end fornemmelser. Som IT-specialiseret leder ser jeg netop datainformeret ledelse som en styrke i en tværgående rolle.</p>
-<h4>Ledelse med hjertet og hjernen</h4>
-<p>Jeg tror på, at stærke resultater skabes gennem tydelig retning, gode relationer og en kultur, hvor vi både tør tale om det, der lykkes, og det, der er svært. Som områdeleder vil jeg være en tydelig, tillidsskabende leder for skolelederne. Både den, der sætter rammen, og den, der bakker op, når det bliver svært.</p>
-<p>Jeg uddyber meget gerne, hvordan min ledelseserfaring kan bringes i spil som områdeleder i Randers.</p>
-<p>Med venlig hilsen</p>
-<p>Jesper Qvist</p>
-<p>Tlf. 29 92 31 01 . jgq@live.dk</p>
-<hr style="border:0;border-top:1px solid #334155;margin:24px 0" />
-<blockquote><p><strong>[EJER UDFYLDER før afsendelse]</strong></p><ul><li><strong>Annoncedetaljer:</strong> Selve stillingsopslaget lå bag en ansøgningsportal og kunne ikke læses fuldt ud. Tjek det fulde opslag på Randers Kommunes side (Vis annonce) og indarbejd konkrete formuleringer om områdets størrelse, antal skoler og særlige fokusområder (fx udviklingscenter).</li><li><strong>Lokal tilknytning:</strong> Randers ligger i Østjylland. Overvej en kort sætning om din motivation for stedet eller indstilling til flytning.</li><li><strong>Ledelse af ledere:</strong> Har du konkret erfaring med at lede andre ledere, så fremhæv det præcist, da det er kernen i områdelederrollen.</li><li><strong>Dato:</strong> Indsæt afsendelsesdato.</li></ul></blockquote>
-<hr style="border:0;border-top:1px solid #334155;margin:24px 0" />
-<h4>CV-vinkling til denne stilling (skolechef-/områdeleder-sporet)</h4>
-<ul><li><strong>Overskrift/titel:</strong> Positioner dig som erfaren skoleleder på vej mod chef-niveau. Undertitel om tværgående ledelse og ledelse af ledere.</li><li><strong>Fremhæv øverst:</strong> Fuldt lederansvar (økonomi op til 47 mio. kr., personale, bestyrelse), souschef-erfaring (kender skolelederrollen indefra) og strategisk medspil til overordnet ledelse.</li><li><strong>Match rollen:</strong> Ledelse gennem andre ledere, tværgående koordinering, datainformeret styring, brobygning mellem forvaltning og skoler.</li><li><strong>Behold:</strong> IT-specialiseret profil som en konkret styrke i en styrings- og udviklingsrolle.</li></ul>
-  </section>
-
-  <section class="card" id="region-midtjylland">
-    <h2>🖥️ Leder · Sekretariat og Porteføljestyring · Region Midtjylland</h2>
-    <p class="lead">Frist 16. august 2026. Ansøgning i din egen stemme med CV-vinkling og noter til udfyldelse.</p>
-    <h3>Ansøgning</h3>
-<h4>Ansøgning. Strategisk og relationel leder til Sekretariat og Porteføljestyring i Digitalisering og It</h4>
-<p><strong>Region Midtjylland, Digitalisering og It</strong> Aabenraa, den [DATO. EJER UDFYLDER, senest 16. august 2026]</p>
-<p>Jeg søger hermed stillingen som leder for Sekretariat og Porteføljestyring i Digitalisering og It. En PMO-funktion står i krydsfeltet mellem digitalisering, governance og ledelsesstøtte. Det er præcis den type ledelse, jeg har praktiseret i mange år, og som jeg motiveres af. At skabe overblik, retning og fremdrift på tværs, så den enkelte projektleder og medarbejder kan lykkes med kerneopgaven.</p>
-<p>Jeg hedder Jesper Qvist, er 48 år og arbejder i dag som forstander og skoleleder. Jeg beskriver mig selv som en IT-specialiseret leder. Det betyder, at jeg bruger data, systemer og struktureret porteføljeoverblik til at understøtte gode beslutninger, uden at teknikken nogensinde bliver et mål i sig selv. Mennesket og opgaven kommer først.</p>
-<h4>Motivation for stillingen</h4>
-<p>En PMO-funktion lykkes, når den gør det lettere for organisationen at prioritere rigtigt, styre risici og levere til tiden. Jeg brænder for at bygge de rammer op. Klare processer, gennemsigtig porteføljestyring og et sekretariat, der løfter ledelsen med beslutningsgrundlag af høj kvalitet. Muligheden for at gøre det i en stor offentlig digitaliseringsorganisation, hvor indsatsen faktisk betyder noget for borgere og medarbejdere, er stærkt motiverende for mig.</p>
-<h4>Ledelse af governance, portefølje og økonomi</h4>
-<p>Jeg har stået i spidsen for en selvstændig institution med fuldt ansvar for økonomi, personale og bestyrelsessamarbejde. Tidligere var jeg souschef og afdelingsleder med personaleansvar for op til 36 medarbejdere og budgetansvar på op til 47 mio. kr. Jeg ved, hvad det kræver at forvalte en betydelig ramme ansvarligt, at styre en portefølje af parallelle indsatser og at holde retning, når mange interesser skal spille sammen. Jeg leder tæt på driften og spiller samtidig strategisk ind til det øverste ledelseslag. Begge dele på en gang.</p>
-<h4>Sekretariat og ledelsesstøtte</h4>
-<p>Et stærkt sekretariat handler om at omsætte komplekse dagsordener til klare beslutningsgrundlag og at sikre, at det, der besluttes, også følges til dørs. Jeg har i praksis fungeret som den, der bygger struktur, møderytme og opfølgning op omkring en ledelse og en bestyrelse. Jeg leverer beslutningsoplæg, holder tal og fremdrift ajour og sikrer, at governance ikke bliver papir, men reel styring.</p>
-<h4>Datainformeret og relationel på en gang</h4>
-<p>Jeg tror på, at stærke resultater skabes gennem tydelig retning, gode relationer og en kultur, hvor vi både tør tale om det, der lykkes, og det, der er svært. Jeg bruger data og systemer til at skabe overblik og til at frigøre tid til det væsentlige. Men porteføljestyring er også mennesker. Projektledere, der skal føle sig bakket op, og en ledelse, der skal kunne stole på, at grundlaget er i orden. Jeg kan begge sprog. Det tekniske og det relationelle.</p>
-<p>Jeg uddyber meget gerne, hvordan min ledelseserfaring og min IT-specialiserede tilgang kan bringes i spil i Digitalisering og It.</p>
-<p>Med venlig hilsen</p>
-<p>Jesper Qvist</p>
-<p>Tlf. 29 92 31 01 . jgq@live.dk</p>
-<hr style="border:0;border-top:1px solid #334155;margin:24px 0" />
-<blockquote><p><strong>[EJER UDFYLDER før afsendelse]</strong></p><ul><li><strong>Konkrete IT- og projekteksempler:</strong> Denne rolle er den, der ligger længst fra din nuværende skolekontekst. Styrk ansøgningen markant med et eller to konkrete eksempler på digitaliserings- eller systemprojekter, du har stået i spidsen for (fx Aula-implementering, dataarbejde, systemudrulning, procesoptimering). Gerne i STAR-form. Det gør din IT-specialiserede profil troværdig for en teknisk organisation.</li><li><strong>Geografi:</strong> Region Midtjylland sidder i Viborg og Aarhus. Overvej en kort sætning om din indstilling til pendling eller flytning, så der ikke opstår tvivl.</li><li><strong>Dato:</strong> Indsæt afsendelsesdato.</li><li><strong>Kontakt:</strong> Hvis du har haft en indledende dialog med ansættende leder, så nævn det i første afsnit.</li></ul></blockquote>
-<hr style="border:0;border-top:1px solid #334155;margin:24px 0" />
-<h4>CV-vinkling til denne stilling (IT-chef-sporet)</h4>
-<p>Vinkl dit CV mod IT-ledelse og governance, ikke skoledrift.</p>
-<ul><li><strong>Overskrift/titel:</strong> "IT-specialiseret leder" først. Gerne undertitel som "Ledelse, porteføljestyring og datainformeret drift".</li><li><strong>Fremhæv øverst:</strong> Budget- og økonomiansvar (op til 47 mio. kr.), ledelse af parallelle indsatser, systemer og data i drift (Aula, dokumentation, datainformeret praksis), bestyrelses- og ledelsesstøtte.</li><li><strong>Nedton:</strong> Rent pædagogiske/specialpædagogiske detaljer. Behold ledelseslinjen, men lad IT, styring og governance fylde mest.</li><li><strong>Tilføj hvis muligt:</strong> Konkrete systemer og værktøjer du behersker, samt eventuelle IT-relevante kurser eller certificeringer.</li></ul>
-  </section>
-
-  <section class="card">
-    <h2>Om siden</h2>
-    <p>Offentlig GitHub Pages-side, hvor selve indholdet er krypteret i browseren (AES-256-GCM). Uden den korrekte adgangskode kan indholdet ikke læses · heller ikke i kildekoden. Skift adgangskode ved at køre <code>PAGE_PASSWORD="ny-kode" npm run build</code> og pushe <code>index.html</code>.</p>
+  <section class="card" id="noter">
+    <h2>📝 Private noter</h2>
+    <p>Plads til egne noter. Hold teksten kort og undgå følsomme oplysninger, som ikke er nødvendige for jobsøgningen.</p>
+    <textarea class="notes" data-notes="general" rows="8" placeholder="Skriv noter her. De gemmes kun i denne browsers localStorage efter oplåsning."></textarea>
   </section>
 </main>
 
-<footer class="foot">
-  <p>Bygget med GitHub Pages · indhold krypteret client-side</p>
-</footer>
+<footer class="foot">Skabelon med pladsholdere · udfyld kun det, du selv ønsker at gemme her.</footer>

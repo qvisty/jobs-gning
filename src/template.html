@@ -27,12 +27,12 @@
     .gate button:disabled { opacity: .6; cursor: default; }
     .err { color: #f87171; font-size: 13px; margin-top: 12px; min-height: 18px; }
     /* Beskyttet indhold-styling (vises efter dekryptering) */
-    .protected { max-width: 720px; margin: 40px auto; padding: 0 20px; }
+    .protected { max-width: 1120px; margin: 32px auto; padding: 0 20px 48px; }
     .protected .eyebrow { text-transform: uppercase; letter-spacing: .08em; font-size: 12px; color: #818cf8; }
     .protected .hero h1 { font-size: 40px; margin: 4px 0 8px; }
     .protected .lead { font-size: 18px; color: #cbd5e1; }
     .protected .card { background: rgba(30,41,59,.6); border: 1px solid #334155; border-radius: 14px;
-      padding: 20px 24px; margin: 20px 0; }
+      padding: 20px 24px; margin: 20px 0; scroll-margin-top: 90px; }
     .protected .card h2 { margin-top: 0; }
     .protected code { background: #0b1220; padding: 2px 6px; border-radius: 6px; font-size: 90%; }
     .protected .foot { color: #64748b; font-size: 13px; margin: 40px 0; text-align: center; }
@@ -54,6 +54,33 @@
     .protected .tag--samtale { background: rgba(129,140,248,.15); color: #a5b4fc; border: 1px solid #818cf8; }
     .protected .tag--tiltraedelse { background: rgba(52,211,153,.15); color: #6ee7b7; border: 1px solid #34d399; }
     .protected .tag--opfoelgning { background: rgba(251,191,36,.15); color: #fcd34d; border: 1px solid #fbbf24; }
+    .protected .table-wrap { overflow-x: auto; margin: 16px 0; border: 1px solid #334155; border-radius: 12px; }
+    .protected .job-table { width: 100%; border-collapse: collapse; min-width: 680px; background: rgba(15,23,42,.45); }
+    .protected .job-table th, .protected .job-table td { padding: 12px 14px; border-bottom: 1px solid #334155; text-align: left; vertical-align: top; }
+    .protected .job-table th { color: #f8fafc; background: rgba(99,102,241,.18); font-size: 13px; text-transform: uppercase; letter-spacing: .04em; }
+    .protected .job-table tr:last-child td { border-bottom: 0; }
+    .protected .job-table td { color: #cbd5e1; font-size: 14px; }
+    .protected .hub-nav { position: sticky; top: 0; z-index: 5; display: flex; gap: 8px; overflow-x: auto;
+      margin: 20px 0; padding: 10px; background: rgba(15,23,42,.92); border: 1px solid #334155; border-radius: 14px; backdrop-filter: blur(8px); }
+    .protected .hub-nav a, .protected .button-link, .protected .filter-btn { display: inline-flex; align-items: center; justify-content: center;
+      border: 1px solid #475569; border-radius: 999px; padding: 8px 12px; color: #e2e8f0; background: rgba(30,41,59,.7); text-decoration: none; white-space: nowrap; cursor: pointer; }
+    .protected .hub-nav a:hover, .protected .button-link:hover, .protected .filter-btn:hover, .protected .filter-btn.is-active { border-color: #818cf8; background: rgba(99,102,241,.25); }
+    .protected .toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+    .protected .job-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .protected .job-card { background: rgba(15,23,42,.55); border: 1px solid #334155; border-radius: 14px; padding: 16px; }
+    .protected .job-card[hidden] { display: none; }
+    .protected .meta { color: #94a3b8; font-size: 13px; margin: 0 0 8px; }
+    .protected .compact-list { padding-left: 18px; }
+    .protected .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin: 14px 0; }
+    .protected .info-grid p { background: rgba(15,23,42,.45); border: 1px solid #334155; border-radius: 12px; margin: 0; padding: 12px; }
+    .protected details { background: rgba(15,23,42,.35); border: 1px solid #334155; border-radius: 12px; margin: 12px 0; padding: 12px 14px; }
+    .protected summary { cursor: pointer; font-weight: 700; color: #f8fafc; }
+    .protected .draft { background: #0b1220; border: 1px dashed #64748b; border-radius: 12px; margin-top: 12px; padding: 14px; }
+    .protected .checklist { list-style: none; padding-left: 0; }
+    .protected .checklist li { margin: 8px 0; }
+    .protected .checklist input { margin-right: 8px; transform: translateY(1px); }
+    .protected .notes { width: 100%; border: 1px solid #475569; border-radius: 12px; padding: 12px; background: #0b1220; color: #f8fafc; font: inherit; }
+    @media (max-width: 640px) { .protected { padding: 0 12px 36px; } .protected .hero h1 { font-size: 32px; } .protected .card { padding: 16px; } }
     body.unlocked { display: block; background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%); }
   </style>
 </head>
@@ -109,9 +136,43 @@
         return new TextDecoder().decode(plainBuf);
       }
 
+      function enhanceProtected() {
+        document.querySelectorAll('.filter-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            const filter = btn.dataset.filter;
+            document.querySelectorAll('.filter-btn').forEach((item) => item.classList.toggle('is-active', item === btn));
+            document.querySelectorAll('.job-card').forEach(function (card) {
+              card.hidden = filter !== 'all' && card.dataset.status !== filter;
+            });
+          });
+        });
+
+        document.querySelectorAll('.checklist').forEach(function (list) {
+          const key = 'jobsoegning:checklist:' + list.dataset.list;
+          let saved = [];
+          try { saved = JSON.parse(localStorage.getItem(key) || '[]'); } catch (_) { saved = []; }
+          list.querySelectorAll('input[type="checkbox"]').forEach(function (checkbox, index) {
+            checkbox.checked = Boolean(saved[index]);
+            checkbox.addEventListener('change', function () {
+              const values = Array.from(list.querySelectorAll('input[type="checkbox"]')).map((item) => item.checked);
+              try { localStorage.setItem(key, JSON.stringify(values)); } catch (_) {}
+            });
+          });
+        });
+
+        document.querySelectorAll('.notes').forEach(function (notes) {
+          const key = 'jobsoegning:notes:' + notes.dataset.notes;
+          try { notes.value = localStorage.getItem(key) || ''; } catch (_) {}
+          notes.addEventListener('input', function () {
+            try { localStorage.setItem(key, notes.value); } catch (_) {}
+          });
+        });
+      }
+
       function reveal(html) {
         document.body.classList.add('unlocked');
         document.body.innerHTML = '<div class="protected">' + html + '</div>';
+        enhanceProtected();
       }
 
       async function rememberKey(key) {
