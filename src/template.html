@@ -42,9 +42,33 @@
     .content .tag--samtale { background: rgba(129,140,248,.15); color: #a5b4fc; border: 1px solid #818cf8; }
     .content .tag--tiltraedelse { background: rgba(52,211,153,.15); color: #6ee7b7; border: 1px solid #34d399; }
     .content .tag--opfoelgning { background: rgba(251,191,36,.15); color: #fcd34d; border: 1px solid #fbbf24; }
+    .content .tag--kladde { background: rgba(251,191,36,.15); color: #fcd34d; border: 1px solid #fbbf24; }
+    .content .tag--sendt { background: rgba(52,211,153,.15); color: #6ee7b7; border: 1px solid #34d399; }
+    /* Tjeklister med flueben, der huskes i browseren */
+    .content .checklist { list-style: none; margin: 8px 0 22px; padding: 0; }
+    .content .checklist li { padding: 5px 0; }
+    .content .checklist label { display: flex; gap: 10px; align-items: baseline; cursor: pointer; }
+    .content .checklist input { accent-color: #6366f1; flex: 0 0 auto; transform: translateY(2px); }
+    .content .checklist label:has(input:checked) span { color: #64748b; text-decoration: line-through; }
   </style>
 </head>
 <body>
   <div class="content">__CONTENT__</div>
+  <script>
+    // Husk flueben i tjeklisterne mellem besøg (gemmes kun lokalt i browseren).
+    (function () {
+      var KEY = 'jobhub:checklist:v1';
+      var state = {};
+      try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
+      document.querySelectorAll('input[type=checkbox][data-check-id]').forEach(function (box) {
+        var id = box.getAttribute('data-check-id');
+        box.checked = !!state[id];
+        box.addEventListener('change', function () {
+          state[id] = box.checked;
+          try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
