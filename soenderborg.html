@@ -98,6 +98,9 @@
       .content .event, .content .fase-body > ul > li { break-inside: avoid; }
       .content h2, .content h3, .content h4, .content h5 { break-after: avoid; }
       .content p, .content li { orphans: 3; widows: 3; }
+      /* Hver forberedelsesmodel (STAR, Domæne, 4D, CMM, Tomm) starter på egen side */
+      .content #modeller .fase-body h3 { break-before: page; border-top: 0; }
+      .content #modeller .fase-body h3:first-of-type { break-before: auto; }
     }
     @page { margin: 15mm; }
     /* Private noter (gemmes kun i browserens localStorage) */
@@ -153,7 +156,7 @@
   <h1>🧭 Ungecenterleder · Sønderborg Kommune</h1>
   <p class="lead">Frist 11. august 2026 · 1. samtale 19. august (med case) · 2. samtale 24. august (Garuda) · tiltrædelse 1. oktober 2026.</p>
   <p class="commute">🚗 <strong>Kørsel fra Aabenraa:</strong> ca. 35 min · ca. 32 km hver vej (rute 8/41). Uproblematisk daglig pendling.</p>
-  <p class="anonote">🔒 <strong>Pladsholdere:</strong> Personlige oplysninger er erstattet med [DIT NAVN], [ALDER], [DIN NUVÆRENDE SKOLE] og [DIN TIDLIGERE SKOLE] — indsæt de rigtige data i den version, du sender.</p>
+  <p class="anonote">🔒 <strong>Pladsholdere:</strong> Personlige oplysninger er erstattet med [DIT NAVN], [ALDER], [DIN NUVÆRENDE SKOLE] og [DIN TIDLIGERE SKOLE]. Indsæt de rigtige data i den version, du sender.</p>
 </header>
 
 <main>
@@ -178,12 +181,12 @@
   <details class="card fase" id="fase-1">
     <summary><h2>1️⃣ Research før kontakt</h2></summary>
     <div class="fase-body">
-    <p>Formålet med de første tre faser er dobbelt: at blive husket positivt, allerede før ansøgningerne læses — og at få viden, der gør din ansøgning skarpere end de andres.</p>
+    <p>Formålet med de første tre faser er dobbelt: at blive husket positivt, allerede før ansøgningerne læses, og at få viden, der gør din ansøgning skarpere end de andres.</p>
     <ul>
       <li>Kerneviden fra opslaget: udfasningen af 10. klasse frem mod 2030, de nationale mål (90 procent skal have en ungdomsuddannelse som 25-årige, andelen af unge uden tilknytning skal halveres) og de fire centerledere (UU, ungdomsskole, 10. klasse, STU).</li>
       <li>Kontaktperson: sundheds- og ungedirektør Lene Gram Herborg.</li>
-      <li>Genopfrisk dit lokalkendskab: seks år på [DIN TIDLIGERE SKOLE] og pladsen i kommunens digitaliseringsstyregruppe — det er din åbning i samtalen.</li>
-      <li>Forbered 2–3 spørgsmål, som IKKE kan besvares ved at læse opslaget — se fase 3.</li>
+      <li>Genopfrisk dit lokalkendskab: seks år på [DIN TIDLIGERE SKOLE] og pladsen i kommunens digitaliseringsstyregruppe. Det er din åbning i samtalen.</li>
+      <li>Forbered 2 til 3 spørgsmål, som IKKE kan besvares ved at læse opslaget, se fase 3.</li>
       <li>Hav din 20-sekunders præsentation klar: navn, nuværende rolle, én sætning om hvorfor netop denne stilling.</li>
     </ul>
     </div>
@@ -193,12 +196,12 @@
     <summary><h2>2️⃣ SMS-udkast · første kontakt</h2></summary>
     <div class="fase-body">
     <p>Ring hellere direkte på en hverdag mellem 8 og 15. Får du ikke svar, eller vil du hellere åbne blødt, så send en SMS. Udkast:</p>
-    <blockquote><p>Hej Lene Gram Herborg. Jeg hedder [DIT NAVN] og er forstander og skoleleder på [DIN NUVÆRENDE SKOLE] — og tidligere souschef på [DIN TIDLIGERE SKOLE] i Sønderborg. Jeg overvejer at søge stillingen som ungecenterleder og vil gerne høre, om du har 10 minutter til en kort telefonsamtale om stillingen? Jeg ringer, når det passer dig. Venlig hilsen [DIT NAVN]</p></blockquote>
+    <blockquote><p>Hej Lene Gram Herborg. Jeg hedder [DIT NAVN] og er forstander og skoleleder på [DIN NUVÆRENDE SKOLE], og tidligere souschef på [DIN TIDLIGERE SKOLE] i Sønderborg. Jeg overvejer at søge stillingen som ungecenterleder og vil gerne høre, om du har 10 minutter til en kort telefonsamtale om stillingen? Jeg ringer, når det passer dig. Venlig hilsen [DIT NAVN]</p></blockquote>
     <p>Kortere variant, hvis du allerede har ringet forgæves:</p>
-    <blockquote><p>Hej Lene Gram Herborg. Jeg har forsøgt at ringe vedrørende stillingen som ungecenterleder. Jeg vil gerne høre lidt mere om stillingen — hvornår passer det bedst, at jeg ringer? Venlig hilsen [DIT NAVN], forstander, [DIN NUVÆRENDE SKOLE]</p></blockquote>
+    <blockquote><p>Hej Lene Gram Herborg. Jeg har forsøgt at ringe vedrørende stillingen som ungecenterleder. Jeg vil gerne høre lidt mere om stillingen. Hvornår passer det bedst, at jeg ringer? Venlig hilsen [DIT NAVN], forstander, [DIN NUVÆRENDE SKOLE]</p></blockquote>
     <ul>
-      <li>Send på en hverdag mellem 8 og 15 — undgå fredag eftermiddag og weekend.</li>
-      <li>Nævn [DIN TIDLIGERE SKOLE] — dit lokalkendskab gør dig umiddelbart relevant og let at placere.</li>
+      <li>Send på en hverdag mellem 8 og 15. Undgå fredag eftermiddag og weekend.</li>
+      <li>Nævn [DIN TIDLIGERE SKOLE]. Dit lokalkendskab gør dig umiddelbart relevant og let at placere.</li>
       <li>Bed om et kort opkald, ikke et møde. Det er let at sige ja til.</li>
     </ul>
     </div>
@@ -207,12 +210,12 @@
   <details class="card fase" id="fase-3">
     <summary><h2>3️⃣ Den første telefonsamtale</h2></summary>
     <div class="fase-body">
-    <p>Hold den på 10–15 minutter. Struktur: kort præsentation (20 sekunder) → dine 2–3 spørgsmål → tak og en positiv afrunding ("samtalen bekræfter mig i, at jeg søger").</p>
+    <p>Hold den på 10 til 15 minutter. Struktur: kort præsentation (20 sekunder) → dine 2 til 3 spørgsmål → tak og en positiv afrunding ("samtalen bekræfter mig i, at jeg søger").</p>
     <h4>Spørgsmål du kan vælge imellem</h4>
     <ol>
       <li>Hvad bliver efter din vurdering den vigtigste opgave for ungecenterlederen i det første år?</li>
-      <li>Hvor langt er I i tankerne om, hvad Ungecenteret skal tilbyde, når 10. klasse udfases mod 2030 — hvad ligger fast, og hvad skal den nye leder selv forme?</li>
-      <li>Hvad kendetegner lederteamet af de fire centerledere — og hvor er samarbejdet på tværs stærkest og svagest i dag?</li>
+      <li>Hvor langt er I i tankerne om, hvad Ungecenteret skal tilbyde, når 10. klasse udfases mod 2030. Hvad ligger fast, og hvad skal den nye leder selv forme?</li>
+      <li>Hvad kendetegner lederteamet af de fire centerledere, og hvor er samarbejdet på tværs stærkest og svagest i dag?</li>
       <li>Hvilken profil lykkes efter jeres vurdering bedst i stillingen?</li>
       <li>Udleveres casen til første samtale på forhånd, eller får vi den på dagen?</li>
     </ol>
@@ -221,9 +224,9 @@
       <li><strong>Gentagne ord:</strong> De ord, der går igen (fx "sammenhæng", "følgeskab", "helhed"), er de ord, din ansøgning skal bruge.</li>
       <li><strong>Den nævnte udfordring:</strong> Nævner hun noget svært (siloer, økonomi, 2030-omstillingen), er det din ansøgnings vigtigste afsnit.</li>
       <li><strong>Prioritering:</strong> Hvad nævner hun FØRST, når du spørger om den vigtigste opgave? Det er den reelle topprioritet.</li>
-      <li><strong>Profil-ord:</strong> De ledelsesord hun bruger om den ønskede profil ("beslutningskraft", "tillid", "ro") — spejl dem i ansøgningen.</li>
+      <li><strong>Profil-ord:</strong> De ledelsesord hun bruger om den ønskede profil ("beslutningskraft", "tillid", "ro"). Spejl dem i ansøgningen.</li>
     </ul>
-    <p><em>Skriv dine noter ned STRAKS efter opkaldet — brug tjeklisten i fase 4.</em></p>
+    <p><em>Skriv dine noter ned STRAKS efter opkaldet. Brug tjeklisten i fase 4.</em></p>
     </div>
   </details>
 
@@ -304,19 +307,19 @@
   <details class="card fase" id="modeller">
     <summary><h2>🧩 Forberedelsesmodeller · STAR + fire systemiske alternativer</h2></summary>
     <div class="fase-body">
-    <p>STAR-eksemplerne i fase 6 er én måde at strukturere dine svar på. Her er fire alternativer med rod i den systemiske ledelsesteori, du kender fra diplom i ledelse. Forbered dine vigtigste eksempler i den model, der føles rigtig — eller skift model efter spørgsmålets type (se skemaet nederst).</p>
+    <p>STAR-eksemplerne i fase 6 er én måde at strukturere dine svar på. Her er fire alternativer med rod i den systemiske ledelsesteori, du kender fra diplom i ledelse. Forbered dine vigtigste eksempler i den model, der føles rigtig, eller skift model efter spørgsmålets type (se skemaet nederst).</p>
 
     <h3>Model 1 · STAR (klassisk kompetencemodel)</h3>
-    <p><strong>Situation → opgave → handling → resultat.</strong> Stærk, når panelet beder om et konkret eksempel og vil høre, hvad DU gjorde, og hvad der kom ud af det. Svaghed: den kan lyde mekanisk og individcentreret — den viser handlekraft, men ikke din refleksion.</p>
+    <p><strong>Situation → opgave → handling → resultat.</strong> Stærk, når panelet beder om et konkret eksempel og vil høre, hvad DU gjorde, og hvad der kom ud af det. Svaghed: den kan lyde mekanisk og individcentreret. Den viser handlekraft, men ikke din refleksion.</p>
 
     <h3>Model 2 · Domænemodellen (systemisk · Maturana / Lang &amp; Cronen)</h3>
     <p>Analysér en ledelsessituation gennem de tre domæner, og lad dit svar bevæge sig igennem dem:</p>
     <ul>
       <li><strong>Produktionens domæne:</strong> Regler, rammer, beslutninger og handling. "Hvad ligger fast, og hvad besluttede jeg?"</li>
-      <li><strong>Refleksionens domæne:</strong> Nysgerrighed og flere perspektiver — hypoteser om, hvordan situationen ser ud fra medarbejdere, forældre, forvaltning. "Hvilke forståelser var i spil?"</li>
+      <li><strong>Refleksionens domæne:</strong> Nysgerrighed og flere perspektiver. Hypoteser om, hvordan situationen ser ud fra medarbejdere, forældre, forvaltning. "Hvilke forståelser var i spil?"</li>
       <li><strong>Æstetikkens (det personlige) domæne:</strong> Dine egne værdier og etik. "Hvad var vigtigt for mig som leder her?"</li>
     </ul>
-    <p><strong>Svarstruktur:</strong> "Der var flere perspektiver i spil … (refleksion) → derfor skabte jeg klare rammer om … (produktion) → og for mig var det afgørende, at … (værdier)". Modellen er stærkest ved spørgsmål om svære beslutninger, konflikter og forandringer — den viser, at du kan skille undersøgelse fra beslutning, og at dine beslutninger hviler på værdier. Det er præcis det, systemisk skolede paneler lytter efter.</p>
+    <p><strong>Svarstruktur:</strong> "Der var flere perspektiver i spil … (refleksion) → derfor skabte jeg klare rammer om … (produktion) → og for mig var det afgørende, at … (værdier)". Modellen er stærkest ved spørgsmål om svære beslutninger, konflikter og forandringer. Den viser, at du kan skille undersøgelse fra beslutning, og at dine beslutninger hviler på værdier. Det er præcis det, systemisk skolede paneler lytter efter.</p>
 
     <h3>Model 3 · 4D-modellen (Appreciative Inquiry · anerkendende og systemisk)</h3>
     <p>Fortæl om en ledelsesopgave som en anerkendende udviklingsproces i fire trin:</p>
@@ -324,15 +327,15 @@
       <li><strong>Discovery (opdag):</strong> Hvad virkede allerede? Hvilke styrker byggede du på?</li>
       <li><strong>Dream (drøm):</strong> Hvilket ønskebillede satte I sammen?</li>
       <li><strong>Design:</strong> Hvilke rammer, strukturer og aftaler byggede I for at nå derhen?</li>
-      <li><strong>Destiny (drift):</strong> Hvordan blev det hverdag — og hvad bærer det videre i dag?</li>
+      <li><strong>Destiny (drift):</strong> Hvordan blev det hverdag, og hvad bærer det videre i dag?</li>
     </ul>
-    <p>Modellen ligger tæt på KRAP og din anerkendende, ressourcefokuserede profil — dit svar DEMONSTRERER menneskesynet i stedet for at påstå det. Stærkest ved spørgsmål om vision, kultur og udvikling. Svaghed: mindre skarp på hård prioritering og konflikt — der er domænemodellen bedre.</p>
+    <p>Modellen ligger tæt på KRAP og din anerkendende, ressourcefokuserede profil. Dit svar DEMONSTRERER menneskesynet i stedet for at påstå det. Stærkest ved spørgsmål om vision, kultur og udvikling. Svaghed: mindre skarp på hård prioritering og konflikt, der er domænemodellen bedre.</p>
 
     <h4>Samme eksempel i tre modeller · "Ledelse gennem andre ledere"</h4>
     <ul>
       <li><strong>STAR:</strong> Souschef med indirekte ledelse af 115 medarbejdere gennem afdelingsledere (S). Flere afdelinger skulle trække i samme retning uden at jeg overtog deres daglige ledelse (T). Fælles mål og rammer, tydelige aftaler, relationen først (A). Jeg ledede gennem lederne, ikke udenom dem (R).</li>
-      <li><strong>Domæne:</strong> "Jeg brugte refleksionens domæne bevidst: Hver afdelingsleder så opgaven fra sit område, og deres forskellige perspektiver var en styrke, ikke støj — så jeg spurgte, før jeg besluttede. I produktionens domæne var jeg til gengæld tydelig: fælles mål, klare aftaler og mandat til lederne. Og personligt var det bærende for mig, at tillid kommer før kontrol — ledere, der oplever reelt mandat, tager reelt ansvar."</li>
-      <li><strong>4D:</strong> "Jeg startede med at opdage, hvad hver enhed allerede lykkedes med (Discovery). Sammen formulerede vi, hvad vi ville være for de unge på tværs (Dream). Vi byggede en fælles møderytme og fælles mål, der bandt enhederne sammen (Design). Og det blev hverdag: lederne løste opgaven i egne enheder, men med fælles ansvar for helheden (Destiny)." — Præcis den bevægelse, Ungecenteret skal igennem mod 2030.</li>
+      <li><strong>Domæne:</strong> "Jeg brugte refleksionens domæne bevidst: Hver afdelingsleder så opgaven fra sit område, og deres forskellige perspektiver var en styrke, ikke støj, så jeg spurgte, før jeg besluttede. I produktionens domæne var jeg til gengæld tydelig: fælles mål, klare aftaler og mandat til lederne. Og personligt var det bærende for mig, at tillid kommer før kontrol. Ledere, der oplever reelt mandat, tager reelt ansvar."</li>
+      <li><strong>4D:</strong> "Jeg startede med at opdage, hvad hver enhed allerede lykkedes med (Discovery). Sammen formulerede vi, hvad vi ville være for de unge på tværs (Dream). Vi byggede en fælles møderytme og fælles mål, der bandt enhederne sammen (Design). Og det blev hverdag: lederne løste opgaven i egne enheder, men med fælles ansvar for helheden (Destiny).". Præcis den bevægelse, Ungecenteret skal igennem mod 2030.</li>
     </ul>
 
     <h4>Hvornår vælger du hvilken?</h4>
@@ -344,34 +347,34 @@
     </ul>
 
     <h3>Model 4 · CMM (Coordinated Management of Meaning · Pearce &amp; Cronen)</h3>
-    <p>CMM ser kommunikation som det, der <em>skaber</em> organisationens virkelighed — ikke bare beskriver den. Enhver besked får sin mening af konteksten over den. Analysér en ledelsessituation gennem konteksthierarkiet, oppefra og ned:</p>
+    <p>CMM ser kommunikation som det, der <em>skaber</em> organisationens virkelighed, ikke bare beskriver den. Enhver besked får sin mening af konteksten over den. Analysér en ledelsessituation gennem konteksthierarkiet, oppefra og ned:</p>
     <ul>
       <li><strong>Kultur:</strong> Hvilken større fortælling rammer situationen ind?</li>
       <li><strong>Identitet:</strong> Hvad betyder situationen for medarbejdernes selvforståelse?</li>
       <li><strong>Relation:</strong> Hvad gør den ved forholdet mellem ledelse og medarbejdere?</li>
       <li><strong>Episode og talehandling:</strong> Hvordan bliver den enkelte besked hørt inden for de kontekster?</li>
     </ul>
-    <p><strong>Svarstruktur:</strong> "Den samme besked kan høres i to forskellige fortællinger … derfor arbejdede jeg først med den store fortælling — og først derefter med de enkelte beskeder." Stærkest ved spørgsmål om kommunikation, forandringsfortællinger og "hvordan tager du medarbejderne med?". CMM er din teoretiske rygrad, når du siger, at kommunikation ikke er information, men ledelse.</p>
-    <p><strong>Sønderborg-eksempel:</strong> "Udfasningen af 10. klasse kan i medarbejdernes kontekst høres som 'vores område lukker' — eller som 'vi er centrale i fremtidens ungeindsats'. Sammen med de fire centerledere vil jeg etablere den fælles 2030-fortælling først, for den afgør, hvordan hver enkelt beslutning undervejs bliver modtaget i enhederne."</p>
+    <p><strong>Svarstruktur:</strong> "Den samme besked kan høres i to forskellige fortællinger … derfor arbejdede jeg først med den store fortælling, og først derefter med de enkelte beskeder." Stærkest ved spørgsmål om kommunikation, forandringsfortællinger og "hvordan tager du medarbejderne med?". CMM er din teoretiske rygrad, når du siger, at kommunikation ikke er information, men ledelse.</p>
+    <p><strong>Sønderborg-eksempel:</strong> "Udfasningen af 10. klasse kan i medarbejdernes kontekst høres som 'vores område lukker', eller som 'vi er centrale i fremtidens ungeindsats'. Sammen med de fire centerledere vil jeg etablere den fælles 2030-fortælling først, for den afgør, hvordan hver enkelt beslutning undervejs bliver modtaget i enhederne."</p>
 
     <h3>Model 5 · Karl Tomms spørgsmålstyper (systemisk · til de spørgsmål DU stiller)</h3>
-    <p>Hvor model 1–3 strukturerer dine <em>svar</em>, er Tomms fire spørgsmålstyper det stærkeste værktøj til de spørgsmål, <em>du selv</em> stiller panelet — og til at genkende, hvad panelet egentlig spørger dig om:</p>
+    <p>Hvor model 1 til 3 strukturerer dine <em>svar</em>, er Tomms fire spørgsmålstyper det stærkeste værktøj til de spørgsmål, <em>du selv</em> stiller panelet, og til at genkende, hvad panelet egentlig spørger dig om:</p>
     <ul>
       <li><strong>Lineære spørgsmål</strong> (afklarende, "hvad/hvor mange"): Viser at du har sat dig ind i sagen. Brug få af dem.</li>
-      <li><strong>Cirkulære spørgsmål</strong> (relationer og mønstre, "hvordan ser X på Y"): Viser systemisk blik — at du tænker i relationer, ikke kun i fakta.</li>
-      <li><strong>Refleksive spørgsmål</strong> (åbner fremtid og muligheder, "hvis vi står her om to år …"): De mest virkningsfulde — panelet begynder selv at se dig i rollen, mens de svarer.</li>
-      <li><strong>Strategiske spørgsmål</strong> (leder mod et bestemt svar): Brug varsomt — højst ét, og kun venligt.</li>
+      <li><strong>Cirkulære spørgsmål</strong> (relationer og mønstre, "hvordan ser X på Y"): Viser systemisk blik. At du tænker i relationer, ikke kun i fakta.</li>
+      <li><strong>Refleksive spørgsmål</strong> (åbner fremtid og muligheder, "hvis vi står her om to år …"): De mest virkningsfulde. Panelet begynder selv at se dig i rollen, mens de svarer.</li>
+      <li><strong>Strategiske spørgsmål</strong> (leder mod et bestemt svar): Brug varsomt. Højst ét, og kun venligt.</li>
     </ul>
     <h4>Eksempler til Sønderborg-samtalen · ét spørgsmål i hver type</h4>
     <ul>
       <li><strong>Lineært:</strong> "Hvordan er snitfladen mellem Ungecenterets 10. klasse og FGU besluttet i dag?"</li>
-      <li><strong>Cirkulært:</strong> "Hvordan oplever de fire centerledere hinandens områder — hvor er samarbejdet stærkest, og hvor knirker det?"</li>
-      <li><strong>Refleksivt:</strong> "Hvis de unge selv skulle beskrive et vellykket Ungecenter i 2030 — hvad ville de så sige?"</li>
+      <li><strong>Cirkulært:</strong> "Hvordan oplever de fire centerledere hinandens områder, hvor er samarbejdet stærkest, og hvor knirker det?"</li>
+      <li><strong>Refleksivt:</strong> "Hvis de unge selv skulle beskrive et vellykket Ungecenter i 2030. Hvad ville de så sige?"</li>
       <li><strong>Strategisk (varsomt):</strong> "Hvad skal der til, for at direktionen om et år siger, at ansættelsen var den rigtige?"</li>
     </ul>
 
-    <p><strong>Og den anden vej:</strong> Genkend panelets spørgsmålstype, og vælg din svarmodel efter den — lineære spørgsmål ("giv et eksempel") kalder på STAR, cirkulære ("hvordan vil medarbejderne opleve …") på domænemodellen, refleksive ("hvor ser du skolen om to år") på 4D.</p>
-    <p><em>Praktisk: Tag dine 2–3 bedste eksempler og skriv dem i model 1–3. Til samtalen vælger du den version, der passer til spørgsmålet — indholdet kan du udenad, kun formen skifter. Og vælg på forhånd 2–3 af dine egne spørgsmål fra model 4.</em></p>
+    <p><strong>Og den anden vej:</strong> Genkend panelets spørgsmålstype, og vælg din svarmodel efter den. Lineære spørgsmål ("giv et eksempel") kalder på STAR, cirkulære ("hvordan vil medarbejderne opleve …") på domænemodellen, refleksive ("hvor ser du skolen om to år") på 4D.</p>
+    <p><em>Praktisk: Tag dine 2 til 3 bedste eksempler og skriv dem i model 1 til 3. Til samtalen vælger du den version, der passer til spørgsmålet. Indholdet kan du udenad, kun formen skifter. Og vælg på forhånd 2 til 3 af dine egne spørgsmål fra model 4.</em></p>
     </div>
   </details>
 
@@ -379,20 +382,20 @@
   <details class="card fase" id="svar">
     <summary><h2>🎯 Forventede spørgsmål · optimale svar</h2></summary>
     <div class="fase-body">
-      <p>Svarene er skjult, til du klikker — øv dig ved at svare højt, før du folder svaret ud.</p>
-      <details class="qa"><summary>Hvordan leder du gennem fire erfarne centerledere uden at overtage deres drift?</summary><p>Jeg sætter retning og rammer og giver dem mandat til at lede deres enheder. Min opgave er helheden — deres er enhederne. Jeg bruger tid på relationen først, holder mine aftaler og bakker dem op, også udadtil.</p></details>
-      <details class="qa"><summary>Hvordan bygger du tillid hos ledere, der kender deres område bedre end dig?</summary><p>Ved at lytte, før jeg beslutter, anerkende deres faglighed og være tydelig om retning og rammer. Tillid kommer før kontrol — ledere, der oplever reelt mandat, tager reelt ansvar.</p></details>
-      <details class="qa"><summary>En centerleder er dygtig, men trækker i egen retning. Hvad gør du?</summary><p>Først en nysgerrig samtale: Hvad ser vedkommende, som jeg ikke ser? Derefter tydelighed: Retningen mod helheden ligger fast, og jeg forventer, at alle leder efter den. Jeg rummer uenighed i rummet — men vi går ud ad døren med én fælles retning.</p></details>
-      <details class="qa"><summary>Hvordan undgår du, at UU, ungdomsskolen, 10. klasse og STU bliver fire siloer?</summary><p>Ved at gøre den unges vej til den fælles reference. Fælles mål, fælles sprog og en fast møderytme på tværs — så de fire enheder måles på, hvad de lykkes med sammen, ikke kun hver for sig.</p></details>
-      <details class="qa"><summary>Hvordan udvikler du Ungecenteret, når 10. klasse udfases frem mod 2030?</summary><p>Forandringen er selve opgaven — jeg søger stillingen på grund af den. Jeg starter med at lytte og kortlægge, sætter så en fælles retning med lederteamet og finder tidlige gevinster, der skaber tro på den store bevægelse, mens drift og kvalitet holdes i luften.</p></details>
-      <details class="qa"><summary>Hvordan arbejder du konkret med de nationale 2030-mål?</summary><p>Jeg gør dem til styringsramme: 90 procent skal have en ungdomsuddannelse som 25-årige, og andelen af unge uden tilknytning skal halveres. Det kræver data på tværs af enhederne, så vi kan se den enkelte unges vej — og omsætte tallene til konkrete indsatser sammen med centerlederne.</p></details>
-      <details class="qa"><summary>Beskriv dine første 100 dage.</summary><p>Lytte først: unge, centerledere, medarbejdere, direktion. Bygge tillid i lederteamet. Finde to-tre tidlige gevinster. Og derefter sætte fælles retning mod 2030 — sammen med lederne, ikke hen over dem.</p></details>
-      <details class="qa"><summary>Fortæl om en svær beslutning, du har truffet under uklarhed.</summary><p>[Sæt dit eget eksempel ind — kernen i svaret:] Jeg skaffede det overblik, der kunne skaffes, inddrog de nærmeste, traf beslutningen i ro og bar den igennem med følgeskab — også hos dem, der var uenige. En beslutning, der venter for længe, er også en beslutning.</p></details>
+      <p>Svarene er skjult, til du klikker. Øv dig ved at svare højt, før du folder svaret ud.</p>
+      <details class="qa"><summary>Hvordan leder du gennem fire erfarne centerledere uden at overtage deres drift?</summary><p>Jeg sætter retning og rammer og giver dem mandat til at lede deres enheder. Min opgave er helheden. Deres er enhederne. Jeg bruger tid på relationen først, holder mine aftaler og bakker dem op, også udadtil.</p></details>
+      <details class="qa"><summary>Hvordan bygger du tillid hos ledere, der kender deres område bedre end dig?</summary><p>Ved at lytte, før jeg beslutter, anerkende deres faglighed og være tydelig om retning og rammer. Tillid kommer før kontrol. Ledere, der oplever reelt mandat, tager reelt ansvar.</p></details>
+      <details class="qa"><summary>En centerleder er dygtig, men trækker i egen retning. Hvad gør du?</summary><p>Først en nysgerrig samtale: Hvad ser vedkommende, som jeg ikke ser? Derefter tydelighed: Retningen mod helheden ligger fast, og jeg forventer, at alle leder efter den. Jeg rummer uenighed i rummet, men vi går ud ad døren med én fælles retning.</p></details>
+      <details class="qa"><summary>Hvordan undgår du, at UU, ungdomsskolen, 10. klasse og STU bliver fire siloer?</summary><p>Ved at gøre den unges vej til den fælles reference. Fælles mål, fælles sprog og en fast møderytme på tværs, så de fire enheder måles på, hvad de lykkes med sammen, ikke kun hver for sig.</p></details>
+      <details class="qa"><summary>Hvordan udvikler du Ungecenteret, når 10. klasse udfases frem mod 2030?</summary><p>Forandringen er selve opgaven. Jeg søger stillingen på grund af den. Jeg starter med at lytte og kortlægge, sætter så en fælles retning med lederteamet og finder tidlige gevinster, der skaber tro på den store bevægelse, mens drift og kvalitet holdes i luften.</p></details>
+      <details class="qa"><summary>Hvordan arbejder du konkret med de nationale 2030-mål?</summary><p>Jeg gør dem til styringsramme: 90 procent skal have en ungdomsuddannelse som 25-årige, og andelen af unge uden tilknytning skal halveres. Det kræver data på tværs af enhederne, så vi kan se den enkelte unges vej, og omsætte tallene til konkrete indsatser sammen med centerlederne.</p></details>
+      <details class="qa"><summary>Beskriv dine første 100 dage.</summary><p>Lytte først: unge, centerledere, medarbejdere, direktion. Bygge tillid i lederteamet. Finde to-tre tidlige gevinster. Og derefter sætte fælles retning mod 2030. Sammen med lederne, ikke hen over dem.</p></details>
+      <details class="qa"><summary>Fortæl om en svær beslutning, du har truffet under uklarhed.</summary><p>[Sæt dit eget eksempel ind. Kernen i svaret:] Jeg skaffede det overblik, der kunne skaffes, inddrog de nærmeste, traf beslutningen i ro og bar den igennem med følgeskab. Også hos dem, der var uenige. En beslutning, der venter for længe, er også en beslutning.</p></details>
       <details class="qa"><summary>Hvordan prioriterer du, når der ikke er penge til det hele?</summary><p>Med åbne kriterier og mod til fravalg. Jeg skaber overblik, prioriterer efter det, der flytter mest for de unge, og kommunikerer ærligt om, hvad vi vælger fra og hvorfor. Jeg har haft budgetansvar på op til 47 mio. kr. og ved, at troværdig økonomistyring er forudsætningen for fagligt råderum.</p></details>
-      <details class="qa"><summary>Hvordan navigerer du i et politisk styret område?</summary><p>Jeg oversætter politiske mål til konkret drift og leverer beslutningsgrundlag, der er til at stole på. Loyal opad, beskyttende nedad — og med ro, når der er bevågenhed. Politisk styring er et vilkår, ikke en forstyrrelse.</p></details>
-      <details class="qa"><summary>Hvad er dit syn på de unge — særligt de udsatte og frafaldstruede?</summary><p>Potentiale frem for mangler. Ingen ung ER sit frafald eller sin diagnose. Systemet findes for den unges skyld, og hver enkelt skal mødes af voksne, der tror på, at de gør deres bedste — og som gør vejen videre konkret.</p></details>
-      <details class="qa"><summary>Din baggrund er stærkt digital. Hvordan undgår du, at det overskygger menneskeledelsen?</summary><p>Det digitale er mit værktøj, ikke min identitet. Data giver overblik og frigør tid — men ledelse sker i relationer. Målet er, at systemerne arbejder for medarbejderne, så de kan arbejde for de unge.</p></details>
-      <details class="qa"><summary>Hvorfor Sønderborg, og hvorfor nu?</summary><p>Sønderborg er velkendt grund — seks år på [DIN TIDLIGERE SKOLE] og pladsen i kommunens digitaliseringsstyregruppe. Og fordi stillingen er det naturlige næste skridt: ledelse af ledere i en kommune, med en forandringsopgave, jeg tror på.</p></details>
+      <details class="qa"><summary>Hvordan navigerer du i et politisk styret område?</summary><p>Jeg oversætter politiske mål til konkret drift og leverer beslutningsgrundlag, der er til at stole på. Loyal opad, beskyttende nedad, og med ro, når der er bevågenhed. Politisk styring er et vilkår, ikke en forstyrrelse.</p></details>
+      <details class="qa"><summary>Hvad er dit syn på de unge. Særligt de udsatte og frafaldstruede?</summary><p>Potentiale frem for mangler. Ingen ung ER sit frafald eller sin diagnose. Systemet findes for den unges skyld, og hver enkelt skal mødes af voksne, der tror på, at de gør deres bedste, og som gør vejen videre konkret.</p></details>
+      <details class="qa"><summary>Din baggrund er stærkt digital. Hvordan undgår du, at det overskygger menneskeledelsen?</summary><p>Det digitale er mit værktøj, ikke min identitet. Data giver overblik og frigør tid, men ledelse sker i relationer. Målet er, at systemerne arbejder for medarbejderne, så de kan arbejde for de unge.</p></details>
+      <details class="qa"><summary>Hvorfor Sønderborg, og hvorfor nu?</summary><p>Sønderborg er velkendt grund. Seks år på [DIN TIDLIGERE SKOLE] og pladsen i kommunens digitaliseringsstyregruppe. Og fordi stillingen er det naturlige næste skridt: ledelse af ledere i en kommune, med en forandringsopgave, jeg tror på.</p></details>
     </div>
   </details>
   <details class="card fase" id="fase-6">
@@ -513,10 +516,10 @@
 
     <h4>Tjekliste før 1. samtale</h4>
     <ul class="checklist">
-      <li><label><input type="checkbox" data-check-id="son-star" /><span>Udfyld [EJER UDFYLDER]-resultaterne i STAR 1–5 med konkrete tal</span></label></li>
+      <li><label><input type="checkbox" data-check-id="son-star" /><span>Udfyld [EJER UDFYLDER]-resultaterne i STAR 1 til 5 med konkrete tal</span></label></li>
       <li><label><input type="checkbox" data-check-id="son-case" /><span>Træn case-strukturen (de fem trin) på 10. klasse-udfasningen mod 2030</span></label></li>
       <li><label><input type="checkbox" data-check-id="son-100dage" /><span>Hav 100-dages-planen klar som backup til casen</span></label></li>
-      <li><label><input type="checkbox" data-check-id="son-panel" /><span>Vælg 2–3 spørgsmål, du selv vil stille panelet</span></label></li>
+      <li><label><input type="checkbox" data-check-id="son-panel" /><span>Vælg 2 til 3 spørgsmål, du selv vil stille panelet</span></label></li>
     </ul>
     </div>
   </details>
@@ -543,16 +546,16 @@
   <details class="card fase" id="fase-8">
     <summary><h2>8️⃣ Lønforhandling</h2></summary>
     <div class="fase-body">
-    <p>Ungecenterleder er en leder-af-ledere-stilling — lønniveauet ligger derfor typisk over en almindelig skolelederstilling. Lønnen forhandles mellem kommunen og din forhandlingsberettigede organisation, men dit forarbejde afgør resultatet. Den konkrete snak tager du først, når de har sagt, at de vil have dig.</p>
+    <p>Ungecenterleder er en leder-af-ledere-stilling. Lønniveauet ligger derfor typisk over en almindelig skolelederstilling. Lønnen forhandles mellem kommunen og din forhandlingsberettigede organisation, men dit forarbejde afgør resultatet. Den konkrete snak tager du først, når de har sagt, at de vil have dig.</p>
     <h4>Før forhandlingen</h4>
     <ul>
-      <li><strong>Kend din nuværende totalpakke</strong> (grundløn, pension, eventuel bolig og øvrige goder som forstander) — det er dit sammenligningsgrundlag.</li>
+      <li><strong>Kend din nuværende totalpakke</strong> (grundløn, pension, eventuel bolig og øvrige goder som forstander). Det er dit sammenligningsgrundlag.</li>
       <li><strong>Kontakt din faglige organisation før 2. samtale</strong>, så du kender lønniveauet for tilsvarende lederstillinger i Sønderborg Kommune og dit realistiske interval.</li>
       <li><strong>Sæt tre tal, før du taler med nogen:</strong> drømmeløn, tilfreds-løn og smertegrænse.</li>
     </ul>
     <h4>Dine argumenter</h4>
     <ul>
-      <li>Du skal lede fire centerledere og bære et tværgående ansvar — det er chefniveau, ikke institutionsledelse.</li>
+      <li>Du skal lede fire centerledere og bære et tværgående ansvar. Det er chefniveau, ikke institutionsledelse.</li>
       <li>Budgetansvar på op til 47 mio. kr. og erfaring med at drive en selvstændig organisation.</li>
       <li>Din digitale profil (digitaliseringsstyregruppe, Microsoft 365, Power Platform) er en dokumenteret besparelse og en kompetence, få andre kandidater har.</li>
       <li>Forandringsopgaven mod 2030 er en ekstraordinær opgave oven i driften.</li>
@@ -560,13 +563,13 @@
     <h4>Forhandl pakken, ikke kun grundlønnen</h4>
     <ul>
       <li>Kvalifikations- og funktionstillæg for det tværgående ansvar og forandringsopgaven.</li>
-      <li>Pension (kommunale lederaftaler ligger typisk mellem 17 og 20 procent — tjek den konkrete aftale med din organisation).</li>
-      <li>Kørsel mellem enhederne (UU, ungdomsskole, 10. klasse, STU) — afklar kørselsordning.</li>
+      <li>Pension (kommunale lederaftaler ligger typisk mellem 17 og 20 procent. Tjek den konkrete aftale med din organisation).</li>
+      <li>Kørsel mellem enhederne (UU, ungdomsskole, 10. klasse, STU). Afklar kørselsordning.</li>
       <li>Efteruddannelse på chefniveau, hjemmearbejdsdage til administrative opgaver og tiltrædelsesvilkår (1. oktober).</li>
     </ul>
     <h4>Taktik</h4>
     <ul>
-      <li>Nævn aldrig et tal først under samtalerne. Bliver du spurgt, så svar, at du forventer en løn, der afspejler et chefansvar med fire underliggende enheder — og at du gerne tager den konkrete snak, når I er enige om, at det er dig.</li>
+      <li>Nævn aldrig et tal først under samtalerne. Bliver du spurgt, så svar, at du forventer en løn, der afspejler et chefansvar med fire underliggende enheder, og at du gerne tager den konkrete snak, når I er enige om, at det er dig.</li>
       <li>Sig aldrig ja på stedet. Bed om at sove på tilbuddet, og vend det med din organisation.</li>
       <li>Får du ikke det ønskede i grundløn, så hent det i tillæg, pension eller vilkår.</li>
     </ul>
@@ -576,7 +579,7 @@
   <details class="card fase" id="noter">
     <summary><h2>📝 Private noter</h2></summary>
     <div class="fase-body">
-      <p>Aftaler, datoer og tanker undervejs. Noterne gemmes kun i denne browser (localStorage) — de sendes aldrig ud på nettet. Skriv ikke følsomme oplysninger her.</p>
+      <p>Aftaler, datoer og tanker undervejs. Noterne gemmes kun i denne browser (localStorage). De sendes aldrig ud på nettet. Skriv ikke følsomme oplysninger her.</p>
       <textarea class="notes" data-notes="soenderborg-general" rows="8" placeholder="Skriv noter her …"></textarea>
       <div class="databtns">
         <button type="button" class="btn-export">⬇️ Eksportér flueben &amp; noter</button>
@@ -668,7 +671,7 @@
                 if (k.indexOf('jobhub:') === 0) localStorage.setItem(k, data[k]);
               });
               location.reload();
-            } catch (e) { alert('Kunne ikke læse filen — er det en jobhub-data.json?'); }
+            } catch (e) { alert('Kunne ikke læse filen. Er det en jobhub-data.json?'); }
           };
           r.readAsText(f);
         });

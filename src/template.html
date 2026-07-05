@@ -98,6 +98,9 @@
       .content .event, .content .fase-body > ul > li { break-inside: avoid; }
       .content h2, .content h3, .content h4, .content h5 { break-after: avoid; }
       .content p, .content li { orphans: 3; widows: 3; }
+      /* Hver forberedelsesmodel (STAR, Domæne, 4D, CMM, Tomm) starter på egen side */
+      .content #modeller .fase-body h3 { break-before: page; border-top: 0; }
+      .content #modeller .fase-body h3:first-of-type { break-before: auto; }
     }
     @page { margin: 15mm; }
     /* Private noter (gemmes kun i browserens localStorage) */
@@ -226,7 +229,7 @@
                 if (k.indexOf('jobhub:') === 0) localStorage.setItem(k, data[k]);
               });
               location.reload();
-            } catch (e) { alert('Kunne ikke læse filen — er det en jobhub-data.json?'); }
+            } catch (e) { alert('Kunne ikke læse filen. Er det en jobhub-data.json?'); }
           };
           r.readAsText(f);
         });
