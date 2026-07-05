@@ -21,6 +21,7 @@
     <a href="#fase-5">5 · Ansøgning</a>
     <a href="#fase-6">6 · Samtale 1</a>
     <a href="#fase-7">7 · Samtale 2</a>
+    <a href="#svar">🎯 Svar</a>
     <a href="#fase-8">8 · Løn</a>
     <a href="#noter">📝 Noter</a>
     <button id="toggle-all" type="button">Åbn alle</button>
@@ -131,6 +132,14 @@
     </div>
   </details>
 
+  <details class="card fase" id="svar">
+    <summary><h2>🎯 Forventede spørgsmål · optimale svar</h2></summary>
+    <div class="fase-body">
+      <p>Svarene er skjult, til du klikker — øv dig ved at svare højt, før du folder svaret ud.</p>
+      <details class="qa"><summary>[FORVENTET SPØRGSMÅL]</summary><p>[DIT OPTIMALE SVAR — 2–4 sætninger, i din egen stemme.]</p></details>
+    </div>
+  </details>
+
   <details class="card fase" id="fase-7">
     <summary><h2>7️⃣ 2. samtale · [DATO]</h2></summary>
     <div class="fase-body">
@@ -157,6 +166,10 @@
     <div class="fase-body">
       <p>Aftaler, datoer og tanker undervejs. Noterne gemmes kun i denne browser (localStorage) — de sendes aldrig ud på nettet. Skriv ikke følsomme oplysninger her.</p>
       <textarea class="notes" data-notes="jobX-general" rows="8" placeholder="Skriv noter her …"></textarea>
+      <div class="databtns">
+        <button type="button" class="btn-export">⬇️ Eksportér flueben &amp; noter</button>
+        <label class="btn-import">⬆️ Importér<input type="file" accept="application/json" hidden /></label>
+      </div>
     </div>
   </details>
 </main>

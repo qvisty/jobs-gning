@@ -52,6 +52,46 @@
       transition: transform .2s; }
     .content details.card[open] summary::after { transform: rotate(90deg); }
     .content details.card .fase-body { margin-top: 14px; }
+    /* Læsbarhed: luft, linjehøjde og tydeligt hierarki */
+    .content p { line-height: 1.65; }
+    .content li { line-height: 1.55; }
+    .content .fase-body li { margin: 7px 0; }
+    .content .fase-body h3 { margin: 28px 0 10px; padding-top: 18px; border-top: 1px solid #26334d; font-size: 19px; }
+    .content .fase-body h3:first-child { margin-top: 8px; padding-top: 0; border-top: 0; }
+    .content .fase-body h4 { margin: 24px 0 8px; color: #c7d2fe; }
+    .content .fase-body h5 { margin: 18px 0 6px; color: #a5b4fc; font-size: 14.5px; }
+    .content blockquote { margin: 14px 0; padding: 12px 16px; border-left: 3px solid #6366f1;
+      background: rgba(99,102,241,.08); border-radius: 0 10px 10px 0; }
+    .content blockquote p { margin: 8px 0; }
+    /* Nedtælling på forsiden */
+    .content .countdown { text-align: center; font-size: 15px; color: #fcd34d; background: rgba(251,191,36,.08);
+      border: 1px solid rgba(251,191,36,.4); border-radius: 10px; padding: 10px 14px; margin: 18px 0 0; }
+    .content .countdown:empty { display: none; }
+    /* Spørgsmål & svar (øve-kort: svaret er skjult til man klikker) */
+    .content details.qa { border: 1px solid #334155; border-radius: 10px; padding: 10px 14px; margin: 8px 0;
+      background: rgba(15,23,42,.35); }
+    .content details.qa summary { cursor: pointer; list-style: none; display: flex; gap: 10px;
+      align-items: baseline; font-weight: 600; color: #e2e8f0; }
+    .content details.qa summary::-webkit-details-marker { display: none; }
+    .content details.qa summary::before { content: 'Q'; color: #818cf8; font-weight: 700; flex: 0 0 auto; }
+    .content details.qa p { margin: 10px 0 4px; color: #cbd5e1; }
+    /* Eksport/import af flueben og noter */
+    .content .databtns { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+    .content .databtns button, .content .databtns .btn-import { display: inline-flex; align-items: center;
+      padding: 7px 12px; border: 1px solid #475569; border-radius: 999px; background: transparent;
+      color: #cbd5e1; font-size: 13px; cursor: pointer; }
+    .content .databtns button:hover, .content .databtns .btn-import:hover { border-color: #6366f1; }
+    /* Print: ren sort-på-hvid A4 af det åbne indhold */
+    @media print {
+      body { background: #fff !important; }
+      .content { max-width: 100%; margin: 0; padding: 0; }
+      .content * { color: #000 !important; background: transparent !important; border-color: #bbb !important; }
+      .fasebar, .progress, .notes, .databtns, .anonote, .foot, #toggle-all { display: none !important; }
+      .content .card { border: 0; border-top: 1px solid #999; border-radius: 0; padding: 10px 0; margin: 10px 0; }
+      .content details.card summary::after { display: none; }
+      .content a { text-decoration: none; }
+      .content details.qa { break-inside: avoid; }
+    }
     /* Private noter (gemmes kun i browserens localStorage) */
     .content .notes { width: 100%; border: 1px solid #475569; border-radius: 12px; padding: 12px;
       background: #0b1220; color: #f1f5f9; font: inherit; font-size: 14px; resize: vertical; }
@@ -107,6 +147,8 @@
 </header>
 
 <main>
+  <p class="countdown" id="countdown" data-events='[["2026-08-11","Ansøgningsfrist: Vonsild og Sønderborg"],["2026-08-19","1. samtale: Sønderborg og Vonsild"],["2026-08-24","2. samtale: Sønderborg (Garuda)"],["2026-08-25","2. samtale: Vonsild (case)"],["2026-10-01","Forventet tiltrædelse"]]'></p>
+
   <section class="card" id="stillinger">
     <h2>📋 Stillinger · klik ind på materialet</h2>
     <a class="joblink" href="vonsild.html">
@@ -229,6 +271,74 @@
         });
       });
       updateProgress();
+
+      // Nedtælling til næste vigtige dato (forsiden)
+      var cd = document.getElementById('countdown');
+      if (cd) {
+        try {
+          var evs = JSON.parse(cd.getAttribute('data-events') || '[]');
+          var today = new Date(); today.setHours(0, 0, 0, 0);
+          var next = null;
+          evs.forEach(function (e) {
+            var d = new Date(e[0] + 'T00:00:00');
+            if (d >= today && (!next || d < next.d)) next = { d: d, label: e[1] };
+          });
+          if (next) {
+            var days = Math.round((next.d - today) / 86400000);
+            var hvornaar = days === 0 ? 'I dag' : days === 1 ? 'I morgen' : 'Om ' + days + ' dage';
+            var dato = next.d.getDate() + '/' + (next.d.getMonth() + 1);
+            cd.textContent = '⏰ ' + hvornaar + ': ' + next.label + ' (' + dato + ')';
+          }
+        } catch (e) {}
+      }
+
+      // Eksportér/importér flueben og noter (flyt data mellem enheder / backup)
+      document.querySelectorAll('.databtns .btn-export').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var data = {};
+          for (var i = 0; i < localStorage.length; i++) {
+            var k = localStorage.key(i);
+            if (k && k.indexOf('jobhub:') === 0) data[k] = localStorage.getItem(k);
+          }
+          var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+          var a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = 'jobhub-data.json';
+          a.click();
+          URL.revokeObjectURL(a.href);
+        });
+      });
+      document.querySelectorAll('.databtns .btn-import input[type=file]').forEach(function (inp) {
+        inp.addEventListener('change', function () {
+          var f = inp.files && inp.files[0];
+          if (!f) return;
+          var r = new FileReader();
+          r.onload = function () {
+            try {
+              var data = JSON.parse(r.result);
+              Object.keys(data).forEach(function (k) {
+                if (k.indexOf('jobhub:') === 0) localStorage.setItem(k, data[k]);
+              });
+              location.reload();
+            } catch (e) { alert('Kunne ikke læse filen — er det en jobhub-data.json?'); }
+          };
+          r.readAsText(f);
+        });
+      });
+
+      // Print: fold alt ud før print, og fold sammen igen bagefter
+      var printPrev = null;
+      window.addEventListener('beforeprint', function () {
+        var all = document.querySelectorAll('details');
+        printPrev = [];
+        all.forEach(function (d) { printPrev.push(d.open); d.open = true; });
+      });
+      window.addEventListener('afterprint', function () {
+        if (!printPrev) return;
+        var all = document.querySelectorAll('details');
+        all.forEach(function (d, i) { d.open = printPrev[i]; });
+        printPrev = null;
+      });
 
       // Private noter: gemmes kun lokalt i browseren
       document.querySelectorAll('textarea.notes[data-notes]').forEach(function (t) {
