@@ -86,7 +86,7 @@
       body { background: #fff !important; }
       .content { max-width: 100%; margin: 0; padding: 0; }
       .content * { color: #000 !important; background: transparent !important; border-color: #bbb !important; }
-      .fasebar, .progress, .notes, .databtns, .anonote, .foot, #toggle-all { display: none !important; }
+      .fasebar, .progress, .notes, .databtns, .anonote, .foot, #toggle-all, .cal-actions { display: none !important; }
       .content .card { border: 0; border-radius: 0; padding: 10px 0; margin: 10px 0; }
       .content details.card summary::after { display: none; }
       .content a { text-decoration: none; }
@@ -147,6 +147,12 @@
     /* Svarnoter i samtaleforberedelsen (runde 2) */
     .content .svarnote { display: block; margin-top: 4px; color: #cbd5e1; }
     .content .svarnote em { color: #a5b4fc; font-style: normal; font-weight: 600; }
+    /* Tilføj til kalender-knapper (pr. begivenhed) */
+    .content .cal-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+    .content .cal-btn { display: inline-flex; align-items: center; padding: 5px 11px; border: 1px solid #475569;
+      border-radius: 999px; background: transparent; color: #cbd5e1; font-size: 12.5px; cursor: pointer;
+      text-decoration: none; }
+    .content .cal-btn:hover { border-color: #6366f1; }
   </style>
 </head>
 <body>
@@ -612,6 +618,126 @@
           }
         } catch (e) {}
       }
+
+      // Tilføj til kalender: .ics-download (Apple/Outlook/Google m.fl.) + Google Calendar-link.
+      (function () {
+        function compact(iso) { return iso.replace(/-/g, ''); }        // 2026-08-11 -> 20260811
+        function nextDay(iso) {
+          var d = new Date(iso + 'T00:00:00');
+          d.setDate(d.getDate() + 1);
+          function p(n) { return (n < 10 ? '0' : '') + n; }
+          return d.getFullYear() + p(d.getMonth() + 1) + p(d.getDate());
+        }
+        function stamp() {
+          var d = new Date();
+          function p(n) { return (n < 10 ? '0' : '') + n; }
+          return d.getUTCFullYear() + p(d.getUTCMonth() + 1) + p(d.getUTCDate()) + 'T' +
+                 p(d.getUTCHours()) + p(d.getUTCMinutes()) + p(d.getUTCSeconds()) + 'Z';
+        }
+        function esc(s) {
+          return String(s).replace(/\\/g, '\\\\').replace(/;/g, '\\;')
+                          .replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
+        }
+        function fold(line) {                                          // RFC 5545: maks. 75 tegn pr. linje
+          var out = '';
+          while (line.length > 74) { out += line.slice(0, 74) + '\r\n '; line = line.slice(74); }
+          return out + line;
+        }
+        function slug(s) {
+          return s.toLowerCase().replace(/[æ]/g, 'ae').replace(/[ø]/g, 'oe').replace(/[å]/g, 'aa')
+                  .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'begivenhed';
+        }
+        function readEvent(li) {
+          var url = li.getAttribute('data-cal-url');
+          var desc = li.getAttribute('data-cal-desc') || '';
+          var abs = url ? new URL(url, location.href).href : '';
+          if (abs) desc = desc ? desc + '\n\n' + abs : abs;
+          return {
+            start: li.getAttribute('data-cal-start'),
+            title: li.getAttribute('data-cal-title') || 'Begivenhed',
+            desc: desc,
+            url: abs
+          };
+        }
+        function vevent(ev) {
+          var lines = [
+            'BEGIN:VEVENT',
+            'UID:jobhub-' + compact(ev.start) + '-' + slug(ev.title) + '@jobs-gning',
+            'DTSTAMP:' + stamp(),
+            'DTSTART;VALUE=DATE:' + compact(ev.start),
+            'DTEND;VALUE=DATE:' + nextDay(ev.start),
+            'SUMMARY:' + esc(ev.title)
+          ];
+          if (ev.desc) lines.push('DESCRIPTION:' + esc(ev.desc));
+          if (ev.url) lines.push('URL:' + esc(ev.url));
+          lines.push('END:VEVENT');
+          return lines.map(fold).join('\r\n');
+        }
+        function calendar(events) {
+          var out = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//jobs-gning//kalender//DA',
+                     'CALSCALE:GREGORIAN', 'METHOD:PUBLISH'];
+          events.forEach(function (ev) { out.push(vevent(ev)); });
+          out.push('END:VCALENDAR');
+          return out.join('\r\n');
+        }
+        function download(name, text) {
+          var blob = new Blob([text], { type: 'text/calendar;charset=utf-8' });
+          var a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = name;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+        }
+        function googleUrl(ev) {
+          var p = new URLSearchParams({
+            action: 'TEMPLATE',
+            text: ev.title,
+            dates: compact(ev.start) + '/' + nextDay(ev.start)
+          });
+          if (ev.desc) p.set('details', ev.desc);
+          return 'https://calendar.google.com/calendar/render?' + p.toString();
+        }
+
+        var items = document.querySelectorAll('.event[data-cal-start]');
+        items.forEach(function (li) {
+          var ev = readEvent(li);
+          var body = li.querySelector('.event-body');
+          if (!body) return;
+          var wrap = document.createElement('div');
+          wrap.className = 'cal-actions';
+
+          var ics = document.createElement('button');
+          ics.type = 'button';
+          ics.className = 'cal-btn';
+          ics.textContent = '📅 Til kalender';
+          ics.title = 'Hent .ics — virker i Apple Kalender, Outlook, Google m.fl.';
+          ics.addEventListener('click', function () {
+            download(slug(ev.title) + '.ics', calendar([ev]));
+          });
+
+          var g = document.createElement('a');
+          g.className = 'cal-btn';
+          g.href = googleUrl(ev);
+          g.target = '_blank';
+          g.rel = 'noopener';
+          g.textContent = 'Google Calendar';
+
+          wrap.appendChild(ics);
+          wrap.appendChild(g);
+          body.appendChild(wrap);
+        });
+
+        document.querySelectorAll('.cal-all').forEach(function (b) {
+          if (!items.length) { b.style.display = 'none'; return; }
+          b.addEventListener('click', function () {
+            var evs = [];
+            items.forEach(function (li) { evs.push(readEvent(li)); });
+            download('jobsoegning-kalender.ics', calendar(evs));
+          });
+        });
+      })();
 
       // Eksportér/importér flueben og noter (flyt data mellem enheder / backup)
       document.querySelectorAll('.databtns .btn-export').forEach(function (b) {
