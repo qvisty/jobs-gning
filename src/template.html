@@ -87,11 +87,19 @@
       .content { max-width: 100%; margin: 0; padding: 0; }
       .content * { color: #000 !important; background: transparent !important; border-color: #bbb !important; }
       .fasebar, .progress, .notes, .databtns, .anonote, .foot, #toggle-all { display: none !important; }
-      .content .card { border: 0; border-top: 1px solid #999; border-radius: 0; padding: 10px 0; margin: 10px 0; }
+      .content .card { border: 0; border-radius: 0; padding: 10px 0; margin: 10px 0; }
       .content details.card summary::after { display: none; }
       .content a { text-decoration: none; }
-      .content details.qa { break-inside: avoid; }
+      /* Sideskift: hver fase starter på en ny side */
+      .content details.card { break-before: page; border-top: 0; }
+      .content main > details.card:first-of-type { break-before: auto; }
+      /* Hold sammenhængende blokke samlet på én side */
+      .content details.qa, .content blockquote, .content .checklist li,
+      .content .event, .content .fase-body > ul > li { break-inside: avoid; }
+      .content h2, .content h3, .content h4, .content h5 { break-after: avoid; }
+      .content p, .content li { orphans: 3; widows: 3; }
     }
+    @page { margin: 15mm; }
     /* Private noter (gemmes kun i browserens localStorage) */
     .content .notes { width: 100%; border: 1px solid #475569; border-radius: 12px; padding: 12px;
       background: #0b1220; color: #f1f5f9; font: inherit; font-size: 14px; resize: vertical; }
