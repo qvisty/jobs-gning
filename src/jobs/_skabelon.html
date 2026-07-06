@@ -23,6 +23,7 @@
     <a href="#fase-7">7 · Samtale 2</a>
     <a href="#svar">🎯 Svar</a>
     <a href="#fase-8">8 · Løn</a>
+    <a href="#feedback">🔁 Feedback</a>
     <a href="#noter">📝 Noter</a>
     <button id="toggle-all" type="button">Åbn alle</button>
   </nav>
@@ -158,6 +159,39 @@
         <li><strong>Forhandl pakken:</strong> tillæg, pension, efteruddannelse, hjemmearbejde, tiltrædelsesvilkår.</li>
         <li><strong>Taktik:</strong> Nævn aldrig et tal først. Sig aldrig ja på stedet. Sov på det, og vend det med din organisation.</li>
       </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="feedback">
+    <summary><h2>🔁 Efter samtalen · log og løbende forbedring</h2></summary>
+    <div class="fase-body">
+    <p>Log kort, hvordan samtalen gik, mens den er frisk. Dine svar bliver til en huskeliste, der skærper forberedelsen til næste samtale og næste ansøgning. Alt gemmes kun i din browser og følger med i eksport/import. Læringerne vises på tværs af alle stillinger, så systemet bliver skarpere for hver runde.</p>
+    <!-- Erstat "jobX" og labelen med den nye stillings værdier. -->
+    <div class="fb-widget" data-feedback="jobX" data-fb-label="Stillingsnavn · Sted">
+      <div class="fb-learnings" data-fb-learnings hidden>
+        <h4>📌 Dine læringer fra tidligere samtaler</h4>
+        <ul data-fb-learn-list></ul>
+      </div>
+      <form class="fb-form" data-fb-form>
+        <h4>Ny logindgang</h4>
+        <label class="fb-field"><span>Hvilken samtale?</span>
+          <input type="text" name="samtale" placeholder="fx 1. samtale · dato" /></label>
+        <label class="fb-field"><span>Hvad gik godt?</span>
+          <textarea name="godt" rows="2" placeholder="Det, der fungerede — svar, stemning, spørgsmål der ramte …"></textarea></label>
+        <label class="fb-field"><span>Hvad var svært eller overraskede?</span>
+          <textarea name="svaert" rows="2" placeholder="Det, der var svært, eller hvor du gik i stå …"></textarea></label>
+        <label class="fb-field"><span>Spørgsmål jeg ikke havde forberedt</span>
+          <textarea name="spoergsmaal" rows="2" placeholder="Uventede spørgsmål fra panelet — tilføj dem til forberedelsen næste gang …"></textarea></label>
+        <label class="fb-field"><span>Hvad gør jeg anderledes næste gang?</span>
+          <textarea name="naeste" rows="2" placeholder="Konkret forbedring til næste samtale eller ansøgning …"></textarea></label>
+        <button type="submit" class="fb-save">💾 Gem logindgang</button>
+      </form>
+      <div class="fb-log">
+        <h4>Dine tidligere logindgange</h4>
+        <ol class="fb-log-list" data-fb-log-list></ol>
+        <p class="fb-empty" data-fb-empty>Ingen logindgange endnu. Udfyld formularen efter din første samtale.</p>
+      </div>
+    </div>
     </div>
   </details>
 
