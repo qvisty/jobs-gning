@@ -25,6 +25,34 @@
     .content .commute strong { color: #cbd5e1; }
     .content .anonote { color: #94a3b8; font-size: 14px; margin: -6px 0 18px; }
     .content .anonote strong { color: #fcd34d; }
+    /* Match-score: vejledende samlet vurdering øverst på undersiden */
+    .content .matchscore { background: rgba(30,41,59,.7); }
+    .content .matchscore h2 { font-size: 20px; }
+    .content .match-head { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+    .content .match-gauge { --val: 0; --col: #6366f1; flex: 0 0 auto; position: relative;
+      width: 108px; height: 108px; border-radius: 50%;
+      background: conic-gradient(var(--col) calc(var(--val) * 3.6deg), #0b1220 0);
+      display: grid; place-items: center; }
+    .content .match-gauge::before { content: ''; position: absolute; inset: 9px; border-radius: 50%;
+      background: #0f172a; }
+    .content .match-inner { position: relative; display: flex; flex-direction: column; align-items: center;
+      line-height: 1; }
+    .content .match-num { font-size: 34px; font-weight: 700; color: #f1f5f9; }
+    .content .match-max { font-size: 12px; color: #94a3b8; margin-top: 3px; }
+    .content .match-verdict { flex: 1 1 220px; }
+    .content .match-verdict h2 { margin: 0 0 6px; }
+    .content .match-verdict p { margin: 0; color: #cbd5e1; font-size: 14px; }
+    .content .match-dims { list-style: none; margin: 20px 0 0; padding: 0; }
+    .content .match-dims .md { margin: 14px 0; }
+    .content .md-top { display: flex; align-items: baseline; gap: 8px; }
+    .content .md-label { font-weight: 600; color: #e2e8f0; }
+    .content .md-weight { font-size: 12px; color: #64748b; }
+    .content .md-score { margin-left: auto; font-weight: 700; color: #a5b4fc; font-variant-numeric: tabular-nums; }
+    .content .md-track { height: 8px; margin: 7px 0 6px; border-radius: 999px; background: #0b1220;
+      border: 1px solid #334155; overflow: hidden; }
+    .content .md-fill { height: 100%; background: #6366f1; border-radius: 999px; }
+    .content .md-note { margin: 0; color: #94a3b8; font-size: 13.5px; }
+    .content .match-foot { margin: 18px 0 0; color: #64748b; font-size: 12.5px; }
     /* Sticky fasemenu på undersider */
     .content .fasebar { position: sticky; top: 0; z-index: 20; display: flex; flex-wrap: wrap; align-items: center;
       gap: 6px; padding: 12px 0 10px; margin: 0 0 4px; border-bottom: 1px solid #334155;
@@ -90,6 +118,11 @@
       .content .card { border: 0; border-radius: 0; padding: 10px 0; margin: 10px 0; }
       .content details.card summary::after { display: none; }
       .content a { text-decoration: none; }
+      /* Match-score: vis tal og en tydelig ramme, da baggrundsfarver fjernes i print */
+      .content .match-gauge { border: 2px solid #444 !important; }
+      .content .md-track { border: 1px solid #999 !important; }
+      .content .md-fill { border-bottom: 3px solid #444 !important; }
+      .content .matchscore { break-inside: avoid; }
       /* Sideskift: hver fase starter på en ny side */
       .content details.card { break-before: page; border-top: 0; }
       .content main > details.card:first-of-type { break-before: auto; }
@@ -138,6 +171,8 @@
     .content .tag--opfoelgning { background: rgba(251,191,36,.15); color: #fcd34d; border: 1px solid #fbbf24; }
     .content .tag--kladde { background: rgba(251,191,36,.15); color: #fcd34d; border: 1px solid #fbbf24; }
     .content .tag--sendt { background: rgba(52,211,153,.15); color: #6ee7b7; border: 1px solid #34d399; }
+    .content .tag--match { background: rgba(15,23,42,.5); border: 1px solid #6366f1; color: #a5b4fc; margin-left: 6px; }
+    .content .tag--match:empty { display: none; }
     /* Tjeklister med flueben, der huskes i browseren */
     .content .checklist { list-style: none; margin: 8px 0 22px; padding: 0; }
     .content .checklist li { padding: 5px 0; }
@@ -169,11 +204,11 @@
   <section class="card" id="stillinger">
     <h2>📋 Stillinger · klik ind på materialet</h2>
     <a class="joblink" href="vonsild.html">
-      <h3>🏫 Skoleleder · Vonsild Specialskole (Kolding) <span class="tag tag--kladde">Kladde</span></h3>
+      <h3>🏫 Skoleleder · Vonsild Specialskole (Kolding) <span class="tag tag--kladde">Kladde</span><span class="tag tag--match" title="Vejledende match-score" style="border-color:#6366f1;color:#6366f1">Match 77</span></h3>
       <p>Frist 11. august · samtaler 19. og 25. august. Næste skridt: første kontakt og ansøgning (fase 1 til 5).</p>
     </a>
     <a class="joblink" href="soenderborg.html">
-      <h3>🧭 Ungecenterleder · Sønderborg Kommune <span class="tag tag--kladde">Kladde</span></h3>
+      <h3>🧭 Ungecenterleder · Sønderborg Kommune <span class="tag tag--kladde">Kladde</span><span class="tag tag--match" title="Vejledende match-score" style="border-color:#34d399;color:#34d399">Match 82</span></h3>
       <p>Frist 11. august · samtaler 19. og 24. august. Næste skridt: første kontakt og ansøgning (fase 1 til 5).</p>
     </a>
   </section>
