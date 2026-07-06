@@ -5,7 +5,7 @@ Offentlig **jobsøgnings-side** hostet på GitHub Pages.
 Strukturen er en anonymiseret forside med kalender og klikbare stillinger,
 plus én underside pr. stilling med hele forløbet i faser: research, SMS-udkast,
 telefonsamtale, ansøgning, samtaleforberedelse (inkl. STAR-, domæne- og
-4D-forberedelsesmodeller) og lønforhandling.
+4D-forberedelsesmodeller), lønforhandling og god opstart (30-60-90 dages plan).
 
 ## Sådan ændrer du indholdet
 
