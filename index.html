@@ -138,6 +138,32 @@
     .content .tag--opfoelgning { background: rgba(251,191,36,.15); color: #fcd34d; border: 1px solid #fbbf24; }
     .content .tag--kladde { background: rgba(251,191,36,.15); color: #fcd34d; border: 1px solid #fbbf24; }
     .content .tag--sendt { background: rgba(52,211,153,.15); color: #6ee7b7; border: 1px solid #34d399; }
+    /* Ansøgnings-tracker: status pr. stilling (gemmes i browseren) */
+    .content .tracker { list-style: none; margin: 8px 0 0; padding: 0; }
+    .content .track-row { padding: 16px 0; border-top: 1px solid #334155; }
+    .content .track-row:first-child { border-top: 0; }
+    .content .track-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .content .track-head h3 { margin: 0; font-size: 17px; flex: 1 1 240px; }
+    .content .track-head h3 a { text-decoration: none; }
+    .content .track-deadline { font-size: 13px; color: #94a3b8; white-space: nowrap; }
+    .content .track-deadline strong { color: #fca5a5; }
+    /* Statusvælger — farven følger valgt status via data-status på rækken */
+    .content .track-status { font: inherit; font-size: 13px; font-weight: 600; padding: 5px 10px;
+      border-radius: 999px; border: 1px solid #475569; background: #0b1220; color: #cbd5e1; cursor: pointer; }
+    .content .track-status:focus { outline: 2px solid #6366f1; }
+    .content .track-row[data-status="afventer"] .track-status { color: #fcd34d; border-color: #fbbf24; background: rgba(251,191,36,.12); }
+    .content .track-row[data-status="samtale"] .track-status { color: #a5b4fc; border-color: #818cf8; background: rgba(129,140,248,.14); }
+    .content .track-row[data-status="tilbud"] .track-status { color: #6ee7b7; border-color: #34d399; background: rgba(52,211,153,.14); }
+    .content .track-row[data-status="afslag"] .track-status { color: #cbd5e1; border-color: #64748b; background: rgba(100,116,139,.18); }
+    .content .track-next { display: flex; align-items: baseline; gap: 8px; margin-top: 10px; }
+    .content .track-next label { flex: 0 0 auto; font-size: 13px; color: #94a3b8; }
+    .content .track-next input { flex: 1 1 auto; font: inherit; font-size: 14px; padding: 6px 10px;
+      border: 1px solid #475569; border-radius: 8px; background: #0b1220; color: #f1f5f9; }
+    .content .track-next input:focus { outline: 2px solid #6366f1; border-color: #6366f1; }
+    .content .track-hint { color: #64748b; font-size: 13px; margin: 4px 0 0; }
+    @media print {
+      .content .track-status, .content .track-next input { border: 1px solid #bbb !important; }
+    }
     /* Tjeklister med flueben, der huskes i browseren */
     .content .checklist { list-style: none; margin: 8px 0 22px; padding: 0; }
     .content .checklist li { padding: 5px 0; }
@@ -176,6 +202,46 @@
       <h3>🧭 Ungecenterleder · Sønderborg Kommune <span class="tag tag--kladde">Kladde</span></h3>
       <p>Frist 11. august · samtaler 19. og 24. august. Næste skridt: første kontakt og ansøgning (fase 1 til 5).</p>
     </a>
+  </section>
+
+  <section class="card" id="tracker">
+    <h2>🎯 Ansøgnings-tracker · status pr. stilling</h2>
+    <p>Ét samlet overblik over hele pipelinen: hvor hver ansøgning står, og hvad næste handling er. Vælg status og skriv næste skridt — det gemmes kun i din egen browser.</p>
+    <ol class="tracker">
+      <li class="track-row" data-job="vonsild">
+        <div class="track-head">
+          <h3><a href="vonsild.html">🏫 Skoleleder · Vonsild Specialskole</a></h3>
+          <span class="track-deadline">Frist <strong>11. aug 2026</strong></span>
+          <select class="track-status" aria-label="Status for Vonsild">
+            <option value="afventer">Afventer svar</option>
+            <option value="samtale">Samtale indkaldt</option>
+            <option value="tilbud">Tilbud</option>
+            <option value="afslag">Afslag</option>
+          </select>
+        </div>
+        <div class="track-next">
+          <label for="next-vonsild">Næste handling:</label>
+          <input type="text" id="next-vonsild" placeholder="fx: send ansøgning inden 11. aug" />
+        </div>
+      </li>
+      <li class="track-row" data-job="soenderborg">
+        <div class="track-head">
+          <h3><a href="soenderborg.html">🧭 Ungecenterleder · Sønderborg Kommune</a></h3>
+          <span class="track-deadline">Frist <strong>11. aug 2026</strong></span>
+          <select class="track-status" aria-label="Status for Sønderborg">
+            <option value="afventer">Afventer svar</option>
+            <option value="samtale">Samtale indkaldt</option>
+            <option value="tilbud">Tilbud</option>
+            <option value="afslag">Afslag</option>
+          </select>
+        </div>
+        <div class="track-next">
+          <label for="next-soenderborg">Næste handling:</label>
+          <input type="text" id="next-soenderborg" placeholder="fx: send ansøgning inden 11. aug" />
+        </div>
+      </li>
+    </ol>
+    <p class="track-hint">Status starter på “Afventer svar”. Skift den til “Samtale indkaldt”, “Tilbud” eller “Afslag” efterhånden som forløbet skrider frem — farven følger med.</p>
   </section>
 
   <section class="card" id="kalender">
@@ -485,6 +551,31 @@
         t.addEventListener('input', function () {
           try { localStorage.setItem(nkey, t.value); } catch (e) {}
         });
+      });
+
+      // Ansøgnings-tracker: status og næste handling pr. stilling (huskes i browseren)
+      document.querySelectorAll('.track-row[data-job]').forEach(function (row) {
+        var job = row.getAttribute('data-job');
+        var sel = row.querySelector('.track-status');
+        if (sel) {
+          var skey = 'jobhub:track:status:' + job;
+          var saved = null;
+          try { saved = localStorage.getItem(skey); } catch (e) {}
+          if (saved) sel.value = saved;
+          row.setAttribute('data-status', sel.value);
+          sel.addEventListener('change', function () {
+            row.setAttribute('data-status', sel.value);
+            try { localStorage.setItem(skey, sel.value); } catch (e) {}
+          });
+        }
+        var inp = row.querySelector('.track-next input');
+        if (inp) {
+          var nkey = 'jobhub:track:next:' + job;
+          try { var v = localStorage.getItem(nkey); if (v !== null) inp.value = v; } catch (e) {}
+          inp.addEventListener('input', function () {
+            try { localStorage.setItem(nkey, inp.value); } catch (e) {}
+          });
+        }
       });
 
       // Sammenklappelige faser: åben/lukket huskes pr. side
