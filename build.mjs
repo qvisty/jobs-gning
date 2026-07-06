@@ -9,6 +9,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 
 const pages = [
   { src: 'src/content.html', out: 'index.html', title: 'Jobsøgning' },
+  { src: 'src/foerste-kontakt.html', out: 'foerste-kontakt.html', title: 'Første kontakt · standard' },
   { src: 'src/jobs/vonsild.html', out: 'vonsild.html', title: 'Skoleleder · Vonsild Specialskole' },
   { src: 'src/jobs/soenderborg.html', out: 'soenderborg.html', title: 'Ungecenterleder · Sønderborg' },
 ];

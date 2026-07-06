@@ -1,0 +1,190 @@
+<!-- Delt standard: Første kontakt og telefonisk kontakt. Stilling-uafhængig. Genereres til foerste-kontakt.html af build.mjs. -->
+<header class="hero">
+  <p class="eyebrow">Standard · genbruges til alle stillinger</p>
+  <h1>📞 Første kontakt og telefonisk kontakt</h1>
+  <p class="lead">Færdige skabeloner til den første SMS og telefonsamtale, en taleseddel du kan læse op fra, og en spørgsmålsbank du kan vælge fra. Brug den samme metode til hver stilling. Kun navne og detaljer skifter.</p>
+  <p class="anonote">🔒 <strong>Pladsholdere:</strong> Erstat [DIT NAVN], [DIN NUVÆRENDE ROLLE], [KONTAKTPERSON], [STILLING] og [ORGANISATION] med de rigtige oplysninger, før du ringer eller sender.</p>
+</header>
+
+<main>
+  <nav class="fasebar">
+    <a class="home" href="index.html">← Forside</a>
+    <a href="#hvorfor">Hvorfor</a>
+    <a href="#timing">⏱️ Timing</a>
+    <a href="#research">1 · Research</a>
+    <a href="#sms">2 · SMS</a>
+    <a href="#taleseddel">3 · Taleseddel</a>
+    <a href="#spoergsmaal">🎯 Spørgsmål</a>
+    <a href="#lyt">👂 Lyt</a>
+    <a href="#efter">4 · Efter</a>
+    <a href="#noter">📝 Noter</a>
+    <button id="toggle-all" type="button">Åbn alle</button>
+  </nav>
+  <div class="progress"><div class="progress-track"><div id="prog-fill" class="progress-fill"></div></div><span id="prog-text"></span></div>
+
+  <details class="card fase" id="hvorfor" open>
+    <summary><h2>Hvorfor tage første kontakt?</h2></summary>
+    <div class="fase-body">
+    <p>Formålet er dobbelt. Du bliver husket positivt, allerede før ansøgningerne læses. Og du får viden, der gør din ansøgning skarpere end de andres.</p>
+    <ul>
+      <li>De fleste ansøgere springer den første kontakt over. Gør du det, skiller du dig ud, før du overhovedet har søgt.</li>
+      <li>Et kort opkald giver dig kontaktpersonens egne ord om, hvad der er vigtigt. Præcis de ord, din ansøgning skal spejle.</li>
+      <li>Det signalerer overskud, initiativ og reel interesse. Tre ting et panel altid lægger mærke til.</li>
+      <li>Du får en fornemmelse af, om stillingen passer til dig, før du bruger timer på ansøgningen.</li>
+    </ul>
+    <p><strong>Kort sagt:</strong> Ring hellere end at lade være. Formålet er ikke at imponere, men at lytte og blive husket.</p>
+    </div>
+  </details>
+
+  <details class="card fase" id="timing">
+    <summary><h2>⏱️ Timing · hvornår ringer og skriver du?</h2></summary>
+    <div class="fase-body">
+    <ul>
+      <li><strong>Ring på en hverdag mellem 8 og 15.</strong> Undgå fredag eftermiddag, weekend og lige omkring frokost.</li>
+      <li><strong>Vær opmærksom på ferie.</strong> I sommerferien (frem til ca. 1. august på skoleområdet) er mange kontaktpersoner væk. Skriv en SMS, hvis du er i tvivl.</li>
+      <li><strong>Ring i god tid før fristen.</strong> Ikke dagen før. Så virker det som et velovervejet valg, ikke et sidste forsøg.</li>
+      <li><strong>Ring frem for at skrive, når du kan.</strong> Et opkald er mere personligt og bliver bedre husket. SMS er den bløde åbning, hvis du ikke får fat i personen.</li>
+      <li><strong>Får du ikke svar,</strong> så send en kort SMS (skabelon nedenfor), og ring igen dagen efter på et andet tidspunkt.</li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="research">
+    <summary><h2>1️⃣ Research før kontakt</h2></summary>
+    <div class="fase-body">
+    <p>Fem minutters forberedelse gør opkaldet skarpt. Klar dette, før du ringer:</p>
+    <ul class="checklist">
+      <li><label><input type="checkbox" data-check-id="fk-r-opslag" /><span>Læs stillingsopslaget og en eventuel job- og personprofil grundigt. Notér de ord, der går igen.</span></label></li>
+      <li><label><input type="checkbox" data-check-id="fk-r-org" /><span>Orientér dig i organisationens værdigrundlag eller børne- og ungesyn, så du kan spejle deres eget sprog.</span></label></li>
+      <li><label><input type="checkbox" data-check-id="fk-r-kontakt" /><span>Find kontaktpersonens navn, titel og nummer i opslaget.</span></label></li>
+      <li><label><input type="checkbox" data-check-id="fk-r-spoergsmaal" /><span>Forbered 2 til 3 spørgsmål, som IKKE kan besvares ved at læse opslaget (se spørgsmålsbanken).</span></label></li>
+      <li><label><input type="checkbox" data-check-id="fk-r-praesentation" /><span>Hav din 20-sekunders præsentation klar: navn, nuværende rolle, én sætning om hvorfor netop denne stilling.</span></label></li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="sms">
+    <summary><h2>2️⃣ SMS-skabeloner · den bløde åbning</h2></summary>
+    <div class="fase-body">
+    <p>Ring hellere direkte. Får du ikke svar, eller vil du åbne blødt, så send en SMS. Vælg en skabelon og indsæt navnene:</p>
+
+    <h4>Variant A · før du har ringet</h4>
+    <blockquote><p>Hej [KONTAKTPERSON]. Jeg hedder [DIT NAVN] og er [DIN NUVÆRENDE ROLLE]. Jeg overvejer at søge stillingen som [STILLING] og vil gerne høre, om du har 10 minutter til en kort telefonsamtale om stillingen? Jeg ringer, når det passer dig. Venlig hilsen [DIT NAVN]</p></blockquote>
+
+    <h4>Variant B · hvis du allerede har ringet forgæves</h4>
+    <blockquote><p>Hej [KONTAKTPERSON]. Jeg har forsøgt at ringe vedrørende stillingen som [STILLING]. Jeg vil gerne høre lidt mere om stillingen. Hvornår passer det bedst, at jeg ringer? Venlig hilsen [DIT NAVN], [DIN NUVÆRENDE ROLLE]</p></blockquote>
+
+    <h4>Variant C · kort og direkte</h4>
+    <blockquote><p>Hej [KONTAKTPERSON]. [DIT NAVN] her, [DIN NUVÆRENDE ROLLE]. Jeg er interesseret i [STILLING] og vil gerne stille et par spørgsmål inden jeg søger. Har du 10 minutter i telefonen i denne uge? Venlig hilsen [DIT NAVN]</p></blockquote>
+
+    <ul>
+      <li>Send på en hverdag mellem 8 og 15.</li>
+      <li>Nævn din nuværende titel. Den gør dig let at placere og åbner døren.</li>
+      <li>Bed om et kort opkald, ikke et møde. Det er let at sige ja til.</li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="taleseddel">
+    <summary><h2>3️⃣ Taleseddel til telefonsamtalen</h2></summary>
+    <div class="fase-body">
+    <p>Hold samtalen på 10 til 15 minutter. Læg sedlen foran dig og følg de fire trin. Du behøver ikke læse op ord for ord. Sedlen er en tryghed, ikke et manuskript.</p>
+
+    <h4>Trin 1 · Åbning og præsentation (20 sekunder)</h4>
+    <blockquote><p>Hej [KONTAKTPERSON], det er [DIT NAVN]. Har du et par minutter? … Jeg er [DIN NUVÆRENDE ROLLE] og overvejer at søge stillingen som [STILLING]. Jeg har læst opslaget grundigt og har et par spørgsmål, inden jeg søger. Passer det, at jeg stiller dem nu?</p></blockquote>
+
+    <h4>Trin 2 · Dine 2 til 3 spørgsmål</h4>
+    <p>Stil dem roligt, ét ad gangen. Lyt mere, end du taler. Vælg dine spørgsmål fra banken nedenfor. Skriv dem ind her, før du ringer:</p>
+    <blockquote>
+      <p>1. _______________________________________________</p>
+      <p>2. _______________________________________________</p>
+      <p>3. _______________________________________________</p>
+    </blockquote>
+
+    <h4>Trin 3 · Kvittér og notér undervejs</h4>
+    <p>Gentag kort det vigtigste, du hører ("så det, I lægger mest vægt på, er …"). Det viser, at du lytter, og giver dig svaret bekræftet med deres egne ord.</p>
+
+    <h4>Trin 4 · Positiv afrunding</h4>
+    <blockquote><p>Tak, det var virkelig nyttigt. Samtalen bekræfter mig i, at jeg søger. Jeg sender min ansøgning inden fristen. Ha' en god dag, [KONTAKTPERSON].</p></blockquote>
+
+    <p><em>Skriv dine noter ned STRAKS efter opkaldet, mens de er friske. Brug feltet i afsnit 4.</em></p>
+    </div>
+  </details>
+
+  <details class="card fase" id="spoergsmaal">
+    <summary><h2>🎯 Spørgsmålsbank · vælg 2 til 3</h2></summary>
+    <div class="fase-body">
+    <p>Gode spørgsmål kan ikke besvares ved at læse opslaget. De viser overskud og reel interesse. Vælg 2 til 3, der passer til stillingen, og skriv dem ind i taleseddelen.</p>
+
+    <h4>Om opgaven og forventningerne</h4>
+    <ul>
+      <li>Hvad bliver efter din vurdering den vigtigste opgave for [STILLING] i det første halve år?</li>
+      <li>Hvilken profil lykkes efter jeres vurdering bedst i stillingen?</li>
+      <li>Hvad er de vigtigste forventninger til de første to år?</li>
+      <li>Hvad ser I selv som et vellykket første år?</li>
+    </ul>
+
+    <h4>Om organisationen og konteksten</h4>
+    <ul>
+      <li>Hvad er det vigtigste, der fungerer godt i dag og skal bevares?</li>
+      <li>Hvad er den største udfordring lige nu, og hvor ønsker I, at den nye leder sætter først ind?</li>
+      <li>Hvordan vil du beskrive kulturen og medarbejdergruppen?</li>
+      <li>Hvad kendetegner et godt samarbejde mellem denne rolle og jer/forvaltningen/bestyrelsen?</li>
+    </ul>
+
+    <h4>Om processen</h4>
+    <ul>
+      <li>Hvordan ser ansættelsesforløbet ud, og hvad lægger I mest vægt på undervejs?</li>
+      <li>Er der noget, I gerne vil se, at ansøgningen tager konkret stilling til?</li>
+      <li>Hvor mange forventer I at tale med, og hvornår regner I med at være i mål?</li>
+    </ul>
+
+    <p><em>Undgå spørgsmål om løn og ferie i den første kontakt. Dem tager du, når de vil have dig.</em></p>
+    </div>
+  </details>
+
+  <details class="card fase" id="lyt">
+    <summary><h2>👂 Lyttepunkter · det skal du fange</h2></summary>
+    <div class="fase-body">
+    <p>Selve guldet er ikke dine spørgsmål, men deres svar. Fang disse fire ting undervejs:</p>
+    <ul>
+      <li><strong>Gentagne ord:</strong> De ord, der går igen (fx "ro", "tryghed", "kultur", "drift"), er de ord, din ansøgning skal bruge.</li>
+      <li><strong>Den nævnte udfordring:</strong> Nævner de noget svært (usikkerhed, rekruttering, økonomi), er det din ansøgnings vigtigste afsnit.</li>
+      <li><strong>Prioritering:</strong> Hvad nævner de FØRST, når du spørger om den vigtigste opgave? Det er den reelle topprioritet.</li>
+      <li><strong>Profil-ord:</strong> De ledelsesord de bruger om den ønskede profil ("nærværende", "robust", "tydelig"). Spejl dem i ansøgningen.</li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="efter">
+    <summary><h2>4️⃣ Fra telefonsamtale til ansøgning</h2></summary>
+    <div class="fase-body">
+    <p>Oversæt dine lyttepunkter til konkrete ændringer i ansøgningen, inden du sender:</p>
+    <ul class="checklist">
+      <li><label><input type="checkbox" data-check-id="fk-e-noter" /><span>Notér de tre vigtigste ord/temaer fra samtalen, mens de er friske</span></label></li>
+      <li><label><input type="checkbox" data-check-id="fk-e-indledning" /><span>Tilføj "efter en god samtale med [KONTAKTPERSON] …" i ansøgningens indledning</span></label></li>
+      <li><label><input type="checkbox" data-check-id="fk-e-udfordring" /><span>Adressér den udfordring, de nævnte, i ét af ansøgningens afsnit</span></label></li>
+      <li><label><input type="checkbox" data-check-id="fk-e-ord" /><span>Brug mindst ét af deres egne gentagne ord i motivationsafsnittet</span></label></li>
+      <li><label><input type="checkbox" data-check-id="fk-e-vaegt" /><span>Justér vægtningen: giv det, de nævnte først, mest plads</span></label></li>
+    </ul>
+    <h4>Dine noter fra telefonsamtalen</h4>
+    <textarea class="notes" data-notes="foerste-kontakt-opkald" rows="6" placeholder="Skriv lyttepunkterne her, lige når du har lagt på. Gemmes kun i din browser."></textarea>
+    </div>
+  </details>
+
+  <details class="card fase" id="noter">
+    <summary><h2>📝 Private noter</h2></summary>
+    <div class="fase-body">
+      <p>Aftaler, datoer og tanker undervejs. Noterne gemmes kun i denne browser (localStorage). De sendes aldrig ud på nettet. Skriv ikke følsomme oplysninger her.</p>
+      <textarea class="notes" data-notes="foerste-kontakt-general" rows="8" placeholder="Skriv noter her …"></textarea>
+      <div class="databtns">
+        <button type="button" class="btn-export">⬇️ Eksportér flueben &amp; noter</button>
+        <label class="btn-import">⬆️ Importér<input type="file" accept="application/json" hidden /></label>
+      </div>
+    </div>
+  </details>
+</main>
+
+<footer class="foot">
+  <p><a href="index.html">← Tilbage til forsiden</a></p>
+</footer>
