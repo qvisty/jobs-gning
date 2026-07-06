@@ -25,6 +25,34 @@
     .content .commute strong { color: #cbd5e1; }
     .content .anonote { color: #94a3b8; font-size: 14px; margin: -6px 0 18px; }
     .content .anonote strong { color: #fcd34d; }
+    /* Match-score: vejledende samlet vurdering øverst på undersiden */
+    .content .matchscore { background: rgba(30,41,59,.7); }
+    .content .matchscore h2 { font-size: 20px; }
+    .content .match-head { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+    .content .match-gauge { --val: 0; --col: #6366f1; flex: 0 0 auto; position: relative;
+      width: 108px; height: 108px; border-radius: 50%;
+      background: conic-gradient(var(--col) calc(var(--val) * 3.6deg), #0b1220 0);
+      display: grid; place-items: center; }
+    .content .match-gauge::before { content: ''; position: absolute; inset: 9px; border-radius: 50%;
+      background: #0f172a; }
+    .content .match-inner { position: relative; display: flex; flex-direction: column; align-items: center;
+      line-height: 1; }
+    .content .match-num { font-size: 34px; font-weight: 700; color: #f1f5f9; }
+    .content .match-max { font-size: 12px; color: #94a3b8; margin-top: 3px; }
+    .content .match-verdict { flex: 1 1 220px; }
+    .content .match-verdict h2 { margin: 0 0 6px; }
+    .content .match-verdict p { margin: 0; color: #cbd5e1; font-size: 14px; }
+    .content .match-dims { list-style: none; margin: 20px 0 0; padding: 0; }
+    .content .match-dims .md { margin: 14px 0; }
+    .content .md-top { display: flex; align-items: baseline; gap: 8px; }
+    .content .md-label { font-weight: 600; color: #e2e8f0; }
+    .content .md-weight { font-size: 12px; color: #64748b; }
+    .content .md-score { margin-left: auto; font-weight: 700; color: #a5b4fc; font-variant-numeric: tabular-nums; }
+    .content .md-track { height: 8px; margin: 7px 0 6px; border-radius: 999px; background: #0b1220;
+      border: 1px solid #334155; overflow: hidden; }
+    .content .md-fill { height: 100%; background: #6366f1; border-radius: 999px; }
+    .content .md-note { margin: 0; color: #94a3b8; font-size: 13.5px; }
+    .content .match-foot { margin: 18px 0 0; color: #64748b; font-size: 12.5px; }
     /* Sticky fasemenu på undersider */
     .content .fasebar { position: sticky; top: 0; z-index: 20; display: flex; flex-wrap: wrap; align-items: center;
       gap: 6px; padding: 12px 0 10px; margin: 0 0 4px; border-bottom: 1px solid #334155;
@@ -90,6 +118,11 @@
       .content .card { border: 0; border-radius: 0; padding: 10px 0; margin: 10px 0; }
       .content details.card summary::after { display: none; }
       .content a { text-decoration: none; }
+      /* Match-score: vis tal og en tydelig ramme, da baggrundsfarver fjernes i print */
+      .content .match-gauge { border: 2px solid #444 !important; }
+      .content .md-track { border: 1px solid #999 !important; }
+      .content .md-fill { border-bottom: 3px solid #444 !important; }
+      .content .matchscore { break-inside: avoid; }
       /* Sideskift: hver fase starter på en ny side */
       .content details.card { break-before: page; border-top: 0; }
       .content main > details.card:first-of-type { break-before: auto; }
@@ -138,6 +171,8 @@
     .content .tag--opfoelgning { background: rgba(251,191,36,.15); color: #fcd34d; border: 1px solid #fbbf24; }
     .content .tag--kladde { background: rgba(251,191,36,.15); color: #fcd34d; border: 1px solid #fbbf24; }
     .content .tag--sendt { background: rgba(52,211,153,.15); color: #6ee7b7; border: 1px solid #34d399; }
+    .content .tag--match { background: rgba(15,23,42,.5); border: 1px solid #6366f1; color: #a5b4fc; margin-left: 6px; }
+    .content .tag--match:empty { display: none; }
     /* Tjeklister med flueben, der huskes i browseren */
     .content .checklist { list-style: none; margin: 8px 0 22px; padding: 0; }
     .content .checklist li { padding: 5px 0; }
@@ -164,6 +199,42 @@
   <p class="commute">🚗 <strong>Kørsel fra Aabenraa:</strong> ca. 35 min · ca. 32 km hver vej (rute 8/41). Uproblematisk daglig pendling.</p>
   <p class="anonote">🔒 <strong>Pladsholdere:</strong> Personlige oplysninger er erstattet med [DIT NAVN], [ALDER], [DIN NUVÆRENDE SKOLE] og [DIN TIDLIGERE SKOLE]. Indsæt de rigtige data i den version, du sender.</p>
 </header>
+
+  <section class="card matchscore" id="match" aria-label="Match-score for stillingen">
+    <div class="match-head">
+      <div class="match-gauge" style="--val:82;--col:#34d399" role="img" aria-label="Match-score 82 ud af 100">
+        <span class="match-inner"><span class="match-num">82</span><span class="match-max">/100</span></span>
+      </div>
+      <div class="match-verdict">
+        <h2>🎯 Match-score: Stærkt match</h2>
+        <p>Vejledende samlet vurdering af, hvor godt stillingen passer til din profil, karriereplan, forventet løn og pendling. Brug den til at prioritere, hvad der er værd at gå efter.</p>
+      </div>
+    </div>
+    <ul class="match-dims">
+        <li class="md">
+          <div class="md-top"><span class="md-label">Profilmatch</span><span class="md-weight">vægt 35 %</span><span class="md-score">78</span></div>
+          <div class="md-track"><div class="md-fill" style="width:78%"></div></div>
+          <p class="md-note">Ungecenterledelse rammer dit ledelses- og ungeområde godt. Bredere tværfagligt felt end en enkelt skole, hvilket kræver koordinering på tværs.</p>
+        </li>
+        <li class="md">
+          <div class="md-top"><span class="md-label">Karriereplan</span><span class="md-weight">vægt 30 %</span><span class="md-score">85</span></div>
+          <div class="md-track"><div class="md-fill" style="width:85%"></div></div>
+          <p class="md-note">Centerlederrolle med ledelse af ledere og et bredere ansvarsområde. Et tydeligt skridt op ad karrierestigen i den retning, du sigter mod.</p>
+        </li>
+        <li class="md">
+          <div class="md-top"><span class="md-label">Løn og økonomi</span><span class="md-weight">vægt 20 %</span><span class="md-score">80</span></div>
+          <div class="md-track"><div class="md-fill" style="width:80%"></div></div>
+          <p class="md-note">Centerlederniveau i Sønderborg Kommune. Forventet over dit nuværende, med et ledelsesansvar der understøtter forhandling af tillæg.</p>
+        </li>
+        <li class="md">
+          <div class="md-top"><span class="md-label">Pendling</span><span class="md-weight">vægt 15 %</span><span class="md-score">85</span></div>
+          <div class="md-track"><div class="md-fill" style="width:85%"></div></div>
+          <p class="md-note">Ca. 35 min og 32 km hver vej ad rute 8/41. Uproblematisk daglig pendling og tættest på af de aktuelle stillinger.</p>
+        </li>
+    </ul>
+    <p class="match-foot">Vægtning: Profilmatch 35 % · Karriereplan 30 % · Løn og økonomi 20 % · Pendling 15 %. Scoren er et skøn og kan justeres i build.mjs.</p>
+  </section>
+
 
 <main>
   <nav class="fasebar">
