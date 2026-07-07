@@ -874,7 +874,10 @@
             '<head><meta charset="utf-8"><title>Ansøgning</title><style>' +
             'body{font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.4;color:#000}' +
             'h4{font-size:14pt;margin:18pt 0 6pt}p{margin:0 0 10pt}em{color:#666}' +
-            '</style></head><body>' + doc.innerHTML + '</body></html>';
+            '</style></head><body>' +
+            doc.innerHTML.replace(/\[[^\]<>]*\]/g, function (m) {
+              return '<span style="background:#ffff00;mso-highlight:yellow">' + m + '</span>';
+            }) + '</body></html>';
           var blob = new Blob([html], { type: 'application/msword;charset=utf-8' });
           var a = document.createElement('a');
           a.href = URL.createObjectURL(blob);
