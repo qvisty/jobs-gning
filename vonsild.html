@@ -90,7 +90,8 @@
       body { background: #fff !important; }
       .content { max-width: 100%; margin: 0; padding: 0; }
       .content * { color: #000 !important; background: transparent !important; border-color: #bbb !important; }
-      .fasebar, .progress, .notes, .databtns, .anonote, .foot, #toggle-all, .cal-actions { display: none !important; }
+      .fasebar, .progress, .notes, .databtns, .anonote, .foot, #toggle-all, .cal-actions,
+      .fb-form, .fb-del { display: none !important; }
       .content .card { border: 0; border-radius: 0; padding: 10px 0; margin: 10px 0; }
       .content details.card summary::after { display: none; }
       .content a { text-decoration: none; }
@@ -151,6 +152,40 @@
     /* Svarnoter i samtaleforberedelsen (runde 2) */
     .content .svarnote { display: block; margin-top: 4px; color: #cbd5e1; }
     .content .svarnote em { color: #a5b4fc; font-style: normal; font-weight: 600; }
+    /* Feedback-loop: log efter samtaler, forbedrer forberedelsen over tid */
+    .content .fb-widget { margin-top: 6px; }
+    .content .fb-learnings { border: 1px solid #34d399; background: rgba(52,211,153,.08);
+      border-radius: 12px; padding: 12px 16px; margin: 0 0 18px; }
+    .content .fb-learnings h4 { margin: 0 0 8px; color: #6ee7b7; }
+    .content .fb-learnings ul { margin: 0; padding-left: 20px; }
+    .content .fb-learnings li { margin: 6px 0; color: #cbd5e1; line-height: 1.55; }
+    .content .fb-learnings em { color: #a5b4fc; font-style: normal; font-weight: 600; }
+    .content .fb-form { display: grid; gap: 10px; margin: 0 0 18px; }
+    .content .fb-form h4 { margin: 6px 0 2px; }
+    .content .fb-field { display: grid; gap: 4px; }
+    .content .fb-field span { font-size: 13.5px; color: #c7d2fe; }
+    .content .fb-field input, .content .fb-field textarea { width: 100%; border: 1px solid #475569;
+      border-radius: 10px; padding: 9px 11px; background: #0b1220; color: #f1f5f9; font: inherit;
+      font-size: 14px; resize: vertical; }
+    .content .fb-field input:focus, .content .fb-field textarea:focus { outline: 2px solid #6366f1;
+      border-color: #6366f1; }
+    .content .fb-save { justify-self: start; display: inline-flex; align-items: center; padding: 8px 14px;
+      border: 1px solid #6366f1; border-radius: 999px; background: rgba(99,102,241,.18);
+      color: #e2e8f0; font-size: 14px; cursor: pointer; }
+    .content .fb-save:hover { background: rgba(99,102,241,.32); }
+    .content .fb-log h4 { margin: 6px 0 8px; }
+    .content .fb-log-list { list-style: none; margin: 0; padding: 0; }
+    .content .fb-entry { border: 1px solid #334155; border-radius: 12px; padding: 12px 14px;
+      margin: 0 0 12px; background: rgba(15,23,42,.4); }
+    .content .fb-entry-head { display: flex; align-items: center; gap: 10px; font-weight: 700;
+      color: #e2e8f0; margin-bottom: 6px; }
+    .content .fb-date { font-weight: 400; font-size: 12.5px; color: #94a3b8; }
+    .content .fb-del { margin-left: auto; border: 1px solid #475569; background: transparent;
+      color: #94a3b8; border-radius: 999px; width: 26px; height: 26px; cursor: pointer; flex: 0 0 auto; }
+    .content .fb-del:hover { border-color: #f87171; color: #fca5a5; }
+    .content .fb-row { margin: 4px 0; font-size: 14px; color: #cbd5e1; line-height: 1.5; }
+    .content .fb-row strong { color: #a5b4fc; font-weight: 600; }
+    .content .fb-empty { color: #94a3b8; font-size: 14px; }
     /* Tilføj til kalender-knapper (pr. begivenhed) */
     .content .cal-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
     .content .cal-btn { display: inline-flex; align-items: center; padding: 5px 11px; border: 1px solid #475569;
@@ -185,6 +220,8 @@
     <a href="#cases">🧪 Cases</a>
     <a href="#fase-7">7 · Samtale 2</a>
     <a href="#fase-8">8 · Løn</a>
+    <a href="#fase-9">9 · Opstart</a>
+    <a href="#feedback">🔁 Feedback</a>
     <a href="#noter">📝 Noter</a>
     <button id="toggle-all" type="button">Åbn alle</button>
   </nav>
@@ -752,6 +789,78 @@
     </div>
   </details>
 
+  <details class="card fase" id="fase-9">
+    <summary><h2>9️⃣ God opstart · dine første 30-60-90 dage</h2></summary>
+    <div class="fase-body">
+    <p>Når du har sagt ja, begynder det arbejde, der afgør, om du lykkes. De første 90 dage handler ikke om at bevise dig selv med hurtige beslutninger, men om at forstå, bygge tillid og lægge et fælles fundament. Din særlige opgave her er dobbelt: du skal drive en velfungerende afdeling videre <em>og</em> forberede overgangen til en selvstændig skole med egen bestyrelse og administration pr. 1. januar 2027. Planen nedenfor holder de to spor adskilt, så driften aldrig taber fokus, mens transformationen skrider frem.</p>
+
+    <h4>Dag 0 til 30 · Lyt, forstå og skab tryghed</h4>
+    <p>Mål: at være synlig, lyttende og lærende. Ingen strukturændringer i denne fase. Du samler viden og skaber ro om, at det velfungerende bliver ved med at fungere.</p>
+    <ul>
+      <li><label><input type="checkbox" data-check-id="von-f9-1til1" /><span>Hold en kort 1:1 med hver medarbejder og hvert teamlead: hvad fungerer, hvad bekymrer dig, hvad håber du på af mig?</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-f9-bestyrelse" /><span>Møde med den nuværende bestyrelse/forældrerepræsentation: forventninger til overgangen til selvstændig skole</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-f9-skolechef" /><span>Aftal fast mødekadence med skolechef Karen Albrechtsen og forvaltningen om selvstændiggørelsen</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-f9-oekonomi" /><span>Få fuldt overblik over budgettet (op til 47 mio. kr.), nøgletal og de bindinger, der gælder i overgangsåret</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-f9-elever" /><span>Vær synlig i hverdagen: besøg klasser og afdelinger, spis frokost med personalet, lær eleverne og deres behov at kende</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-f9-quickwin" /><span>Notér 1 til 2 lette forbedringer, medarbejderne selv peger på, som du kan løse hurtigt uden risiko</span></label></li>
+    </ul>
+
+    <h4>Dag 31 til 60 · Prioritér og planlæg transformationen</h4>
+    <p>Mål: at oversætte det, du har lært, til få klare prioriteter og en konkret plan for at etablere den selvstændige skole. Nu begynder du at sætte retning, men stadig sammen med medarbejderne.</p>
+    <ul>
+      <li><label><input type="checkbox" data-check-id="von-f9-prioriteter" /><span>Formulér 3 prioriteter for det første år og præsentér dem for personalet, så alle kender retningen</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-f9-koereplan" /><span>Lav en køreplan for selvstændiggørelsen frem mod 1. januar 2027: bestyrelse, vedtægter, administration, økonomi og IT-systemer</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-f9-administration" /><span>Kortlæg hvilke administrative funktioner skolen selv skal overtage, og hvor din IT-profil kan spare skolen for eksterne udgifter</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-f9-mus" /><span>Planlæg de første MUS-samtaler eller teamdrøftelser om roller og forventninger i den nye skole</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-f9-forael" /><span>Første orienteringsmøde med forældrene om, hvad selvstændiggørelsen betyder for eleverne (tryghed frem for forandring)</span></label></li>
+    </ul>
+
+    <h4>Dag 61 til 90 · Beslut, forankr og vis resultater</h4>
+    <p>Mål: at gå fra plan til handling på de vigtigste punkter og vise, at retningen holder. Du forankrer det nye fundament, uden at driften vakler.</p>
+    <ul>
+      <li><label><input type="checkbox" data-check-id="von-f9-bestyrelsesplan" /><span>Fremlæg en konkret tids- og handleplan for etablering af den nye bestyrelse for forvaltningen</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-f9-foerste-beslutning" /><span>Træf de første synlige beslutninger på dine 3 prioriteter, så personalet mærker fremdrift</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-f9-evaluering" /><span>Hold en kort 90-dages-evaluering med skolechefen: hvad er nået, hvad kræver justering</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-f9-feedback" /><span>Bed personalet om ærlig feedback på dine første 90 dage og meld tilbage, hvad du gør ved den</span></label></li>
+      <li><label><input type="checkbox" data-check-id="von-f9-aarsplan" /><span>Fastlæg årshjul for resten af skoleåret, der samler drift og transformation i én rytme</span></label></li>
+    </ul>
+
+    <p><em>Grundprincip: I en velfungerende afdeling er den største risiko at ændre for meget for hurtigt. Byg tillid først, transformér bagefter. Din troværdighed i overgangen kommer af, at driften aldrig blev tabt af syne.</em></p>
+    </div>
+  </details>
+
+  <details class="card fase" id="feedback">
+    <summary><h2>🔁 Efter samtalen · log og løbende forbedring</h2></summary>
+    <div class="fase-body">
+    <p>Log kort, hvordan samtalen gik, mens den er frisk. Dine svar bliver til en huskeliste, der skærper forberedelsen til næste samtale og næste ansøgning. Alt gemmes kun i din browser og følger med i eksport/import. Læringerne vises på tværs af alle stillinger, så systemet bliver skarpere for hver runde.</p>
+    <div class="fb-widget" data-feedback="vonsild" data-fb-label="Skoleleder · Vonsild">
+      <div class="fb-learnings" data-fb-learnings hidden>
+        <h4>📌 Dine læringer fra tidligere samtaler</h4>
+        <ul data-fb-learn-list></ul>
+      </div>
+      <form class="fb-form" data-fb-form>
+        <h4>Ny logindgang</h4>
+        <label class="fb-field"><span>Hvilken samtale?</span>
+          <input type="text" name="samtale" placeholder="fx 1. samtale · 19. august" /></label>
+        <label class="fb-field"><span>Hvad gik godt?</span>
+          <textarea name="godt" rows="2" placeholder="Det, der fungerede — svar, stemning, spørgsmål der ramte …"></textarea></label>
+        <label class="fb-field"><span>Hvad var svært eller overraskede?</span>
+          <textarea name="svaert" rows="2" placeholder="Det, der var svært, eller hvor du gik i stå …"></textarea></label>
+        <label class="fb-field"><span>Spørgsmål jeg ikke havde forberedt</span>
+          <textarea name="spoergsmaal" rows="2" placeholder="Uventede spørgsmål fra panelet — tilføj dem til forberedelsen næste gang …"></textarea></label>
+        <label class="fb-field"><span>Hvad gør jeg anderledes næste gang?</span>
+          <textarea name="naeste" rows="2" placeholder="Konkret forbedring til næste samtale eller ansøgning …"></textarea></label>
+        <button type="submit" class="fb-save">💾 Gem logindgang</button>
+      </form>
+      <div class="fb-log">
+        <h4>Dine tidligere logindgange</h4>
+        <ol class="fb-log-list" data-fb-log-list></ol>
+        <p class="fb-empty" data-fb-empty>Ingen logindgange endnu. Udfyld formularen efter din første samtale.</p>
+      </div>
+    </div>
+    </div>
+  </details>
+
   <details class="card fase" id="noter">
     <summary><h2>📝 Private noter</h2></summary>
     <div class="fase-body">
@@ -1020,6 +1129,115 @@
           try { localStorage.setItem(nkey, t.value); } catch (e) {}
         });
       });
+
+      // Feedback-loop: log kort efter hver samtale. "Næste gang"-punkterne dukker op
+      // som huskeliste før næste samtale, og forsiden samler læring på tværs af stillinger.
+      (function () {
+        var FKEY = 'jobhub:feedback:v1';
+        function load() {
+          try { return JSON.parse(localStorage.getItem(FKEY)) || []; } catch (e) { return []; }
+        }
+        function store(list) {
+          try { localStorage.setItem(FKEY, JSON.stringify(list)); } catch (e) {}
+        }
+        function esc(s) {
+          return String(s == null ? '' : s).replace(/&/g, '&amp;')
+                 .replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+        function fmtDate(iso) {
+          var d = new Date(iso);
+          if (isNaN(d.getTime())) return '';
+          function p(n) { return (n < 10 ? '0' : '') + n; }
+          return p(d.getDate()) + '/' + p(d.getMonth() + 1) + '-' + d.getFullYear();
+        }
+        function byDateDesc(a, b) { return (b.date || '').localeCompare(a.date || ''); }
+        function field(label, val) {
+          if (!val || !val.trim()) return '';
+          return '<p class="fb-row"><strong>' + label + '</strong> ' + esc(val) + '</p>';
+        }
+        function entryHtml(e, showScope) {
+          var head = (showScope && e.scopeLabel ? esc(e.scopeLabel) + ' · ' : '') +
+                     esc(e.samtale || 'Samtale') +
+                     (e.date ? ' <span class="fb-date">' + fmtDate(e.date) + '</span>' : '');
+          return '<li class="fb-entry">' +
+            '<div class="fb-entry-head">' + head +
+              '<button type="button" class="fb-del" data-fb-del="' + esc(e.id) + '" ' +
+              'title="Slet logindgang" aria-label="Slet logindgang">✕</button></div>' +
+            field('Gik godt:', e.godt) +
+            field('Svært:', e.svaert) +
+            field('Uventede spørgsmål:', e.spoergsmaal) +
+            field('Næste gang:', e.naeste) +
+            '</li>';
+        }
+        var widgets = document.querySelectorAll('[data-feedback]');
+        if (!widgets.length) return;
+        function render() {
+          var list = load();
+          var learnings = list.filter(function (e) { return (e.naeste || '').trim(); }).sort(byDateDesc);
+          widgets.forEach(function (root) {
+            var scope = root.getAttribute('data-feedback');
+            var mine = scope === '__all__'
+              ? list.slice()
+              : list.filter(function (e) { return e.scope === scope; });
+            mine.sort(byDateDesc);
+
+            var learnBox = root.querySelector('[data-fb-learnings]');
+            var learnList = root.querySelector('[data-fb-learn-list]');
+            if (learnBox && learnList) {
+              if (learnings.length) {
+                learnList.innerHTML = learnings.map(function (e) {
+                  var tag = e.scopeLabel
+                    ? '<em>' + esc(e.scopeLabel) + (e.samtale ? ' · ' + esc(e.samtale) : '') + ':</em> '
+                    : '';
+                  return '<li>' + tag + esc(e.naeste) + '</li>';
+                }).join('');
+                learnBox.hidden = false;
+              } else {
+                learnList.innerHTML = '';
+                learnBox.hidden = true;
+              }
+            }
+
+            var logList = root.querySelector('[data-fb-log-list]');
+            var empty = root.querySelector('[data-fb-empty]');
+            if (logList) {
+              logList.innerHTML = mine.map(function (e) {
+                return entryHtml(e, scope === '__all__');
+              }).join('');
+            }
+            if (empty) empty.hidden = mine.length > 0;
+          });
+        }
+        document.querySelectorAll('form[data-fb-form]').forEach(function (form) {
+          form.addEventListener('submit', function (ev) {
+            ev.preventDefault();
+            var root = form.closest('[data-feedback]');
+            var scope = root ? root.getAttribute('data-feedback') : '';
+            var label = root ? (root.getAttribute('data-fb-label') || '') : '';
+            function v(name) { var el = form.elements[name]; return el ? el.value.trim() : ''; }
+            var entry = {
+              id: 'fb-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7),
+              scope: scope, scopeLabel: label,
+              samtale: v('samtale'), godt: v('godt'), svaert: v('svaert'),
+              spoergsmaal: v('spoergsmaal'), naeste: v('naeste'),
+              date: new Date().toISOString()
+            };
+            if (!entry.samtale && !entry.godt && !entry.svaert && !entry.spoergsmaal && !entry.naeste) return;
+            var list = load(); list.push(entry); store(list);
+            form.reset();
+            render();
+          });
+        });
+        document.addEventListener('click', function (ev) {
+          var btn = ev.target.closest && ev.target.closest('[data-fb-del]');
+          if (!btn) return;
+          if (!window.confirm('Slet denne logindgang?')) return;
+          var id = btn.getAttribute('data-fb-del');
+          store(load().filter(function (e) { return e.id !== id; }));
+          render();
+        });
+        render();
+      })();
 
       // Sammenklappelige faser: åben/lukket huskes pr. side
       var OPENKEY = 'jobhub:open:' + page;
