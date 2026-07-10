@@ -20,6 +20,46 @@
     </a>
   </section>
 
+  <section class="card" id="tracker">
+    <h2>🎯 Ansøgnings-tracker · status pr. stilling</h2>
+    <p>Ét samlet overblik over hele pipelinen: hvor hver ansøgning står, og hvad næste handling er. Vælg status og skriv næste skridt. Det gemmes kun i din egen browser.</p>
+    <ol class="tracker">
+      <li class="track-row" data-job="vonsild">
+        <div class="track-head">
+          <h3><a href="vonsild.html">🏫 Skoleleder · Vonsild Specialskole</a></h3>
+          <span class="track-deadline">Frist <strong>11. aug 2026</strong></span>
+          <select class="track-status" aria-label="Status for Vonsild">
+            <option value="afventer">Afventer svar</option>
+            <option value="samtale">Samtale indkaldt</option>
+            <option value="tilbud">Tilbud</option>
+            <option value="afslag">Afslag</option>
+          </select>
+        </div>
+        <div class="track-next">
+          <label for="next-vonsild">Næste handling:</label>
+          <input type="text" id="next-vonsild" placeholder="fx: send ansøgning inden 11. aug" />
+        </div>
+      </li>
+      <li class="track-row" data-job="soenderborg">
+        <div class="track-head">
+          <h3><a href="soenderborg.html">🧭 Ungecenterleder · Sønderborg Kommune</a></h3>
+          <span class="track-deadline">Frist <strong>11. aug 2026</strong></span>
+          <select class="track-status" aria-label="Status for Sønderborg">
+            <option value="afventer">Afventer svar</option>
+            <option value="samtale">Samtale indkaldt</option>
+            <option value="tilbud">Tilbud</option>
+            <option value="afslag">Afslag</option>
+          </select>
+        </div>
+        <div class="track-next">
+          <label for="next-soenderborg">Næste handling:</label>
+          <input type="text" id="next-soenderborg" placeholder="fx: send ansøgning inden 11. aug" />
+        </div>
+      </li>
+    </ol>
+    <p class="track-hint">Status starter på “Afventer svar”. Skift den til “Samtale indkaldt”, “Tilbud” eller “Afslag” efterhånden som forløbet skrider frem. Farven følger med.</p>
+  </section>
+
   <section class="card" id="kalender">
     <h2>📅 Kalender · vigtige datoer</h2>
     <p>Frister, samtaler og opfølgning. Klik på en begivenhed for at komme direkte til stillingens materiale. Datoer opdateres, når endelige indkaldelser kommer.</p>
