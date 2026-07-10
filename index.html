@@ -63,6 +63,21 @@
     .content blockquote { margin: 14px 0; padding: 12px 16px; border-left: 3px solid #6366f1;
       background: rgba(99,102,241,.08); border-radius: 0 10px 10px 0; }
     .content blockquote p { margin: 8px 0; }
+    /* Løn-modul: benchmark-boks, udspils-boks og tre-tal-gitter */
+    .content .loenkort { border: 1px solid #334155; border-radius: 12px; padding: 14px 16px; margin: 10px 0 6px;
+      background: rgba(15,23,42,.4); }
+    .content .loenkort.benchmark { border-left: 3px solid #34d399; }
+    .content .loenkort.udspil { border-left: 3px solid #fcd34d; }
+    .content .loenkort .loen-tal { font-size: 21px; font-weight: 700; color: #6ee7b7; margin: 2px 0 8px; }
+    .content .loenkort.udspil .loen-tal { color: #fcd34d; }
+    .content .loenkort .loen-kilde { font-size: 13px; color: #94a3b8; margin: 8px 0 2px; }
+    .content .tre-tal { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 4px 0 12px; }
+    .content .tre-tal > div { border: 1px solid #334155; border-radius: 10px; padding: 10px 8px; text-align: center;
+      background: rgba(30,41,59,.55); }
+    .content .tre-tal .tt-label { display: block; font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; color: #818cf8; }
+    .content .tre-tal .tt-val { display: block; font-size: 17px; font-weight: 700; color: #f1f5f9; margin: 5px 0 3px; }
+    .content .tre-tal .tt-note { display: block; font-size: 12px; color: #94a3b8; line-height: 1.4; }
+    @media (max-width: 520px) { .content .tre-tal { grid-template-columns: 1fr; } }
     /* Nedtælling på forsiden */
     .content .countdown { text-align: center; font-size: 15px; color: #fcd34d; background: rgba(251,191,36,.08);
       border: 1px solid rgba(251,191,36,.4); border-radius: 10px; padding: 10px 14px; margin: 18px 0 0; }
@@ -99,7 +114,8 @@
       .content main > details.card:first-of-type { break-before: auto; }
       /* Hold sammenhængende blokke samlet på én side */
       .content details.qa, .content blockquote, .content .checklist li,
-      .content .event, .content .fase-body > ul > li { break-inside: avoid; }
+      .content .event, .content .fase-body > ul > li,
+      .content .loenkort, .content .tre-tal > div { break-inside: avoid; }
       .content h2, .content h3, .content h4, .content h5 { break-after: avoid; }
       .content p, .content li { orphans: 3; widows: 3; }
       /* Hver forberedelsesmodel (STAR, Domæne, 4D, CMM, Tomm) starter på egen side */
