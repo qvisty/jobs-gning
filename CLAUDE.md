@@ -31,7 +31,11 @@ Gælder al tekst, der skrives til ejeren eller til siderne.
 
 ## Om projektet
 
-Offentlig jobsøgnings-side på GitHub Pages. Kilderne ligger i `src/`
+Jobsøgnings-side på GitHub Pages. Kilderne ligger i `src/`
 (`src/content.html` = forside, `src/jobs/*.html` = undersider), og
 `build.mjs` genererer HTML-filerne i roden ud fra `src/template.html`.
-Undersiderne er anonymiserede med pladsholdere ([DIT NAVN] osv.).
+Siderne har en klient-side adgangslås (hash i `src/template.html`,
+cookie i en time). Låsen stopper almindelige besøgende, men indholdet
+findes stadig i sidens kilde og i det offentlige repo. Undersiderne
+skal derfor fortsat være anonymiserede med pladsholdere ([DIT NAVN]
+osv.).
