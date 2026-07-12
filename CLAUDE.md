@@ -10,11 +10,24 @@ Retningslinjer for Claude Code i dette repository.
 - Kør `npm run build` efter ændringer i `src/`, og commit det genererede
   output (`index.html`, `vonsild.html`, `soenderborg.html`) sammen med kilden.
 - **Fang dikteringsfejl.** Ejeren dikterer ofte sine beskeder, så vær
-  opmærksom på sandsynlige fejldikteringer — især navne og fagtermer, der
+  opmærksom på sandsynlige fejldikteringer, især navne og fagtermer, der
   ligner hinanden. Tjek mod det, der allerede står i materialet, ret til
   den sandsynlige mening, og nævn altid eksplicit, hvad der blev antaget
-  rettet. Eksempler fra tidligere: "Annie" → René, "TRAP" → KRAP,
+  rettet. Eksempler fra tidligere er "Annie" → René, "TRAP" → KRAP og
   "fleksjob" → fritidsjob.
+
+## Sprog og tegnsætning
+
+Gælder al tekst, der skrives til ejeren eller til siderne.
+
+- **Ingen tankestreg (emdash) og ingen semikolon.** Undgå helst også
+  kolon. Brug punktum og komma i stedet, og del hellere en lang sætning
+  op i to.
+- **Brug kun almindelig bindestreg, hvor retskrivningen kræver den**,
+  fx i sammensætninger som "KRAP-fundament" og "e-mail". Aldrig som
+  stilistisk indskud eller erstatning for tankestreg.
+- Allerede afsendt materiale (fx arkiverede ansøgninger i fase 5) rettes
+  ikke bagudrettet. Det skal fortsat matche det, der faktisk blev sendt.
 
 ## Om projektet
 
