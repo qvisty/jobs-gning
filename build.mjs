@@ -1,6 +1,8 @@
 #!/usr/bin/env node
-// Build-script: bygger forsiden og én underside pr. stilling ud fra src/template.html.
-// Siden er offentlig — der er ingen adgangskode eller kryptering.
+// Build-script. Bygger forsiden og én underside pr. stilling ud fra src/template.html.
+// Siderne har en klient-side adgangslås (SHA-256-hash i template.html, cookie i en time).
+// Låsen stopper almindelige besøgende, men indholdet findes stadig i sidens kilde,
+// så personlige oplysninger skal fortsat holdes ude af siderne.
 //
 // Brug:
 //   node build.mjs   (eller npm run build)

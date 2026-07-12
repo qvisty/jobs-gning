@@ -5,7 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Jobsøgning</title>
+  <script>
+    // Adgangslås. Cookien tjekkes synkront her i head, så indholdet aldrig når at blinke frem.
+    // Bemærk at låsen er klient-side. Den stopper almindelige besøgende, men indholdet findes
+    // stadig i sidens kilde, så personlige oplysninger skal fortsat holdes ude af siderne.
+    (function () {
+      var HASH = '7cd47ad7f9ef31699dc8ddd4fead13d8454f5fd1d6e039c6b3efdc03b490d625';
+      var m = document.cookie.match(/(?:^|; )hub_adgang=([^;]*)/);
+      if (!m || m[1] !== HASH) document.documentElement.className += ' laast';
+    })();
+  </script>
   <style>
+    /* Adgangslås */
+    #laas { display: none; position: fixed; inset: 0; z-index: 100; align-items: center; justify-content: center;
+      background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%); padding: 20px; }
+    html.laast #laas { display: flex; }
+    html.laast .content { display: none !important; }
+    #laas form { width: 100%; max-width: 360px; text-align: center; background: rgba(30,41,59,.6);
+      border: 1px solid #334155; border-radius: 14px; padding: 32px 28px; }
+    #laas .laas-ikon { font-size: 40px; }
+    #laas h1 { font-size: 22px; margin: 10px 0 6px; color: #e2e8f0; }
+    #laas p { color: #94a3b8; font-size: 14px; margin: 6px 0 16px; }
+    #laas input { width: 100%; padding: 10px 12px; border: 1px solid #475569; border-radius: 10px;
+      background: #0b1220; color: #f1f5f9; font: inherit; text-align: center; }
+    #laas input:focus { outline: 2px solid #6366f1; border-color: #6366f1; }
+    #laas button { margin-top: 12px; width: 100%; padding: 10px 12px; border: 1px solid #6366f1;
+      border-radius: 10px; background: rgba(99,102,241,.25); color: #e0e7ff; font: inherit; cursor: pointer; }
+    #laas button:hover { background: rgba(99,102,241,.4); }
+    #laas .laas-fejl { color: #fca5a5; min-height: 18px; margin: 10px 0 0; }
+    #laas .laas-note { color: #64748b; font-size: 12.5px; margin: 10px 0 0; }
     :root { color-scheme: light dark; }
     html { scroll-behavior: smooth; }
     * { box-sizing: border-box; }
@@ -160,6 +188,52 @@
   </style>
 </head>
 <body>
+  <div id="laas" role="dialog" aria-label="Adgangskode">
+    <form id="laas-form">
+      <div class="laas-ikon">🔒</div>
+      <h1>Privat side</h1>
+      <p>Indtast adgangskoden for at se indholdet.</p>
+      <input type="password" id="laas-kode" autocomplete="current-password" aria-label="Adgangskode" />
+      <button type="submit">Lås op</button>
+      <p id="laas-fejl" class="laas-fejl" aria-live="polite"></p>
+      <p class="laas-note">Adgangen huskes i en time i denne browser.</p>
+    </form>
+  </div>
+  <script>
+    // Adgangslås. Koden gemmes kun som SHA-256-hash, og godkendelse huskes i en cookie i en time.
+    (function () {
+      var HASH = '7cd47ad7f9ef31699dc8ddd4fead13d8454f5fd1d6e039c6b3efdc03b490d625';
+      var form = document.getElementById('laas-form');
+      if (!form) return;
+      var input = document.getElementById('laas-kode');
+      var fejl = document.getElementById('laas-fejl');
+      if (document.documentElement.classList.contains('laast')) {
+        setTimeout(function () { input.focus(); }, 50);
+      }
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var v = input.value || '';
+        if (!(window.crypto && crypto.subtle)) {
+          fejl.textContent = 'Din browser understøtter ikke låsen. Prøv en nyere browser.';
+          return;
+        }
+        crypto.subtle.digest('SHA-256', new TextEncoder().encode(v)).then(function (buf) {
+          var hex = Array.prototype.map.call(new Uint8Array(buf), function (b) {
+            return ('0' + b.toString(16)).slice(-2);
+          }).join('');
+          if (hex === HASH) {
+            document.cookie = 'hub_adgang=' + hex + '; max-age=3600; path=/; SameSite=Strict';
+            document.documentElement.classList.remove('laast');
+            input.value = '';
+            fejl.textContent = '';
+          } else {
+            fejl.textContent = 'Forkert adgangskode. Prøv igen.';
+            input.select();
+          }
+        });
+      });
+    })();
+  </script>
   <div class="content"><!-- Forside: anonymiseret oversigt + kalender. Alt konkret materiale ligger på undersiderne. -->
 <header class="hero">
   <p class="eyebrow">Jobsøgnings-hub</p>
