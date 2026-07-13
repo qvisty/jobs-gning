@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="da" class="laast">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Ungecenterleder · Sønderborg</title>
   <script>
-    // Adgangslås. Cookien tjekkes synkront her i head, så indholdet aldrig når at blinke frem.
-    // Bemærk at låsen er klient-side. Den stopper almindelige besøgende, men indholdet findes
-    // stadig i sidens kilde, så personlige oplysninger skal fortsat holdes ude af siderne.
+    // Adgangslås. Siden er låst som udgangspunkt (class="laast" på html-elementet),
+    // og låses kun op her, hvis cookien er gyldig. Dermed forbliver siden låst,
+    // hvis JavaScript er slået fra (fail closed). Cookien tjekkes synkront i head,
+    // så indholdet aldrig når at blinke frem.
+    // Bemærk at låsen er klient-side. Den stopper almindelige besøgende, men indholdet
+    // findes stadig i sidens kilde, så personlige oplysninger skal fortsat holdes ude af siderne.
     (function () {
       var HASH = '7cd47ad7f9ef31699dc8ddd4fead13d8454f5fd1d6e039c6b3efdc03b490d625';
       var m = document.cookie.match(/(?:^|; )hub_adgang=([^;]*)/);
-      if (!m || m[1] !== HASH) document.documentElement.className += ' laast';
+      if (m && m[1] === HASH) document.documentElement.classList.remove('laast');
     })();
   </script>
   <style>
@@ -197,6 +200,7 @@
       <button type="submit">Lås op</button>
       <p id="laas-fejl" class="laas-fejl" aria-live="polite"></p>
       <p class="laas-note">Adgangen huskes i en time i denne browser.</p>
+      <noscript><p class="laas-fejl">Låsen kræver JavaScript. Slå JavaScript til for at logge ind.</p></noscript>
     </form>
   </div>
   <script>
