@@ -13,6 +13,7 @@ const pages = [
   { src: 'src/content.html', out: 'index.html', title: 'Jobsøgning' },
   { src: 'src/jobs/vonsild.html', out: 'vonsild.html', title: 'Skoleleder · Vonsild Specialskole' },
   { src: 'src/jobs/soenderborg.html', out: 'soenderborg.html', title: 'Ungecenterleder · Sønderborg' },
+  { src: 'src/jobs/inspiration.html', out: 'inspiration.html', title: 'Inspiration · stillinger til genbrug' },
 ];
 
 const template = await readFile('src/template.html', 'utf8');

@@ -39,3 +39,8 @@ cookie i en time). Låsen stopper almindelige besøgende, men indholdet
 findes stadig i sidens kilde og i det offentlige repo. Undersiderne
 skal derfor fortsat være anonymiserede med pladsholdere ([DIT NAVN]
 osv.).
+
+Stillinger, der er set men ikke søgt, eller søgt uden ansættelse,
+arkiveres i `src/jobs/inspiration.html` med genbrugsformuleringer,
+procesidéer og markedsindsigt. Arkiverede opslag gengives uændret som
+eksterne citater og er undtaget tegnsætningsreglerne.
