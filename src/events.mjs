@@ -6,7 +6,7 @@
 // Felter pr. begivenhed:
 //   start      ISO-dato (YYYY-MM-DD)
 //   kind       frist | samtale | tiltraedelse (styrer farve i kalenderen)
-//   short      kort stednavn vist i kalendergitteret (tom = intet)
+//   abbr       kort bogstav-mærke i kalenderen der viser stillingen (tom = intet)
 //   tag        pille-klasse på forsiden (tag--sendt, tag--samtale, ...)
 //   tagLabel   teksten i pillen
 //   heading    overskrift i tidslinjen
@@ -21,7 +21,7 @@ export const events = [
   {
     start: '2026-08-11',
     kind: 'frist',
-    short: 'Vonsild',
+    abbr: 'V',
     tag: 'sendt',
     tagLabel: '✓ Sendt 11. juli',
     heading: 'Skoleleder · Vonsild Specialskole',
@@ -34,7 +34,7 @@ export const events = [
   {
     start: '2026-08-11',
     kind: 'frist',
-    short: 'Sønderborg',
+    abbr: 'S',
     tag: 'sendt',
     tagLabel: '✓ Sendt 7. juli',
     heading: 'Ungecenterleder · Sønderborg Kommune',
@@ -47,7 +47,7 @@ export const events = [
   {
     start: '2026-08-19',
     kind: 'samtale',
-    short: 'Sønderborg',
+    abbr: 'S',
     tag: 'samtale',
     tagLabel: '1. samtale',
     heading: 'Ungecenterleder · Sønderborg',
@@ -61,7 +61,7 @@ export const events = [
   {
     start: '2026-08-19',
     kind: 'samtale',
-    short: 'Vonsild',
+    abbr: 'V',
     tag: 'samtale',
     tagLabel: '1. samtale',
     heading: 'Skoleleder · Vonsild',
@@ -74,7 +74,7 @@ export const events = [
   {
     start: '2026-08-24',
     kind: 'samtale',
-    short: 'Sønderborg',
+    abbr: 'S',
     tag: 'samtale',
     tagLabel: '2. samtale',
     heading: 'Ungecenterleder · Sønderborg',
@@ -88,7 +88,7 @@ export const events = [
   {
     start: '2026-08-25',
     kind: 'samtale',
-    short: 'Vonsild',
+    abbr: 'V',
     tag: 'samtale',
     tagLabel: '2. samtale',
     heading: 'Skoleleder · Vonsild',
@@ -102,7 +102,7 @@ export const events = [
   {
     start: '2026-10-01',
     kind: 'tiltraedelse',
-    short: '',
+    abbr: '',
     tag: 'tiltraedelse',
     tagLabel: 'Tiltrædelse',
     heading: 'Forventet opstart',
