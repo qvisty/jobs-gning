@@ -13,7 +13,7 @@
     // Bemærk at låsen er klient-side. Den stopper almindelige besøgende, men indholdet
     // findes stadig i sidens kilde, så personlige oplysninger skal fortsat holdes ude af siderne.
     (function () {
-      var HASH = '7cd47ad7f9ef31699dc8ddd4fead13d8454f5fd1d6e039c6b3efdc03b490d625';
+      var HASH = 'd2440ea6e006bccbde88a21f52ef8a23ebcb7fe80714f85ce7e2fe24cda9518c';
       var m = document.cookie.match(/(?:^|; )hub_adgang=([^;]*)/);
       if (m && m[1] === HASH) document.documentElement.classList.remove('laast');
     })();
@@ -174,6 +174,37 @@
     .content .tag--kladde { background: rgba(251,191,36,.15); color: #fcd34d; border: 1px solid #fbbf24; }
     .content .tag--sendt { background: rgba(52,211,153,.15); color: #6ee7b7; border: 1px solid #34d399; }
     .content .tag--inspiration { background: rgba(34,211,238,.15); color: #67e8f9; border: 1px solid #22d3ee; }
+    /* Månedskalender (kalender.html) */
+    .content .kal-legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 0 0 18px; }
+    .content .kal-key { font-size: 12.5px; color: #cbd5e1; display: inline-flex; align-items: center; gap: 7px; }
+    .content .kal-key::before { content: ''; width: 12px; height: 12px; border-radius: 4px; }
+    .content .kal-key--frist::before { background: #f87171; }
+    .content .kal-key--samtale::before { background: #818cf8; }
+    .content .kal-key--tiltraedelse::before { background: #34d399; }
+    .content .kal-month { margin: 0 0 26px; }
+    .content .kal-title { margin: 0 0 10px; font-size: 18px; text-transform: capitalize; }
+    .content .kal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+    .content .kal-head { text-align: center; font-size: 11px; text-transform: uppercase; letter-spacing: .04em;
+      color: #94a3b8; padding: 4px 0; }
+    .content .kal-cell { min-height: 60px; border: 1px solid #26334d; border-radius: 8px;
+      background: rgba(15,23,42,.4); padding: 4px; display: flex; flex-direction: column; gap: 3px; }
+    .content .kal-cell.kal-empty { border: 0; background: transparent; }
+    .content .kal-cell.kal-has { border-color: #475569; background: rgba(30,41,59,.6); }
+    .content .kal-daynum { font-size: 12px; color: #94a3b8; font-weight: 600; }
+    .content .kal-cell.kal-has .kal-daynum { color: #f1f5f9; }
+    .content .kal-chip { display: block; text-decoration: none; border-radius: 6px; padding: 3px 6px;
+      font-size: 11px; line-height: 1.25; border: 1px solid transparent; }
+    .content .kal-chip-lab { display: block; font-weight: 600; }
+    .content .kal-chip-sub { display: block; font-size: 10px; opacity: .85; }
+    .content .kal-chip--frist { background: rgba(248,113,113,.15); color: #fca5a5; border-color: #f87171; }
+    .content .kal-chip--samtale { background: rgba(129,140,248,.15); color: #a5b4fc; border-color: #818cf8; }
+    .content .kal-chip--tiltraedelse { background: rgba(52,211,153,.15); color: #6ee7b7; border-color: #34d399; }
+    .content .kal-foot { margin: 6px 0 0; font-size: 14px; }
+    @media (max-width: 560px) {
+      .content .kal-cell { min-height: 50px; }
+      .content .kal-chip { font-size: 10px; padding: 2px 4px; }
+      .content .kal-chip-sub { display: none; }
+    }
     /* Tjeklister med flueben, der huskes i browseren */
     .content .checklist { list-style: none; margin: 8px 0 22px; padding: 0; }
     .content .checklist li { padding: 5px 0; }
@@ -207,7 +238,7 @@
   <script>
     // Adgangslås. Koden gemmes kun som SHA-256-hash, og godkendelse huskes i en cookie i en time.
     (function () {
-      var HASH = '7cd47ad7f9ef31699dc8ddd4fead13d8454f5fd1d6e039c6b3efdc03b490d625';
+      var HASH = 'd2440ea6e006bccbde88a21f52ef8a23ebcb7fe80714f85ce7e2fe24cda9518c';
       var form = document.getElementById('laas-form');
       if (!form) return;
       var input = document.getElementById('laas-kode');
@@ -268,7 +299,7 @@
   <section class="card" id="kalender">
     <h2>📅 Kalender · vigtige datoer</h2>
     <p>Frister, samtaler og opfølgning. Klik på en begivenhed for at komme direkte til stillingens materiale. Datoer opdateres, når endelige indkaldelser kommer.</p>
-    <div class="databtns"><button type="button" class="cal-all">📅 Tilføj alle datoer til kalender (.ics)</button></div>
+    <div class="databtns"><a class="btn-import" href="kalender.html">🗓️ Åbn månedskalender</a><button type="button" class="cal-all">📅 Tilføj alle datoer til kalender (.ics)</button></div>
     <ol class="timeline">
       <li class="event" data-cal-start="2026-08-11" data-cal-title="Ansøgningsfrist: Skoleleder · Vonsild Specialskole" data-cal-desc="Kolding Kommune. Ansøgning og CV er sendt 11. juli 2026, en måned før fristen." data-cal-url="vonsild.html">
         <div class="event-date"><span class="day">11</span><span class="mon">aug 2026</span></div>
