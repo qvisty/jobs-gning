@@ -113,11 +113,11 @@ function renderMonth({ y, m }, evs) {
       const url = ev.headingUrl || ev.calUrl || 'index.html#kalender';
       const label = ev.kind === 'frist' ? 'Frist'
         : ev.kind === 'tiltraedelse' ? 'Tiltrædelse' : ev.tagLabel;
-      const sub = ev.short
-        ? '<span class="kal-chip-sub">' + escHtml(ev.short) + '</span>' : '';
+      const badge = ev.abbr
+        ? '<span class="kal-chip-tag">' + escHtml(ev.abbr) + '</span>' : '';
       return '<a class="kal-chip kal-chip--' + ev.kind + '" href="' + escAttr(url) +
         '" title="' + escAttr(ev.calTitle) + '">' +
-        '<span class="kal-chip-lab">' + escHtml(label) + '</span>' + sub + '</a>';
+        badge + '<span class="kal-chip-lab">' + escHtml(label) + '</span></a>';
     }).join('');
     const has = evsD.length ? ' kal-has' : '';
     cells += '<div class="kal-cell' + has + '"><span class="kal-daynum">' + d + '</span>' + chips + '</div>';
