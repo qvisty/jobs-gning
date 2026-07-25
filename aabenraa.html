@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Jobsøgning</title>
+  <title>Digitaliseringskonsulent · Aabenraa</title>
   <script>
     // Adgangslås. Siden er låst som udgangspunkt (class="laast" på html-elementet),
     // og låses kun op her, hvis cookien er gyldig. Dermed forbliver siden låst,
@@ -272,148 +272,183 @@
       });
     })();
   </script>
-  <div class="content"><!-- Forside: anonymiseret oversigt + kalender. Alt konkret materiale ligger på undersiderne. -->
+  <div class="content"><!-- Underside: Digitaliseringskonsulent · Aabenraa. Genereres til aabenraa.html af build.mjs. -->
 <header class="hero">
-  <p class="eyebrow">Jobsøgnings-hub</p>
-  <h1>Jobsøgnings-hub</h1>
-  <p class="lead">Klik ind på en stilling og få hele forløbet trin for trin. Research, SMS-udkast, telefonsamtale, ansøgning, samtaleforberedelse og lønforhandling.</p>
+  <p class="eyebrow">Stilling · overvejes</p>
+  <h1>💻 Digitaliseringskonsulent · Aabenraa Kommune</h1>
+  <p class="lead">IT-afdelingen, Staben · frist 4. september · samtaler forventet 15. og 16. september · tiltrædelse 2. november 2026.</p>
+  <p class="commute">🚶 <strong>Arbejdssted Aabenraa Rådhus, Skelbækvej 2.</strong> Ingen pendling, stillingen ligger i din egen by. 37 timer om ugen.</p>
+  <p class="anonote">🔒 <strong>Pladsholdere.</strong> Personlige oplysninger holdes ude af denne offentlige side. Indsæt de rigtige data i den version, du sender.</p>
 </header>
 
 <main>
-  <p class="countdown" id="countdown" data-events='[["2026-08-19","1. samtale: Sønderborg og Vonsild"],["2026-08-24","2. samtale: Sønderborg (Garuda)"],["2026-08-25","2. samtale: Vonsild (case)"],["2026-09-04","Ansøgningsfrist: Aabenraa"],["2026-10-01","Forventet tiltrædelse (Vonsild/Sønderborg)"]]'></p>
+  <nav class="fasebar">
+    <a class="home" href="index.html">← Forside</a>
+    <a href="#fase-1">1 · Research</a>
+    <a href="#fase-2">2 · SMS</a>
+    <a href="#fase-3">3 · Opkald</a>
+    <a href="#fase-4">4 · Noter</a>
+    <a href="#fase-5">5 · Ansøgning</a>
+    <a href="#fase-6">6 · Samtale</a>
+    <a href="#svar">🎯 Svar</a>
+    <a href="#fase-8">8 · Løn</a>
+    <a href="#noter">📝 Noter</a>
+    <button id="toggle-all" type="button">Åbn alle</button>
+  </nav>
+  <div class="progress"><div class="progress-track"><div id="prog-fill" class="progress-fill"></div></div><span id="prog-text"></span></div>
+  <p class="commute">✏️ <strong>Status.</strong> Stillingen overvejes, ansøgning er ikke sendt. Næste skridt. Ring eller skriv til kontaktpersonen (fase 2 og 3), og skriv ansøgningen inden fristen 4. september (fase 5).</p>
 
-  <section class="card" id="stillinger">
-    <h2>📋 Stillinger · klik ind på materialet</h2>
-    <a class="joblink" href="vonsild.html">
-      <h3>🏫 Skoleleder · Vonsild Specialskole (Kolding) <span class="tag tag--sendt">✓ Ansøgning sendt</span></h3>
-      <p>Ansøgning sendt 11. juli · samtaler 19. og 25. august. Næste skridt. Forbered 1. samtale (fase 6) og casen til 2. samtale (🧪 Cases og fase 7).</p>
-    </a>
-    <a class="joblink" href="soenderborg.html">
-      <h3>🧭 Ungecenterleder · Sønderborg Kommune <span class="tag tag--sendt">✓ Ansøgning sendt</span></h3>
-      <p>Ansøgning sendt 7. juli · samtaler 19. og 24. august. Næste skridt. Forbered 1. samtale med case (fase 6), og udfyld Garuda-skemaet, når det kommer (fase 7).</p>
-    </a>
-    <a class="joblink" href="aabenraa.html">
-      <h3>💻 Digitaliseringskonsulent · Aabenraa Kommune <span class="tag tag--kladde">✏️ Overvejes</span></h3>
-      <p>Frist 4. september · samtaler forventet 15. og 16. september · tiltrædelse 2. november. Næste skridt. Ring til kontaktpersonen (fase 2 og 3, bemærk ferie i uge 33 og 34), og skriv ansøgningen (fase 5).</p>
-    </a>
-    <a class="joblink" href="inspiration.html">
-      <h3>💡 Inspirationsarkiv · stillinger til genbrug <span class="tag tag--inspiration">1 stilling</span></h3>
-      <p>Stillinger set men ikke søgt, og stillinger søgt uden ansættelse. Formuleringer, procesidéer og markedsindsigt til senere brug. Senest tilføjet. Skoleleder på Pilehaveskolen i Assens.</p>
-    </a>
-  </section>
+  <details class="card fase" id="fase-1">
+    <summary><h2>1️⃣ Research før kontakt</h2></summary>
+    <div class="fase-body">
+      <p>Formålet med de første tre faser er dobbelt. At blive husket positivt, allerede før ansøgningerne læses, og at få viden, der gør din ansøgning skarpere end de andres.</p>
+      <ul>
+        <li>Kerneviden fra opslaget. Rollen samler analyse, procesdesign, projektledelse, implementering og forankring. Automatisering, AI og Microsoft 365 nævnes eksplicit, og der er et automatiseringsteam, man koordinerer med.</li>
+        <li>Ord der går igen i opslaget. Processer, projekter, digitalisering, samarbejde på tværs, forandringsledelse, workshops. Det er de ord, ansøgningen skal bruge.</li>
+        <li>Organisationen. IT-afdelingen er en del af Staben med cirka 35 medarbejdere fordelt på IT-Drift, IT-Helpdesk og IT-Digitalisering. Du bliver en del af IT-Digitalisering.</li>
+        <li>Kontaktperson. IT Digitaliseringsleder Majbrit Hammerich Hansen, telefon 2476 4664, mail mahh@aabenraa.dk (fra stillingsopslaget). Hun holder ferie i uge 33 og 34, altså 10. til 23. august.</li>
+        <li>Din åbning. Din plads i digitaliseringsstyregruppen på skoleområdet og dine konkrete erfaringer med [DINE 365/AI-ERFARINGER]. Opslaget beder direkte om konkrete eksempler inden for 365 og AI.</li>
+        <li>Vinklen som tidligere leder. Stillingen er en konsulentrolle, ikke en lederrolle. Forbered et ærligt svar på, hvorfor det trin er attraktivt for dig, se 🎯 Svar.</li>
+        <li>Orientér dig i kommunens digitaliseringsstrategi og andre relevante politikker på aabenraa.dk. [LINKS/DOKUMENTER].</li>
+        <li>Forbered 2 til 3 spørgsmål, som IKKE kan besvares ved at læse opslaget, se fase 3.</li>
+        <li>Hav din 20-sekunders præsentation klar. Navn, nuværende rolle, én sætning om hvorfor netop denne stilling.</li>
+      </ul>
+    </div>
+  </details>
 
-  <section class="card" id="kalender">
-    <h2>📅 Kalender · vigtige datoer</h2>
-    <p>Frister, samtaler og opfølgning. Klik på en begivenhed for at komme direkte til stillingens materiale. Datoer opdateres, når endelige indkaldelser kommer.</p>
-    <div class="databtns"><a class="btn-import" href="kalender.html">🗓️ Åbn månedskalender</a><button type="button" class="cal-all">📅 Tilføj alle datoer til kalender (.ics)</button></div>
-    <ol class="timeline">
-      <li class="event" data-cal-start="2026-08-11" data-cal-title="Ansøgningsfrist: Skoleleder · Vonsild Specialskole" data-cal-desc="Kolding Kommune. Ansøgning og CV er sendt 11. juli 2026, en måned før fristen." data-cal-url="vonsild.html">
-        <div class="event-date"><span class="day">11</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--sendt">✓ Sendt 11. juli</span>
-          <h3><a href="vonsild.html">Skoleleder · Vonsild Specialskole</a></h3>
-          <p>Kolding Kommune. Ansøgning og CV er sendt 11. juli 2026, en måned før fristen.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-08-11" data-cal-title="Ansøgningsfrist: Ungecenterleder · Sønderborg" data-cal-desc="Ansøgning og CV er sendt 7. juli 2026, i god tid før fristen." data-cal-url="soenderborg.html">
-        <div class="event-date"><span class="day">11</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--sendt">✓ Sendt 7. juli</span>
-          <h3><a href="soenderborg.html">Ungecenterleder · Sønderborg Kommune</a></h3>
-          <p>Ansøgning og CV er sendt 7. juli 2026, i god tid før fristen.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-08-19" data-cal-title="1. samtale: Ungecenterleder · Sønderborg" data-cal-desc="Første samtale med case på ungeområdet." data-cal-url="soenderborg.html">
-        <div class="event-date"><span class="day">19</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--samtale">1. samtale</span>
-          <h3><a href="soenderborg.html">Ungecenterleder · Sønderborg</a></h3>
-          <p>Første samtale med case på ungeområdet.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-08-19" data-cal-title="1. samtale: Skoleleder · Vonsild" data-cal-desc="Motivation, ledelsessyn og værdimatch." data-cal-url="vonsild.html">
-        <div class="event-date"><span class="day">19</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--samtale">1. samtale</span>
-          <h3><a href="vonsild.html">Skoleleder · Vonsild</a></h3>
-          <p>Motivation, ledelsessyn og værdimatch.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-08-24" data-cal-title="2. samtale: Ungecenterleder · Sønderborg" data-cal-desc="Anden samtale med Garuda-profil. Udfyld spørgeskemaet i forvejen." data-cal-url="soenderborg.html">
-        <div class="event-date"><span class="day">24</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--samtale">2. samtale</span>
-          <h3><a href="soenderborg.html">Ungecenterleder · Sønderborg</a></h3>
-          <p>Anden samtale med Garuda-profil. Udfyld spørgeskemaet i forvejen.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-08-25" data-cal-title="2. samtale: Skoleleder · Vonsild" data-cal-desc="Case og ofte personprofiltest." data-cal-url="vonsild.html">
-        <div class="event-date"><span class="day">25</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--samtale">2. samtale</span>
-          <h3><a href="vonsild.html">Skoleleder · Vonsild</a></h3>
-          <p>Case og ofte personprofiltest.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-09-04" data-cal-title="Ansøgningsfrist: Digitaliseringskonsulent · Aabenraa" data-cal-desc="IT-afdelingen, Aabenraa Kommune. Stillingen overvejes. Send ansøgning, CV og bilag senest 4. september." data-cal-url="aabenraa.html">
-        <div class="event-date"><span class="day">04</span><span class="mon">sep 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--frist">Frist · ikke søgt endnu</span>
-          <h3><a href="aabenraa.html">Digitaliseringskonsulent · Aabenraa Kommune</a></h3>
-          <p>IT-afdelingen, Aabenraa Kommune. Stillingen overvejes. Send ansøgning, CV og bilag senest 4. september.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-09-15" data-cal-title="Samtale (forventet): Digitaliseringskonsulent · Aabenraa" data-cal-desc="Samtaler forventes afholdt 15. og 16. september. Indkaldelsen afgør dag og tidspunkt." data-cal-url="aabenraa.html">
-        <div class="event-date"><span class="day">15</span><span class="mon">sep 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--samtale">Samtale (forventet)</span>
-          <h3><a href="aabenraa.html">Digitaliseringskonsulent · Aabenraa</a></h3>
-          <p>Samtaler forventes afholdt 15. og 16. september. Indkaldelsen afgør dag og tidspunkt.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-09-16" data-cal-title="Samtale (forventet): Digitaliseringskonsulent · Aabenraa" data-cal-desc="Samtaler forventes afholdt 15. og 16. september. Indkaldelsen afgør dag og tidspunkt." data-cal-url="aabenraa.html">
-        <div class="event-date"><span class="day">16</span><span class="mon">sep 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--samtale">Samtale (forventet)</span>
-          <h3><a href="aabenraa.html">Digitaliseringskonsulent · Aabenraa</a></h3>
-          <p>Samtaler forventes afholdt 15. og 16. september. Indkaldelsen afgør dag og tidspunkt.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-10-01" data-cal-title="Forventet tiltrædelse (Vonsild og Sønderborg)" data-cal-desc="Forventet startdato for Vonsild og Sønderborg. Vonsild Specialskole bliver selvstændig pr. 1. januar 2027.">
-        <div class="event-date"><span class="day">01</span><span class="mon">okt 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--tiltraedelse">Tiltrædelse</span>
-          <h3>Forventet opstart · Vonsild og Sønderborg</h3>
-          <p>Forventet startdato for Vonsild og Sønderborg. Vonsild Specialskole bliver selvstændig pr. 1. januar 2027.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-11-02" data-cal-title="Tiltrædelse (ønsket): Digitaliseringskonsulent · Aabenraa" data-cal-desc="Ønsket tiltrædelse for digitaliseringskonsulent-stillingen i Aabenraa Kommune." data-cal-url="aabenraa.html">
-        <div class="event-date"><span class="day">02</span><span class="mon">nov 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--tiltraedelse">Tiltrædelse</span>
-          <h3><a href="aabenraa.html">Tiltrædelse · Aabenraa</a></h3>
-          <p>Ønsket tiltrædelse for digitaliseringskonsulent-stillingen i Aabenraa Kommune.</p>
-        </div>
-      </li>
-      <li class="event">
-        <div class="event-date"><span class="day">·</span><span class="mon">løbende</span></div>
-        <div class="event-body">
-          <span class="tag tag--opfoelgning">Opfølgning</span>
-          <h3>Kontakt og netværk</h3>
-          <p>Ring eller skriv til kontaktpersonen efter fristen. Notér aftaler og deadlines på stillingens underside.</p>
-        </div>
-      </li>
-    </ol>
-  </section>
+  <details class="card fase" id="fase-2">
+    <summary><h2>2️⃣ SMS-udkast · første kontakt</h2></summary>
+    <div class="fase-body">
+      <p>Ring hellere direkte på en hverdag mellem 8 og 15. Får du ikke svar, eller vil du hellere åbne blødt, så send en SMS. Bemærk ferien. Ring inden fredag den 7. august eller efter mandag den 24. august. Efter ferien er der stadig god tid til fristen 4. september.</p>
+      <blockquote><p>Hej Majbrit. Jeg hedder [DIT NAVN] og er [DIN TITEL] på [DIN NUVÆRENDE ARBEJDSPLADS]. Jeg overvejer at søge stillingen som digitaliseringskonsulent og vil gerne høre, om du har 10 minutter til en kort telefonsamtale om stillingen? Jeg ringer, når det passer dig. Venlig hilsen [DIT NAVN]</p></blockquote>
+      <ul>
+        <li>Send på en hverdag mellem 8 og 15. Undgå fredag eftermiddag og weekend.</li>
+        <li>Nævn din nuværende titel. Den gør dig let at placere og åbner døren.</li>
+        <li>Bed om et kort opkald, ikke et møde. Det er let at sige ja til.</li>
+      </ul>
+    </div>
+  </details>
 
-  <section class="card">
-    <h2>Om siden</h2>
-    <p>Forsiden er holdt fri for personlige oplysninger. Alt materiale ligger på stillingernes undersider. Redigér indholdet i <code>src/</code>, kør <code>npm run build</code> og push for at opdatere.</p>
-  </section>
+  <details class="card fase" id="fase-3">
+    <summary><h2>3️⃣ Den første telefonsamtale</h2></summary>
+    <div class="fase-body">
+      <p>Hold den på 10 til 15 minutter. Struktur. Kort præsentation (20 sekunder) → dine 2 til 3 spørgsmål → tak og en positiv afrunding.</p>
+      <h4>Spørgsmål du kan vælge imellem</h4>
+      <ol>
+        <li>Hvad bliver efter din vurdering den vigtigste opgave i det første halve år?</li>
+        <li>Hvor langt er I med automatisering og AI i dag, og hvad er det næste store skridt?</li>
+        <li>Hvordan er samspillet mellem digitaliseringskonsulenterne og automatiseringsteamet i praksis?</li>
+        <li>Hvilken profil lykkes efter jeres vurdering bedst i stillingen?</li>
+      </ol>
+      <h4>Lyttepunkter · det skal du fange undervejs</h4>
+      <ul>
+        <li><strong>Gentagne ord.</strong> De ord, der går igen, er de ord, din ansøgning skal bruge.</li>
+        <li><strong>Den nævnte udfordring.</strong> Nævnes noget svært, er det din ansøgnings vigtigste afsnit.</li>
+        <li><strong>Prioritering.</strong> Det, der nævnes FØRST, er den reelle topprioritet.</li>
+        <li><strong>Profil-ord.</strong> Ordene om den ønskede profil. Spejl dem i ansøgningen.</li>
+      </ul>
+      <p><em>Skriv dine noter ned STRAKS efter opkaldet. Brug fase 4.</em></p>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-4">
+    <summary><h2>4️⃣ Fra telefonsamtale til ansøgning</h2></summary>
+    <div class="fase-body">
+      <p>Oversæt dine lyttepunkter til konkrete ændringer i ansøgningen (fase 5), inden du sender.</p>
+      <ul class="checklist">
+        <li><label><input type="checkbox" data-check-id="aabenraa-f4-noter" /><span>Notér de tre vigtigste ord/temaer fra samtalen, mens de er friske</span></label></li>
+        <li><label><input type="checkbox" data-check-id="aabenraa-f4-indledning" /><span>Tilføj "efter en god samtale med Majbrit …" i ansøgningens indledning</span></label></li>
+        <li><label><input type="checkbox" data-check-id="aabenraa-f4-udfordring" /><span>Adressér den nævnte udfordring i ét af ansøgningens afsnit</span></label></li>
+        <li><label><input type="checkbox" data-check-id="aabenraa-f4-ord" /><span>Brug mindst ét af deres egne gentagne ord i motivationsafsnittet</span></label></li>
+        <li><label><input type="checkbox" data-check-id="aabenraa-f4-vaegt" /><span>Justér vægtningen. Giv det, der blev nævnt først, mest plads</span></label></li>
+      </ul>
+      <h4>Dine noter fra telefonsamtalen</h4>
+      <textarea class="notes" data-notes="aabenraa-opkald" rows="6" placeholder="Skriv lyttepunkterne her, lige når du har lagt på. Gemmes kun i din browser."></textarea>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-5">
+    <summary><h2>5️⃣ Ansøgningen · frist 4. september</h2></summary>
+    <div class="fase-body">
+      <p><strong>Bemærk datoen.</strong> Opslaget skriver "mandag den 04. september", men 4. september 2026 er en fredag. Regn med fredag den 4. september som sikker frist, og send hellere i god tid inden.</p>
+      <p><button type="button" class="btn-word">⬇️ Download ansøgningen som Word</button></p>
+      <div class="worddoc" data-filename="ansoegning-aabenraa">
+      <h4>Ansøgning til stillingen som digitaliseringskonsulent</h4>
+      <p><strong>Aabenraa Kommune, att. Majbrit Hammerich Hansen</strong> Aabenraa, den [DATO]</p>
+      <p>[INDLEDNING. Hvorfor du søger, og hvad du kan se dig selv i.]</p>
+      <p>[PRÆSENTATION. Navn, alder, nuværende rolle, relevante erfaringsområder.]</p>
+      <h4>Motivation for stillingen</h4>
+      <p>[MOTIVATION koblet til processer, projekter og digital værdiskabelse i kommunen. Nævn gerne, at det er din egen kommune.]</p>
+      <h4>Konkrete erfaringer med digitalisering, 365 og AI</h4>
+      <p>[DINE KONKRETE EKSEMPLER. Opslaget beder direkte om dem. Digitaliseringsstyregruppen, konkrete 365/AI-projekter og resultater.]</p>
+      <h4>Processer, projekter og mennesker</h4>
+      <p>[ERFARING med at kortlægge processer, drive projekter i mål og tage folk med gennem forandringer. Din ledelseserfaring er her et aktiv, ikke en omvej.]</p>
+      <p>Jeg uddyber meget gerne, hvordan mine erfaringer kan bringes i spil.</p>
+      <p>Med venlig hilsen</p>
+      <p>[DIT NAVN]<br /><em>[Adresse, telefon og mail indsættes ved afsendelse]</em></p>
+      </div>
+      <h4>Tjekliste før afsendelse</h4>
+      <ul class="checklist">
+        <li><label><input type="checkbox" data-check-id="aabenraa-send-dato" /><span>Indsæt afsendelsesdato</span></label></li>
+        <li><label><input type="checkbox" data-check-id="aabenraa-send-kontaktinfo" /><span>Indsæt navn, adresse, telefon og mail</span></label></li>
+        <li><label><input type="checkbox" data-check-id="aabenraa-send-lytte" /><span>Indarbejd lyttepunkterne fra fase 4</span></label></li>
+        <li><label><input type="checkbox" data-check-id="aabenraa-send-cv" /><span>Tilpas CV'ets titel, profiltekst og rækkefølge til opslaget</span></label></li>
+        <li><label><input type="checkbox" data-check-id="aabenraa-send" /><span>Send ansøgning, CV og relevante bilag via linket senest 4. september</span></label></li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-6">
+    <summary><h2>6️⃣ Samtale · forventet 15. eller 16. september</h2></summary>
+    <div class="fase-body">
+      <p>Opslaget nævner, at samtaler forventes afholdt den 15. og 16. september. Det fremgår ikke, om der er én eller to runder. Afklar det i telefonsamtalen (fase 3), og notér datoen her, når indkaldelsen kommer.</p>
+      <ul class="checklist">
+        <li><label><input type="checkbox" data-check-id="aabenraa-s1-star" /><span>2 til 3 eksempler klar i valgt model (STAR/Domæne/4D), se modellerne på Vonsild-/Sønderborg-siderne</span></label></li>
+        <li><label><input type="checkbox" data-check-id="aabenraa-s1-sporgsmal" /><span>2 til 3 egne spørgsmål valgt (brug Tomms typer)</span></label></li>
+        <li><label><input type="checkbox" data-check-id="aabenraa-s1-oev" /><span>Svar på de 3 mest sandsynlige spørgsmål øvet højt</span></label></li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="svar">
+    <summary><h2>🎯 Forventede spørgsmål · optimale svar</h2></summary>
+    <div class="fase-body">
+      <p>Svarene er skjult, til du klikker. Øv dig ved at svare højt, før du folder svaret ud.</p>
+      <details class="qa"><summary>Du kommer fra en lederstilling. Hvorfor søger du en konsulentrolle?</summary><p>[DIT SVAR. Vend det til et aktivt valg. Du vil tættere på selve digitaliseringsarbejdet, og din ledelseserfaring gør dig stærkere til forandringsledelse, workshops og samarbejde på tværs. Undgå alt, der kan lyde som en nødløsning.]</p></details>
+      <details class="qa"><summary>Giv et konkret eksempel på et 365- eller AI-projekt, du har drevet.</summary><p>[DIT SVAR i STAR-form. Situation, opgave, handling, resultat. Opslaget beder direkte om konkrete eksempler, så hav to klar.]</p></details>
+      <details class="qa"><summary>Hvordan griber du en proceskortlægning an, når fagområdet er presset på tid?</summary><p>[DIT SVAR. Vis struktur og respekt for driften. Korte fokuserede workshops, forberedelse på forhånd og hurtig synlig gevinst.]</p></details>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-8">
+    <summary><h2>8️⃣ Lønforhandling</h2></summary>
+    <div class="fase-body">
+      <p>Den konkrete lønsnak tager du først, når de har sagt, at de vil have dig. Dér er din position stærkest. Ansættelsen sker efter gældende overenskomst, din uddannelse og/eller erfaring.</p>
+      <ul>
+        <li><strong>Kend din nuværende totalpakke</strong> (grundløn, pension, øvrige goder). Dit sammenligningsgrundlag.</li>
+        <li><strong>Kontakt din faglige organisation før samtalen</strong>, så du kender lønniveauet og dit realistiske interval.</li>
+        <li><strong>Sæt tre tal, før du taler med nogen.</strong> Drømmeløn, tilfreds-løn og smertegrænse.</li>
+        <li><strong>Forhandl pakken.</strong> Tillæg, pension, efteruddannelse, hjemmearbejde, tiltrædelsesvilkår.</li>
+        <li><strong>Taktik.</strong> Nævn aldrig et tal først. Sig aldrig ja på stedet. Sov på det, og vend det med din organisation.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="noter">
+    <summary><h2>📝 Private noter</h2></summary>
+    <div class="fase-body">
+      <p>Aftaler, datoer og tanker undervejs. Noterne gemmes kun i denne browser (localStorage). De sendes aldrig ud på nettet. Skriv ikke følsomme oplysninger her.</p>
+      <textarea class="notes" data-notes="aabenraa-general" rows="8" placeholder="Skriv noter her …"></textarea>
+      <div class="databtns">
+        <button type="button" class="btn-export">⬇️ Eksportér flueben &amp; noter</button>
+        <label class="btn-import">⬆️ Importér<input type="file" accept="application/json" hidden /></label>
+      </div>
+    </div>
+  </details>
 </main>
 
 <footer class="foot">
-  <p>Bygget med GitHub Pages</p>
+  <p><a href="index.html">← Tilbage til forsiden</a></p>
 </footer>
 </div>
   <script>
