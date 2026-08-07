@@ -18,6 +18,7 @@ const pages = [
   { src: 'src/jobs/vonsild.html', out: 'vonsild.html', title: 'Skoleleder · Vonsild Specialskole' },
   { src: 'src/jobs/aabenraa.html', out: 'aabenraa.html', title: 'Digitaliseringskonsulent · Aabenraa' },
   { src: 'src/jobs/tvsyd.html', out: 'tvsyd.html', title: 'Bestyrelsesmedlem · tvSyd' },
+  { src: 'src/jobs/riis.html', out: 'riis.html', title: 'IT Operations Manager · RIIS Retail' },
   { src: 'src/jobs/soenderborg.html', out: 'soenderborg.html', title: 'Ungecenterleder · Sønderborg' },
   { src: 'src/jobs/inspiration.html', out: 'inspiration.html', title: 'Inspiration · stillinger til genbrug' },
 ];
