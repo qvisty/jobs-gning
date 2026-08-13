@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Jobsøgning</title>
+  <title>Skoleleder · Hærvejsskolen (Rødekro)</title>
   <script>
     // Adgangslås. Siden er låst som udgangspunkt (class="laast" på html-elementet),
     // og låses kun op her, hvis cookien er gyldig. Dermed forbliver siden låst,
@@ -272,196 +272,96 @@
       });
     })();
   </script>
-  <div class="content"><!-- Forside: anonymiseret oversigt + kalender. Alt konkret materiale ligger på undersiderne. -->
+  <div class="content"><!-- Underside: Skoleleder · Hærvejsskolen (Rødekro). Genereres til haervejsskolen.html af build.mjs.
+     Kommende stilling. Opslaget er ikke offentliggjort endnu, siden udbygges med det fulde fasemateriale, når det kommer. -->
 <header class="hero">
-  <p class="eyebrow">Jobsøgnings-hub</p>
-  <h1>Jobsøgnings-hub</h1>
-  <p class="lead">Klik ind på en stilling og få hele forløbet trin for trin. Research, SMS-udkast, telefonsamtale, ansøgning, samtaleforberedelse og lønforhandling.</p>
+  <p class="eyebrow">Kommende stilling · venter på opslag</p>
+  <h1>🎒 Skoleleder · Hærvejsskolen (Rødekro)</h1>
+  <p class="lead">Aabenraa Kommune · opslag endnu ikke offentliggjort · stillingen forventes besat pr. december 2026.</p>
+  <p class="commute">🚗 <strong>Kørsel fra Aabenraa.</strong> Rødekro ligger ca. 10 km fra Aabenraa, under et kvarter hver vej. Skoleleder i din egen kommune.</p>
+  <p class="anonote">🔒 <strong>Pladsholdere.</strong> Personlige oplysninger holdes ude af denne offentlige side. Indsæt de rigtige data i den version, du sender.</p>
 </header>
 
 <main>
-  <p class="countdown" id="countdown" data-events='[["2026-08-19","1. samtale: Sønderborg og Vonsild"],["2026-08-24","2. samtale: Sønderborg (Garuda)"],["2026-08-25","2. samtale: Vonsild (case)"],["2026-09-04","Ansøgningsfrist: Aabenraa"],["2026-10-01","Forventet tiltrædelse (Vonsild/Sønderborg)"]]'></p>
+  <nav class="fasebar">
+    <a class="home" href="index.html">← Forside</a>
+    <a href="#vurdering">📊 Vurdering</a>
+    <a href="#status">🔭 Status</a>
+    <a href="#forberedelse">🧭 Forberedelse</a>
+    <a href="#kilder">📄 Kilder</a>
+    <a href="#noter">📝 Noter</a>
+    <button id="toggle-all" type="button">Åbn alle</button>
+  </nav>
+  <div class="progress"><div class="progress-track"><div id="prog-fill" class="progress-fill"></div></div><span id="prog-text"></span></div>
+  <p class="commute">🔭 <strong>Status.</strong> Stillingen søges, når opslaget kommer. Det er endnu ikke offentliggjort, men besættelse forventes pr. december 2026, så opslaget kommer sandsynligvis i løbet af sensommeren eller det tidlige efterår. Siden udbygges med fuldt fasemateriale (research, ansøgning, samtale), når opslaget er ude.</p>
 
-  <section class="card" id="stillinger">
-    <h2>📋 Stillinger · klik ind på materialet</h2>
-    <a class="joblink" href="vonsild.html">
-      <h3>🏫 Skoleleder · Vonsild Specialskole (Kolding) <span class="tag tag--sendt">✓ Ansøgning sendt</span></h3>
-      <p>Ansøgning sendt 11. juli · samtaler 19. og 25. august. Næste skridt. Forbered 1. samtale (fase 6) og casen til 2. samtale (🧪 Cases og fase 7).</p>
-    </a>
-    <a class="joblink" href="soenderborg.html">
-      <h3>🧭 Ungecenterleder · Sønderborg Kommune <span class="tag tag--sendt">✓ Ansøgning sendt</span></h3>
-      <p>Ansøgning sendt 7. juli · samtaler 19. og 24. august. Næste skridt. Forbered 1. samtale med case (fase 6), og udfyld Garuda-skemaet, når det kommer (fase 7).</p>
-    </a>
-    <a class="joblink" href="aabenraa.html">
-      <h3>💻 Digitaliseringskonsulent · Aabenraa Kommune <span class="tag tag--kladde">✏️ Overvejes</span></h3>
-      <p>Frist 4. september · samtaler forventet 15. og 16. september · tiltrædelse 2. november. Materialet er klar. Ansøgningsudkast, CV-tilpasning og svarbank. Næste skridt. Ring til kontaktpersonen inden 7. august eller efter 24. august (ferie i uge 33 og 34), udfyld de tre konkrete eksempler, og send (fase 5).</p>
-    </a>
-    <a class="joblink" href="tvsyd.html">
-      <h3>📺 Bestyrelsesmedlem · tvSyd <span class="tag tag--sendt">✓ Ansøgning sendt</span></h3>
-      <p>Bestyrelsespost ved siden af et job, honorar 38.470 kr. om året. Ansøgning sendt 2. august · indkaldelse senest 10. september · samtale 1. eller 2. oktober i Kolding. Næste skridt. Samtaleforberedelse (fase 6), og brug tvSyds platforme jævnligt.</p>
-    </a>
-    <a class="joblink" href="haervejsskolen.html">
-      <h3>🎒 Skoleleder · Hærvejsskolen, Rødekro <span class="tag tag--kladde">🔭 Venter på opslag</span></h3>
-      <p>Aabenraa Kommune, forventes besat pr. december 2026. Opslaget er ikke ude endnu, formodentlig september. Hold øje med kommunens jobportal, og se forberedelsen på siden. Plan B med lokal hjemmebanefordel.</p>
-    </a>
-    <a class="joblink" href="inspiration.html">
-      <h3>💡 Inspirationsarkiv · stillinger til genbrug <span class="tag tag--inspiration">2 stillinger</span></h3>
-      <p>Stillinger set men ikke søgt, og stillinger søgt uden ansættelse. Formuleringer, procesidéer og markedsindsigt til senere brug. Senest tilføjet. IT Operations Manager hos RIIS Retail, fravalgt efter afklarende opkald.</p>
-    </a>
-  </section>
+  <details class="card fase" id="vurdering">
+    <summary><h2>📊 Vurdering · foreløbig, før opslaget</h2></summary>
+    <div class="fase-body">
+      <p><em>For tidligt at sætte tal på. Opdateres, når opslaget og processen kendes. Foreløbige pejlemærker.</em></p>
+      <ul>
+        <li><strong>Det der trækker op.</strong> Skolelederstilling i din egen kommune, ledererfaring fra skoleområdet siden 2018, specialskole- og efterskolebaggrund, diplom i ledelse og lokalkendskab. Og du kan være tidligt ude, fordi du kender stillingen, før den slås op.</li>
+        <li><strong>Det der skal afklares.</strong> Hærvejsskolen er en almen folkeskole, så profilkravene kan vægte almenerfaring. Og timingen. Besættelse pr. december afgøres formodentlig i oktober/november, EFTER dine igangværende processer. Får du Vonsild eller Sønderborg, er denne overflødig.</li>
+        <li><strong>Hvornår der sker noget.</strong> Med besættelse pr. december er det typiske forløb opslag i september, frist i oktober og samtaler i oktober/november. Hold øje fra starten af september.</li>
+      </ul>
+    </div>
+  </details>
 
-  <section class="card" id="kalender">
-    <h2>📅 Kalender · vigtige datoer</h2>
-    <p>Frister, samtaler og opfølgning. Klik på en begivenhed for at komme direkte til stillingens materiale. Datoer opdateres, når endelige indkaldelser kommer.</p>
-    <div class="databtns"><a class="btn-import" href="kalender.html">🗓️ Åbn månedskalender</a><button type="button" class="cal-all">📅 Tilføj alle datoer til kalender (.ics)</button></div>
-    <ol class="timeline">
-      <li class="event" data-cal-start="2026-08-11" data-cal-title="Ansøgningsfrist: Skoleleder · Vonsild Specialskole" data-cal-desc="Kolding Kommune. Ansøgning og CV er sendt 11. juli 2026, en måned før fristen." data-cal-url="vonsild.html">
-        <div class="event-date"><span class="day">11</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--sendt">✓ Sendt 11. juli</span>
-          <h3><a href="vonsild.html">Skoleleder · Vonsild Specialskole</a></h3>
-          <p>Kolding Kommune. Ansøgning og CV er sendt 11. juli 2026, en måned før fristen.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-08-11" data-cal-title="Ansøgningsfrist: Ungecenterleder · Sønderborg" data-cal-desc="Ansøgning og CV er sendt 7. juli 2026, i god tid før fristen." data-cal-url="soenderborg.html">
-        <div class="event-date"><span class="day">11</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--sendt">✓ Sendt 7. juli</span>
-          <h3><a href="soenderborg.html">Ungecenterleder · Sønderborg Kommune</a></h3>
-          <p>Ansøgning og CV er sendt 7. juli 2026, i god tid før fristen.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-08-19" data-cal-title="1. samtale: Ungecenterleder · Sønderborg" data-cal-desc="Første samtale med case på ungeområdet." data-cal-url="soenderborg.html">
-        <div class="event-date"><span class="day">19</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--samtale">1. samtale</span>
-          <h3><a href="soenderborg.html">Ungecenterleder · Sønderborg</a></h3>
-          <p>Første samtale med case på ungeområdet.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-08-19" data-cal-title="1. samtale: Skoleleder · Vonsild" data-cal-desc="Motivation, ledelsessyn og værdimatch." data-cal-url="vonsild.html">
-        <div class="event-date"><span class="day">19</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--samtale">1. samtale</span>
-          <h3><a href="vonsild.html">Skoleleder · Vonsild</a></h3>
-          <p>Motivation, ledelsessyn og værdimatch.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-08-24" data-cal-title="2. samtale: Ungecenterleder · Sønderborg" data-cal-desc="Anden samtale med Garuda-profil. Udfyld spørgeskemaet i forvejen." data-cal-url="soenderborg.html">
-        <div class="event-date"><span class="day">24</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--samtale">2. samtale</span>
-          <h3><a href="soenderborg.html">Ungecenterleder · Sønderborg</a></h3>
-          <p>Anden samtale med Garuda-profil. Udfyld spørgeskemaet i forvejen.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-08-25" data-cal-title="2. samtale: Skoleleder · Vonsild" data-cal-desc="Case og ofte personprofiltest." data-cal-url="vonsild.html">
-        <div class="event-date"><span class="day">25</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--samtale">2. samtale</span>
-          <h3><a href="vonsild.html">Skoleleder · Vonsild</a></h3>
-          <p>Case og ofte personprofiltest.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-08-31" data-cal-title="Ansøgningsfrist: Bestyrelsesmedlem · tvSyd" data-cal-desc="Ansøgning og CV er sendt 2. august 2026, næsten en måned før fristen." data-cal-url="tvsyd.html">
-        <div class="event-date"><span class="day">31</span><span class="mon">aug 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--sendt">✓ Sendt 2. august</span>
-          <h3><a href="tvsyd.html">Bestyrelsesmedlem · tvSyd</a></h3>
-          <p>Ansøgning og CV er sendt 2. august 2026, næsten en måned før fristen, og modtagelsen er bekræftet.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-09-04" data-cal-title="Ansøgningsfrist: Digitaliseringskonsulent · Aabenraa" data-cal-desc="IT-afdelingen, Aabenraa Kommune. Stillingen overvejes. Send ansøgning, CV og bilag senest 4. september." data-cal-url="aabenraa.html">
-        <div class="event-date"><span class="day">04</span><span class="mon">sep 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--frist">Frist · ikke søgt endnu</span>
-          <h3><a href="aabenraa.html">Digitaliseringskonsulent · Aabenraa Kommune</a></h3>
-          <p>IT-afdelingen, Aabenraa Kommune. Stillingen overvejes. Send ansøgning, CV og bilag senest 4. september.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-09-10" data-cal-title="Indkaldelse senest: Bestyrelsesmedlem · tvSyd" data-cal-desc="Senest denne dato indkalder tvSyd kandidater til samtale. Ingen indkaldelse betyder afslag." data-cal-url="tvsyd.html">
-        <div class="event-date"><span class="day">10</span><span class="mon">sep 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--samtale">Indkaldelse</span>
-          <h3><a href="tvsyd.html">Bestyrelsesmedlem · tvSyd</a></h3>
-          <p>Senest denne dato indkalder tvSyd kandidater til samtale. Ingen indkaldelse betyder afslag.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-09-15" data-cal-title="Samtale (forventet): Digitaliseringskonsulent · Aabenraa" data-cal-desc="Samtaler forventes afholdt 15. og 16. september. Indkaldelsen afgør dag og tidspunkt." data-cal-url="aabenraa.html">
-        <div class="event-date"><span class="day">15</span><span class="mon">sep 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--samtale">Samtale (forventet)</span>
-          <h3><a href="aabenraa.html">Digitaliseringskonsulent · Aabenraa</a></h3>
-          <p>Samtaler forventes afholdt 15. og 16. september. Indkaldelsen afgør dag og tidspunkt.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-09-16" data-cal-title="Samtale (forventet): Digitaliseringskonsulent · Aabenraa" data-cal-desc="Samtaler forventes afholdt 15. og 16. september. Indkaldelsen afgør dag og tidspunkt." data-cal-url="aabenraa.html">
-        <div class="event-date"><span class="day">16</span><span class="mon">sep 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--samtale">Samtale (forventet)</span>
-          <h3><a href="aabenraa.html">Digitaliseringskonsulent · Aabenraa</a></h3>
-          <p>Samtaler forventes afholdt 15. og 16. september. Indkaldelsen afgør dag og tidspunkt.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-10-01" data-cal-title="Samtale (mulig): Bestyrelsesmedlem · tvSyd" data-cal-desc="Samtaler afholdes 1., 2. og 19. oktober i Kolding. Bemærk kollision med forventet tiltrædelse Vonsild/Sønderborg." data-cal-url="tvsyd.html">
-        <div class="event-date"><span class="day">01</span><span class="mon">okt 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--samtale">Samtale (mulig)</span>
-          <h3><a href="tvsyd.html">Bestyrelsesmedlem · tvSyd</a></h3>
-          <p>Samtaler afholdes 1., 2. og 19. oktober i Kolding. Bemærk kollision med forventet tiltrædelse Vonsild/Sønderborg.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-10-01" data-cal-title="Forventet tiltrædelse (Vonsild og Sønderborg)" data-cal-desc="Forventet startdato for Vonsild og Sønderborg. Vonsild Specialskole bliver selvstændig pr. 1. januar 2027.">
-        <div class="event-date"><span class="day">01</span><span class="mon">okt 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--tiltraedelse">Tiltrædelse</span>
-          <h3>Forventet opstart · Vonsild og Sønderborg</h3>
-          <p>Forventet startdato for Vonsild og Sønderborg. Vonsild Specialskole bliver selvstændig pr. 1. januar 2027.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-10-02" data-cal-title="Samtale (mulig): Bestyrelsesmedlem · tvSyd" data-cal-desc="Samtaler afholdes 1., 2. og 19. oktober i Kolding." data-cal-url="tvsyd.html">
-        <div class="event-date"><span class="day">02</span><span class="mon">okt 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--samtale">Samtale (mulig)</span>
-          <h3><a href="tvsyd.html">Bestyrelsesmedlem · tvSyd</a></h3>
-          <p>Samtaler afholdes 1., 2. og 19. oktober i Kolding.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-10-19" data-cal-title="Samtale (mulig): Bestyrelsesmedlem · tvSyd" data-cal-desc="Samtaler afholdes 1., 2. og 19. oktober i Kolding. Afklar om 19. oktober er en anden runde." data-cal-url="tvsyd.html">
-        <div class="event-date"><span class="day">19</span><span class="mon">okt 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--samtale">Samtale (mulig)</span>
-          <h3><a href="tvsyd.html">Bestyrelsesmedlem · tvSyd</a></h3>
-          <p>Samtaler afholdes 1., 2. og 19. oktober i Kolding. Afklar om 19. oktober er en anden runde.</p>
-        </div>
-      </li>
-      <li class="event" data-cal-start="2026-11-02" data-cal-title="Tiltrædelse (ønsket): Digitaliseringskonsulent · Aabenraa" data-cal-desc="Ønsket tiltrædelse for digitaliseringskonsulent-stillingen i Aabenraa Kommune." data-cal-url="aabenraa.html">
-        <div class="event-date"><span class="day">02</span><span class="mon">nov 2026</span></div>
-        <div class="event-body">
-          <span class="tag tag--tiltraedelse">Tiltrædelse</span>
-          <h3><a href="aabenraa.html">Tiltrædelse · Aabenraa</a></h3>
-          <p>Ønsket tiltrædelse for digitaliseringskonsulent-stillingen i Aabenraa Kommune.</p>
-        </div>
-      </li>
-      <li class="event">
-        <div class="event-date"><span class="day">·</span><span class="mon">løbende</span></div>
-        <div class="event-body">
-          <span class="tag tag--opfoelgning">Opfølgning</span>
-          <h3>Kontakt og netværk</h3>
-          <p>Ring eller skriv til kontaktpersonen efter fristen. Notér aftaler og deadlines på stillingens underside.</p>
-        </div>
-      </li>
-    </ol>
-  </section>
+  <details class="card fase" id="status">
+    <summary><h2>🔭 Det ved vi nu</h2></summary>
+    <div class="fase-body">
+      <ul>
+        <li>Hærvejsskolen ligger i Rødekro i Aabenraa Kommune og er en af kommunens større folkeskoler.</li>
+        <li>Skolelederstillingen forventes besat pr. december 2026. [KILDEN TIL DIN VIDEN, fx netværk eller omtale, notér den her].</li>
+        <li>Opslaget er ikke offentliggjort endnu. Når det kommer, lander det på kommunens jobportal, hvor digitaliseringskonsulent-stillingen også ligger.</li>
+        <li>Alt andet (frist, samtaledatoer, profilkrav, kontaktperson) kendes først, når opslaget er ude. Datoerne føjes til kalenderen, når de findes.</li>
+      </ul>
+    </div>
+  </details>
 
-  <section class="card">
-    <h2>Om siden</h2>
-    <p>Forsiden er holdt fri for personlige oplysninger. Alt materiale ligger på stillingernes undersider. Redigér indholdet i <code>src/</code>, kør <code>npm run build</code> og push for at opdatere.</p>
-  </section>
+  <details class="card fase" id="forberedelse">
+    <summary><h2>🧭 Forberedelse nu · det du kan gøre før opslaget</h2></summary>
+    <div class="fase-body">
+      <ul class="checklist">
+        <li><label><input type="checkbox" data-check-id="haervej-hold-oeje" /><span>Hold øje med Aabenraa Kommunes jobportal fra starten af september (evt. jobagent på "skoleleder")</span></label></li>
+        <li><label><input type="checkbox" data-check-id="haervej-research" /><span>Research skolen. Hjemmeside, seneste kvalitetsrapport, skolebestyrelsens årsberetninger og lokal omtale af skolen</span></label></li>
+        <li><label><input type="checkbox" data-check-id="haervej-netvaerk" /><span>Brug netværket. Hvem kender du med viden om skolen, forvaltningen eller grunden til lederskiftet?</span></label></li>
+        <li><label><input type="checkbox" data-check-id="haervej-besoeg" /><span>Overvej tidlig kontakt eller besøg, når opslaget kommer (Pilehave-læringen, besøg før ansøgning giver forspring)</span></label></li>
+      </ul>
+      <h4>To strategiske opmærksomheder</h4>
+      <ul>
+        <li><strong>Samme arbejdsgiver som digitaliseringskonsulent-stillingen.</strong> Søger du begge, vil Aabenraa Kommunes HR kunne se det. Det er ikke forbudt, men hav din fortælling klar. Ledelse er hovedsporet, og digitaliseringen er det faglige alternativ. Rækkefølgen kan også tale for at afvente denne, hvis digitaliseringsansøgningen ellers skulle sendes i september.</li>
+        <li><strong>Scenarie-afhængighed.</strong> Vonsild og Sønderborg afgøres i august med tiltrædelse 1. oktober. Får du en af dem, udgår Hærvejsskolen. Denne side er altså din plan B med lokal hjemmebanefordel, ikke et sidespor der skal koste energi nu.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="kilder">
+    <summary><h2>📄 Kilder · originalt opslag og links</h2></summary>
+    <div class="fase-body">
+      <ul>
+        <li><strong>Originalt opslag.</strong> Ikke offentliggjort endnu. Linkes og arkiveres som PDF her, når det kommer.</li>
+        <li><strong>Skolen.</strong> <a href="https://haervejsskolen.aula.dk/" target="_blank" rel="noopener">Hærvejsskolen på Aula</a>.</li>
+        <li><strong>Kommunens jobportal.</strong> <a href="https://aabenraa.dk/om-kommunen/job-hos-os" target="_blank" rel="noopener">Job hos Aabenraa Kommune</a>. Her lander opslaget.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="noter">
+    <summary><h2>📝 Private noter</h2></summary>
+    <div class="fase-body">
+      <p>Aftaler, datoer og tanker undervejs. Noterne gemmes kun i denne browser (localStorage). De sendes aldrig ud på nettet. Skriv ikke følsomme oplysninger her.</p>
+      <textarea class="notes" data-notes="haervej-general" rows="8" placeholder="Skriv noter her …"></textarea>
+      <div class="databtns">
+        <button type="button" class="btn-export">⬇️ Eksportér flueben &amp; noter</button>
+        <label class="btn-import">⬆️ Importér<input type="file" accept="application/json" hidden /></label>
+      </div>
+    </div>
+  </details>
 </main>
 
 <footer class="foot">
-  <p>Bygget med GitHub Pages</p>
+  <p><a href="index.html">← Tilbage til forsiden</a></p>
 </footer>
 </div>
   <script>
