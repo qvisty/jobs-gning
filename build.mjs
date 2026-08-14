@@ -18,6 +18,7 @@ const pages = [
   { src: 'src/jobs/vonsild.html', out: 'vonsild.html', title: 'Skoleleder · Vonsild Specialskole' },
   { src: 'src/jobs/aabenraa.html', out: 'aabenraa.html', title: 'Digitaliseringskonsulent · Aabenraa' },
   { src: 'src/jobs/tvsyd.html', out: 'tvsyd.html', title: 'Bestyrelsesmedlem · tvSyd' },
+  { src: 'src/jobs/fleggaard.html', out: 'fleggaard.html', title: 'Projektleder · Fleggaard IT' },
   { src: 'src/jobs/haervejsskolen.html', out: 'haervejsskolen.html', title: 'Skoleleder · Hærvejsskolen (Rødekro)' },
   { src: 'src/jobs/soenderborg.html', out: 'soenderborg.html', title: 'Ungecenterleder · Sønderborg' },
   { src: 'src/jobs/inspiration.html', out: 'inspiration.html', title: 'Inspiration · stillinger til genbrug' },
