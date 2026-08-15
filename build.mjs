@@ -21,6 +21,7 @@ const pages = [
   { src: 'src/jobs/fleggaard.html', out: 'fleggaard.html', title: 'Projektleder · Fleggaard IT' },
   { src: 'src/jobs/jels.html', out: 'jels.html', title: 'Skoleleder · Jels Skole (Vejen)' },
   { src: 'src/jobs/haervejsskolen.html', out: 'haervejsskolen.html', title: 'Skoleleder · Hærvejsskolen (Rødekro)' },
+  { src: 'src/jobs/vejen-skolechef.html', out: 'vejen-skolechef.html', title: 'Skolechef · Vejen Kommune (benchmark)' },
   { src: 'src/jobs/soenderborg.html', out: 'soenderborg.html', title: 'Ungecenterleder · Sønderborg' },
   { src: 'src/jobs/inspiration.html', out: 'inspiration.html', title: 'Inspiration · stillinger til genbrug' },
 ];
