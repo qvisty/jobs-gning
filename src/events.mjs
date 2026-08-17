@@ -188,9 +188,9 @@ export const events = [
     tagLabel: 'Frist · benchmark, søges ikke',
     heading: 'Skolechef · Vejen Kommune (benchmark)',
     headingUrl: 'vejen-skolechef.html',
-    desc: 'Slutmåls-benchmark, søges ikke. Fristen markerer, hvornår chef-ansættelsen går i gang, den afgør, hvem der bliver din chef i Jels-scenariet.',
+    desc: 'Slutmåls-benchmark, søges ikke. Fristen markerer, hvornår chef-ansættelsen går i gang, den afgør, hvem der bliver min chef i Jels-scenariet.',
     calTitle: 'Frist (benchmark, søges ikke): Skolechef · Vejen',
-    calDesc: 'Slutmåls-benchmark, søges ikke. Ansættelsen afgør, hvem der bliver din chef i Jels-scenariet.',
+    calDesc: 'Slutmåls-benchmark, søges ikke. Ansættelsen afgør, hvem der bliver min chef i Jels-scenariet.',
     calUrl: 'vejen-skolechef.html',
   },
   {
