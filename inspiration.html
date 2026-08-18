@@ -129,7 +129,7 @@
       .content details.card { break-before: page; border-top: 0; }
       .content main > details.card:first-of-type { break-before: auto; }
       /* Hold sammenhængende blokke samlet på én side */
-      .content details.qa, .content blockquote, .content .checklist li,
+      .content details.qa, .content blockquote, .content .huskeliste li,
       .content .event, .content .fase-body > ul > li { break-inside: avoid; }
       .content h2, .content h3, .content h4, .content h5 { break-after: avoid; }
       .content p, .content li { orphans: 3; widows: 3; }
@@ -213,12 +213,9 @@
       .content .kal-cell { min-height: 50px; }
       .content .kal-chip { font-size: 10px; padding: 2px 4px; }
     }
-    /* Tjeklister med flueben, der huskes i browseren */
-    .content .checklist { list-style: none; margin: 8px 0 22px; padding: 0; }
-    .content .checklist li { padding: 5px 0; }
-    .content .checklist label { display: flex; gap: 10px; align-items: baseline; cursor: pointer; }
-    .content .checklist input { accent-color: #6366f1; flex: 0 0 auto; transform: translateY(2px); }
-    .content .checklist label:has(input:checked) span { color: #64748b; text-decoration: line-through; }
+    /* Huskelister */
+    .content .huskeliste { margin: 8px 0 22px; padding-left: 24px; }
+    .content .huskeliste li { padding: 3px 0; }
     /* Svarnoter i samtaleforberedelsen (runde 2) */
     .content .svarnote { display: block; margin-top: 4px; color: #cbd5e1; }
     .content .svarnote em { color: #a5b4fc; font-style: normal; font-weight: 600; }
@@ -493,7 +490,7 @@
 </footer>
 </div>
   <script>
-    // Tjeklister (flueben huskes i browseren), fremdrift, sammenklappelige faser og fasemenu.
+    // Noter, sammenklappelige faser og fasemenu. Status kurateres i kilden, se CLAUDE.md.
     (function () {
       var page = location.pathname.split('/').pop() || 'index';
 

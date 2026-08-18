@@ -129,7 +129,7 @@
       .content details.card { break-before: page; border-top: 0; }
       .content main > details.card:first-of-type { break-before: auto; }
       /* Hold sammenhængende blokke samlet på én side */
-      .content details.qa, .content blockquote, .content .checklist li,
+      .content details.qa, .content blockquote, .content .huskeliste li,
       .content .event, .content .fase-body > ul > li { break-inside: avoid; }
       .content h2, .content h3, .content h4, .content h5 { break-after: avoid; }
       .content p, .content li { orphans: 3; widows: 3; }
@@ -213,12 +213,9 @@
       .content .kal-cell { min-height: 50px; }
       .content .kal-chip { font-size: 10px; padding: 2px 4px; }
     }
-    /* Tjeklister med flueben, der huskes i browseren */
-    .content .checklist { list-style: none; margin: 8px 0 22px; padding: 0; }
-    .content .checklist li { padding: 5px 0; }
-    .content .checklist label { display: flex; gap: 10px; align-items: baseline; cursor: pointer; }
-    .content .checklist input { accent-color: #6366f1; flex: 0 0 auto; transform: translateY(2px); }
-    .content .checklist label:has(input:checked) span { color: #64748b; text-decoration: line-through; }
+    /* Huskelister */
+    .content .huskeliste { margin: 8px 0 22px; padding-left: 24px; }
+    .content .huskeliste li { padding: 3px 0; }
     /* Svarnoter i samtaleforberedelsen (runde 2) */
     .content .svarnote { display: block; margin-top: 4px; color: #cbd5e1; }
     .content .svarnote em { color: #a5b4fc; font-style: normal; font-weight: 600; }
@@ -501,11 +498,11 @@
         <li><strong>I ledelsen af Berith.</strong> Hun er landet godt og ønsker sparring. Ingen omfordeling nødvendig, men invester i sparringen, det er dér, hun vokser, og det matcher hendes eget billede af et ledelsesteam, der lærer sammen.</li>
       </ul>
 
-      <ul class="checklist">
-        <li>○ Notér de tre vigtigste ord/temaer fra samtale og rundvisning, mens de er friske</li>
-        <li>○ Tilføj "efter en god samtale med Pernille Bøss …" og/eller rundvisningen i indledningen</li>
-        <li>○ Adressér den nævnte udfordring i ét af ansøgningens afsnit</li>
-        <li>○ Justér vægtningen. Giv det, der blev nævnt først, mest plads</li>
+      <ul class="huskeliste">
+        <li>Notér de tre vigtigste ord/temaer fra samtale og rundvisning, mens de er friske</li>
+        <li>Tilføj "efter en god samtale med Pernille Bøss …" og/eller rundvisningen i indledningen</li>
+        <li>Adressér den nævnte udfordring i ét af ansøgningens afsnit</li>
+        <li>Justér vægtningen. Giv det, der blev nævnt først, mest plads</li>
       </ul>
       <h4>Mine noter fra telefonsamtalen og rundvisningen</h4>
       <textarea class="notes" data-notes="jels-opkald" rows="6" placeholder="Skriv lyttepunkterne her, lige når jeg har lagt på. Gemmes kun i min browser."></textarea>
@@ -544,13 +541,13 @@
         <li><strong>Ton specialsproget let.</strong> Skriv "alle børn" og "deltagelse" frem for specialtermer, så CV'et læses alment med specialindsigt som styrke, ikke omvendt.</li>
         <li><strong>Nøgleord.</strong> Trivsel og faglighed, deltagelsesmuligheder, datadrevet ledelse, følgeskab, forældresamarbejde, lokalsamfund, budget i balance.</li>
       </ul>
-      <h4>Tjekliste før afsendelse</h4>
-      <ul class="checklist">
-        <li>○ Indsæt afsendelsesdato</li>
-        <li>○ Udfyld de to praksiseksempler i ansøgningen</li>
-        <li>○ Indsæt navn, alder, skoler, adresse, telefon og mail</li>
-        <li>○ Tilpas CV'et efter vinklen ovenfor</li>
-        <li>○ Send ansøgning, CV og bilag via <a href="https://vejen.career.emply.com/ad/ambitios-og-faglig-staerk-skoleleder-soges-til-jels-skole/na97zm/da" target="_blank" rel="noopener">opslaget på Vejen Kommunes jobportal</a> senest søndag den 6. september</li>
+      <h4>Huskepunkter før afsendelse</h4>
+      <ul class="huskeliste">
+        <li>Indsæt afsendelsesdato</li>
+        <li>Udfyld de to praksiseksempler i ansøgningen</li>
+        <li>Indsæt navn, alder, skoler, adresse, telefon og mail</li>
+        <li>Tilpas CV'et efter vinklen ovenfor</li>
+        <li>Send ansøgning, CV og bilag via <a href="https://vejen.career.emply.com/ad/ambitios-og-faglig-staerk-skoleleder-soges-til-jels-skole/na97zm/da" target="_blank" rel="noopener">opslaget på Vejen Kommunes jobportal</a> senest søndag den 6. september</li>
       </ul>
     </div>
   </details>
@@ -563,11 +560,11 @@
       <blockquote><p>Min første opgave vil ikke være at sætte mit eget fingeraftryk på skolen. Den vil være at forstå skolens DNA, finde det, der allerede virker, og sammen med ledelse og medarbejdere se, hvad næste naturlige udviklingsskridt er. Derefter er min opgave at holde forbindelsen mellem den strategiske retning og den konkrete hverdag.</p></blockquote>
       <blockquote><p>Jeg er mere optaget af at få en vigtig indsats til at leve i praksis end af at lancere den næste.</p></blockquote>
       <blockquote><p>Ledelsen skal kunne genkendes i det, vi beder organisationen om. Hvis vi ønsker en lærende skole, skal vi også være et lærende ledelsesteam.</p></blockquote>
-      <ul class="checklist">
-        <li>○ 2 til 3 eksempler klar i valgt model (STAR/Domæne/4D), se <a href="soenderborg.html#modeller">🧩 Modeller på Sønderborg-siden</a></li>
-        <li>○ 2 til 3 egne spørgsmål valgt (brug Tomms typer)</li>
-        <li>○ Svar på de 3 mest sandsynlige spørgsmål øvet højt (start med almen-spørgsmålet)</li>
-        <li>○ Sammenhængsplanen (se <a href="#viden">🗂️ Viden</a>), ledelsesgrundlaget og Trivselskommissionens anbefalinger genlæst</li>
+      <ul class="huskeliste">
+        <li>2 til 3 eksempler klar i valgt model (STAR/Domæne/4D), se <a href="soenderborg.html#modeller">🧩 Modeller på Sønderborg-siden</a></li>
+        <li>2 til 3 egne spørgsmål valgt (brug Tomms typer)</li>
+        <li>Svar på de 3 mest sandsynlige spørgsmål øvet højt (start med almen-spørgsmålet)</li>
+        <li>Sammenhængsplanen (se <a href="#viden">🗂️ Viden</a>), ledelsesgrundlaget og Trivselskommissionens anbefalinger genlæst</li>
       </ul>
     </div>
   </details>
@@ -576,10 +573,10 @@
     <summary><h2>7️⃣ 2. samtale · torsdag 24. september · erhvervstest imellem</h2></summary>
     <div class="fase-body">
       <p>Vejen Kommune anvender erhvervstest ved ledelsesansættelser. Indbydes jeg til 2. samtale, kontakter HR mig, og testen gennemføres mellem de to samtaler med tilbagemelding. Det er samme mønster som det planlagte Garuda-forløb i Sønderborg, så forberedelsen på Sønderborg-siden (fase 7) kan genbruges direkte. Svar ærligt og konsistent, og lad være med at spille en anden profil, end den mine svar i 1. samtale tegnede.</p>
-      <ul class="checklist">
-        <li>○ Erhvervstesten besvaret ærligt og i god ro (genbrug Garuda-forberedelsen)</li>
-        <li>○ Kort vision for Jels Skole klar, med afsæt i mottoet og deltagelses-dagsordenen</li>
-        <li>○ 100-dages-plan skitseret som backup</li>
+      <ul class="huskeliste">
+        <li>Erhvervstesten besvaret ærligt og i god ro (genbrug Garuda-forberedelsen)</li>
+        <li>Kort vision for Jels Skole klar, med afsæt i mottoet og deltagelses-dagsordenen</li>
+        <li>100-dages-plan skitseret som backup</li>
       </ul>
     </div>
   </details>
@@ -679,7 +676,7 @@
 </footer>
 </div>
   <script>
-    // Tjeklister (flueben huskes i browseren), fremdrift, sammenklappelige faser og fasemenu.
+    // Noter, sammenklappelige faser og fasemenu. Status kurateres i kilden, se CLAUDE.md.
     (function () {
       var page = location.pathname.split('/').pop() || 'index';
 

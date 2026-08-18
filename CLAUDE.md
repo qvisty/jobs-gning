@@ -9,12 +9,15 @@ Retningslinjer for Claude Code i dette repository.
   (kladde), markér den klar, og squash-merge den med det samme.
 - Kør `npm run build` efter ændringer i `src/`, og commit det genererede
   output (`index.html`, `vonsild.html`, `soenderborg.html`) sammen med kilden.
-- **Status kurateres i kilden, aldrig i browseren.** Tjeklister og
-  statuslisten øverst på stillingssiderne er statiske. ✓ betyder gjort,
-  ▶ er næste skridt, ○ er åbent, ✗ er afslag/fravalg. Claude opdaterer
-  dem ud fra samtalerne med ejeren, hver gang der sker noget (SMS sendt,
-  opkald gennemført, ansøgning sendt, invitation, afslag osv.). Ingen
-  localStorage-flueben, kun de private noter gemmes i browseren.
+- **Status kurateres i kilden, aldrig i browseren.** Statuslisten
+  øverst på hver stillingsside er det eneste sted, fremdrift vises.
+  ✓ betyder gjort, ▶ er næste skridt, ○ er åbent, ✗ er afslag/fravalg.
+  Claude opdaterer den ud fra samtalerne med ejeren, hver gang der sker
+  noget (SMS sendt, opkald gennemført, ansøgning sendt, invitation,
+  afslag osv.). Inde på siderne er der ingen afkrydsningstænkning.
+  Lister er huskepunkter, og gennemført arbejde beskrives i datid,
+  eventuelt som ✓-linjer i faserne. Kun de private noter gemmes i
+  browseren.
 - **Fang dikteringsfejl.** Ejeren dikterer ofte sine beskeder, så vær
   opmærksom på sandsynlige fejldikteringer, især navne og fagtermer, der
   ligner hinanden. Tjek mod det, der allerede står i materialet, ret til
