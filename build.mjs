@@ -15,6 +15,7 @@ import { events } from './src/events.mjs';
 const pages = [
   { src: 'src/content.html', out: 'index.html', title: 'Jobsøgning' },
   { src: 'src/jobs/kalender.html', out: 'kalender.html', title: 'Kalender · vigtige datoer' },
+  { src: 'src/jobs/kernebudskaber.html', out: 'kernebudskaber.html', title: 'Kernebudskaber' },
   { src: 'src/jobs/vonsild.html', out: 'vonsild.html', title: 'Skoleleder · Vonsild Specialskole' },
   { src: 'src/jobs/aabenraa.html', out: 'aabenraa.html', title: 'Digitaliseringskonsulent · Aabenraa' },
   { src: 'src/jobs/tvsyd.html', out: 'tvsyd.html', title: 'Bestyrelsesmedlem · tvSyd' },
