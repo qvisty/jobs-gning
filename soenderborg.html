@@ -174,6 +174,12 @@
     .content .tag--kladde { background: rgba(251,191,36,.15); color: #fcd34d; border: 1px solid #fbbf24; }
     .content .tag--sendt { background: rgba(52,211,153,.15); color: #6ee7b7; border: 1px solid #34d399; }
     .content .tag--inspiration { background: rgba(34,211,238,.15); color: #67e8f9; border: 1px solid #22d3ee; }
+    /* Statusliste øverst på stillingssiderne */
+    .content .statusliste { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 14px 0 4px; }
+    .content .statusliste li { padding: 5px 13px; border-radius: 999px; font-size: 13px; background: rgba(148,163,184,.08); color: #94a3b8; border: 1px solid #334155; }
+    .content .statusliste .st-done { background: rgba(52,211,153,.13); color: #6ee7b7; border-color: #34d399; }
+    .content .statusliste .st-next { background: rgba(251,191,36,.13); color: #fcd34d; border-color: #fbbf24; font-weight: 600; }
+    .content .statusliste .st-stop { background: rgba(248,113,113,.13); color: #fca5a5; border-color: #f87171; }
     /* Månedskalender (kalender.html) */
     .content .kal-legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 0 0 18px; }
     .content .kal-key { font-size: 12.5px; color: #cbd5e1; display: inline-flex; align-items: center; gap: 7px; }
@@ -304,6 +310,13 @@
     <button id="toggle-all" type="button">Åbn alle</button>
   </nav>
   <div class="progress"><div class="progress-track"><div id="prog-fill" class="progress-fill"></div></div><span id="prog-text"></span></div>
+  <ul class="statusliste">
+    <li class="st-done">✓ Research</li>
+    <li class="st-done">✓ Kontakt</li>
+    <li class="st-done">✓ Ansøgning sendt 7/7</li>
+    <li class="st-stop">✗ Afslag 15/8</li>
+    <li class="st-done">🗄️ Arkiveret</li>
+  </ul>
   <p class="commute">✗ <strong>Status.</strong> Afslag modtaget 15. august 2026, ikke inviteret til 1. samtale. Forløbet er afsluttet og arkiveret, se <a href="inspiration.html#soenderborg">læringen i inspirationsarkivet</a>. Siden bevares uændret som materialebank. 🧩 Modeller, 🧪 Cases, Garuda-forberedelsen (fase 7) og 🧠 Analysen genbruges direkte i Vonsild-, Jels- og kommende forløb.</p>
   <p class="commute">📞 <strong>Anbefalet næste skridt.</strong> Ring til Lene Gram Herborg, 23 45 91 58, og bed om to minutters ærlig feedback på, hvad der afgjorde fravalget. Det er professionelt, det giver læring, ingen ansøgning kan give, og det holder relationen varm til næste gang ungeområdet slår op.</p>
 

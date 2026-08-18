@@ -174,6 +174,12 @@
     .content .tag--kladde { background: rgba(251,191,36,.15); color: #fcd34d; border: 1px solid #fbbf24; }
     .content .tag--sendt { background: rgba(52,211,153,.15); color: #6ee7b7; border: 1px solid #34d399; }
     .content .tag--inspiration { background: rgba(34,211,238,.15); color: #67e8f9; border: 1px solid #22d3ee; }
+    /* Statusliste øverst på stillingssiderne */
+    .content .statusliste { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 14px 0 4px; }
+    .content .statusliste li { padding: 5px 13px; border-radius: 999px; font-size: 13px; background: rgba(148,163,184,.08); color: #94a3b8; border: 1px solid #334155; }
+    .content .statusliste .st-done { background: rgba(52,211,153,.13); color: #6ee7b7; border-color: #34d399; }
+    .content .statusliste .st-next { background: rgba(251,191,36,.13); color: #fcd34d; border-color: #fbbf24; font-weight: 600; }
+    .content .statusliste .st-stop { background: rgba(248,113,113,.13); color: #fca5a5; border-color: #f87171; }
     /* Månedskalender (kalender.html) */
     .content .kal-legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 0 0 18px; }
     .content .kal-key { font-size: 12.5px; color: #cbd5e1; display: inline-flex; align-items: center; gap: 7px; }
@@ -300,6 +306,15 @@
     <button id="toggle-all" type="button">Åbn alle</button>
   </nav>
   <div class="progress"><div class="progress-track"><div id="prog-fill" class="progress-fill"></div></div><span id="prog-text"></span></div>
+  <ul class="statusliste">
+    <li class="st-done">✓ Research</li>
+    <li class="st-done">✓ Alle 3 samtaler</li>
+    <li class="st-next">▶ Rundvisning</li>
+    <li class="st-todo">○ Ansøgning · frist 6/9</li>
+    <li class="st-todo">○ 1. samtale 14/9</li>
+    <li class="st-todo">○ 2. samtale 24/9</li>
+    <li class="st-todo">○ Svar</li>
+  </ul>
   <p class="commute">✏️ <strong>Status.</strong> Stillingen overvejes, og beslutningen kan med fordel vente på Vonsild-udfaldet (Sønderborg gav afslag 15. august), fristen 6. september ligger efter. Materialet nedenfor er klar. Alle tre samtaler er gennemført, bestyrelsesformand Mette Lautrup og skolechef Pernille Bøss den 14. august og SFO-leder Berith Nørgaard Hannesbo den 18. august. Indsigterne ligger i fase 4, og ansøgningen er justeret efter dem. Næste skridt. Book rundvisningen, færdiggør ansøgningen, og send via <a href="https://vejen.career.emply.com/ad/ambitios-og-faglig-staerk-skoleleder-soges-til-jels-skole/na97zm/da" target="_blank" rel="noopener">opslaget på Vejen Kommunes jobportal</a> senest søndag den 6. september.</p>
 
   <details class="card fase" id="vurdering">
