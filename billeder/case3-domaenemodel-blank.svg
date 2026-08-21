@@ -46,9 +46,6 @@
 <g filter="url(#rough2)"><path d="M 976 450.8 C 927.6 406.8 954.0 371.6 976 402.4 C 998.0 371.6 1024.4 406.8 976 450.8 Z" fill="#fde68a" stroke="#1f2937" stroke-width="2.6"/></g>
 <g filter="url(#rough2)"><path d="M 292 520 Q 332.0 544.0 372 520" stroke="#1f2937" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M 363 533 L 372 520 L 356 522" stroke="#1f2937" stroke-width="2.6" fill="none" stroke-linecap="round"/></g>
 <g filter="url(#rough2)"><path d="M 668 520 Q 708.0 544.0 748 520" stroke="#1f2937" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M 739 533 L 748 520 L 732 522" stroke="#1f2937" stroke-width="2.6" fill="none" stroke-linecap="round"/></g>
-<text x="332" y="508" font-family="'PatrickHand','Segoe Print','Comic Sans MS',cursive" font-size="15" font-weight="700" fill="#1f2937" text-anchor="middle" letter-spacing="0.5" >1 → 2</text>
-<text x="708" y="508" font-family="'PatrickHand','Segoe Print','Comic Sans MS',cursive" font-size="13" font-weight="400" fill="#1f2937" text-anchor="middle" letter-spacing="0.5" >ALTID MED</text>
-<text x="708" y="526" font-family="'PatrickHand','Segoe Print','Comic Sans MS',cursive" font-size="13" font-weight="400" fill="#1f2937" text-anchor="middle" letter-spacing="0.5" >3 I RYGGEN</text>
 <g filter="url(#rough)"><path d="M 280 608 l -26 21.0 l 26 21.0 Z M 920 608 l 26 21.0 l -26 21.0 Z" fill="#fff" stroke="#1f2937" stroke-width="2.6"/><rect x="285" y="614" width="640" height="42" fill="#e2e5ea"/><rect x="280" y="608" width="640" height="42" fill="#fff" stroke="#1f2937" stroke-width="2.6"/></g>
 <path d="M 320 636 q 280.0 4 560 0" stroke="#1f2937" stroke-width="1.6" fill="none" opacity="0.35" stroke-dasharray="5 6" filter="url(#rough2)"/>
 </svg>
