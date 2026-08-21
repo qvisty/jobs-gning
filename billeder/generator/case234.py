@@ -18,9 +18,12 @@ def snak(x, y):
             f'<g filter="url(#rough2)"><rect x="{x+40}" y="{y+18}" width="50" height="32" rx="14" fill="{GUL}" stroke="{INK}" stroke-width="2.4"/></g>')
 
 def vaerktoj(x, y, s=1.0):
-    return (f'<g filter="url(#rough2)">'
-            f'<path d="M {x-14*s} {y+16*s} L {x+8*s} {y-8*s} m -4 -4 a 8 8 0 1 1 12 12 m -4 -4 L {x+26*s} {y+10*s}" stroke="{INK}" stroke-width="2.8" fill="none" stroke-linecap="round"/>'
-            f'<path d="M {x-16*s} {y-10*s} l {26*s} {26*s}" stroke="{INK}" stroke-width="3.2" stroke-linecap="round"/></g>')
+    # tydelig tusch i skrivende vinkel
+    return (f'<g filter="url(#rough2)" transform="rotate(-38 {x} {y})">'
+            f'<rect x="{x-26*s}" y="{y-11*s}" width="{44*s}" height="{22*s}" rx="{7*s}" fill="{sk.GUL}" stroke="{INK}" stroke-width="2.6"/>'
+            f'<path d="M {x+18*s} {y-9*s} L {x+34*s} {y-3*s} L {x+34*s} {y+3*s} L {x+18*s} {y+9*s} Z" fill="#fff" stroke="{INK}" stroke-width="2.6"/>'
+            f'<path d="M {x+34*s} {y-3*s} L {x+40*s} {y} L {x+34*s} {y+3*s}" fill="{INK}" stroke="{INK}" stroke-width="2"/>'
+            f'<path d="M {x-18*s} {y-11*s} L {x-18*s} {y+11*s}" stroke="{INK}" stroke-width="2.2"/></g>')
 
 # ---------- CASE 2 · KVALITETSHJULET ----------
 def case2(blank):
@@ -51,7 +54,7 @@ def case2(blank):
         (cx-105, 118, 'middle', '1 · FÆLLES SPROG', 'KRAP OG LA2', snak(cx+52, 100), (cx-190, 130)),
         (cx+r+64, cy-60, 'start', '2 · TEGN OG DATA', 'FÅ NØGLETAL, TÆT PÅ PRAKSIS', lup(cx+r+96, cy+6), (cx+r+64, cy-36)),
         (cx-40, cy+r+58, 'middle', '3 · FÆLLES REFLEKSION', 'SUPERVISION OG VIDENDELING', group3(cx+156, cy+r+16, 0.62, 61), (cx-140, cy+r+80)),
-        (cx-r-64, cy-60, 'end', '4 · HANDLING I PRAKSIS', 'SKOLENS EGNE KRÆFTER I SPIL', vaerktoj(cx-r-96, cy+10), (cx-r-260, cy-36)),
+        (cx-r-64, cy-60, 'end', '4 · HANDLING I PRAKSIS', 'SKOLENS EGNE KRÆFTER I SPIL', vaerktoj(cx-r-110, cy+16, 1.15), (cx-r-260, cy-36)),
     ]
     for tx, ty, anchor, t1, t2, ikon, (lx, ly) in st:
         mx = tx-(110 if anchor=='middle' else (0 if anchor=='start' else 220))
