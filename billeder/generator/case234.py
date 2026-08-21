@@ -100,9 +100,6 @@ def case3(blank):
     # pile mellem zoner
     b.append(arrow(292, 520, 372, 520, 24))
     b.append(arrow(668, 520, 748, 520, 24))
-    b.append(T(332, 508, '1 → 2', 15, 700, 'middle'))
-    b.append(T(708, 508, 'ALTID MED', 13, 400, 'middle'))
-    b.append(T(708, 526, '3 I RYGGEN', 13, 400, 'middle'))
     b.append(banner(280, 608, 640, 42))
     if blank:
         b.append(skrivelinjer(320, 636, 560, 1))
@@ -125,7 +122,8 @@ def case4(blank):
     b.append(group3(120, 420, 0.72, 81))
     b.append(flag(1075, 330, 70))
     b.append(T(1068, 296, 'VONSILD', 19, 700, 'middle'))
-    b.append(T(1068, 318, 'HVOR ELEVER LYKKES', 13, 400, 'middle'))
+    if not blank:
+        b.append(T(1068, 318, 'HVOR ELEVER LYKKES', 13, 400, 'middle'))
     # vand
     for wy in (600, 630, 660):
         b.append(f'<path d="M 260 {wy} q 30 -10 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0" stroke="{INK}" stroke-width="1.8" fill="none" opacity="0.35" filter="url(#rough2)"/>')
@@ -139,8 +137,6 @@ def case4(blank):
         b.append(f'<g filter="url(#rough2)"><path d="M {px-13} 385 L {px-13} 585 M {px+13} 385 L {px+13} 585 M {px-20} 585 L {px+20} 585" stroke="{INK}" stroke-width="2.8" fill="none"/></g>')
         if blank:
             b.append(f'<g filter="url(#rough2)"><rect x="{px-56}" y="460" width="112" height="30" rx="8" fill="{GUL}" stroke="{INK}" stroke-width="2" transform="rotate(-90 {px} 505)"/></g>')
-            b.append(skrivelinjer(px-14, 470, 8, 0))
-            b.append(f'<path d="M {px} 555 L {px} 468" stroke="{INK}" stroke-width="1.6" opacity="0.35" stroke-dasharray="5 6" filter="url(#rough2)" transform="rotate(0 {px} 500)"/>')
         else:
             b.append(f'<g filter="url(#rough2)"><rect x="{px-58}" y="472" width="116" height="30" rx="8" fill="{GUL}" stroke="{INK}" stroke-width="2" transform="rotate(-90 {px} 487)"/></g>')
             b.append(T(px+7, 560, navn, 14.5, 700, 'start', rot=-90))
@@ -150,15 +146,19 @@ def case4(blank):
     # sky med målet
     b.append(f'<g filter="url(#rough)"><path d="M 330 150 q -40 4 -34 40 q -20 30 16 42 q 6 30 46 22 q 30 22 58 2 q 40 12 50 -18 q 36 -6 24 -40 q 12 -34 -28 -40 q -16 -26 -52 -14 q -40 -16 -80 6 Z" fill="#fff" stroke="{INK}" stroke-width="2.6" transform="translate(190 -12) scale(1.6 1)"/></g>')
     if blank:
-        b.append(skrivelinjer(560, 172, 330, 2, 44))
+        b.append(skrivelinjer(648, 172, 260, 2, 44))
     else:
         b.append(T(722, 178, 'MÅLET ER IKKE FLERE ELEVER HJEM', 19, 700, 'middle'))
         b.append(T(722, 206, 'MÅLET ER ELEVER, DER LYKKES', 19, 700, 'middle'))
-    b.append(T(722, 234, '· SÅ FØLGER HJEMTAGELSEN AF SIG SELV ·', 13, 400, 'middle'))
+    if not blank:
+        b.append(T(722, 234, '· SÅ FØLGER HJEMTAGELSEN AF SIG SELV ·', 13, 400, 'middle'))
     # note
     b.append(marker(300, 610, 380, 30))
-    b.append(T(316, 632, 'I TÆT DIALOG MED FORVALTNINGEN', 15, 700))
-    b.append(T(1150, 640, 'NYSGERRIG · IKKE SKRÅSIKKER', 14, 400, 'end'))
+    if blank:
+        b.append(skrivelinjer(316, 632, 350, 1))
+    else:
+        b.append(T(316, 632, 'I TÆT DIALOG MED FORVALTNINGEN', 15, 700))
+        b.append(T(1150, 640, 'NYSGERRIG · IKKE SKRÅSIKKER', 14, 400, 'end'))
     return canvas('\n'.join(b), seed=9)
 
 open('billeder/case2-kvalitetshjul-udfyldt.svg','w').write(case2(False))
