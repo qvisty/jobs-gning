@@ -41,5 +41,28 @@ Kravspecifikationen og kvalitetskontrol-listen står i ../PROMPT.md.
 5. Indsæt på stillingssiden som billedpar (udfyldt + blank) med klasserne
    `billedpar`/`casebillede`, og link print-pakken i casesektionen.
 
+## Varme-laget (efter research i faget, august 2026)
+
+Teknikker hentet fra bikablo-metoden og sketchnote-miljøet, indarbejdet
+i biblioteket.
+
+- **Grå dybde.** Slagskygger på bobler/bokse/bannere, skyggeblob under
+  figurer og en grå sideskygge inde i figurkroppen. Lyskilden er
+  konsekvent fra venstre, skygger falder nederst til højre.
+- **To afdæmpede accentfarver, aldrig flere.** Gul marker (#fde68a) til
+  overstregning og highlights, varm orange (#f2a25c) til hjerter, flag
+  og nummer-badges. Alt andet er sort streg og gråt.
+- **Lettering-hierarki.** Overskrifter bruger `titel()` med gul marker
+  og en lys håndskygge bag bogstaverne, undertekster er mindre og uden
+  effekter.
+- **Nummer-badges.** `badge(x, y, n)` giver orange cirkler med hvide
+  tal til trin og stationer, så læserækkefølgen er tydelig uden tekst.
+- **Glimt.** `glimt(x, y)` sætter små firtakkede funkler ved mål og
+  højdepunkter, to til tre pr. ark, aldrig flere.
+
+Kilder. bikablo.com (metoden og det visuelle ordforråd), Sacha Chuas
+sketchnote-lektioner om farve, JetPens' guide til sketchnoting og
+Sketch Academys farveråd (2-3 farver, gråt til skygge, én varm accent).
+
 Kanonisk 16:9-flade er 1200 x 675. Filerne er ren Python uden
 afhængigheder ud over standardbiblioteket.

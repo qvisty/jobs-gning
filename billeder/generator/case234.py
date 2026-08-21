@@ -3,6 +3,7 @@ spec = importlib.util.spec_from_file_location('sketch', 'billeder/generator/sket
 sk = importlib.util.module_from_spec(spec); spec.loader.exec_module(sk)
 T, marker, stick, group3, bubble, box, banner, arrow, flag, skrivelinjer, canvas = (
     sk.T, sk.marker, sk.stick, sk.group3, sk.bubble, sk.box, sk.banner, sk.arrow, sk.flag, sk.skrivelinjer, sk.canvas)
+titel, badge, glimt, ORANGE = sk.titel, sk.badge, sk.glimt, sk.ORANGE
 INK, GUL = sk.INK, sk.GUL
 
 def hjerte(x, y, s=1.0, fill='#fff'):
@@ -24,8 +25,7 @@ def vaerktoj(x, y, s=1.0):
 # ---------- CASE 2 · KVALITETSHJULET ----------
 def case2(blank):
     b = []
-    b.append(marker(40, 30, 400, 40))
-    b.append(T(56, 60, 'KVALITETSHJULET', 34, 700))
+    b.append(titel(56, 60, 'KVALITETSHJULET', 400))
     b.append(T(56, 92, 'SAMSKABT · ALDRIG KONTROL OPPEFRA', 17))
     b.append(T(1150, 50, 'VONSILD · 2. SAMTALE', 14, 400, 'end'))
     cx, cy, r = 600, 360, 150
@@ -41,7 +41,8 @@ def case2(blank):
             hx, hy = x2 + 15*math.cos(ang+math.radians(da)), y2 + 15*math.sin(ang+math.radians(da))
             b.append(f'<path d="M {hx:.0f} {hy:.0f} L {x2:.0f} {y2:.0f}" stroke="{INK}" stroke-width="3" stroke-linecap="round" filter="url(#rough2)"/>')
     # centrum: hjerte med elev
-    b.append(hjerte(cx, cy-14, 3.2, GUL))
+    b.append(hjerte(cx, cy-14, 3.2, ORANGE))
+    b.append(glimt(cx+64, cy-72, 0.9))
     b.append(stick(cx, cy-26, 0.62, 'open', 51))
     b.append(T(cx, cy+52, 'ELEVERNES DELTAGELSE', 17, 700, 'middle'))
     b.append(T(cx, cy+74, 'OG PROGRESSION', 17, 700, 'middle'))
@@ -53,8 +54,10 @@ def case2(blank):
         (cx-r-64, cy-60, 'end', '4 · HANDLING I PRAKSIS', 'SKOLENS EGNE KRÆFTER I SPIL', vaerktoj(cx-r-96, cy+10), (cx-r-260, cy-36)),
     ]
     for tx, ty, anchor, t1, t2, ikon, (lx, ly) in st:
-        b.append(marker(tx-(110 if anchor=='middle' else (0 if anchor=='start' else 220)), ty-22, 225, 30))
-        b.append(T(tx, ty, t1, 18, 700, anchor))
+        mx = tx-(110 if anchor=='middle' else (0 if anchor=='start' else 220))
+        b.append(marker(mx, ty-22, 225, 30))
+        b.append(badge(mx-6, ty-8, t1.split(' ·')[0]))
+        b.append(T(tx+(10 if anchor=='middle' else (16 if anchor=='start' else 0)), ty, t1.split('· ')[1], 18, 700, anchor))
         if blank:
             b.append(skrivelinjer(lx, ly+16, 210, 2, 40))
         else:
@@ -70,8 +73,7 @@ def case2(blank):
 # ---------- CASE 3 · DOMÆNEMODELLEN ----------
 def case3(blank):
     b = []
-    b.append(marker(40, 30, 430, 40))
-    b.append(T(56, 60, 'DOMÆNEMODELLEN', 34, 700))
+    b.append(titel(56, 60, 'DOMÆNEMODELLEN', 430))
     b.append(T(56, 92, 'NÅR URO RAMMER MIDT I OVERGANGEN', 17))
     b.append(T(1150, 50, 'VONSILD · 2. SAMTALE', 14, 400, 'end'))
     zoner = [
@@ -96,7 +98,8 @@ def case3(blank):
     b.append(bubble(180, 372, 44, 32, 172, 420, 'tanke'))
     b.append(T(202, 394, '?', 20, 700, 'middle'))
     b.append(f'<g filter="url(#rough2)"><rect x="640" y="386" width="66" height="76" rx="6" fill="#fff" stroke="{INK}" stroke-width="2.6"/><path d="M 648 404 h 50 M 648 422 h 50 M 648 440 h 34" stroke="{INK}" stroke-width="2.2"/><path d="M 652 380 v 12 M 694 380 v 12" stroke="{INK}" stroke-width="2.6"/></g>')
-    b.append(hjerte(976, 420, 2.2, GUL))
+    b.append(hjerte(976, 420, 2.2, ORANGE))
+    b.append(glimt(1014, 388, 0.8))
     # pile mellem zoner
     b.append(arrow(292, 520, 372, 520, 24))
     b.append(arrow(668, 520, 748, 520, 24))
@@ -110,8 +113,7 @@ def case3(blank):
 # ---------- CASE 4 · HJEMTAGELSE (broen) ----------
 def case4(blank):
     b = []
-    b.append(marker(40, 30, 360, 40))
-    b.append(T(56, 60, 'HJEMTAGELSE', 34, 700))
+    b.append(titel(56, 60, 'HJEMTAGELSE', 360))
     b.append(T(56, 92, 'BROEN BÆRER KUN, HVIS PILLERNE HOLDER', 17))
     b.append(T(1150, 50, 'VONSILD · 2. SAMTALE', 14, 400, 'end'))
     # bredder
@@ -121,6 +123,7 @@ def case4(blank):
     b.append(T(125, 370, 'TILBUD', 17, 700, 'middle'))
     b.append(group3(120, 420, 0.72, 81))
     b.append(flag(1075, 330, 70))
+    b.append(glimt(1116, 282, 0.9))
     b.append(T(1068, 296, 'VONSILD', 19, 700, 'middle'))
     if not blank:
         b.append(T(1068, 318, 'HVOR ELEVER LYKKES', 13, 400, 'middle'))

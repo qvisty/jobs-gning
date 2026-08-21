@@ -3,6 +3,7 @@ import html, math, random
 
 INK = '#1f2937'
 GUL = '#fde68a'
+ORANGE = '#f2a25c'
 FONT = "'PatrickHand','Segoe Print','Comic Sans MS',cursive"
 import base64 as _b64, os as _os
 PH_B64 = _b64.b64encode(open(_os.path.join(_os.path.dirname(__file__), 'patrickhand.ttf'), 'rb').read()).decode()
@@ -38,6 +39,7 @@ def stick(x, y, scale=1.0, pose='stand', seed=1, smile=True):
     ty = y + 18*s
     by = y + 58*s
     g.append(f'<path d="M {x-15*s:.0f} {by:.0f} C {x-17*s:.0f} {ty+8*s:.0f} {x-9*s:.0f} {ty:.0f} {x} {ty:.0f} C {x+9*s:.0f} {ty:.0f} {x+17*s:.0f} {ty+8*s:.0f} {x+15*s:.0f} {by:.0f} Z" fill="#fff" stroke="{INK}" stroke-width="2.6"/>')
+    g.append(f'<path d="M {x+4*s:.0f} {ty+3*s:.0f} Q {x+15*s:.0f} {(ty+by)/2:.0f} {x+8*s:.0f} {by-2*s:.0f} Q {x+10*s:.0f} {(ty+by)/2:.0f} {x+4*s:.0f} {ty+3*s:.0f} Z" fill="#dfe3e8"/>')
     # arme som bløde buer fra skulderen
     sy = ty + 7*s
     if pose == 'point':
@@ -104,7 +106,7 @@ def arrow(x1, y1, x2, y2, curve=0):
 
 def flag(x, y, h=64):
     return (f'<g filter="url(#rough2)"><path d="M {x} {y} L {x} {y-h}" stroke="{INK}" stroke-width="3" stroke-linecap="round"/>'
-            f'<path d="M {x} {y-h} l 46 10 l -46 12 Z" fill="{GUL}" stroke="{INK}" stroke-width="2.4"/></g>')
+            f'<path d="M {x} {y-h} l 46 10 l -46 12 Z" fill="{ORANGE}" stroke="{INK}" stroke-width="2.4"/></g>')
 
 def skrivelinjer(x, y, w, n, gap=44):
     out = []
@@ -118,3 +120,19 @@ def canvas(body, seed=3):
 {head(seed)}
 {body}
 </svg>'''
+
+
+def titel(x, y, tekst, mw, size=34):
+    """Overskrift med gul marker og haandskygge bag bogstaverne."""
+    return (marker(x-16, y-30, mw, 40)
+            + f'<text x="{x+2}" y="{y+3}" font-family={FONT!r} font-size="{size}" font-weight="700" fill="#c9ced6" letter-spacing="0.5">{html.escape(tekst)}</text>'
+            + T(x, y, tekst, size, 700))
+
+def badge(x, y, n, r=15):
+    return (f'<g filter="url(#rough2)"><circle cx="{x+3}" cy="{y+4}" r="{r}" fill="#dfe3e8"/>'
+            f'<circle cx="{x}" cy="{y}" r="{r}" fill="{ORANGE}" stroke="{INK}" stroke-width="2.2"/>'
+            f'<text x="{x}" y="{y+6}" font-family={FONT!r} font-size="17" font-weight="700" fill="#fff" text-anchor="middle">{n}</text></g>')
+
+def glimt(x, y, s=1.0):
+    p = f'M {x} {y-9*s} Q {x+1.5*s} {y-1.5*s} {x+9*s} {y} Q {x+1.5*s} {y+1.5*s} {x} {y+9*s} Q {x-1.5*s} {y+1.5*s} {x-9*s} {y} Q {x-1.5*s} {y-1.5*s} {x} {y-9*s} Z'
+    return f'<g filter="url(#rough2)"><path d="{p}" fill="{GUL}" stroke="{INK}" stroke-width="1.6"/></g>'
