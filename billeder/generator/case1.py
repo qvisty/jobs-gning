@@ -3,17 +3,19 @@ spec = importlib.util.spec_from_file_location('sketch', 'billeder/generator/sket
 sk = importlib.util.module_from_spec(spec); spec.loader.exec_module(sk)
 T, marker, stick, group3, bubble, box, banner, arrow, flag, skrivelinjer, canvas = (
     sk.T, sk.marker, sk.stick, sk.group3, sk.bubble, sk.box, sk.banner, sk.arrow, sk.flag, sk.skrivelinjer, sk.canvas)
+titel, badge, glimt = sk.titel, sk.badge, sk.glimt
 
 def case1(blank):
     b = []
     # Titel med markering
-    b.append(marker(40, 30, 420, 40))
-    b.append(T(56, 60, '100-DAGES-PLANEN', 34, 700))
+    b.append(titel(56, 60, '100-DAGES-PLANEN', 420))
     b.append(T(56, 92, 'VIDEREFØRELSE FØR NYOPFINDELSE', 17))
     b.append(T(1150, 50, 'VONSILD · 2. SAMTALE', 14, 400, 'end'))
     # Vejen (kurvet sti)
     b.append(f'<g filter="url(#rough)"><path d="M 80 560 C 260 460 300 300 470 300 C 640 300 620 480 800 470 C 960 462 1010 330 1080 250" stroke="#1f2937" stroke-width="4" fill="none" stroke-dasharray="1 14" stroke-linecap="round"/></g>')
     b.append(flag(1080, 250))
+    b.append(glimt(1122, 205, 0.9))
+    b.append(glimt(905, 462, 0.7))
     b.append(T(1078, 292, 'DAG 100', 17, 700, 'middle'))
     # Station 1: LYT (figur med gruppe og taleboble)
     b.append(group3(150, 470, 0.8, seed=11))
