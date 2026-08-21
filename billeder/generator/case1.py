@@ -8,15 +8,16 @@ titel, badge, glimt = sk.titel, sk.badge, sk.glimt
 def case1(blank):
     b = []
     # Titel med markering
-    b.append(titel(56, 60, '100-DAGES-PLANEN', 420))
-    b.append(T(56, 92, 'VIDEREFØRELSE FØR NYOPFINDELSE', 17))
+    b.append(titel(56, 60, 'TRE MÅNEDER TIL NY SKOLE', 560))
+    b.append(T(56, 92, 'TILTRÆDELSE 1. OKTOBER · SELVSTÆNDIG SKOLE 1. JANUAR · CIRKA 100 DAGE', 17))
     b.append(T(1150, 50, 'VONSILD · 2. SAMTALE', 14, 400, 'end'))
     # Vejen (kurvet sti)
     b.append(f'<g filter="url(#rough)"><path d="M 80 560 C 260 460 300 300 470 300 C 640 300 620 480 800 470 C 960 462 1010 330 1080 250" stroke="#1f2937" stroke-width="4" fill="none" stroke-dasharray="1 14" stroke-linecap="round"/></g>')
     b.append(flag(1080, 250))
     b.append(glimt(1122, 205, 0.9))
     b.append(glimt(905, 462, 0.7))
-    b.append(T(1078, 292, 'DAG 100', 17, 700, 'middle'))
+    b.append(T(1078, 292, '1. JANUAR', 17, 700, 'middle'))
+    b.append(T(1078, 312, 'SELVSTÆNDIG SKOLE', 11.5, 400, 'middle'))
     # Station 1: LYT (figur med gruppe og taleboble)
     b.append(group3(150, 470, 0.8, seed=11))
     b.append(stick(255, 452, 1.0, 'open', 21))
@@ -27,7 +28,7 @@ def case1(blank):
         b.append(T(254, 360, 'HVAD BÆRER JERES', 18, 700))
         b.append(T(254, 384, 'PRAKSIS I DAG?', 18, 700))
     b.append(marker(120, 585, 250, 30))
-    b.append(T(132, 607, 'DAG 0-30 · LYT OG KORTLÆG', 16, 700))
+    b.append(T(132, 607, 'OKTOBER · LYT OG KORTLÆG', 16, 700))
     # Bevar-listen (clipboard)
     b.append(box(60, 240, 150, 120))
     b.append(f'<rect x="105" y="228" width="60" height="22" rx="6" fill="#fff" stroke="#1f2937" stroke-width="2.4" filter="url(#rough2)"/>')
@@ -48,7 +49,7 @@ def case1(blank):
         b.append(T(hx, hy+12, 'MANDATER', 15, 700, 'middle'))
         b.append(T(hx, hy+34, 'BESTYRELSE', 15, 700, 'middle'))
     b.append(marker(360, 148, 230, 30))
-    b.append(T(372, 170, 'DAG 30-60 · RAMMER', 16, 700))
+    b.append(T(372, 170, 'NOVEMBER · RAMMER', 16, 700))
     # Station 3: GEVINSTER (stjerner + glade figurer)
     b.append(stick(790, 545, 0.85, 'walk', 31))
     b.append(stick(830, 550, 0.75, 'open', 32))
@@ -61,9 +62,9 @@ def case1(blank):
         b.append(T(866, 410, '2-3 SYNLIGE', 17, 700))
         b.append(T(866, 433, 'FORBEDRINGER', 17, 700))
     b.append(marker(760, 585, 290, 30))
-    b.append(T(772, 607, 'DAG 60-100 · TIDLIGE GEVINSTER', 16, 700))
+    b.append(T(772, 607, 'DECEMBER · KLAR FØR JUL', 16, 700))
     # Kvitteringspunkter (tjekmærker på vejen)
-    for cx, cy, d in ((298, 444, '30'), (655, 452, '60'), (1005, 335, '100')):
+    for cx, cy, d in ((298, 444, '1/11'), (655, 452, '1/12'), (1005, 335, '1/1')):
         b.append(f'<g filter="url(#rough2)"><circle cx="{cx}" cy="{cy}" r="17" fill="#fff" stroke="#1f2937" stroke-width="2.6"/><path d="M {cx-7} {cy} l 5 6 l 10 -12" stroke="#1f2937" stroke-width="2.8" fill="none" stroke-linecap="round"/></g>')
         b.append(T(cx+24, cy+6, d, 14, 700))
     # Bundbanner
