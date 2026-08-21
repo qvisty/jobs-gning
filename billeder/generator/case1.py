@@ -14,10 +14,10 @@ def case1(blank):
     # Vejen (kurvet sti)
     b.append(f'<g filter="url(#rough)"><path d="M 80 560 C 260 460 300 300 470 300 C 640 300 620 480 800 470 C 960 462 1010 330 1080 250" stroke="#1f2937" stroke-width="4" fill="none" stroke-dasharray="1 14" stroke-linecap="round"/></g>')
     b.append(flag(1080, 250))
-    b.append(glimt(1122, 205, 0.9))
+    b.append(glimt(1052, 196, 0.9))
     b.append(glimt(905, 462, 0.7))
-    b.append(T(1078, 292, '1. JANUAR', 17, 700, 'middle'))
-    b.append(T(1078, 312, 'SELVSTÆNDIG SKOLE', 11.5, 400, 'middle'))
+    b.append(T(1152, 262, '1. JANUAR', 17, 700, 'end'))
+    b.append(T(1152, 282, 'SELVSTÆNDIG SKOLE', 11.5, 400, 'end'))
     # Station 1: LYT (figur med gruppe og taleboble)
     b.append(group3(150, 470, 0.8, seed=11))
     b.append(stick(255, 452, 1.0, 'open', 21))
@@ -55,7 +55,7 @@ def case1(blank):
     b.append(stick(830, 550, 0.75, 'open', 32))
     st = lambda x, y, s: f'<g filter="url(#rough2)"><path d="M {x} {y-14*s} L {x+4*s} {y-4*s} L {x+14*s} {y-4*s} L {x+6*s} {y+3*s} L {x+9*s} {y+13*s} L {x} {y+7*s} L {x-9*s} {y+13*s} L {x-6*s} {y+3*s} L {x-14*s} {y-4*s} L {x-4*s} {y-4*s} Z" fill="{sk.GUL}" stroke="#1f2937" stroke-width="2"/></g>'
     b.append(st(880, 480, 1.2)); b.append(st(915, 512, 0.8)); b.append(st(855, 515, 0.7))
-    b.append(bubble(840, 380, 250, 62, 872, 470))
+    b.append(bubble(840, 380, 250, 62, 830, 486))
     if blank:
         b.append(skrivelinjer(862, 410, 206, 2, 24))
     else:

@@ -80,10 +80,10 @@ def bubble(x, y, w, h, tailx, taily, kind='tale'):
         dots = f'<circle cx="{tailx}" cy="{taily}" r="4" fill="none" stroke="{INK}" stroke-width="2"/><circle cx="{(tailx+x+w/2)/2:.0f}" cy="{(taily+y+h/2)/2:.0f}" r="6" fill="none" stroke="{INK}" stroke-width="2"/>'
         return f'<g filter="url(#rough2)">{b}{dots}</g>'
     sh = f'<rect x="{x+5}" y="{y+6}" width="{w}" height="{h}" rx="{h/2.6:.0f}" fill="#e2e5ea"/>'
-    b = sh + f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{h/2.6:.0f}" fill="#fff" stroke="{INK}" stroke-width="2.4"/>'
-    mx = x + w*0.28
-    tail = f'<path d="M {mx} {y+h-2} L {tailx} {taily} L {mx+26} {y+h-2}" fill="#fff" stroke="{INK}" stroke-width="2.4"/>'
-    return f'<g filter="url(#rough2)">{tail}{b}</g>'
+    # halens basis centreres over spidsen, saa halen bliver kort og naesten lodret
+    tail = f'<path d="M {tailx-16} {y+h-8} L {tailx+2} {taily} L {tailx+15} {y+h-8} Z" fill="#fff" stroke="{INK}" stroke-width="2.4"/>'
+    b = f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{h/2.6:.0f}" fill="#fff" stroke="{INK}" stroke-width="2.4"/>'
+    return f'<g filter="url(#rough2)">{sh}{tail}{b}</g>'
 
 def box(x, y, w, h, fill='#fff'):
     return (f'<g filter="url(#rough)"><rect x="{x+5}" y="{y+6}" width="{w}" height="{h}" rx="6" fill="#e2e5ea"/>'
