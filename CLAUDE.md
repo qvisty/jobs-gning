@@ -18,6 +18,12 @@ Retningslinjer for Claude Code i dette repository.
   Lister er huskepunkter, og gennemført arbejde beskrives i datid,
   eventuelt som ✓-linjer i faserne. Kun de private noter gemmes i
   browseren.
+- **Visualiseringer laves som grafisk facilitering.** Casebilleder og
+  andre visuelle modeller tegnes i håndtegnet facilitator-stil efter
+  kravene i `billeder/PROMPT.md` og med generatoren i
+  `billeder/generator/` (se README dér). Altid parvis, en udfyldt og en
+  blank med skriveplads, altid renderet og efterset før levering, og
+  samlet i en A4-printpakke pr. stilling.
 - **Fang dikteringsfejl.** Ejeren dikterer ofte sine beskeder, så vær
   opmærksom på sandsynlige fejldikteringer, især navne og fagtermer, der
   ligner hinanden. Tjek mod det, der allerede står i materialet, ret til

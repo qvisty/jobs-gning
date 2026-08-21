@@ -21,5 +21,6 @@ Kvalitetskontrol efter hver generering.
 
 Teknik i dette repo. Billederne tegnes som SVG (1200 x 675, liggende
 16:9) med indlejret håndskriftsfont (Patrick Hand), sort tusch #1f2937,
-gul markerfarve #fde68a og hvid baggrund. Genereringsscripts ligger i
-sessionens scratchpad og kan genskabes ud fra denne beskrivelse.
+gul markerfarve #fde68a og hvid baggrund. Generatoren, biblioteket,
+eksempel-scripts og fonten ligger varigt i billeder/generator/ med
+arbejdsgangen beskrevet i README.md dér.
