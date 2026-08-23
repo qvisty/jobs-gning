@@ -730,13 +730,20 @@
         });
       });
 
-      // Sammenklappelige faser: åben/lukket huskes pr. side
+      // Sammenklappelige faser: åben/lukket huskes pr. side.
+      // Faser med et ✓-tag i overskriften er færdige og starter altid foldet ind,
+      // så scrollet hurtigt når frem til den aktuelle status.
       var OPENKEY = 'jobhub:open:' + page;
       var openState = null;
       try { openState = JSON.parse(localStorage.getItem(OPENKEY)); } catch (e) {}
       var faser = document.querySelectorAll('details.fase');
+      function faseDone(d) {
+        var tag = d.querySelector('summary .tag');
+        return !!(tag && tag.textContent.indexOf('✓') !== -1);
+      }
       faser.forEach(function (d, i) {
-        if (openState && (d.id in openState)) d.open = !!openState[d.id];
+        if (faseDone(d)) d.open = false;
+        else if (openState && (d.id in openState)) d.open = !!openState[d.id];
         else if (!openState && i === 0) d.open = true;
         d.addEventListener('toggle', function () {
           var st = {};
