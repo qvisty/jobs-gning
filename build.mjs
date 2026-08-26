@@ -24,6 +24,7 @@ const pages = [
   { src: 'src/jobs/haervejsskolen.html', out: 'haervejsskolen.html', title: 'Skoleleder · Hærvejsskolen (Rødekro)' },
   { src: 'src/jobs/vejen-skolechef.html', out: 'vejen-skolechef.html', title: 'Skolechef · Vejen Kommune (benchmark)' },
   { src: 'src/jobs/soenderborg.html', out: 'soenderborg.html', title: 'Ungecenterleder · Sønderborg' },
+  { src: 'src/jobs/soenderborg-digitalisering.html', out: 'soenderborg-digitalisering.html', title: 'Digitaliseringskonsulent · Sønderborg' },
   { src: 'src/jobs/inspiration.html', out: 'inspiration.html', title: 'Inspiration · stillinger til genbrug' },
 ];
 
