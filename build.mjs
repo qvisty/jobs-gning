@@ -18,6 +18,7 @@ const pages = [
   { src: 'src/jobs/kernebudskaber.html', out: 'kernebudskaber.html', title: 'Kernebudskaber' },
   { src: 'src/jobs/vonsild.html', out: 'vonsild.html', title: 'Skoleleder · Vonsild Specialskole' },
   { src: 'src/jobs/aabenraa.html', out: 'aabenraa.html', title: 'Digitaliseringskonsulent · Aabenraa' },
+  { src: 'src/jobs/aabenraa-konsulent.html', out: 'aabenraa-konsulent.html', title: 'Konsulent, analyse og AI · Aabenraa' },
   { src: 'src/jobs/tvsyd.html', out: 'tvsyd.html', title: 'Bestyrelsesmedlem · tvSyd' },
   { src: 'src/jobs/fleggaard.html', out: 'fleggaard.html', title: 'Projektleder · Fleggaard IT' },
   { src: 'src/jobs/jels.html', out: 'jels.html', title: 'Skoleleder · Jels Skole (Vejen)' },
