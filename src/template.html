@@ -68,6 +68,13 @@
     .content .fasebar button { margin-left: auto; padding: 5px 11px; border: 1px solid #475569; border-radius: 999px;
       background: transparent; color: #cbd5e1; font-size: 13px; cursor: pointer; }
     .content .fasebar button:hover { border-color: #6366f1; }
+    /* Fasemenuen foldes sammen på mobil, kun Forside-link og menuknap vises */
+    .content .fasebar-toggle { display: none; }
+    @media (max-width: 640px) {
+      .content .fasebar-toggle { display: inline-block; }
+      .content .fasebar:not(.udfoldet) a:not(.home) { display: none; }
+      .content .fasebar:not(.udfoldet) #toggle-all { display: none; }
+    }
     /* Fremdrift for tjeklister */
     .content .progress { display: flex; align-items: center; gap: 12px; margin: 10px 0 0; }
     .content .progress-track { flex: 1 1 auto; height: 8px; border-radius: 999px; background: #0b1220;
@@ -575,6 +582,26 @@
         faser.forEach(function (d) { d.open = anyClosed; });
         toggleAll.textContent = anyClosed ? 'Luk alle' : 'Åbn alle';
       });
+
+      // Fasemenuen kan foldes sammen på mobil (knappen vises kun dér via CSS)
+      var fasebar = document.querySelector('.fasebar');
+      if (fasebar) {
+        var mtoggle = document.createElement('button');
+        mtoggle.type = 'button';
+        mtoggle.className = 'fasebar-toggle';
+        mtoggle.textContent = '☰ Menu';
+        fasebar.appendChild(mtoggle);
+        mtoggle.addEventListener('click', function () {
+          var aaben = fasebar.classList.toggle('udfoldet');
+          mtoggle.textContent = aaben ? '✕ Luk' : '☰ Menu';
+        });
+        fasebar.addEventListener('click', function (e) {
+          if (e.target.tagName === 'A' && fasebar.classList.contains('udfoldet')) {
+            fasebar.classList.remove('udfoldet');
+            mtoggle.textContent = '☰ Menu';
+          }
+        });
+      }
 
       // Markér aktiv fase i menuen under scroll
       var links = document.querySelectorAll('.fasebar a[href^="#"]');
