@@ -26,6 +26,7 @@ const pages = [
   { src: 'src/jobs/vejen-skolechef.html', out: 'vejen-skolechef.html', title: 'Skolechef · Vejen Kommune (benchmark)' },
   { src: 'src/jobs/soenderborg.html', out: 'soenderborg.html', title: 'Ungecenterleder · Sønderborg' },
   { src: 'src/jobs/soenderborg-digitalisering.html', out: 'soenderborg-digitalisering.html', title: 'Digitaliseringskonsulent · Sønderborg' },
+  { src: 'src/jobs/sydgros.html', out: 'sydgros.html', title: 'Vækstpilot, digitalisering og AI · Sydgros' },
   { src: 'src/jobs/inspiration.html', out: 'inspiration.html', title: 'Inspiration · stillinger til genbrug' },
 ];
 
