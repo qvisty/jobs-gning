@@ -353,9 +353,9 @@ export const events = [
     tagLabel: 'Personprofil · 24 timer',
     heading: 'Personprofil-link · Hærvejsskolen',
     headingUrl: 'haervejsskolen.html',
-    desc: 'Går jeg videre, kommer link til personprofilen med 24 timers svarfrist. Samme dag som Haderslev 2. samtale, reservér aftenen. Tilbagemelding fra ledelseskonsulenten fredag den 23.',
-    calTitle: 'Personprofil-link: Hærvejsskolen (24 timers frist)',
-    calDesc: 'Link til personprofil med 24 timers svarfrist. Tilbagemelding fredag den 23. oktober.',
+    desc: 'Går jeg videre, kommer spørgeskemaet til personprofilen, udfyldes senest torsdag den 22. kl. 8.00. Samme dag som Haderslev 2. samtale, reservér aftenen. Tilbagemeldingssamtale fredag den 23.',
+    calTitle: 'Personprofil-skema: Hærvejsskolen (frist 22/10 kl. 8)',
+    calDesc: 'Spørgeskema til personprofil, udfyldes senest torsdag den 22. oktober kl. 8.00. Tilbagemeldingssamtale fredag den 23.',
     calUrl: 'haervejsskolen.html',
   },
   {
