@@ -119,6 +119,14 @@
       padding: 7px 12px; border: 1px solid #475569; border-radius: 999px; background: transparent;
       color: #cbd5e1; font-size: 13px; cursor: pointer; }
     .content .databtns button:hover, .content .databtns .btn-import:hover { border-color: #6366f1; }
+    /* Klikbare mobilnumre: ring op og send SMS med færdig tekst */
+    .content a.tel-link { color: #a5b4fc; text-decoration: underline; text-decoration-style: dotted;
+      text-underline-offset: 3px; white-space: nowrap; }
+    .content a.tel-link:hover { text-decoration-style: solid; }
+    .content .databtns .btn-sms { display: inline-flex; align-items: center; padding: 7px 12px;
+      border: 1px solid #475569; border-radius: 999px; color: #cbd5e1; font-size: 13px;
+      text-decoration: none; }
+    .content .databtns .btn-sms:hover { border-color: #6366f1; }
     .content .btn-word { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
       border: 1px solid #475569; border-radius: 999px; background: rgba(99,102,241,.12);
       color: #c7d2fe; font-size: 14px; cursor: pointer; margin: 4px 0 14px; }
@@ -1017,6 +1025,48 @@
           }
         });
       }
+
+      // Klikbare telefonnumre. Mobilnumre i brødteksten bliver til tel:-links,
+      // dog ikke inde i de arkiverede opslags-citater, som skal gengives urørt.
+      var telRe = /\b(\d{2} \d{2} \d{2} \d{2}|\d{4} \d{4})\b/g;
+      var telWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+      var telNodes = [];
+      while (telWalker.nextNode()) {
+        var tn = telWalker.currentNode;
+        telRe.lastIndex = 0;
+        if (!telRe.test(tn.nodeValue)) continue;
+        var tEl = tn.parentElement;
+        if (!tEl || tEl.closest('a, script, style, textarea, button, details.qa blockquote')) continue;
+        telNodes.push(tn);
+      }
+      telNodes.forEach(function (tn) {
+        var frag = document.createDocumentFragment();
+        var text = tn.nodeValue, m, last = 0;
+        telRe.lastIndex = 0;
+        while ((m = telRe.exec(text))) {
+          frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+          var telA = document.createElement('a');
+          telA.className = 'tel-link';
+          telA.href = 'tel:+45' + m[0].replace(/ /g, '');
+          telA.textContent = m[0];
+          frag.appendChild(telA);
+          last = m.index + m[0].length;
+        }
+        frag.appendChild(document.createTextNode(text.slice(last)));
+        tn.parentNode.replaceChild(frag, tn);
+      });
+
+      // Send som SMS-knapper. Nummeret står i data-sms, og teksten hentes fra
+      // det nærmeste SMS-udkast (blockquote) ovenfor, så den altid følger udkastet.
+      document.querySelectorAll('a.btn-sms[data-sms]').forEach(function (a) {
+        var holder = a.closest('p, div');
+        var bq = holder ? holder.previousElementSibling : null;
+        while (bq && bq.tagName !== 'BLOCKQUOTE') bq = bq.previousElementSibling;
+        var nr = a.getAttribute('data-sms').replace(/\D/g, '');
+        var href = 'sms:+45' + nr;
+        if (bq) href += '?body=' + encodeURIComponent(bq.textContent.trim());
+        a.href = href;
+      });
 
       // Markér aktiv fase i menuen under scroll
       var links = document.querySelectorAll('.fasebar a[href^="#"]');
