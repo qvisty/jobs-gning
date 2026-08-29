@@ -14,11 +14,46 @@
       <span class="kal-key kal-key--samtale">Samtale</span>
       <span class="kal-key kal-key--tiltraedelse">Tiltrædelse</span>
     </div>
-    <p class="kal-legend-note">A = Digitaliseringskonsulent Aabenraa, K = Konsulent analyse og AI Aabenraa, S = Digitaliseringskonsulent Sønderborg, C = Chef Unge, Uddannelse og Service Haderslev, H = Skoleleder Hærvejsskolen, T = Bestyrelse tvSyd, J = Skoleleder Jels</p>
+    <div class="kal-filter">
+      <label><input type="checkbox" value="J" checked /> J · Skoleleder Jels</label>
+      <label><input type="checkbox" value="H" checked /> H · Skoleleder Hærvejsskolen</label>
+      <label><input type="checkbox" value="A" checked /> A · Digitaliseringskonsulent Aabenraa</label>
+      <label><input type="checkbox" value="K" checked /> K · Konsulent analyse og AI Aabenraa</label>
+      <label><input type="checkbox" value="S" checked /> S · Digitaliseringskonsulent Sønderborg</label>
+      <label><input type="checkbox" value="C" checked /> C · Chef Unge, Uddannelse og Service Haderslev</label>
+      <label><input type="checkbox" value="T" checked /> T · Bestyrelse tvSyd</label>
+    </div>
+    <p class="kal-legend-note">Fluebenene styrer, hvilke stillingers datoer der vises i kalenderen. Valget huskes kun i denne browser.</p>
     __MONTHGRID__
     <p class="kal-foot"><a href="index.html#kalender">Se datoerne som liste og hent dem til min egen kalender</a></p>
   </section>
 </main>
+
+<script>
+  // Fluebens-filter. Viser og skjuler kalender-chips pr. stilling, og valget
+  // huskes kun i denne browser (localStorage).
+  (function () {
+    var boxes = document.querySelectorAll('.kal-filter input[type="checkbox"]');
+    if (!boxes.length) return;
+    var KEY = 'jobhub:kalfilter';
+    var gemt = null;
+    try { gemt = JSON.parse(localStorage.getItem(KEY)); } catch (e) {}
+    function anvend() {
+      var vis = {};
+      boxes.forEach(function (b) { vis[b.value] = b.checked; });
+      document.querySelectorAll('.kal-chip').forEach(function (c) {
+        var a = c.getAttribute('data-abbr');
+        c.style.display = (!a || vis[a] !== false) ? '' : 'none';
+      });
+      try { localStorage.setItem(KEY, JSON.stringify(vis)); } catch (e) {}
+    }
+    boxes.forEach(function (b) {
+      if (gemt && (b.value in gemt)) b.checked = !!gemt[b.value];
+      b.addEventListener('change', anvend);
+    });
+    anvend();
+  })();
+</script>
 
 <footer class="foot">
   <p>Bygget med GitHub Pages</p>
