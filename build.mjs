@@ -126,8 +126,8 @@ function renderMonth({ y, m }, evs) {
         : ev.kind === 'tiltraedelse' ? 'Tiltrædelse' : ev.tagLabel;
       const badge = ev.abbr
         ? '<span class="kal-chip-tag">' + escHtml(ev.abbr) + '</span>' : '';
-      return '<a class="kal-chip kal-chip--' + ev.kind + '" href="' + escAttr(url) +
-        '" title="' + escAttr(ev.calTitle) + '">' +
+      return '<a class="kal-chip kal-chip--' + ev.kind + '" data-abbr="' + escAttr(ev.abbr || '') +
+        '" href="' + escAttr(url) + '" title="' + escAttr(ev.calTitle) + '">' +
         badge + '<span class="kal-chip-lab">' + escHtml(label) + '</span></a>';
     }).join('');
     const has = evsD.length ? ' kal-has' : '';
