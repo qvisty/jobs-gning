@@ -317,6 +317,16 @@
   .anl-note { font-size: 13px; color: #94a3b8; margin-top: 10px; }
   .anl-udfald { font-size: 13px; color: #cbd5e1; white-space: nowrap; }
   .anl-row--range { grid-template-columns: 170px 1fr 150px; }
+  .anl-track--stak { display: flex; gap: 2px; background: transparent; }
+  .anl-seg { height: 18px; border-radius: 3px; min-width: 3px; }
+  .anl-seg--aktiv { background: #818cf8; }
+  .anl-seg--arkiv { background: #64748b; }
+  .anl-legend { display: flex; gap: 18px; font-size: 13px; color: #94a3b8; margin: 4px 0 2px; flex-wrap: wrap; }
+  .anl-legend span::before { content: ''; display: inline-block; width: 11px; height: 11px;
+    border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+  .anl-legend .anl-leg-aktiv::before { background: #818cf8; }
+  .anl-legend .anl-leg-arkiv::before { background: #64748b; }
+  .anl-h4 { margin: 18px 0 0; color: #e2e8f0; font-size: 15px; }
   @media (max-width: 560px) {
     .anl-row, .anl-row--range { grid-template-columns: 1fr; gap: 2px; }
     .anl-lab { text-align: left; }
@@ -373,6 +383,40 @@
         <div class="anl-row" title="Skolechef Vejen, en slutmåls-øvelse, aldrig tænkt som ansøgning"><span class="anl-lab">Benchmark-øvelse</span><span class="anl-track"><span class="anl-fill" style="width:33.3%"></span></span><span class="anl-val">1</span></div>
       </div>
       <p class="anl-note">Mønsteret er tydeligt. Ingen stillinger er droppet på tvivl om egne evner. Fravalgene handler om niveau, løn og fokus, og de to afslag kom begge på profilmatch mod felter med direkte områdeerfaring.</p>
+    </div>
+  </details>
+
+  <details class="card fase" id="fordeling" open>
+    <summary><h2>🗂️ Fordelinger · jobtype, område og sektor</h2></summary>
+    <div class="fase-body">
+      <p>Alle 14 stillinger fordelt på tre snit. Farven viser, hvor energien gik hen. Søjlerne i hvert snit deler samme skala som snittets største kategori.</p>
+      <div class="anl-legend"><span class="anl-leg-aktiv">Søgt eller aktivt forfulgt</span><span class="anl-leg-arkiv">Set og fravalgt</span></div>
+
+      <h4 class="anl-h4">Pr. jobtype</h4>
+      <div class="anl-rows">
+        <div class="anl-row" title="Aabenraa-digi, analyse/AI, Sønderborg-digi, Sydgros og Fleggaard. Alle fravalgt eller lagt til side."><span class="anl-lab">Konsulent og projekt</span><span class="anl-track anl-track--stak"><span class="anl-seg anl-seg--arkiv" style="width:100%"></span></span><span class="anl-val">5</span></div>
+        <div class="anl-row" title="Jels (aktiv), Hærvejsskolen (aktiv) og Vonsild (søgt, finalist)"><span class="anl-lab">Skoleleder</span><span class="anl-track anl-track--stak"><span class="anl-seg anl-seg--aktiv" style="width:60%"></span></span><span class="anl-val">3</span></div>
+        <div class="anl-row" title="Haderslev-chefen, skolechef Vejen (benchmark) og ABENA Program Director. Alle fravalgt."><span class="anl-lab">Chef og direktør</span><span class="anl-track anl-track--stak"><span class="anl-seg anl-seg--arkiv" style="width:60%"></span></span><span class="anl-val">3</span></div>
+        <div class="anl-row" title="Ungecenterleder Sønderborg (søgt) og IT Operations Manager RIIS (fravalgt)"><span class="anl-lab">Anden ledelse</span><span class="anl-track anl-track--stak"><span class="anl-seg anl-seg--aktiv" style="width:20%"></span><span class="anl-seg anl-seg--arkiv" style="width:20%"></span></span><span class="anl-val">2</span></div>
+        <div class="anl-row" title="tvSyd (søgt, afventer indkaldelse)"><span class="anl-lab">Bestyrelse</span><span class="anl-track anl-track--stak"><span class="anl-seg anl-seg--aktiv" style="width:20%"></span></span><span class="anl-val">1</span></div>
+      </div>
+
+      <h4 class="anl-h4">Pr. område</h4>
+      <div class="anl-rows">
+        <div class="anl-row" title="Aabenraa-digi, analyse/AI, Sønderborg-digi, Sydgros, Fleggaard, RIIS og ABENA. Nul ansøgninger, syv screeninger."><span class="anl-lab">Digitalisering og IT</span><span class="anl-track anl-track--stak"><span class="anl-seg anl-seg--arkiv" style="width:100%"></span></span><span class="anl-val">7</span></div>
+        <div class="anl-row" title="Jels, Hærvejsskolen og Vonsild (søgt eller aktive) samt skolechef Vejen (benchmark)"><span class="anl-lab">Skole og undervisning</span><span class="anl-track anl-track--stak"><span class="anl-seg anl-seg--aktiv" style="width:42.9%"></span><span class="anl-seg anl-seg--arkiv" style="width:14.3%"></span></span><span class="anl-val">4</span></div>
+        <div class="anl-row" title="Ungecenterleder Sønderborg (søgt) og Haderslev-chefen (fravalgt)"><span class="anl-lab">Unge og uddannelse</span><span class="anl-track anl-track--stak"><span class="anl-seg anl-seg--aktiv" style="width:14.3%"></span><span class="anl-seg anl-seg--arkiv" style="width:14.3%"></span></span><span class="anl-val">2</span></div>
+        <div class="anl-row" title="tvSyd bestyrelse (søgt, afventer)"><span class="anl-lab">Medie og bestyrelse</span><span class="anl-track anl-track--stak"><span class="anl-seg anl-seg--aktiv" style="width:14.3%"></span></span><span class="anl-val">1</span></div>
+      </div>
+
+      <h4 class="anl-h4">Pr. sektor</h4>
+      <div class="anl-rows">
+        <div class="anl-row" title="Søgt eller aktiv: Jels, Hærvejsskolen, Vonsild og ungecenterleder Sønderborg. Fravalgt: Haderslev, Aabenraa-digi, analyse/AI, Sønderborg-digi og Vejen."><span class="anl-lab">Kommunal</span><span class="anl-track anl-track--stak"><span class="anl-seg anl-seg--aktiv" style="width:44.4%"></span><span class="anl-seg anl-seg--arkiv" style="width:55.6%"></span></span><span class="anl-val">9</span></div>
+        <div class="anl-row" title="Sydgros, Fleggaard, RIIS og ABENA. Alle fravalgt."><span class="anl-lab">Privat</span><span class="anl-track anl-track--stak"><span class="anl-seg anl-seg--arkiv" style="width:44.4%"></span></span><span class="anl-val">4</span></div>
+        <div class="anl-row" title="tvSyd, selvstændig public service-virksomhed (søgt, afventer)"><span class="anl-lab">Selvejende og medie</span><span class="anl-track anl-track--stak"><span class="anl-seg anl-seg--aktiv" style="width:11.1%"></span></span><span class="anl-val">1</span></div>
+      </div>
+
+      <p class="anl-note">Historien i tallene. Al søge-energi ligger i det kommunale skole- og ungeområde plus bestyrelsessporet, hvor profilen bærer direkte. Digitalisering og IT er det mest sete område med 7 stillinger, men alle 7 blev screenet fra på niveau, løn eller faglighed. Det private spor er indtil videre ren markedsovervågning.</p>
     </div>
   </details>
 
