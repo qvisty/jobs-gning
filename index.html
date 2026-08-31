@@ -334,6 +334,11 @@
     <p>Mine centrale budskaber om mig selv som leder, samlet ét sted. Elevatortalen, de syv kernebudskaber med beviser og færdige sætninger, tilpasningen pr. stillingstype og de ærlige huller med vendinger. <a href="kernebudskaber.html">Åbn kernebudskaberne</a>.</p>
   </section>
 
+  <section class="card" id="analyse">
+    <h2>📈 Data-analyse · jobsøgningen i tal</h2>
+    <p>Tragten fra set til tilbud, skøn mod udfald, arkivets fravalgsgrunde, ring-før-du-søger-regnskabet og læringerne på tværs. <a href="analyse.html">Åbn analysen</a>.</p>
+  </section>
+
   <section class="card" id="kalender">
     <h2>📅 Kalender · vigtige datoer</h2>
     <p>Frister, samtaler og opfølgning. Klik på en begivenhed for at komme direkte til stillingens materiale. Datoer opdateres, når endelige indkaldelser kommer.</p>
@@ -746,7 +751,7 @@
       faser.forEach(function (d, i) {
         if (faseDone(d)) d.open = false;
         else if (openState && (d.id in openState)) d.open = !!openState[d.id];
-        else if (!openState && i === 0) d.open = true;
+        else if (!openState && i === 0 && !d.classList.contains('fase-luk')) d.open = true;
         d.addEventListener('toggle', function () {
           var st = {};
           faser.forEach(function (x) { st[x.id] = x.open; });
