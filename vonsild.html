@@ -1490,7 +1490,7 @@
       faser.forEach(function (d, i) {
         if (faseDone(d)) d.open = false;
         else if (openState && (d.id in openState)) d.open = !!openState[d.id];
-        else if (!openState && i === 0) d.open = true;
+        else if (!openState && i === 0 && !d.classList.contains('fase-luk')) d.open = true;
         d.addEventListener('toggle', function () {
           var st = {};
           faser.forEach(function (x) { st[x.id] = x.open; });

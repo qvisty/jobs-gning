@@ -1,0 +1,127 @@
+<!-- Underside: Data-analyse af jobsøgningen. Genereres til analyse.html af build.mjs.
+     Tallene kurateres i hånden her i kilden og opdateres ved hver arkivering og
+     hvert udfald, samme princip som statuslisterne. -->
+<style>
+  /* Sidespecifik graf-styling. Én accentfarve (#818cf8) på mørk flade, magnitude
+     vises som søjlelængde, identitet står i tekst, aldrig i farve alene. */
+  .anl-rows { display: flex; flex-direction: column; gap: 6px; margin: 14px 0 4px; }
+  .anl-row { display: grid; grid-template-columns: 170px 1fr 44px; gap: 10px; align-items: center; }
+  .anl-lab { font-size: 13px; color: #cbd5e1; text-align: right; }
+  .anl-track { position: relative; height: 18px; background: rgba(148,163,184,.12); border-radius: 4px; }
+  .anl-fill { position: absolute; top: 0; bottom: 0; left: 0; background: #818cf8;
+    border-radius: 0 4px 4px 0; min-width: 2px; }
+  .anl-fill.anl-nul { background: transparent; border-left: 2px solid #64748b; border-radius: 0; }
+  .anl-range { position: absolute; top: 0; bottom: 0; background: #818cf8; border-radius: 4px; }
+  .anl-val { font-size: 13px; color: #e2e8f0; font-variant-numeric: tabular-nums; }
+  .anl-note { font-size: 13px; color: #94a3b8; margin-top: 10px; }
+  .anl-udfald { font-size: 13px; color: #cbd5e1; white-space: nowrap; }
+  .anl-row--range { grid-template-columns: 170px 1fr 150px; }
+  @media (max-width: 560px) {
+    .anl-row, .anl-row--range { grid-template-columns: 1fr; gap: 2px; }
+    .anl-lab { text-align: left; }
+  }
+</style>
+<p class="backlink"><a href="index.html">← Forsiden</a></p>
+<header class="hero">
+  <p class="eyebrow">Jobsøgnings-hub</p>
+  <h1>📈 Data-analyse · jobsøgningen i tal</h1>
+  <p class="lead">Overblik på tværs af alle spor. Tragten fra set til tilbud, skøn mod udfald, fravalgsgrunde og læringer. Tallene kurateres i kilden og opdateres ved hvert udfald.</p>
+</header>
+
+<main>
+  <p class="commute">🗓️ <strong>Datagrundlag.</strong> 14 stillinger fulgt siden juli 2026, opgjort 31. august 2026. 3 aktive spor (Jels, Hærvejsskolen, tvSyd) og 11 i inspirationsarkivet. Fjernede opslag tælles ikke med.</p>
+
+  <details class="card fase" id="tragt" open>
+    <summary><h2>🔻 Tragten · fra set til tilbud</h2></summary>
+    <div class="fase-body">
+      <p>Hvert trin tæller stillinger, der nåede mindst dertil. Springet fra 14 til 3 er ikke frafald men bevidst screening, se fravalgsgrundene nedenfor.</p>
+      <div class="anl-rows">
+        <div class="anl-row" title="Alle fulgte stillinger, aktive plus arkiverede"><span class="anl-lab">Set og analyseret</span><span class="anl-track"><span class="anl-fill" style="width:100%"></span></span><span class="anl-val">14</span></div>
+        <div class="anl-row" title="Ungecenterleder Sønderborg, Vonsild og tvSyd. Jels sendes inden søndag den 6."><span class="anl-lab">Ansøgning sendt</span><span class="anl-track"><span class="anl-fill" style="width:21.4%"></span></span><span class="anl-val">3</span></div>
+        <div class="anl-row" title="Vonsild, 1. samtale 19. august. tvSyd afventer indkaldelse senest 10. september."><span class="anl-lab">Til samtale</span><span class="anl-track"><span class="anl-fill" style="width:7.1%"></span></span><span class="anl-val">1</span></div>
+        <div class="anl-row" title="Vonsild, finalerunde med case 27. august, blandt de sidste to til tre kandidater"><span class="anl-lab">Finalerunde</span><span class="anl-track"><span class="anl-fill" style="width:7.1%"></span></span><span class="anl-val">1</span></div>
+        <div class="anl-row" title="Endnu ingen tilbud"><span class="anl-lab">Tilbud</span><span class="anl-track"><span class="anl-fill anl-nul" style="width:0%"></span></span><span class="anl-val">0</span></div>
+      </div>
+      <p class="anl-note">Jels-ansøgningen sendes inden søndag den 6. september og rykker "Ansøgning sendt" til 4. tvSyd kan rykke "Til samtale" til 2 senest den 10. september.</p>
+    </div>
+  </details>
+
+  <details class="card fase" id="kalibrering" open>
+    <summary><h2>🎯 Skøn mod udfald · hvor godt rammer vurderingerne?</h2></summary>
+    <div class="fase-body">
+      <p>Søjlen viser skønnet fra stillingens vurderingsafsnit på en skala fra 0 til 100 procent. Udfaldet står til højre. Formålet er kalibrering. Skøn er skøn, og feltet er altid ukendt.</p>
+      <div class="anl-rows">
+        <div class="anl-row anl-row--range" title="Skøn 75 til 85 procent for 1. samtale. Udfald: afslag uden samtale, 13 ansøgninger i feltet."><span class="anl-lab">Ungecenterleder Sønderborg · samtale</span><span class="anl-track"><span class="anl-range" style="left:75%;width:10%"></span></span><span class="anl-udfald">✗ Ingen samtale</span></div>
+        <div class="anl-row anl-row--range" title="Skøn 40 til 55 procent for at få stillingen tilbudt efter finalen. Udfald: afslag på marginaler."><span class="anl-lab">Vonsild · tilbud efter finale</span><span class="anl-track"><span class="anl-range" style="left:40%;width:15%"></span></span><span class="anl-udfald">✗ Afslag · finalist</span></div>
+        <div class="anl-row anl-row--range" title="Skøn 40 til 55 procent for samtale. Indkaldelse senest 10. september."><span class="anl-lab">tvSyd · samtale</span><span class="anl-track"><span class="anl-range" style="left:40%;width:15%"></span></span><span class="anl-udfald">⏳ Afventer</span></div>
+        <div class="anl-row anl-row--range" title="Skøn 65 til 80 procent for 1. samtale. Ansøgning sendes inden søndag den 6. september."><span class="anl-lab">Jels · 1. samtale</span><span class="anl-track"><span class="anl-range" style="left:65%;width:15%"></span></span><span class="anl-udfald">⏳ Afventer</span></div>
+        <div class="anl-row anl-row--range" title="Skøn 50 til 65 procent for 1. samtale. Frist 2. oktober."><span class="anl-lab">Hærvejsskolen · 1. samtale</span><span class="anl-track"><span class="anl-range" style="left:50%;width:15%"></span></span><span class="anl-udfald">⏳ Afventer</span></div>
+      </div>
+      <p class="anl-note">De to afgjorte punkter peger hver sin vej. Sønderborg-skønnet var for optimistisk (papirmatch slog ikke branchekendskab), mens Vonsild-forløbet ramte skønnets ramme, finalist men ikke valgt. Læringen er ført ind i de aktive vurderinger.</p>
+    </div>
+  </details>
+
+  <details class="card fase" id="fravalg" open>
+    <summary><h2>🗄️ Arkivets 11 stillinger · fordelt på årsag</h2></summary>
+    <div class="fase-body">
+      <div class="anl-rows">
+        <div class="anl-row" title="Haderslev-chefstillingen, Sønderborg-digi (reservespor) og Fleggaard"><span class="anl-lab">Fokus på hovedsporet</span><span class="anl-track"><span class="anl-fill" style="width:100%"></span></span><span class="anl-val">3</span></div>
+        <div class="anl-row" title="Aabenraa-digi (afklaret i opkald), analyse/AI (junior-profil) og Sydgros (tilskudsløn)"><span class="anl-lab">Niveau og løn</span><span class="anl-track"><span class="anl-fill" style="width:100%"></span></span><span class="anl-val">3</span></div>
+        <div class="anl-row" title="Ungecenterleder Sønderborg (uden samtale) og Vonsild (efter finalerunde)"><span class="anl-lab">Søgt · afslag</span><span class="anl-track"><span class="anl-fill" style="width:66.7%"></span></span><span class="anl-val">2</span></div>
+        <div class="anl-row" title="ABENA (SAP-programledelse) og RIIS (teknisk tung drift)"><span class="anl-lab">Fagligt mismatch</span><span class="anl-track"><span class="anl-fill" style="width:66.7%"></span></span><span class="anl-val">2</span></div>
+        <div class="anl-row" title="Skolechef Vejen, en slutmåls-øvelse, aldrig tænkt som ansøgning"><span class="anl-lab">Benchmark-øvelse</span><span class="anl-track"><span class="anl-fill" style="width:33.3%"></span></span><span class="anl-val">1</span></div>
+      </div>
+      <p class="anl-note">Mønsteret er tydeligt. Ingen stillinger er droppet på tvivl om egne evner. Fravalgene handler om niveau, løn og fokus, og de to afslag kom begge på profilmatch mod felter med direkte områdeerfaring.</p>
+    </div>
+  </details>
+
+  <details class="card fase" id="opkald" open>
+    <summary><h2>📞 Ring-før-du-søger · regnskabet</h2></summary>
+    <div class="fase-body">
+      <p>Fast praksis. Kontakt før ansøgning, enten opkald eller SMS. Her er, hvad hvert forløb gav.</p>
+      <ul>
+        <li><strong>Jels.</strong> Tre samtaler (bestyrelsesformand, skolechef, SFO-leder) plus aftalt besøg. Skønnet justeret op, ansøgningen skrives med deres egne ord. Størst udbytte i porteføljen.</li>
+        <li><strong>Vonsild.</strong> Kontakt før ansøgning og et forløb helt til finalen. Metoden bar, marginalerne afgjorde.</li>
+        <li><strong>Aabenraa-digi.</strong> Ét opkald lukkede sporet ærligt, før en ansøgning blev spildt, og efterlod en leder, der nu holder øje med bedre match. Afklaring plus netværk.</li>
+        <li><strong>RIIS.</strong> Ét opkald afslørede, at rollen var teknisk tung drift. Sporet lukket før ansøgning.</li>
+        <li><strong>Ungecenterleder Sønderborg.</strong> Varm telefonsamtale, men afslag alligevel. Læringen står i arkivet. Positive telefonsignaler er ikke en invitation.</li>
+      </ul>
+      <p class="anl-note">Facit. Fem forløb med kontakt først, nul spildte ansøgninger, to spor lukket i tide, ét netværk bygget. Praksissen fortsætter.</p>
+    </div>
+  </details>
+
+  <details class="card fase" id="spor" open>
+    <summary><h2>🧭 Sporene · status pr. 31. august</h2></summary>
+    <div class="fase-body">
+      <ul class="statusliste">
+        <li class="st-next">▶ Skoleledelse · aktivt hovedspor · Jels og Hærvejsskolen</li>
+        <li class="st-next">▶ Bestyrelse · tvSyd afventer indkaldelse senest 10. september</li>
+        <li class="st-todo">○ Chefspor · bygges ad skoleleder-vejen, materiale klar i arkivet</li>
+        <li class="st-stop">✗ Konsulentspor · sat på pause som helhed, Sønderborg-digi er reserven</li>
+        <li class="st-stop">✗ Privat spor · kun koncernroller kan bære lønnen, følges passivt</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="laeringer" open>
+    <summary><h2>🧠 Læringerne på tværs · dyrt købt, klar til genbrug</h2></summary>
+    <div class="fase-body">
+      <ol>
+        <li><strong>Besøg altid, i en form der passer stedet.</strong> Vonsild-panelet nævnte selv det manglende besøg. Omsat med det samme, Jels-besøget blev booket fem dage før fristen.</li>
+        <li><strong>Klarhed slår nuance under pres.</strong> En forberedt landingssætning til hvert svært svar, konklusionen først, uddybningen bagefter.</li>
+        <li><strong>Ring før du søger.</strong> Fem forløb, nul spildte ansøgninger. Se regnskabet ovenfor.</li>
+        <li><strong>Screen på niveau, ikke kun på opgavematch.</strong> Tre konsulentspor lukket på kompleksitet, sparringsrum og løn. "Du ville kede dig" fra en leder er et datapunkt.</li>
+        <li><strong>Positive signaler er ikke en invitation.</strong> Telefonkontakt flytter op i bunken, men beslutter ikke. Skøn kalibreres derefter.</li>
+      </ol>
+    </div>
+  </details>
+
+  <section class="card">
+    <h2>Om tallene</h2>
+    <p>Siden er håndkurateret ud fra stillingssiderne og inspirationsarkivet, samme princip som statuslisterne. Ingen tal hentes automatisk. Opdateres ved hver arkivering, hvert udfald og hver ny stilling. Skøn stammer fra vurderingsafsnittene på siderne, som de så ud ved opgørelsen.</p>
+  </section>
+</main>
+
+<footer class="foot">
+  <p><a href="index.html">← Tilbage til forsiden</a></p>
+</footer>
