@@ -119,6 +119,21 @@
       padding: 7px 12px; border: 1px solid #475569; border-radius: 999px; background: transparent;
       color: #cbd5e1; font-size: 13px; cursor: pointer; }
     .content .databtns button:hover, .content .databtns .btn-import:hover { border-color: #6366f1; }
+    /* Næste skridt-panel på forsiden */
+    .content .card.naeste { border-color: #4f46e5; background: rgba(79,70,229,.07); }
+    .content .naeste-note { font-size: 13px; color: #94a3b8; margin: 0 0 10px; }
+    .content .naeste-liste { list-style: none; margin: 0; padding: 0; display: flex;
+      flex-direction: column; gap: 10px; counter-reset: naeste; }
+    .content .naeste-liste li { display: grid; grid-template-columns: 108px 1fr; gap: 12px;
+      align-items: baseline; padding: 9px 0; border-top: 1px solid rgba(148,163,184,.15); }
+    .content .naeste-liste li:first-child { border-top: 0; padding-top: 0; }
+    .content .naeste-dato { font-size: 13px; font-weight: 600; color: #a5b4fc;
+      white-space: nowrap; letter-spacing: .01em; }
+    .content .naeste-hvad { color: #cbd5e1; line-height: 1.6; }
+    .content .naeste-hvad strong { color: #e2e8f0; }
+    @media (max-width: 560px) {
+      .content .naeste-liste li { grid-template-columns: 1fr; gap: 2px; }
+    }
     /* Klikbare mobilnumre: ring op og send SMS med færdig tekst */
     .content a.tel-link { color: #a5b4fc; text-decoration: underline; text-decoration-style: dotted;
       text-underline-offset: 3px; white-space: nowrap; }
@@ -345,7 +360,7 @@
   <details class="card fase" id="tragt" open>
     <summary><h2>🔻 Tragten · fra set til tilbud</h2></summary>
     <div class="fase-body">
-      <p>Hvert trin tæller stillinger, der nåede mindst dertil. Springet fra 14 til 3 er ikke frafald men bevidst screening, se fravalgsgrundene nedenfor.</p>
+      <p>Hvert trin tæller stillinger, der nåede mindst dertil. Springet fra 15 til 4 er ikke frafald men bevidst screening, se fravalgsgrundene nedenfor.</p>
       <div class="anl-rows">
         <div class="anl-row" title="Alle fulgte stillinger, aktive plus arkiverede"><span class="anl-lab">Set og analyseret</span><span class="anl-track"><span class="anl-fill" style="width:100%"></span></span><span class="anl-val">15</span></div>
         <div class="anl-row" title="Ungecenterleder Sønderborg, Vonsild, tvSyd og Jels (sendt 1. september, fem dage før fristen)"><span class="anl-lab">Ansøgning sendt</span><span class="anl-track"><span class="anl-fill" style="width:26.7%"></span></span><span class="anl-val">4</span></div>
@@ -365,9 +380,18 @@
         <div class="anl-row anl-row--range" title="Skøn 75 til 85 procent for 1. samtale. Udfald: afslag uden samtale, 13 ansøgninger i feltet."><span class="anl-lab">Ungecenterleder Sønderborg · samtale</span><span class="anl-track"><span class="anl-range" style="left:75%;width:10%"></span></span><span class="anl-udfald">✗ Ingen samtale</span></div>
         <div class="anl-row anl-row--range" title="Skøn 40 til 55 procent for at få stillingen tilbudt efter finalen. Udfald: afslag på marginaler."><span class="anl-lab">Vonsild · tilbud efter finale</span><span class="anl-track"><span class="anl-range" style="left:40%;width:15%"></span></span><span class="anl-udfald">✗ Afslag · finalist</span></div>
         <div class="anl-row anl-row--range" title="Skøn 40 til 55 procent for samtale. Indkaldelse senest 10. september."><span class="anl-lab">tvSyd · samtale</span><span class="anl-track"><span class="anl-range" style="left:40%;width:15%"></span></span><span class="anl-udfald">⏳ Afventer</span></div>
-        <div class="anl-row anl-row--range" title="Skøn 65 til 80 procent for 1. samtale. Ansøgning sendes inden søndag den 6. september."><span class="anl-lab">Jels · 1. samtale</span><span class="anl-track"><span class="anl-range" style="left:65%;width:15%"></span></span><span class="anl-udfald">⏳ Afventer</span></div>
+        <div class="anl-row anl-row--range" title="Skøn 65 til 80 procent for 1. samtale. Ansøgning sendt 1. september."><span class="anl-lab">Jels · 1. samtale</span><span class="anl-track"><span class="anl-range" style="left:65%;width:15%"></span></span><span class="anl-udfald">⏳ Afventer</span></div>
         <div class="anl-row anl-row--range" title="Skøn 50 til 65 procent for 1. samtale. Frist 2. oktober."><span class="anl-lab">Hærvejsskolen · 1. samtale</span><span class="anl-track"><span class="anl-range" style="left:50%;width:15%"></span></span><span class="anl-udfald">⏳ Afventer</span></div>
       </div>
+      <h4 class="anl-h4">📐 Kalibreringsreglen · sådan sættes nye skøn</h4>
+      <p>Skrevet ned, så den bruges hver gang, og ikke kun huskes lige efter et afslag. Start med papirmatchet mod opslaget, og justér derefter.</p>
+      <ul>
+        <li><strong>Træk 10 til 15 point fra, når området har sine egne karriereveje.</strong> Unge- og beskæftigelsesområdet, forvaltningschef-stillinger og fagspecifikke felter har kandidater med 20 års direkte erfaring. Sønderborg-facittet viste det, og skønnet på 75 til 85 procent burde have været 60 til 70.</li>
+        <li><strong>Træk fra igen, hvis der kan være en intern kandidat.</strong> En konstitueret leder eller en oplagt kronprins i huset ændrer feltet markant. Gælder Hærvejsskolen lige nu.</li>
+        <li><strong>Læg til, når kontakten er bygget før ansøgningen.</strong> Besøg, opkald og samtaler flytter reelt, men de beslutter ikke. Højst 10 point, aldrig mere. Sønderborg-læringen. Positive telefonsignaler er ikke en invitation.</li>
+        <li><strong>Læg til, når de formelle krav rammes punkt for punkt.</strong> Uddannelse, ledererfaring og dokumenteret økonomistyring er porte, ikke pluspoint. Er de opfyldt, er man i feltet, og så afgør matchet.</li>
+        <li><strong>Skøn for tilbud er altid markant lavere end for samtale.</strong> Erfaringstallet her er en tredjedel til halvdelen af samtale-skønnet, indtil andet er bevist.</li>
+      </ul>
       <p class="anl-note">De to afgjorte punkter peger hver sin vej. Sønderborg-skønnet var for optimistisk (papirmatch slog ikke branchekendskab, og vinderprofilen, kendt 1. september, havde over 20 års direkte område- og uddannelseserfaring, se arkivkortet), mens Vonsild-forløbet ramte skønnets ramme, finalist men ikke valgt. Læringen er ført ind i de aktive vurderinger.</p>
     </div>
   </details>

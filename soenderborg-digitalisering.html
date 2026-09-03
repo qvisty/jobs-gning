@@ -119,6 +119,21 @@
       padding: 7px 12px; border: 1px solid #475569; border-radius: 999px; background: transparent;
       color: #cbd5e1; font-size: 13px; cursor: pointer; }
     .content .databtns button:hover, .content .databtns .btn-import:hover { border-color: #6366f1; }
+    /* Næste skridt-panel på forsiden */
+    .content .card.naeste { border-color: #4f46e5; background: rgba(79,70,229,.07); }
+    .content .naeste-note { font-size: 13px; color: #94a3b8; margin: 0 0 10px; }
+    .content .naeste-liste { list-style: none; margin: 0; padding: 0; display: flex;
+      flex-direction: column; gap: 10px; counter-reset: naeste; }
+    .content .naeste-liste li { display: grid; grid-template-columns: 108px 1fr; gap: 12px;
+      align-items: baseline; padding: 9px 0; border-top: 1px solid rgba(148,163,184,.15); }
+    .content .naeste-liste li:first-child { border-top: 0; padding-top: 0; }
+    .content .naeste-dato { font-size: 13px; font-weight: 600; color: #a5b4fc;
+      white-space: nowrap; letter-spacing: .01em; }
+    .content .naeste-hvad { color: #cbd5e1; line-height: 1.6; }
+    .content .naeste-hvad strong { color: #e2e8f0; }
+    @media (max-width: 560px) {
+      .content .naeste-liste li { grid-template-columns: 1fr; gap: 2px; }
+    }
     /* Klikbare mobilnumre: ring op og send SMS med færdig tekst */
     .content a.tel-link { color: #a5b4fc; text-decoration: underline; text-decoration-style: dotted;
       text-underline-offset: 3px; white-space: nowrap; }

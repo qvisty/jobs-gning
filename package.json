@@ -5,6 +5,7 @@
   "description": "Offentlig jobsøgnings-side på GitHub Pages (statisk).",
   "type": "module",
   "scripts": {
-    "build": "node build.mjs"
+    "build": "node build.mjs",
+    "tjek": "node tjek.mjs"
   }
 }

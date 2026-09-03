@@ -119,6 +119,21 @@
       padding: 7px 12px; border: 1px solid #475569; border-radius: 999px; background: transparent;
       color: #cbd5e1; font-size: 13px; cursor: pointer; }
     .content .databtns button:hover, .content .databtns .btn-import:hover { border-color: #6366f1; }
+    /* Næste skridt-panel på forsiden */
+    .content .card.naeste { border-color: #4f46e5; background: rgba(79,70,229,.07); }
+    .content .naeste-note { font-size: 13px; color: #94a3b8; margin: 0 0 10px; }
+    .content .naeste-liste { list-style: none; margin: 0; padding: 0; display: flex;
+      flex-direction: column; gap: 10px; counter-reset: naeste; }
+    .content .naeste-liste li { display: grid; grid-template-columns: 108px 1fr; gap: 12px;
+      align-items: baseline; padding: 9px 0; border-top: 1px solid rgba(148,163,184,.15); }
+    .content .naeste-liste li:first-child { border-top: 0; padding-top: 0; }
+    .content .naeste-dato { font-size: 13px; font-weight: 600; color: #a5b4fc;
+      white-space: nowrap; letter-spacing: .01em; }
+    .content .naeste-hvad { color: #cbd5e1; line-height: 1.6; }
+    .content .naeste-hvad strong { color: #e2e8f0; }
+    @media (max-width: 560px) {
+      .content .naeste-liste li { grid-template-columns: 1fr; gap: 2px; }
+    }
     /* Klikbare mobilnumre: ring op og send SMS med færdig tekst */
     .content a.tel-link { color: #a5b4fc; text-decoration: underline; text-decoration-style: dotted;
       text-underline-offset: 3px; white-space: nowrap; }
@@ -630,6 +645,7 @@
   <details class="card fase" id="fase-7">
     <summary><h2>7️⃣ 2. samtale · torsdag 24. september · erhvervstest imellem</h2></summary>
     <div class="fase-body">
+      <p><strong>📇 Referencer.</strong> Pakken er varslet, briefet og orienteret om Vonsild-udfaldet, og de står klar. Går jeg videre fra 1. samtalen, genbriefes de samme aften. Roller og status ligger i <a href="kernebudskaber.html#referencer">Referencepakken</a>, navnene i mine private noter.</p>
       <p>Vejen Kommune anvender erhvervstest ved ledelsesansættelser. Indbydes jeg til 2. samtale, kontakter HR mig, og testen gennemføres mellem de to samtaler med tilbagemelding. Det er samme mønster som det planlagte Garuda-forløb i Sønderborg, så forberedelsen på Sønderborg-siden (fase 7) kan genbruges direkte. Svar ærligt og konsistent, og lad være med at spille en anden profil, end den mine svar i 1. samtale tegnede.</p>
       <p><strong>⚠️ Udlandsbinding den 24. september.</strong> Jeg kan ikke deltage fysisk i 2. samtalen, da jeg er i udlandet på datoen. Det står varslet i ansøgningens afslutning, og håbet er en online samtale eller en anden løsning. Nævn det selv igen ved 1. samtalen, tidligt og løsningsorienteret, så det aldrig bliver en overraskelse.</p>
       <ul class="huskeliste">

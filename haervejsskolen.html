@@ -119,6 +119,21 @@
       padding: 7px 12px; border: 1px solid #475569; border-radius: 999px; background: transparent;
       color: #cbd5e1; font-size: 13px; cursor: pointer; }
     .content .databtns button:hover, .content .databtns .btn-import:hover { border-color: #6366f1; }
+    /* Næste skridt-panel på forsiden */
+    .content .card.naeste { border-color: #4f46e5; background: rgba(79,70,229,.07); }
+    .content .naeste-note { font-size: 13px; color: #94a3b8; margin: 0 0 10px; }
+    .content .naeste-liste { list-style: none; margin: 0; padding: 0; display: flex;
+      flex-direction: column; gap: 10px; counter-reset: naeste; }
+    .content .naeste-liste li { display: grid; grid-template-columns: 108px 1fr; gap: 12px;
+      align-items: baseline; padding: 9px 0; border-top: 1px solid rgba(148,163,184,.15); }
+    .content .naeste-liste li:first-child { border-top: 0; padding-top: 0; }
+    .content .naeste-dato { font-size: 13px; font-weight: 600; color: #a5b4fc;
+      white-space: nowrap; letter-spacing: .01em; }
+    .content .naeste-hvad { color: #cbd5e1; line-height: 1.6; }
+    .content .naeste-hvad strong { color: #e2e8f0; }
+    @media (max-width: 560px) {
+      .content .naeste-liste li { grid-template-columns: 1fr; gap: 2px; }
+    }
     /* Klikbare mobilnumre: ring op og send SMS med færdig tekst */
     .content a.tel-link { color: #a5b4fc; text-decoration: underline; text-decoration-style: dotted;
       text-underline-offset: 3px; white-space: nowrap; }
@@ -489,7 +504,7 @@
     <div class="fase-body">
       <p>Efter 1. runde vælges to til tre kandidater. Går jeg videre, kommer spørgeskemaet til personprofilen den 21. oktober og skal være udfyldt senest torsdag den 22. oktober kl. 8.00, profilen laves af en ledelseskonsulent fra Aabenraa Kommune. Tilbagemeldingssamtalen er fredag den 23., og profilen præsenteres for udvalget før 2. samtalen. Reservér aftenen den 21. til besvarelsen.</p>
       <ul>
-        <li><strong>Referencer indhentes INDEN 2. samtale</strong>, og kun efter aftale med mig. Går jeg videre den 20., varsles referencerne samme aften, samme pakke og briefing som ved Vonsild, se <a href="vonsild.html#fase-7">referenceafsnittet dér</a>.</li>
+        <li><strong>Referencer indhentes INDEN 2. samtale</strong>, og kun efter aftale med mig. Går jeg videre den 20., varsles referencerne samme aften, samme pakke og briefing som ved Vonsild. Pakken og dens status ligger i <a href="kernebudskaber.html#referencer">📇 Referencepakken</a>, og de er orienteret om Vonsild-udfaldet og står klar.</li>
         <li>Genbrug hele Garuda-forberedelsen og svarstrategien fra <a href="vonsild.html#fase-7">Vonsild fase 7</a>. Profilen er et billede af, hvordan jeg lykkes i netop denne stilling, modsætninger er repertoire, og god ledelse er bevidst positionering.</li>
         <li>Svar konsistent med 1. samtale, og spil ikke en anden profil end den, panelet mødte den 20.</li>
         <li>Ved tilbagemeldingen den 23., notér nøgleordene, de går igen den 28.</li>
