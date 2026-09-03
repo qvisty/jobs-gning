@@ -119,6 +119,21 @@
       padding: 7px 12px; border: 1px solid #475569; border-radius: 999px; background: transparent;
       color: #cbd5e1; font-size: 13px; cursor: pointer; }
     .content .databtns button:hover, .content .databtns .btn-import:hover { border-color: #6366f1; }
+    /* Næste skridt-panel på forsiden */
+    .content .card.naeste { border-color: #4f46e5; background: rgba(79,70,229,.07); }
+    .content .naeste-note { font-size: 13px; color: #94a3b8; margin: 0 0 10px; }
+    .content .naeste-liste { list-style: none; margin: 0; padding: 0; display: flex;
+      flex-direction: column; gap: 10px; counter-reset: naeste; }
+    .content .naeste-liste li { display: grid; grid-template-columns: 108px 1fr; gap: 12px;
+      align-items: baseline; padding: 9px 0; border-top: 1px solid rgba(148,163,184,.15); }
+    .content .naeste-liste li:first-child { border-top: 0; padding-top: 0; }
+    .content .naeste-dato { font-size: 13px; font-weight: 600; color: #a5b4fc;
+      white-space: nowrap; letter-spacing: .01em; }
+    .content .naeste-hvad { color: #cbd5e1; line-height: 1.6; }
+    .content .naeste-hvad strong { color: #e2e8f0; }
+    @media (max-width: 560px) {
+      .content .naeste-liste li { grid-template-columns: 1fr; gap: 2px; }
+    }
     /* Klikbare mobilnumre: ring op og send SMS med færdig tekst */
     .content a.tel-link { color: #a5b4fc; text-decoration: underline; text-decoration-style: dotted;
       text-underline-offset: 3px; white-space: nowrap; }
@@ -374,6 +389,29 @@
       <li><strong>Jeg kommer fra selveje, ikke fra det kommunale og politiske system.</strong> Vendingen. Jeg har betjent en bestyrelse, der både var min arbejdsgiver og skulle have mit ærlige fagkundskab. Det er samme balance som det politiske rum, og resten er håndværk, jeg lærer hurtigt.</li>
       <li><strong>Nogle titler har jeg ikke båret formelt.</strong> Vendingen. Titlen har jeg ikke båret, men opgaven har jeg løst igen og igen. Derefter to konkrete eksempler.</li>
       <li><strong>IT-profilen kan skygge for ledelsesprofilen.</strong> Vendingen er rækkefølgen. Mennesker først, systemer bagefter. IT nævnes sidst og altid i børnenes og medarbejdernes tjeneste.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="referencer">
+    <h2>📇 Referencepakken · status</h2>
+    <p>Den samme pakke bruges på tværs af sporene, så den holdes ét sted. Her står kun roller, navnene ligger i 📝 Private noter på stillingssiderne, fordi denne side ligger i et offentligt repo.</p>
+    <ul class="statusliste">
+      <li class="st-done">✓ Varslet og briefet før Vonsild-finalen 27. august</li>
+      <li class="st-done">✓ Orienteret om Vonsild-udfaldet · de står klar til næste gang</li>
+      <li class="st-todo">○ Genbrief ved næste finalerunde · samme aften som 2. samtalen</li>
+    </ul>
+    <h4>Pakken, tre plus en backup</h4>
+    <ul>
+      <li><strong>Tidligere chef og bestyrelsesformand.</strong> Belyser økonomi, drift og bestyrelsessamarbejdet, altså chefperspektivet.</li>
+      <li><strong>Tidligere lederkollega, afdelingsleder på [MIN TIDLIGERE SKOLE].</strong> Belyser specialfagligheden og ledelse i stor skala fra kollegasiden.</li>
+      <li><strong>Tidligere medarbejder.</strong> Belyser ledelse set nedefra, hverdagen og relationen.</li>
+      <li><strong>Forstanderkollega.</strong> Backup på kollega-ledelsesniveauet.</li>
+    </ul>
+    <h4>Sådan bruges pakken</h4>
+    <ul>
+      <li><strong>Varsl samme aften, som 2. samtalen er gennemført.</strong> Fortæl hvordan det gik, og hvad hver enkelt kan belyse. Det virkede ved Vonsild.</li>
+      <li><strong>Referencer indhentes typisk inden 2. samtale</strong>, og kun efter aftale. Hærvejsskolen gør det sådan, se fase 7 dér.</li>
+      <li><strong>Luk altid ringen.</strong> Fortæl dem udfaldet, også når det er et afslag. Det er gjort efter Vonsild, og det er derfor, pakken er varm nu.</li>
     </ul>
   </section>
 
