@@ -1,41 +1,77 @@
-# jobs-gning
+# Jobsøgning
 
-Offentlig **jobsøgnings-side** hostet på GitHub Pages.
+> Et personligt jobsøgnings-værktøj: en GitHub Pages-side (offentlig, men adgangskodebeskyttet), der samler CV, tidligere ansøgninger og skræddersyet hjælp til hver fase af en konkret jobsøgning.
 
-Strukturen er en anonymiseret forside med kalender og klikbare stillinger,
-plus én underside pr. stilling med hele forløbet i faser: research, SMS-udkast,
-telefonsamtale, ansøgning, samtaleforberedelse (inkl. STAR-, domæne- og
-4D-forberedelsesmodeller) og lønforhandling.
+> **Status i Paperclip:** `planned` (tidlig implementering i gang) · **Repo:** [github.com/qvisty/jobs-gning](https://github.com/qvisty/jobs-gning) · Del af ClipCores portefølje af personlige, værdiskabende værktøjer.
 
-## Sådan ændrer du indholdet
+---
 
-1. Redigér forsiden i `src/content.html` eller en stilling i `src/jobs/`.
-2. Byg siderne igen:
+## Formål og vision
 
-   ```bash
-   npm run build
-   ```
+Formålet er at give ejeren optimal, konkret hjælp til jobsøgning ét sted. Siden skal være offentligt tilgængelig (så den er nem at finde og åbne), men beskyttet med adgangskode, så indholdet ikke kan læses af andre.
 
-   Dette regenererer `index.html` og undersiderne. Commit og push til `main`,
-   så opdaterer GitHub Pages sig automatisk.
+Ideen: I Paperclip lægges CV, tidligere ansøgninger og andet relevant ind. Når en spændende stilling dukker op, registreres jobbet, og der genereres skræddersyet hjælp til hver fase af jobsøgningen:
 
-## Teknik
+- Hjælp forud for første kontakt (sms el.lign.)
+- Telefonisk kontakt (taleseddel, strategi, gode spørgsmål)
+- Ansøgning
+- Forberedelse til samtale(r)
+- Case-hjælp (forbered sandsynlige cases)
+- Løn-udspil og løn-forhandling
+- God opstart
 
-- `src/content.html` — forsiden (anonymiseret: kalender + klikbare stillinger).
-- `src/jobs/vonsild.html` — underside: Skoleleder · Vonsild Specialskole.
-- `src/jobs/soenderborg.html` — underside: Ungecenterleder · Sønderborg.
-- `src/template.html` — fælles HTML-skal med styling og tjekliste-script
-  (flueben gemmes i browserens localStorage).
-- `build.mjs` — bygger alle sider ud fra skabelonen.
-- `index.html`, `vonsild.html`, `soenderborg.html` — genereret output, som
-  GitHub Pages serverer.
+Dertil: vurdering af match med profil og karriereplan samt forventet løn — og mere, der skaber værdi.
 
-## Ny stilling
+## Slutmål (Definition of Done)
 
-Kopiér `src/jobs/_skabelon.html` til `src/jobs/<navn>.html`, udfyld
-pladsholderne, giv tjeklister og noter et unikt præfiks (erstat `jobX-`),
-tilføj siden i `pages`-listen i `build.mjs`, og link til den fra forsiden.
+- En kørende GitHub Pages-side med adgangskodebeskyttelse.
+- Mulighed for at tilføje jobs og få genereret fase-opdelt hjælp pr. job.
+- Konkret værdi i en rigtig jobsøgning: bedre ansøgninger, samtaler og forhandlinger.
 
-Undersiderne er anonymiserede: personlige data står som pladsholdere
-([DIT NAVN] osv.) og indsættes kun i den version, der faktisk sendes.
-Flueben og noter gemmes lokalt i browserens localStorage.
+## Nuværende status
+
+- **Fase:** Planlagt, tidlig implementering
+- **Prioritet:** low
+- **Hvor langt er vi:** Der er et statisk site-skelet på plads: en forside ([`index.html`](https://github.com/qvisty/jobs-gning/blob/main/index.html)), en build-pipeline ([`build.mjs`](https://github.com/qvisty/jobs-gning/blob/main/build.mjs)), en HTML-skabelon ([`src/template.html`](https://github.com/qvisty/jobs-gning/blob/main/src/template.html)) og de første job-sider (bl.a. Sønderborg og Vonsild) genereret fra skabelonen. `.nojekyll` er sat, så GitHub Pages serverer filerne direkte.
+- **Seneste milepæl:** Opstart-modul med 30-60-90-dages plan tilføjet skabelonen.
+
+## Planlægning og faser
+
+- ✅ **Fase 1 — Statisk skelet:** Skabelon, build-script og første job-sider.
+- 🔧 **Fase 2 — Fase-hjælp pr. job:** Indhold til hver jobsøgningsfase (kontakt, ansøgning, samtale, løn, opstart).
+- ⬜ **Fase 3 — Adgangskodebeskyttelse:** Offentlig side, men beskyttet indhold.
+- ⬜ **Fase 4 — CV/profil-integration:** Match-vurdering mod profil og karriereplan.
+
+## Mangler på kort sigt (næste skridt)
+
+- [ ] Implementér adgangskodebeskyttelse af den offentlige Pages-side.
+- [ ] Færdiggør fase-skabelonerne (taleseddel, samtaleforberedelse, case-hjælp, løn-forhandling).
+- [ ] Gør det let at tilføje et nyt job og generere dets side via build-scriptet.
+
+## Mangler på lang sigt (roadmap)
+
+- [ ] Integrér CV og tidligere ansøgninger som datagrundlag for genereret hjælp.
+- [ ] Automatisk match-vurdering (profil, karriereplan, forventet løn).
+- [ ] Udvid med flere værdiskabende faser efter behov.
+
+## Teknik og opsætning
+
+- **Stak:** Statisk site (HTML) genereret med et Node-baseret build-script (`build.mjs`).
+- **Hosting:** GitHub Pages (`.nojekyll` sat).
+- **Struktur:** `src/template.html` som skabelon, `src/jobs/*.html` som per-job-indhold, `src/content.html` som fælles indhold; build genererer de færdige sider i roden.
+
+```bash
+# Byg siderne lokalt
+npm install       # hvis package.json har afhængigheder
+node build.mjs    # genererer index.html + job-sider
+```
+
+## Links
+
+- **GitHub-repo:** [github.com/qvisty/jobs-gning](https://github.com/qvisty/jobs-gning)
+- **Build-script:** [`build.mjs`](https://github.com/qvisty/jobs-gning/blob/main/build.mjs)
+- **Skabelon:** [`src/template.html`](https://github.com/qvisty/jobs-gning/blob/main/src/template.html)
+- **README-standard:** [CLIA-4052](/CLIA/issues/CLIA-4052)
+
+---
+_Sidst opdateret: 2026-09-04 · Vedligeholdes som del af [CLIA-4052](/CLIA/issues/CLIA-4052)._
