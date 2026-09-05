@@ -96,12 +96,19 @@ function renderCountdown(evs) {
 }
 
 // Måneder der har mindst én begivenhed, i kronologisk rækkefølge.
+// Helt overståede måneder springes over, så kalenderen rydder op i sig selv
+// ved hver bygning. Den indeværende måned bliver altid stående, også når alle
+// dens datoer er passeret, og datoerne selv bliver i src/events.mjs, så
+// forsidens tidslinje og .ics-eksporten stadig kender hele forløbet.
 function monthsWithEvents(evs) {
+  const nu = new Date();
+  const graense = nu.getFullYear() * 12 + nu.getMonth();
   const seen = new Map();
   evs.forEach((e) => {
     const y = +e.start.slice(0, 4);
     const m = +e.start.slice(5, 7);
     const key = y * 12 + (m - 1);
+    if (key < graense) return;
     if (!seen.has(key)) seen.set(key, { y, m });
   });
   return [...seen.values()].sort((a, b) => a.y - b.y || a.m - b.m);
@@ -143,7 +150,12 @@ function renderMonth({ y, m }, evs) {
 }
 
 function renderGrid(evs) {
-  return monthsWithEvents(evs).map((mm) => renderMonth(mm, evs)).join('\n');
+  const mm = monthsWithEvents(evs);
+  if (!mm.length) {
+    return '<p class="kal-tom">Ingen kommende datoer. Alle måneder med datoer er overstået, ' +
+      'og de gamle datoer ligger stadig i tidslinjen på forsiden.</p>';
+  }
+  return mm.map((m) => renderMonth(m, evs)).join('\n');
 }
 
 const template = await readFile('src/template.html', 'utf8');
