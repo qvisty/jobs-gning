@@ -30,6 +30,7 @@ const pages = [
   { src: 'src/jobs/sydgros.html', out: 'sydgros.html', title: 'Vækstpilot, digitalisering og AI · Sydgros' },
   { src: 'src/jobs/haderslev-chef.html', out: 'haderslev-chef.html', title: 'Chef for Unge, Uddannelse og Service · Haderslev' },
   { src: 'src/jobs/soenderborg-bi.html', out: 'soenderborg-bi.html', title: 'BI- og Analysekonsulent · Sønderborg' },
+  { src: 'src/jobs/sosu-syd.html', out: 'sosu-syd.html', title: 'Uddannelsesleder · SOSU Syd' },
   { src: 'src/jobs/inspiration.html', out: 'inspiration.html', title: 'Inspiration · stillinger til genbrug' },
 ];
 
