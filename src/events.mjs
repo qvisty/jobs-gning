@@ -19,19 +19,6 @@
 
 export const events = [
   {
-    start: '2026-08-31',
-    kind: 'frist',
-    abbr: 'T',
-    tag: 'sendt',
-    tagLabel: '✓ Sendt 2. august',
-    heading: 'Bestyrelsesmedlem · tvSyd',
-    headingUrl: 'tvsyd.html',
-    desc: 'Ansøgning og CV er sendt 2. august 2026, næsten en måned før fristen, og modtagelsen er bekræftet.',
-    calTitle: 'Ansøgningsfrist: Bestyrelsesmedlem · tvSyd',
-    calDesc: 'Ansøgning og CV er sendt 2. august 2026, næsten en måned før fristen.',
-    calUrl: 'tvsyd.html',
-  },
-  {
     start: '2026-09-10',
     kind: 'samtale',
     abbr: 'T',
