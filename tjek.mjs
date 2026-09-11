@@ -71,7 +71,7 @@ for (const sti of alleSider) {
     [/Emmerske/i, 'nuværende skoles navn'],
     [/Kløver-?Skolen/i, 'tidligere skoles navn'],
     [/Felsted Centralskole/i, 'tidligere skoles navn'],
-    [/Høje Kolstrup/i, 'tidligere skoles navn', ['jobs/hoeje-kolstrup.html', 'content.html']],
+    [/Høje Kolstrup/i, 'tidligere skoles navn', ['jobs/hoeje-kolstrup.html', 'content.html', 'jobs/kalender.html', 'jobs/analyse.html']],
     [/Frueløkke/i, 'privatadresse'],
     [/\b29\s?92\s?31\s?01\b/, 'privat telefonnummer'],
     [/jgq@live\.dk/i, 'privat mailadresse'],
