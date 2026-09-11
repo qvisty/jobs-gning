@@ -31,6 +31,7 @@ const pages = [
   { src: 'src/jobs/haderslev-chef.html', out: 'haderslev-chef.html', title: 'Chef for Unge, Uddannelse og Service · Haderslev' },
   { src: 'src/jobs/soenderborg-bi.html', out: 'soenderborg-bi.html', title: 'BI- og Analysekonsulent · Sønderborg' },
   { src: 'src/jobs/sosu-syd.html', out: 'sosu-syd.html', title: 'Uddannelsesleder · SOSU Syd' },
+  { src: 'src/jobs/hoeje-kolstrup.html', out: 'hoeje-kolstrup.html', title: 'Afdelingsleder · Høje Kolstrup Skole' },
   { src: 'src/jobs/inspiration.html', out: 'inspiration.html', title: 'Inspiration · stillinger til genbrug' },
 ];
 

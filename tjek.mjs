@@ -64,17 +64,21 @@ for (const sti of alleSider) {
 
   // 3. Anonymitet. Siderne ligger i et offentligt repo, så rigtige personoplysninger
   //    og skolenavne skal blive i pladsholderne og i de private noter.
+  //    Undtagelse. Et skolenavn må stå på de sider, hvor skolen er arbejdsgiver
+  //    for en stilling, der følges. Så må siden til gengæld aldrig sige, at det
+  //    også er [MIN TIDLIGERE SKOLE].
   const forbudt = [
     [/Emmerske/i, 'nuværende skoles navn'],
     [/Kløver-?Skolen/i, 'tidligere skoles navn'],
     [/Felsted Centralskole/i, 'tidligere skoles navn'],
-    [/Høje Kolstrup/i, 'tidligere skoles navn'],
+    [/Høje Kolstrup/i, 'tidligere skoles navn', ['jobs/hoeje-kolstrup.html', 'content.html']],
     [/Frueløkke/i, 'privatadresse'],
     [/\b29\s?92\s?31\s?01\b/, 'privat telefonnummer'],
     [/jgq@live\.dk/i, 'privat mailadresse'],
     [/1978-01-31|31[.\-/]01[.\-/]1978/, 'fødselsdato'],
   ];
-  for (const [re, hvad] of forbudt) {
+  for (const [re, hvad, undtag] of forbudt) {
+    if ((undtag || []).includes(navn)) continue;
     if (re.test(html)) fejl.push(`${navn}: personoplysning i offentlig kilde · ${hvad}`);
   }
 
