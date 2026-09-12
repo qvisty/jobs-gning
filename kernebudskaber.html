@@ -659,46 +659,111 @@
         });
       });
 
-      // PDF-knap. Åbner ansøgningen i et rent printvindue og kalder print(),
-      // hvor browseren tilbyder "Gem som PDF". Ingen biblioteker, virker også
-      // på telefonen via delingsmenuen. Pladsholdere markeres med gult som i Word.
+      // PDF-knap. Laver en rigtig PDF-fil i browseren med pdfmake (vendoret i lib/,
+      // ingen eksterne kald) og downloader den. Virker ens på telefon og computer.
+      // Brevopsætning. Adressat og dato som hoved, stor titel, mellemrubrikker med
+      // tynd streg, gule pladsholdere, sidetal, og afslutning holdt samlet med
+      // hilsen og underskrift.
+      var pdfLibs = null;
+      function hentScript(src) {
+        return new Promise(function (ok, fejl) {
+          var el = document.createElement('script');
+          el.src = src; el.onload = ok; el.onerror = function () { fejl(new Error(src)); };
+          document.head.appendChild(el);
+        });
+      }
+      function sikrPdfMake() {
+        if (window.pdfMake && window.pdfMake.createPdf) return Promise.resolve();
+        if (!pdfLibs) pdfLibs = hentScript('lib/pdfmake.min.js').then(function () { return hentScript('lib/vfs_fonts.js'); });
+        return pdfLibs;
+      }
+      var GUL = '#fef08a';
+      function pdfInline(node, st) {
+        var ud = [];
+        Array.prototype.forEach.call(node.childNodes, function (n) {
+          if (n.nodeType === 3) {
+            var t = n.nodeValue.replace(/\s+/g, ' ');
+            var re = /\[[^\]]*\]/g, sidst = 0, m;
+            while ((m = re.exec(t))) {
+              if (m.index > sidst) ud.push(Object.assign({ text: t.slice(sidst, m.index) }, st));
+              ud.push(Object.assign({ text: m[0] }, st, { background: GUL }));
+              sidst = m.index + m[0].length;
+            }
+            if (sidst < t.length) ud.push(Object.assign({ text: t.slice(sidst) }, st));
+          } else if (n.nodeType === 1) {
+            var tag = n.tagName.toLowerCase();
+            if (tag === 'br') { ud.push({ text: '\n' }); return; }
+            var s2 = Object.assign({}, st);
+            if (tag === 'em' || tag === 'i') { s2.italics = true; s2.color = '#6b7280'; }
+            if (tag === 'strong' || tag === 'b') s2.bold = true;
+            if (tag === 'mark') s2.background = GUL;
+            ud = ud.concat(pdfInline(n, s2));
+          }
+        });
+        return ud;
+      }
+      function pdfDefinition(doc) {
+        var blokke = [], h4 = 0, pNr = 0, sidsteRubrik = -1;
+        var streg = { canvas: [{ type: 'line', x1: 0, y1: 0, x2: 479, y2: 0, lineWidth: 0.6, lineColor: '#d1d5db' }], margin: [0, 0, 0, 6] };
+        Array.prototype.forEach.call(doc.children, function (el) {
+          var tag = el.tagName.toLowerCase();
+          if (tag === 'h4') {
+            h4++;
+            if (h4 === 1) blokke.push({ text: pdfInline(el, {}), style: 'titel' });
+            else { sidsteRubrik = blokke.length; blokke.push({ stack: [{ text: pdfInline(el, {}), style: 'rubrik' }, streg], headlineLevel: 1 }); }
+          } else if (tag === 'p') {
+            pNr++;
+            var txt = el.textContent.trim(), style = 'afsnit';
+            if (h4 === 0) style = pNr === 1 ? 'adressat' : 'dato';
+            if (txt === 'Med venlig hilsen') style = 'hilsen';
+            if (/^\[MIT NAVN\]/.test(txt)) style = 'sign';
+            blokke.push({ text: pdfInline(el, {}), style: style });
+          }
+        });
+        var indhold = blokke;
+        if (sidsteRubrik > 0) {
+          indhold = blokke.slice(0, sidsteRubrik);
+          indhold.push({ stack: blokke.slice(sidsteRubrik), unbreakable: true });
+        }
+        return {
+          pageSize: 'A4',
+          pageMargins: [58, 56, 58, 64],
+          info: { title: 'Ansøgning' },
+          content: indhold,
+          defaultStyle: { fontSize: 10.5, lineHeight: 1.28, color: '#111111' },
+          styles: {
+            adressat: { fontSize: 10.5, color: '#333333', margin: [0, 0, 0, 2] },
+            dato: { fontSize: 10.5, color: '#333333', margin: [0, 0, 0, 22] },
+            titel: { fontSize: 17, bold: true, lineHeight: 1.15, margin: [0, 0, 0, 14] },
+            rubrik: { fontSize: 11.5, bold: true, color: '#1f2937', margin: [0, 10, 0, 2] },
+            afsnit: { margin: [0, 0, 0, 8] },
+            hilsen: { margin: [0, 12, 0, 20] },
+            sign: { margin: [0, 0, 0, 0] }
+          },
+          footer: function (side, antal) {
+            return { text: side + ' / ' + antal, alignment: 'right', fontSize: 9, color: '#9ca3af', margin: [0, 22, 58, 0] };
+          },
+          pageBreakBefore: function (node, efter) {
+            return node.headlineLevel === 1 && efter.length === 0;
+          }
+        };
+      }
+      window.jobhubPdf = { definition: pdfDefinition };
       document.querySelectorAll('.btn-pdf').forEach(function (btn) {
         btn.addEventListener('click', function () {
           var scope = btn.closest('.fase-body') || document;
           var doc = scope.querySelector('.worddoc');
           if (!doc) return;
-          var title = (doc.getAttribute('data-filename') || 'ansoegning');
-          // Brevopsætning. Adressat, dato, overskrift, afsnit med mellemrubrikker,
-          // hilsen og underskrift får hver sin klasse, så printet ligner et brev.
-          var body = doc.innerHTML
-            .replace(/\[[^\]<>]*\]/g, function (m) { return '<mark>' + m + '</mark>'; })
-            .replace(/<p>Med venlig hilsen<\/p>/, '<p class="hilsen">Med venlig hilsen</p>')
-            .replace(/<p>(<mark>\[MIT NAVN\]<\/mark>)<br\s*\/?>/, '<p class="sign">$1<br />');
-          // Sidste mellemrubrik (typisk Afslutning) holdes samlet med hilsen og underskrift,
-          // så underskriften ikke lander alene på en ny side.
-          var sidsteH4 = body.lastIndexOf('<h4>');
-          if (sidsteH4 > 0) body = body.slice(0, sidsteH4) + '<div class="slut">' + body.slice(sidsteH4) + '</div>';
-          var html = '<!doctype html><html lang="da"><head><meta charset="utf-8"><title>' + title + '</title><style>' +
-            '@page{size:A4;margin:22mm 23mm 24mm}' +
-            'html{-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
-            'body{font-family:Calibri,Carlito,"Segoe UI",Helvetica,Arial,sans-serif;font-size:11pt;line-height:1.42;color:#111;margin:0;hyphens:auto}' +
-            'p{margin:0 0 9pt;orphans:3;widows:3}' +
-            'body>p:first-child{margin:0 0 2pt;color:#333}' +
-            'body>p:nth-child(2){margin:0 0 22pt;color:#333}' +
-            'h4{font-size:11.5pt;font-weight:700;color:#1f2937;margin:15pt 0 4pt;padding-bottom:2pt;border-bottom:1px solid #d1d5db;page-break-after:avoid;break-after:avoid}' +
-            'body>h4:first-of-type{font-size:17pt;font-weight:700;color:#000;margin:0 0 14pt;padding:0;border:0;line-height:1.25}' +
-            'body>h4:first-of-type+p{margin-bottom:14pt}' +
-            'p.hilsen{margin:16pt 0 22pt}' +
-            'p.sign{margin:0}.slut{page-break-inside:avoid;break-inside:avoid}' +
-            'em{color:#6b7280;font-style:italic}' +
-            'mark{background:#fef08a;color:#000;padding:0 2px}' +
-            '@page{@bottom-right{content:counter(page) " / " counter(pages);font-family:Calibri,Arial,sans-serif;font-size:9pt;color:#9ca3af}}' +
-            '</style></head><body>' + body + '</body></html>';
-          var w = window.open('', '_blank');
-          if (!w) { alert('Browseren blokerede printvinduet. Tillad pop op-vinduer for siden, og prøv igen.'); return; }
-          w.document.open(); w.document.write(html); w.document.close();
-          w.focus();
-          setTimeout(function () { w.print(); }, 250);
+          var name = (doc.getAttribute('data-filename') || 'ansoegning') + '.pdf';
+          var label = btn.textContent;
+          btn.textContent = '⏳ Laver PDF …'; btn.disabled = true;
+          sikrPdfMake().then(function () {
+            window.pdfMake.createPdf(pdfDefinition(doc)).download(name);
+          }).catch(function () {
+            alert('PDF-filen kunne ikke laves. Prøv Word-knappen, eller genindlæs siden.');
+          }).then(function () {
+            btn.textContent = label; btn.disabled = false;
+          });
         });
       });
 
