@@ -143,10 +143,10 @@
       border: 1px solid #475569; border-radius: 999px; color: #cbd5e1; font-size: 13px;
       text-decoration: none; }
     .content .databtns .btn-sms:hover { border-color: #6366f1; }
-    .content .btn-word { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
+    .content .btn-word, .content .btn-pdf { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
       border: 1px solid #475569; border-radius: 999px; background: rgba(99,102,241,.12);
-      color: #c7d2fe; font-size: 14px; cursor: pointer; margin: 4px 0 14px; }
-    .content .btn-word:hover { border-color: #6366f1; }
+      color: #c7d2fe; font-size: 14px; cursor: pointer; margin: 4px 8px 14px 0; }
+    .content .btn-word:hover, .content .btn-pdf:hover { border-color: #6366f1; }
     /* Print: ren sort-på-hvid A4 af det åbne indhold */
     @media print {
       body { background: #fff !important; }
@@ -444,7 +444,7 @@
     <summary><h2>5️⃣ Ansøgningen · frist 4. september</h2></summary>
     <div class="fase-body">
       <p><strong>Bemærk datoen.</strong> Opslaget skriver "mandag den 04. september", men 4. september 2026 er en fredag. Regn med fredag den 4. september som sikker frist, og send hellere i god tid inden.</p>
-      <p><button type="button" class="btn-word">⬇️ Download ansøgningen som Word</button></p>
+      <p><button type="button" class="btn-word">⬇️ Download ansøgningen som Word</button> <button type="button" class="btn-pdf">🖨️ Gem ansøgningen som PDF</button></p>
       <div class="worddoc" data-filename="ansoegning-digitaliseringskonsulent-aabenraa">
       <p>Majbrit Hammerich Hansen IT Digitaliseringsleder Aabenraa Kommune</p>
       <p>Aabenraa, den [DATO]</p>
@@ -817,6 +817,32 @@
           a.download = name;
           a.click();
           URL.revokeObjectURL(a.href);
+        });
+      });
+
+      // PDF-knap. Åbner ansøgningen i et rent printvindue og kalder print(),
+      // hvor browseren tilbyder "Gem som PDF". Ingen biblioteker, virker også
+      // på telefonen via delingsmenuen. Pladsholdere markeres med gult som i Word.
+      document.querySelectorAll('.btn-pdf').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var scope = btn.closest('.fase-body') || document;
+          var doc = scope.querySelector('.worddoc');
+          if (!doc) return;
+          var title = (doc.getAttribute('data-filename') || 'ansoegning');
+          var body = doc.innerHTML.replace(/\[[^\]<>]*\]/g, function (m) {
+            return '<mark>' + m + '</mark>';
+          });
+          var html = '<!doctype html><html lang="da"><head><meta charset="utf-8"><title>' + title + '</title><style>' +
+            '@page{size:A4;margin:22mm 20mm}' +
+            'body{font-family:Calibri,Carlito,Arial,sans-serif;font-size:11pt;line-height:1.45;color:#000;margin:0}' +
+            'h4{font-size:13.5pt;margin:16pt 0 5pt;page-break-after:avoid}p{margin:0 0 9pt}em{color:#555}' +
+            'mark{background:#ff0}' +
+            '</style></head><body>' + body + '</body></html>';
+          var w = window.open('', '_blank');
+          if (!w) { alert('Browseren blokerede printvinduet. Tillad pop op-vinduer for siden, og prøv igen.'); return; }
+          w.document.open(); w.document.write(html); w.document.close();
+          w.focus();
+          setTimeout(function () { w.print(); }, 250);
         });
       });
 
