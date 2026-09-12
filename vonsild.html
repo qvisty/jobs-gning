@@ -1478,14 +1478,31 @@
           var doc = scope.querySelector('.worddoc');
           if (!doc) return;
           var title = (doc.getAttribute('data-filename') || 'ansoegning');
-          var body = doc.innerHTML.replace(/\[[^\]<>]*\]/g, function (m) {
-            return '<mark>' + m + '</mark>';
-          });
+          // Brevopsætning. Adressat, dato, overskrift, afsnit med mellemrubrikker,
+          // hilsen og underskrift får hver sin klasse, så printet ligner et brev.
+          var body = doc.innerHTML
+            .replace(/\[[^\]<>]*\]/g, function (m) { return '<mark>' + m + '</mark>'; })
+            .replace(/<p>Med venlig hilsen<\/p>/, '<p class="hilsen">Med venlig hilsen</p>')
+            .replace(/<p>(<mark>\[MIT NAVN\]<\/mark>)<br\s*\/?>/, '<p class="sign">$1<br />');
+          // Sidste mellemrubrik (typisk Afslutning) holdes samlet med hilsen og underskrift,
+          // så underskriften ikke lander alene på en ny side.
+          var sidsteH4 = body.lastIndexOf('<h4>');
+          if (sidsteH4 > 0) body = body.slice(0, sidsteH4) + '<div class="slut">' + body.slice(sidsteH4) + '</div>';
           var html = '<!doctype html><html lang="da"><head><meta charset="utf-8"><title>' + title + '</title><style>' +
-            '@page{size:A4;margin:22mm 20mm}' +
-            'body{font-family:Calibri,Carlito,Arial,sans-serif;font-size:11pt;line-height:1.45;color:#000;margin:0}' +
-            'h4{font-size:13.5pt;margin:16pt 0 5pt;page-break-after:avoid}p{margin:0 0 9pt}em{color:#555}' +
-            'mark{background:#ff0}' +
+            '@page{size:A4;margin:22mm 23mm 24mm}' +
+            'html{-webkit-print-color-adjust:exact;print-color-adjust:exact}' +
+            'body{font-family:Calibri,Carlito,"Segoe UI",Helvetica,Arial,sans-serif;font-size:11pt;line-height:1.42;color:#111;margin:0;hyphens:auto}' +
+            'p{margin:0 0 9pt;orphans:3;widows:3}' +
+            'body>p:first-child{margin:0 0 2pt;color:#333}' +
+            'body>p:nth-child(2){margin:0 0 22pt;color:#333}' +
+            'h4{font-size:11.5pt;font-weight:700;color:#1f2937;margin:15pt 0 4pt;padding-bottom:2pt;border-bottom:1px solid #d1d5db;page-break-after:avoid;break-after:avoid}' +
+            'body>h4:first-of-type{font-size:17pt;font-weight:700;color:#000;margin:0 0 14pt;padding:0;border:0;line-height:1.25}' +
+            'body>h4:first-of-type+p{margin-bottom:14pt}' +
+            'p.hilsen{margin:16pt 0 22pt}' +
+            'p.sign{margin:0}.slut{page-break-inside:avoid;break-inside:avoid}' +
+            'em{color:#6b7280;font-style:italic}' +
+            'mark{background:#fef08a;color:#000;padding:0 2px}' +
+            '@page{@bottom-right{content:counter(page) " / " counter(pages);font-family:Calibri,Arial,sans-serif;font-size:9pt;color:#9ca3af}}' +
             '</style></head><body>' + body + '</body></html>';
           var w = window.open('', '_blank');
           if (!w) { alert('Browseren blokerede printvinduet. Tillad pop op-vinduer for siden, og prøv igen.'); return; }
