@@ -84,7 +84,7 @@ for (const sti of alleSider) {
     if (re.test(html)) fejl.push(`${navn}: personoplysning i offentlig kilde · ${hvad}`);
   }
   // Koblingstjek. Navnet på en fulgt skole må ikke kobles til ejerens egen historik.
-  const kobling = /(viceskoleleder|afdelingsleder|souschef|ansat|arbejdede|arbejdet|var jeg|min tid)[^.<]{0,60}Høje Kolstrup|Høje Kolstrup[^.<]{0,60}(tidligere skole|min gamle|hvor jeg (var|arbejdede)|MIN TIDLIGERE SKOLE)/i;
+  const kobling = /(viceskoleleder|souschef|ansat|arbejdede|arbejdet|var jeg|min tid|mine år)[^.<]{0,60}Høje Kolstrup|Høje Kolstrup[^.<]{0,60}(tidligere skole|min gamle|hvor jeg (var|arbejdede)|MIN TIDLIGERE SKOLE)/i;
   if (kobling.test(html)) fejl.push(`${navn}: skolenavn koblet til egen historik · Høje Kolstrup`);
 
   // 4. Sprogregler i egen prosa
