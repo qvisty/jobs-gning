@@ -71,7 +71,9 @@ for (const sti of alleSider) {
     [/Emmerske/i, 'nuværende skoles navn'],
     [/Kløver-?Skolen/i, 'tidligere skoles navn'],
     [/Felsted Centralskole/i, 'tidligere skoles navn'],
-    [/Høje Kolstrup/i, 'tidligere skoles navn', ['jobs/hoeje-kolstrup.html', 'content.html', 'jobs/kalender.html', 'jobs/analyse.html']],
+    // Høje Kolstrup Skole er ejerens tidligere arbejdsplads, men siden 11. september
+    // også arbejdsgiver for en fulgt stilling, så navnet må stå på alle sider.
+    // Koblingen til ejeren fanges i stedet af koblingstjekket nedenfor.
     [/Frueløkke/i, 'privatadresse'],
     [/\b29\s?92\s?31\s?01\b/, 'privat telefonnummer'],
     [/jgq@live\.dk/i, 'privat mailadresse'],
@@ -81,6 +83,9 @@ for (const sti of alleSider) {
     if ((undtag || []).includes(navn)) continue;
     if (re.test(html)) fejl.push(`${navn}: personoplysning i offentlig kilde · ${hvad}`);
   }
+  // Koblingstjek. Navnet på en fulgt skole må ikke kobles til ejerens egen historik.
+  const kobling = /(viceskoleleder|souschef|ansat|arbejdede|arbejdet|var jeg|min tid|mine år)[^.<]{0,60}Høje Kolstrup|Høje Kolstrup[^.<]{0,60}(tidligere skole|min gamle|hvor jeg (var|arbejdede)|MIN TIDLIGERE SKOLE)/i;
+  if (kobling.test(html)) fejl.push(`${navn}: skolenavn koblet til egen historik · Høje Kolstrup`);
 
   // 4. Sprogregler i egen prosa
   const prosa = kunEgenProsa(html);
