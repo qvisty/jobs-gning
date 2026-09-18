@@ -144,7 +144,12 @@ function renderMonth({ y, m }, evs) {
         badge + '<span class="kal-chip-lab">' + escHtml(label) + '</span></a>';
     }).join('');
     const has = evsD.length ? ' kal-has' : '';
-    cells += '<div class="kal-cell' + has + '"><span class="kal-daynum">' + d + '</span>' + chips + '</div>';
+    // data-date bruges af kalenderens klient-script til at markere dagens dato.
+    // Markeringen sker i browseren, ikke her, så den følger med dag for dag
+    // uden at siden skal bygges igen.
+    const iso = y + '-' + String(m).padStart(2, '0') + '-' + String(d).padStart(2, '0');
+    cells += '<div class="kal-cell' + has + '" data-date="' + iso + '"><span class="kal-daynum">' +
+      d + '</span>' + chips + '</div>';
   }
 
   return '<div class="kal-month">\n' +

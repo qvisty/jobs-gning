@@ -18,13 +18,27 @@
       <label><input type="checkbox" value="H" checked /> H · Skoleleder Hærvejsskolen</label>
       <label><input type="checkbox" value="K" checked /> K · Afdelingsleder Kongehøjskolen</label>
     </div>
-    <p class="kal-legend-note">Fluebenene styrer, hvilke stillingers datoer der vises i kalenderen. Valget huskes kun i denne browser.</p>
+    <p class="kal-legend-note">Fluebenene styrer, hvilke stillingers datoer der vises i kalenderen. Valget huskes kun i denne browser. Dagens dato er markeret med lys baggrund.</p>
     __MONTHGRID__
     <p class="kal-foot"><a href="index.html#kalender">Se datoerne som liste og hent dem til min egen kalender</a></p>
   </section>
 </main>
 
 <script>
+  // Dagens dato. Kalenderen bygges på forhånd, så markeringen sættes her i
+  // browseren ud fra data-date på hver celle. Dermed flytter den sig af sig selv
+  // dag for dag, uden at siden skal bygges igen.
+  (function () {
+    var n = new Date();
+    var iso = n.getFullYear() + '-' +
+      ('0' + (n.getMonth() + 1)).slice(-2) + '-' +
+      ('0' + n.getDate()).slice(-2);
+    var celle = document.querySelector('.kal-cell[data-date="' + iso + '"]');
+    if (!celle) return;
+    celle.classList.add('kal-idag');
+    celle.setAttribute('title', 'I dag');
+  })();
+
   // Fluebens-filter. Viser og skjuler kalender-chips pr. stilling, og valget
   // huskes kun i denne browser (localStorage).
   (function () {
