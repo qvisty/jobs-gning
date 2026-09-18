@@ -33,6 +33,7 @@ const pages = [
   { src: 'src/jobs/sosu-syd.html', out: 'sosu-syd.html', title: 'Uddannelsesleder · SOSU Syd' },
   { src: 'src/jobs/hoeje-kolstrup.html', out: 'hoeje-kolstrup.html', title: 'Afdelingsleder · Høje Kolstrup Skole' },
   { src: 'src/jobs/lyreskovskolen.html', out: 'lyreskovskolen.html', title: 'Afdelingsleder, mellemtrin · Lyreskovskolen' },
+  { src: 'src/jobs/kongehoejskolen.html', out: 'kongehoejskolen.html', title: 'Afdelingsleder, udskoling · Kongehøjskolen' },
   { src: 'src/jobs/inspiration.html', out: 'inspiration.html', title: 'Inspiration · stillinger til genbrug' },
 ];
 
