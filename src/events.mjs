@@ -214,4 +214,18 @@ export const events = [
     calDesc: 'Forventet tiltrædelse 1. januar 2027.',
     calUrl: 'dybboel-skolen.html',
   },
+  {
+    start: '2026-10-19',
+    kind: 'samtale',
+    abbr: 'D',
+    tag: 'samtale',
+    tagLabel: 'Rundvisning · kl. 15',
+    heading: 'Rundvisning på Dybbøl-Skolen',
+    headingUrl: 'dybboel-skolen.html#fase-3',
+    desc: 'Aftalt rundvisning med den konstituerede skoleleder mandag kl. 15 til 16. Dagen før Hærvejsskolens 1. samtale, så den forberedelse skal være færdig i weekenden.',
+    calTitle: 'Rundvisning: Dybbøl-Skolen (kl. 15 til 16)',
+    calDesc: 'Rundvisning med den konstituerede skoleleder. Huskelisten ligger i fase 3 på Dybbøl-siden.',
+    calUrl: 'dybboel-skolen.html#fase-3',
+    cdLabel: 'Rundvisning: Dybbøl-Skolen (kl. 15)',
+  },
 ];
