@@ -242,4 +242,18 @@ export const events = [
     calUrl: 'kongehoejskolen.html#fase-5',
     cdLabel: 'Send ansøgning: Kongehøjskolen',
   },
+  {
+    start: '2026-10-30',
+    kind: 'frist',
+    abbr: 'D',
+    tag: 'frist',
+    tagLabel: 'Send ansøgningen · fem dage før frist',
+    heading: 'Send ansøgningen · Dybbøl-Skolen',
+    headingUrl: 'dybboel-skolen.html#fase-5',
+    desc: 'Planlagt afsendelse, fem dage før fristen den 4. november. Tidligt med vilje, fordi det er et skolelederspor. Vent ikke på Hærvejsskolens svar, en ansøgning kan trækkes, en frist kan ikke genåbnes.',
+    calTitle: 'Send ansøgning: Skoleleder, Dybbøl-Skolen',
+    calDesc: 'Planlagt afsendelse fem dage før fristen. Udkastet ligger i fase 5 på Dybbøl-siden.',
+    calUrl: 'dybboel-skolen.html#fase-5',
+    cdLabel: 'Send ansøgning: Dybbøl-Skolen',
+  },
 ];
