@@ -228,4 +228,18 @@ export const events = [
     calUrl: 'dybboel-skolen.html#fase-3',
     cdLabel: 'Rundvisning: Dybbøl-Skolen (kl. 15)',
   },
+  {
+    start: '2026-10-18',
+    kind: 'frist',
+    abbr: 'K',
+    tag: 'frist',
+    tagLabel: 'Send ansøgningen · to dage før frist',
+    heading: 'Send ansøgningen · Kongehøjskolen',
+    headingUrl: 'kongehoejskolen.html#fase-5',
+    desc: 'Planlagt afsendelse, to dage før fristen den 20. oktober. Senest muligt med reel margin. Mandag den 19. er buffer, og tirsdag den 20. er Hærvejsskolens 1. samtale.',
+    calTitle: 'Send ansøgning: Afdelingsleder, Kongehøjskolen',
+    calDesc: 'Planlagt afsendelse to dage før fristen. Udkastet ligger i fase 5 på Kongehøj-siden.',
+    calUrl: 'kongehoejskolen.html#fase-5',
+    cdLabel: 'Send ansøgning: Kongehøjskolen',
+  },
 ];
