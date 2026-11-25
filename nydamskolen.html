@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="da" class="laast">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Skoleleder · Nydamskolen (Sønderborg)</title>
+  <script>
+    // Adgangslås. Siden er låst som udgangspunkt (class="laast" på html-elementet),
+    // og låses kun op her, hvis cookien er gyldig. Dermed forbliver siden låst,
+    // hvis JavaScript er slået fra (fail closed). Cookien tjekkes synkront i head,
+    // så indholdet aldrig når at blinke frem.
+    // Bemærk at låsen er klient-side. Den stopper almindelige besøgende, men indholdet
+    // findes stadig i sidens kilde, så personlige oplysninger skal fortsat holdes ude af siderne.
+    (function () {
+      var HASH = 'd2440ea6e006bccbde88a21f52ef8a23ebcb7fe80714f85ce7e2fe24cda9518c';
+      var m = document.cookie.match(/(?:^|; )hub_adgang=([^;]*)/);
+      if (m && m[1] === HASH) document.documentElement.classList.remove('laast');
+    })();
+  </script>
+  <style>
+    /* Adgangslås */
+    #laas { display: none; position: fixed; inset: 0; z-index: 100; align-items: center; justify-content: center;
+      background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%); padding: 20px; }
+    html.laast #laas { display: flex; }
+    html.laast .content { display: none !important; }
+    #laas form { width: 100%; max-width: 360px; text-align: center; background: rgba(30,41,59,.6);
+      border: 1px solid #334155; border-radius: 14px; padding: 32px 28px; }
+    #laas .laas-ikon { font-size: 40px; }
+    #laas h1 { font-size: 22px; margin: 10px 0 6px; color: #e2e8f0; }
+    #laas p { color: #94a3b8; font-size: 14px; margin: 6px 0 16px; }
+    #laas input { width: 100%; padding: 10px 12px; border: 1px solid #475569; border-radius: 10px;
+      background: #0b1220; color: #f1f5f9; font: inherit; text-align: center; }
+    #laas input:focus { outline: 2px solid #6366f1; border-color: #6366f1; }
+    #laas button { margin-top: 12px; width: 100%; padding: 10px 12px; border: 1px solid #6366f1;
+      border-radius: 10px; background: rgba(99,102,241,.25); color: #e0e7ff; font: inherit; cursor: pointer; }
+    #laas button:hover { background: rgba(99,102,241,.4); }
+    #laas .laas-fejl { color: #fca5a5; min-height: 18px; margin: 10px 0 0; }
+    #laas .laas-note { color: #64748b; font-size: 12.5px; margin: 10px 0 0; }
+    :root { color-scheme: light dark; }
+    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%); color: #e2e8f0;
+      display: block;
+    }
+    .content { max-width: 720px; margin: 40px auto; padding: 0 20px; }
+    .content .eyebrow { text-transform: uppercase; letter-spacing: .08em; font-size: 12px; color: #818cf8; }
+    .content .hero h1 { font-size: 40px; margin: 4px 0 8px; }
+    .content .lead { font-size: 18px; color: #cbd5e1; }
+    .content .card { background: rgba(30,41,59,.6); border: 1px solid #334155; border-radius: 14px;
+      padding: 20px 24px; margin: 20px 0; }
+    .content .card h2 { margin-top: 0; }
+    .content .commute { color: #94a3b8; font-size: 14px; margin: -6px 0 18px; }
+    .content .commute strong { color: #cbd5e1; }
+    .content .anonote { color: #94a3b8; font-size: 14px; margin: -6px 0 18px; }
+    .content .anonote strong { color: #fcd34d; }
+    /* Sticky fasemenu på undersider */
+    .content .fasebar { position: sticky; top: 0; z-index: 20; display: flex; flex-wrap: wrap; align-items: center;
+      gap: 6px; padding: 12px 0 10px; margin: 0 0 4px; border-bottom: 1px solid #334155;
+      background: linear-gradient(160deg, rgba(15,23,42,.97) 0%, rgba(30,41,59,.97) 100%); }
+    .content .fasebar a { padding: 5px 11px; border: 1px solid #334155; border-radius: 999px; font-size: 13px;
+      color: #cbd5e1; text-decoration: none; white-space: nowrap; }
+    .content .fasebar a:hover { border-color: #6366f1; }
+    .content .fasebar a.active { border-color: #6366f1; background: rgba(99,102,241,.18); color: #fff; }
+    .content .fasebar .home { color: #a5b4fc; }
+    .content .fasebar button { margin-left: auto; padding: 5px 11px; border: 1px solid #475569; border-radius: 999px;
+      background: transparent; color: #cbd5e1; font-size: 13px; cursor: pointer; }
+    .content .fasebar button:hover { border-color: #6366f1; }
+    /* Fasemenuen foldes sammen på mobil, kun Forside-link og menuknap vises */
+    .content .fasebar-toggle { display: none; }
+    @media (max-width: 640px) {
+      .content .fasebar-toggle { display: inline-block; }
+      .content .fasebar:not(.udfoldet) a:not(.home) { display: none; }
+      .content .fasebar:not(.udfoldet) #toggle-all { display: none; }
+    }
+    /* Fremdrift for tjeklister */
+    .content .progress { display: flex; align-items: center; gap: 12px; margin: 10px 0 0; }
+    .content .progress-track { flex: 1 1 auto; height: 8px; border-radius: 999px; background: #0b1220;
+      border: 1px solid #334155; overflow: hidden; }
+    .content .progress-fill { height: 100%; width: 0; background: #6366f1; border-radius: 999px; transition: width .3s; }
+    .content .progress span { font-size: 13px; color: #94a3b8; white-space: nowrap; }
+    /* Sammenklappelige fase-kort */
+    .content details.card { scroll-margin-top: 76px; }
+    .content details.card summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 12px; }
+    .content details.card summary::-webkit-details-marker { display: none; }
+    .content details.card summary h2 { margin: 0; flex: 1 1 auto; }
+    .content details.card summary::after { content: '▸'; color: #64748b; font-size: 18px; flex: 0 0 auto;
+      transition: transform .2s; }
+    .content details.card[open] summary::after { transform: rotate(90deg); }
+    .content details.card .fase-body { margin-top: 14px; }
+    /* Læsbarhed: luft, linjehøjde og tydeligt hierarki */
+    .content p { line-height: 1.65; }
+    .content li { line-height: 1.55; }
+    .content .fase-body li { margin: 7px 0; }
+    .content .fase-body h3 { margin: 28px 0 10px; padding-top: 18px; border-top: 1px solid #26334d; font-size: 19px; }
+    .content .fase-body h3:first-child { margin-top: 8px; padding-top: 0; border-top: 0; }
+    .content .fase-body h4 { margin: 24px 0 8px; color: #c7d2fe; }
+    .content .fase-body h5 { margin: 18px 0 6px; color: #a5b4fc; font-size: 14.5px; }
+    .content blockquote { margin: 14px 0; padding: 12px 16px; border-left: 3px solid #6366f1;
+      background: rgba(99,102,241,.08); border-radius: 0 10px 10px 0; }
+    .content blockquote p { margin: 8px 0; }
+    /* Nedtælling på forsiden */
+    .content .countdown { text-align: center; font-size: 15px; color: #fcd34d; background: rgba(251,191,36,.08);
+      border: 1px solid rgba(251,191,36,.4); border-radius: 10px; padding: 10px 14px; margin: 18px 0 0; }
+    .content .countdown:empty { display: none; }
+    /* Spørgsmål & svar (øve-kort: svaret er skjult til man klikker) */
+    .content details.qa { border: 1px solid #334155; border-radius: 10px; padding: 10px 14px; margin: 8px 0;
+      background: rgba(15,23,42,.35); }
+    .content details.qa summary { cursor: pointer; list-style: none; display: flex; gap: 10px;
+      align-items: baseline; font-weight: 600; color: #e2e8f0; }
+    .content details.qa summary::-webkit-details-marker { display: none; }
+    .content details.qa summary::before { content: 'Q'; color: #818cf8; font-weight: 700; flex: 0 0 auto; }
+    .content details.qa p { margin: 10px 0 4px; color: #cbd5e1; }
+    /* Eksport/import af flueben og noter */
+    .content .databtns { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+    .content .databtns button, .content .databtns .btn-import { display: inline-flex; align-items: center;
+      padding: 7px 12px; border: 1px solid #475569; border-radius: 999px; background: transparent;
+      color: #cbd5e1; font-size: 13px; cursor: pointer; }
+    .content .databtns button:hover, .content .databtns .btn-import:hover { border-color: #6366f1; }
+    .content .kal-tom { color: #94a3b8; font-size: 14px; padding: 18px 0; text-align: center; }
+    /* Næste skridt-panel på forsiden */
+    .content .card.naeste { border-color: #4f46e5; background: rgba(79,70,229,.07); }
+    .content .naeste-note { font-size: 13px; color: #94a3b8; margin: 0 0 10px; }
+    .content .naeste-liste { list-style: none; margin: 0; padding: 0; display: flex;
+      flex-direction: column; gap: 10px; counter-reset: naeste; }
+    .content .naeste-liste li { display: grid; grid-template-columns: 108px 1fr; gap: 12px;
+      align-items: baseline; padding: 9px 0; border-top: 1px solid rgba(148,163,184,.15); }
+    .content .naeste-liste li:first-child { border-top: 0; padding-top: 0; }
+    .content .naeste-dato { font-size: 13px; font-weight: 600; color: #a5b4fc;
+      white-space: nowrap; letter-spacing: .01em; }
+    .content .naeste-hvad { color: #cbd5e1; line-height: 1.6; }
+    .content .naeste-hvad strong { color: #e2e8f0; }
+    @media (max-width: 560px) {
+      .content .naeste-liste li { grid-template-columns: 1fr; gap: 2px; }
+    }
+    /* Klikbare mobilnumre: ring op og send SMS med færdig tekst */
+    .content a.tel-link { color: #a5b4fc; text-decoration: underline; text-decoration-style: dotted;
+      text-underline-offset: 3px; white-space: nowrap; }
+    .content a.tel-link:hover { text-decoration-style: solid; }
+    .content .databtns .btn-sms { display: inline-flex; align-items: center; padding: 7px 12px;
+      border: 1px solid #475569; border-radius: 999px; color: #cbd5e1; font-size: 13px;
+      text-decoration: none; }
+    .content .databtns .btn-sms:hover { border-color: #6366f1; }
+    .content .btn-word, .content .btn-pdf { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
+      border: 1px solid #475569; border-radius: 999px; background: rgba(99,102,241,.12);
+      color: #c7d2fe; font-size: 14px; cursor: pointer; margin: 4px 8px 14px 0; }
+    .content .btn-word:hover, .content .btn-pdf:hover { border-color: #6366f1; }
+    /* Print: ren sort-på-hvid A4 af det åbne indhold */
+    @media print {
+      body { background: #fff !important; }
+      .content { max-width: 100%; margin: 0; padding: 0; }
+      .content * { color: #000 !important; background: transparent !important; border-color: #bbb !important; }
+      .fasebar, .progress, .notes, .databtns, .anonote, .foot, #toggle-all, .cal-actions { display: none !important; }
+      .content .card { border: 0; border-radius: 0; padding: 10px 0; margin: 10px 0; }
+      .content details.card summary::after { display: none; }
+      .content a { text-decoration: none; }
+      /* Sideskift: hver fase starter på en ny side */
+      .content details.card { break-before: page; border-top: 0; }
+      .content main > details.card:first-of-type { break-before: auto; }
+      /* Hold sammenhængende blokke samlet på én side */
+      .content details.qa, .content blockquote, .content .huskeliste li,
+      .content .event, .content .fase-body > ul > li { break-inside: avoid; }
+      .content h2, .content h3, .content h4, .content h5 { break-after: avoid; }
+      .content p, .content li { orphans: 3; widows: 3; }
+      /* Hver forberedelsesmodel (STAR, Domæne, 4D, CMM, Tomm) starter på egen side */
+      .content #modeller .fase-body h3 { break-before: page; border-top: 0; }
+      .content #modeller .fase-body h3:first-of-type { break-before: auto; }
+    }
+    @page { margin: 15mm; }
+    /* Private noter (gemmes kun i browserens localStorage) */
+    .content .notes { width: 100%; border: 1px solid #475569; border-radius: 12px; padding: 12px;
+      background: #0b1220; color: #f1f5f9; font: inherit; font-size: 14px; resize: vertical; }
+    .content .notes:focus { outline: 2px solid #6366f1; border-color: #6366f1; }
+    .content a { color: #a5b4fc; }
+    .content .backlink { font-size: 14px; margin: 28px 0 -24px; }
+    .content .backlink a { text-decoration: none; }
+    /* Klikbare stillinger på forsiden */
+    .content .joblink { display: block; padding: 16px 20px; margin: 14px 0; border: 1px solid #334155;
+      border-radius: 12px; background: rgba(15,23,42,.4); color: inherit; text-decoration: none; }
+    .content .joblink:hover { border-color: #6366f1; }
+    .content .joblink h3 { margin: 0 0 6px; font-size: 17px; }
+    .content .joblink p { margin: 0; color: #94a3b8; font-size: 14px; }
+    .content code { background: #0b1220; padding: 2px 6px; border-radius: 6px; font-size: 90%; }
+    .content .foot { color: #64748b; font-size: 13px; margin: 40px 0; text-align: center; }
+    /* Kalender / tidslinje */
+    .content .timeline { list-style: none; margin: 8px 0 0; padding: 0; }
+    .content .event { display: flex; gap: 16px; padding: 16px 0; border-top: 1px solid #334155; }
+    .content .event:first-child { border-top: 0; }
+    .content .event-date { flex: 0 0 64px; text-align: center; background: #0b1220;
+      border: 1px solid #334155; border-radius: 10px; padding: 8px 4px; align-self: flex-start; }
+    .content .event-date .day { display: block; font-size: 22px; font-weight: 700; line-height: 1.1; color: #f1f5f9; }
+    .content .event-date .mon { display: block; font-size: 11px; text-transform: uppercase;
+      letter-spacing: .05em; color: #94a3b8; }
+    .content .event-body { flex: 1 1 auto; }
+    .content .event-body h3 { margin: 6px 0 4px; font-size: 17px; }
+    .content .event-body p { margin: 0; color: #cbd5e1; font-size: 14px; }
+    .content .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 9px;
+      border-radius: 999px; text-transform: uppercase; letter-spacing: .04em; }
+    .content .tag--frist { background: rgba(248,113,113,.15); color: #fca5a5; border: 1px solid #f87171; }
+    .content .tag--samtale { background: rgba(129,140,248,.15); color: #a5b4fc; border: 1px solid #818cf8; }
+    .content .tag--tiltraedelse { background: rgba(52,211,153,.15); color: #6ee7b7; border: 1px solid #34d399; }
+    .content .tag--opfoelgning { background: rgba(251,191,36,.15); color: #fcd34d; border: 1px solid #fbbf24; }
+    .content .tag--kladde { background: rgba(251,191,36,.15); color: #fcd34d; border: 1px solid #fbbf24; }
+    .content .tag--sendt { background: rgba(52,211,153,.15); color: #6ee7b7; border: 1px solid #34d399; }
+    .content .tag--inspiration { background: rgba(34,211,238,.15); color: #67e8f9; border: 1px solid #22d3ee; }
+    /* Statusliste øverst på stillingssiderne */
+    .content .statusliste { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 14px 0 4px; }
+    .content .statusliste li { padding: 5px 13px; border-radius: 999px; font-size: 13px; background: rgba(148,163,184,.08); color: #94a3b8; border: 1px solid #334155; }
+    .content .statusliste .st-done { background: rgba(52,211,153,.13); color: #6ee7b7; border-color: #34d399; }
+    .content .statusliste .st-next { background: rgba(251,191,36,.13); color: #fcd34d; border-color: #fbbf24; font-weight: 600; }
+    .content .statusliste .st-stop { background: rgba(248,113,113,.13); color: #fca5a5; border-color: #f87171; }
+    /* Casebilleder (grafisk facilitering) */
+    .content .billedpar { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 12px 0; }
+    .content .casebillede { width: 100%; display: block; background: #fff; border-radius: 12px; border: 1px solid #334155; }
+    @media (max-width: 760px) { .content .billedpar { grid-template-columns: 1fr; } }
+    /* Månedskalender (kalender.html) */
+    .content .kal-legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 0 0 18px; }
+    .content .kal-key { font-size: 12.5px; color: #cbd5e1; display: inline-flex; align-items: center; gap: 7px; }
+    .content .kal-key::before { content: ''; width: 12px; height: 12px; border-radius: 4px; }
+    .content .kal-key--frist::before { background: #f87171; }
+    .content .kal-key--samtale::before { background: #818cf8; }
+    .content .kal-key--tiltraedelse::before { background: #34d399; }
+    .content .kal-month { margin: 0 0 26px; }
+    .content .kal-title { margin: 0 0 10px; font-size: 18px; text-transform: capitalize; }
+    .content .kal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+    .content .kal-head { text-align: center; font-size: 11px; text-transform: uppercase; letter-spacing: .04em;
+      color: #94a3b8; padding: 4px 0; }
+    .content .kal-cell { min-height: 60px; border: 1px solid #26334d; border-radius: 8px;
+      background: rgba(15,23,42,.4); padding: 4px; display: flex; flex-direction: column; gap: 3px; }
+    .content .kal-cell.kal-empty { border: 0; background: transparent; }
+    .content .kal-cell.kal-has { border-color: #475569; background: rgba(30,41,59,.6); }
+    .content .kal-cell.kal-idag { background: rgba(250,204,21,.16); border-color: #facc15;
+      box-shadow: inset 0 0 0 1px rgba(250,204,21,.35); }
+    .content .kal-cell.kal-idag.kal-has { background: rgba(250,204,21,.22); }
+    .content .kal-daynum { font-size: 12px; color: #94a3b8; font-weight: 600; }
+    .content .kal-cell.kal-idag .kal-daynum { color: #fde68a; }
+    .content .kal-cell.kal-has .kal-daynum { color: #f1f5f9; }
+    .content .kal-chip { display: block; text-decoration: none; border-radius: 6px; padding: 3px 6px;
+      font-size: 11px; line-height: 1.25; border: 1px solid transparent; }
+    .content .kal-filter { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; }
+    .content .kal-filter label { display: inline-flex; align-items: center; gap: 6px; padding: 4px 11px;
+      border: 1px solid #334155; border-radius: 999px; font-size: 12.5px; color: #cbd5e1; cursor: pointer; }
+    .content .kal-filter label:hover { border-color: #6366f1; }
+    .content .kal-filter input { accent-color: #6366f1; margin: 0; }
+    .content .kal-chip-tag { display: inline-block; min-width: 15px; margin-right: 5px; padding: 0 3px;
+      border-radius: 4px; font-size: 10px; font-weight: 700; text-align: center;
+      background: rgba(255,255,255,.16); }
+    .content .kal-chip-lab { font-weight: 600; }
+    .content .kal-chip--frist { background: rgba(248,113,113,.15); color: #fca5a5; border-color: #f87171; }
+    .content .kal-chip--samtale { background: rgba(129,140,248,.15); color: #a5b4fc; border-color: #818cf8; }
+    .content .kal-chip--tiltraedelse { background: rgba(52,211,153,.15); color: #6ee7b7; border-color: #34d399; }
+    .content .kal-legend-note { font-size: 12px; color: #94a3b8; margin: -8px 0 16px; }
+    .content .kal-foot { margin: 6px 0 0; font-size: 14px; }
+    @media (max-width: 560px) {
+      .content .kal-cell { min-height: 50px; }
+      .content .kal-chip { font-size: 10px; padding: 2px 4px; }
+    }
+    /* Huskelister */
+    .content .huskeliste { margin: 8px 0 22px; padding-left: 24px; }
+    .content .huskeliste li { padding: 3px 0; }
+    /* Svarnoter i samtaleforberedelsen (runde 2) */
+    .content .svarnote { display: block; margin-top: 4px; color: #cbd5e1; }
+    .content .svarnote em { color: #a5b4fc; font-style: normal; font-weight: 600; }
+    /* Tilføj til kalender-knapper (pr. begivenhed) */
+    .content .cal-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+    .content .cal-btn { display: inline-flex; align-items: center; padding: 5px 11px; border: 1px solid #475569;
+      border-radius: 999px; background: transparent; color: #cbd5e1; font-size: 12.5px; cursor: pointer;
+      text-decoration: none; }
+    .content .cal-btn:hover { border-color: #6366f1; }
+  </style>
+</head>
+<body>
+  <div id="laas" role="dialog" aria-label="Adgangskode">
+    <form id="laas-form">
+      <div class="laas-ikon">🔒</div>
+      <h1>Privat side</h1>
+      <p>Indtast adgangskoden for at se indholdet.</p>
+      <input type="password" id="laas-kode" autocomplete="current-password" aria-label="Adgangskode" />
+      <button type="submit">Lås op</button>
+      <p id="laas-fejl" class="laas-fejl" aria-live="polite"></p>
+      <p class="laas-note">Adgangen huskes i en time i denne browser.</p>
+      <noscript><p class="laas-fejl">Låsen kræver JavaScript. Slå JavaScript til for at logge ind.</p></noscript>
+    </form>
+  </div>
+  <script>
+    // Adgangslås. Koden gemmes kun som SHA-256-hash, og godkendelse huskes i en cookie i en time.
+    (function () {
+      var HASH = 'd2440ea6e006bccbde88a21f52ef8a23ebcb7fe80714f85ce7e2fe24cda9518c';
+      var form = document.getElementById('laas-form');
+      if (!form) return;
+      var input = document.getElementById('laas-kode');
+      var fejl = document.getElementById('laas-fejl');
+      if (document.documentElement.classList.contains('laast')) {
+        setTimeout(function () { input.focus(); }, 50);
+      }
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var v = input.value || '';
+        if (!(window.crypto && crypto.subtle)) {
+          fejl.textContent = 'Din browser understøtter ikke låsen. Prøv en nyere browser.';
+          return;
+        }
+        crypto.subtle.digest('SHA-256', new TextEncoder().encode(v)).then(function (buf) {
+          var hex = Array.prototype.map.call(new Uint8Array(buf), function (b) {
+            return ('0' + b.toString(16)).slice(-2);
+          }).join('');
+          if (hex === HASH) {
+            document.cookie = 'hub_adgang=' + hex + '; max-age=3600; path=/; SameSite=Strict';
+            document.documentElement.classList.remove('laast');
+            input.value = '';
+            fejl.textContent = '';
+          } else {
+            fejl.textContent = 'Forkert adgangskode. Prøv igen.';
+            input.select();
+          }
+        });
+      });
+    })();
+  </script>
+  <div class="content"><!-- Underside: Skoleleder · Nydamskolen (V. Sottrup, Sønderborg Kommune).
+     Genereres til nydamskolen.html af build.mjs. Bygget 25. november 2026 på forhåndsviden,
+     FØR opslaget er offentliggjort. Alle tal er research og skal bekræftes mod opslaget. -->
+<p class="backlink"><a href="index.html">← Forsiden</a></p>
+<header class="hero">
+  <p class="eyebrow">Stilling · forberedt før opslaget · ikke slået op endnu</p>
+  <h1>🪺 Skoleleder · Nydamskolen</h1>
+  <p class="lead">Sønderborg Kommune, V. Sottrup · stillingen ventes ledig inden længe · cirka 400 elever, 0. til 9. klasse i to spor · NEST-modelskole med ASF-specialklasser · ingen frist og ingen datoer kendt endnu.</p>
+  <p class="commute">🚗 <strong>Kørsel fra Aabenraa.</strong> V. Sottrup ligger cirka 30 km og en halv times kørsel hjemmefra, stort set samme tur som til Dybbøl-Skolen. Uproblematisk daglig pendling.</p>
+  <p class="anonote">🔒 <strong>Pladsholdere.</strong> Personlige oplysninger er erstattet med [MIT NAVN], [ALDER], [MIN NUVÆRENDE SKOLE] og [MIN TIDLIGERE SKOLE]. Indsæt de rigtige data i den version, jeg sender.</p>
+</header>
+
+<main>
+  <nav class="fasebar">
+    <a class="home" href="index.html">← Forside</a>
+    <a href="#vurdering">📊 Vurdering</a>
+    <a href="#fase-0">0 · Før opslaget</a>
+    <a href="#fase-1">1 · Research</a>
+    <a href="#fase-3">3 · Opkald</a>
+    <a href="#fase-5">5 · Ansøgning</a>
+    <a href="#svar">🎯 Svar</a>
+    <a href="#kilder">📄 Kilder</a>
+    <a href="#noter">📝 Noter</a>
+    <button id="toggle-all" type="button">Åbn alle</button>
+  </nav>
+  <ul class="statusliste">
+    <li class="st-done">✓ Forhåndsviden modtaget 25/11 · stillingen ventes ledig</li>
+    <li class="st-done">✓ Research på skolen gennemført 25/11 · NEST, tal og nøgletal fundet</li>
+    <li class="st-next">▶ Ring til skolechef Michael Jacobsen · feedback på Dybbøl OG spørg til Nydam</li>
+    <li class="st-todo">○ Afklar om der allerede sidder en konstitueret · det afgør skønnet</li>
+    <li class="st-todo">○ Afvent opslaget · bekræft alle tal mod det</li>
+    <li class="st-todo">○ Ansøgning</li>
+  </ul>
+  <p class="commute">✏️ <strong>Status.</strong> Siden er bygget onsdag den 25. november på forhåndsviden om, at skolelederstillingen bliver ledig inden længe. Opslaget findes ikke endnu, og alle tal nedenfor er research fra offentlige kilder, ikke fra et opslag. De skal bekræftes, når det kommer. Nydamskolen ligger i V. Sottrup i Sønderborg Kommune, har cirka 400 elever fra 0. til 9. klasse i to spor, og er <strong>NEST-modelskole</strong> med ASF-specialklasser oveni. Det sidste er porteføljens stærkeste faglige match til dato, stærkere end Kongehøjs elevsyn og stærkere end Dybbøls segregeringstal, fordi NEST er mellemformer sat i system, og fordi jeg kender broen fra begge sider. Kommunen er den samme som Dybbøl, altså samme skolechef. Næste skridt. Ring til skolechefen. Opkaldet har nu to formål, og det gør det hastende frem for bare rigtigt.</p>
+
+  <details class="card fase" id="vurdering">
+    <summary><h2>📊 Vurdering · hvorfor denne er anderledes</h2></summary>
+    <div class="fase-body">
+      <p><em>Foreløbigt skøn. Sat før opslaget og uden kendskab til feltet, så det er mere usikkert end normalt. Justeres, når opslaget kommer, og når det er afklaret, om der sidder en konstitueret.</em></p>
+      <h4>🪺 NEST er det stærkeste enkeltmatch i hele porteføljen</h4>
+      <p>Skolen skriver selv, at den er NEST-modelskole i Sønderborg Kommune, at den løbende uddanner medarbejdere i NEST-pædagogikken, at alle elever profiterer af tilgangen, og at den skal indgå i al undervisning med en rød tråd fra børnehave over SFO til skole.</p>
+      <p>NEST er mellemformer sat i system. Elever i autismespektret undervises i almenklasser med ekstra ressourcer frem for i et segregeret tilbud. Det er præcis den bro, hele Dybbøl-ansøgningen handlede om, bare bygget færdig.</p>
+      <ul>
+        <li><strong>Forskellen på Dybbøl og her.</strong> På Dybbøl skulle jeg foreslå mellemformer som noget, der kunne prøves. Her skal jeg lede en skole, der allerede gør det. Det flytter mig fra at have en god idé til at kende opgaven indefra, og det er en helt anden position at søge fra.</li>
+        <li><strong>Jeg kender begge ender af NEST-broen.</strong> Seks år i ledelsen på en specialskole, hvor jeg tog imod de elever, almenområdet ikke kunne rumme. Og i dag unge, hvor mange har vanskelige skoleerfaringer med sig. KRAP og Vækstmodellen er hverdagsværktøjer og ikke specialskolesprog.</li>
+        <li><strong>Det er ikke en dagsorden, jeg skal læse mig til.</strong> Det er den eneste stilling i porteføljen, hvor min specialbaggrund er kernefaglighed frem for en sidegevinst. På de tre skolelederspor, der faldt, var den almene titel det, der manglede. Her er det specialdelen, der er efterspurgt, og den har jeg.</li>
+      </ul>
+      <h4>🔢 Matematik er den anden åbning, og den er konkret</h4>
+      <p>Karaktergennemsnittet i de bundne prøver er 7,0 i 2025/26 mod et landssnit på 7,2, og skolen ligger omtrent på sin socioøkonomiske reference. Det er en skole, der præsterer som forventet, og ikke en genopretningsopgave.</p>
+      <p>Men ét tal skiller sig ud. <strong>Matematik med hjælpemidler ligger på 4,0 mod et landssnit på 6,4.</strong> Dansk ligger til gengæld på 7,4.</p>
+      <ul>
+        <li><strong>Matematik er mit linjefag, og jeg er beskikket censor i faget.</strong> Det er den mest præcise overlapning mellem et konkret tal på en skole og en konkret kompetence på mit CV, der er set i hele forløbet.</li>
+        <li><strong>Men det skal siges varsomt.</strong> Et enkelt årgangsresultat kan skyldes én årgang, én lærerudskiftning eller tilfældigheder, og en ansøger, der kommer udefra og udlægger skolens tal som et problem, lyder som en, der ved bedre. Grebet er at spørge til det i opkaldet og først bruge det i ansøgningen, hvis de selv kalder det en udfordring.</li>
+      </ul>
+      <h4>⚠️ Det, der kan vælte det, og som skal afklares først</h4>
+      <ul>
+        <li><strong>Der kan allerede sidde en konstitueret.</strong> Skolens egen side nævner Stine Skyum som skoleleder, opdateret august 2025. En skoledatabase, tjekket november 2026, nævner Lene Vindbjerg Brynningsen som konstitueret daglig leder. Jeg kan ikke afgøre, hvad der er rigtigt. <strong>Hærvejs-facittet kostede 15 til 20 point på præcis den oplysning</strong>, og den blev skrevet ned uden at blive vægtet. Det sker ikke igen. Spørg direkte, om den konstituerede er kandidat, før der bruges mere energi.</li>
+        <li><strong>Den almene titel mangler stadig.</strong> Alt det ovenstående ændrer ikke på, at tre almen skolelederansøgninger faldt ved indkaldelsen i 2026, og at kalibreringsreglens loft derfor står på 20 til 30 procent. NEST og matematik løfter inden for det loft, de ophæver det ikke.</li>
+        <li><strong>Specialklasseandelen må ikke misforstås.</strong> Skolen har 12,2 procent af sine elever i specialklasse og 87,8 procent inklusionsgrad. Det tal er højt, <strong>fordi skolen huser områdets ASF-klasser</strong>, ikke fordi den segregerer for meget. Det er det modsatte af Dybbøls problem. Læses det forkert i en ansøgning, afslører det, at ansøgeren ikke har forstået skolen.</li>
+      </ul>
+      <h4>📈 Foreløbige skøn</h4>
+      <ul>
+        <li><strong>Chance for 1. samtale. Skøn 30 til 40 procent.</strong> Over kalibreringsreglens loft på 20 til 30, og det er bevidst. NEST gør specialbaggrunden til kernefaglighed frem for en sidegevinst, og det er første gang i porteføljen, at den manglende almene titel modsvares af noget, feltet ikke har. Trækkes 15 til 20 fra igen, hvis der sidder en konstitueret kandidat, og så er sporet reelt lukket.</li>
+        <li><strong>Chance for at få stillingen tilbudt. Skøn 12 til 18 procent.</strong> Følger samtale-skønnet ned med erfaringstallet.</li>
+        <li><strong>Forhåndsviden er det eneste nye våben.</strong> Analysen efter de tre afslag konkluderede, at det, der manglede, var en relation ind i huset, som kunne bringe kandidaten i den inderste ring før screeningen. Det her er chancen for at bygge den, og den findes kun, fordi opslaget ikke er kommet endnu.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-0">
+    <summary><h2>0️⃣ Før opslaget · det er her, sporet vindes <span class="tag tag--samtale">Næste skridt</span></h2></summary>
+    <div class="fase-body">
+      <p>Normalt starter et spor ved opslaget. Her er der et vindue før, og det er præcis det, de tre afslag pegede på manglede. Tre afsendte ansøgninger i 2026, tre gange sorteret fra før samtalen, og konklusionen var, at CV'et lukkede døren, før nogen havde mødt mennesket. Det vindue lukker i det sekund, opslaget offentliggøres og bunken begynder at vokse.</p>
+      <h4>Opkaldet til skolechefen har nu to formål</h4>
+      <p>📞 <strong>Skolechef Michael Jacobsen, Sønderborg Kommune.</strong> Han har stået på listen over næste skridt siden den 7. november som feedback-opkaldet efter Dybbøl. Nu er der en grund mere, og de to passer sammen i samme samtale.</p>
+      <ul>
+        <li><strong>Formål ét. Feedback på Dybbøl.</strong> Tre afslag i 2026 uden én eneste begrundelse er den dyreste blinde vinkel i hele jobsøgningen. Spørg for at lære, ikke for at gøre indsigelse.</li>
+        <li><strong>Formål to. Nydamskolen.</strong> Når feedbacken er givet, er det naturligt at sige, at jeg har hørt, at skolelederstillingen på Nydamskolen bliver ledig, og at jeg er interesseret. Det er ikke påtrængende, det er den normale måde, ledere taler sammen på.</li>
+        <li><strong>Rækkefølgen er ikke til forhandling.</strong> Feedbacken først, og den skal være ægte. Ringes der med Nydam som det reelle ærinde og feedback som påskud, mærkes det, og så er begge dele brændt. Hvis feedbacken ikke falder naturligt over i det andet emne, så lad være og ring igen senere.</li>
+      </ul>
+      <h4>De tre spørgsmål om Nydamskolen</h4>
+      <ol>
+        <li><strong>Sidder der en konstitueret, og er vedkommende kandidat?</strong> Det vigtigste spørgsmål, og det der kostede dyrest sidst. Stilles direkte og uden omsvøb.</li>
+        <li><strong>Hvad er opgaven på Nydamskolen, som han ser den?</strong> Er det drift og ro, er det NEST, der skal videre, eller er det noget tredje. Svaret bliver ansøgningens vigtigste afsnit.</li>
+        <li><strong>Hvornår ventes opslaget, og hvordan ser processen ud?</strong> Giver tid til at forberede frem for at reagere.</li>
+      </ol>
+      <h4>Det andet, der kan gøres i vinduet</h4>
+      <ul>
+        <li><strong>Bed om et besøg på skolen, når opslaget er ude.</strong> Vonsild-facittet var, at det manglende skolebesøg blev nævnt i afslaget. Her er der tid til at planlægge det i stedet for at haste det.</li>
+        <li><strong>Læs op på NEST, så det sidder fagligt og ikke kun som et ord.</strong> Modellen, de to lærere i klassen, normeringen og hvad der går galt, når den implementeres halvt. En skoleleder for en NEST-skole skal kunne tale om det med lærerne og ikke bare om det.</li>
+        <li><strong>Hold øje med skolebestyrelsens referater.</strong> De ligger offentligt på skolens side og nævner ofte ledelsesskifte, økonomi og indsatsområder, før det står i et opslag.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-1">
+    <summary><h2>1️⃣ Research <span class="tag tag--sendt">✓ Gennemført 25/11</span></h2></summary>
+    <div class="fase-body">
+      <p><strong>Vigtigt forbehold.</strong> Alt nedenfor er hentet fra offentlige kilder før opslaget, ikke fra et stillingsopslag. Tallene stammer fra skolens egen side, opdateret august 2025, og fra uddannelsesstatistikken for 2025/26. De skal bekræftes mod opslaget, og tallene om ledelsen er direkte modstridende.</p>
+      <h4>Skolen i tal</h4>
+      <ul>
+        <li><strong>402 elever</strong> i 2025/26, klassekvotient 18,4. Skolen skriver selv cirka 400.</li>
+        <li><strong>0. til 9. klasse i to spor</strong>, afdelingsopdelt i indskoling, mellemtrin og overbygning.</li>
+        <li><strong>Overbygningen er stor.</strong> 7. klasse 56 elever, 8. klasse 56, 9. klasse 50, mod 28 i 0. klasse. Skolen modtager elever fra Nybøl Skole efter 6. klasse, og det forklarer springet.</li>
+        <li><strong>NEST-modelskole</strong> med ASF-specialklasser. Antal NEST-klasser og årgange er ikke oplyst offentligt.</li>
+        <li><strong>12,2 procent i specialklasse</strong> og 87,8 procent inklusionsgrad. Tallet afspejler, at skolen huser ASF-klasserne.</li>
+        <li><strong>Medarbejderantal er ikke oplyst</strong> offentligt. Skal findes i opslaget.</li>
+      </ul>
+      <h4>Nøgletal, der betyder noget</h4>
+      <ul>
+        <li><strong>Karakterer.</strong> Bundne prøver 7,0 i 2025/26, mod 7,5 året før. Landssnit 7,2, kommunesnit 7,0. Socioøkonomisk reference 7,0, altså omtrent som forventet.</li>
+        <li><strong>Dansk 7,4. Matematik 4,8, og med hjælpemidler 4,0 mod et landssnit på 6,4.</strong> Det er det tal, der springer i øjnene.</li>
+        <li><strong>Trivsel 88,6 procent i højeste trivsel</strong>, lidt over både land og kommune. Mellemtrin 3,8 mod 3,7 på landsplan.</li>
+        <li><strong>Elevfravær 7,2 procent</strong> mod 7,5 på landsplan. Lavere end landssnittet.</li>
+        <li><strong>Kompetencedækning 83,3 procent.</strong> Under de 95 procent, der er det nationale mål, og noget en ny leder vil blive målt på.</li>
+      </ul>
+      <h4>Skolens eget sprog</h4>
+      <p>Visionen handler om at danne mennesker, der kan være sociale og få fællesskaber til at fungere, og om at praktisere værdier frem for at skrive dem. Skolens egen formulering er <q>Vi gør det vi siger!</q> Værdierne er trivsel som den overordnede, plus glæde, ansvarlighed og en anerkendende tilgang. Skolen skriver om involvering og frisætning inden for et værdisæt.</p>
+      <p>Det sprog ligger tæt på kernebudskaberne, og særligt den anerkendende tilgang er ordret KRAP-fundamentet. Brug skolens egne ord og ikke mine egne synonymer.</p>
+      <h4>Struktur og ressourcepersoner</h4>
+      <ul>
+        <li><strong>A-dage på alle årgange</strong> til tværfagligt arbejde, fordybelse og besøg uden for skolen.</li>
+        <li><strong>Et ressourcecenter</strong>, hvor fagpersonerne arbejder helhedsorienteret med barnet i centrum.</li>
+        <li><strong>Mange vejlederfunktioner.</strong> To pædagogiske vejledere, to læsevejledere med fælles læsestrategi, en matematikvejleder, to danskvejledere, en Marte Meo-vejleder, en naturfagsvejleder, en krea- og kulturvejleder, SSP og en APU-medarbejder.</li>
+        <li><strong>Faciliteter.</strong> Totalrenoveret skole, to haller, gymnastiksal, boldbaner og et Naturium til naturfag og større projekter.</li>
+      </ul>
+      <h4>Det, der IKKE kunne findes</h4>
+      <ul>
+        <li>Ledelsesteamet ud over skolelederen. Ingen viceskoleleder eller afdelingsledere fundet.</li>
+        <li>Samlet medarbejderantal.</li>
+        <li>Antal NEST-klasser og hvilke årgange de dækker.</li>
+        <li>Antal elever i ASF-klasserne, kun procenten.</li>
+        <li>Konkrete indsatsområder og mål for den 3 til 4-årige periode, skolen selv nævner.</li>
+        <li><strong>Hvem der er skoleleder lige nu.</strong> Skolens side siger Stine Skyum, en database siger konstitueret daglig leder Lene Vindbjerg Brynningsen. Det skal afklares i opkaldet.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-3">
+    <summary><h2>3️⃣ Når opslaget kommer · opkald og besøg</h2></summary>
+    <div class="fase-body">
+      <p>Er opkaldet til skolechefen taget i fase 0, er der allerede et navn og en relation. Så handler dette opkald om skolen og ikke om at blive husket.</p>
+      <h4>Spørgsmål, der ikke kan læses i opslaget</h4>
+      <ol>
+        <li><strong>Hvor langt er I med NEST?</strong> Er det alle årgange eller nogle, hvordan er normeringen, og hvad er det svære ved det lige nu. Det her er samtalens vigtigste spørgsmål, og det viser med det samme, at jeg ved, hvad NEST er.</li>
+        <li><strong>Hvordan spiller NEST og ASF-klasserne sammen?</strong> At huse begge dele på én skole er en særlig opgave, og den har en indbygget spænding mellem inklusion og specialtilbud.</li>
+        <li><strong>Hvad er overgangen fra Nybøl Skole efter 6. klasse for en opgave?</strong> En overbygning, der vokser med en ny gruppe elever hvert år, kræver noget særligt af kulturen.</li>
+        <li><strong>Hvad skal den nye leder holde fast i, og hvad kunne ændres på sigt?</strong> Spørgsmålet, der virkede på Dybbøl, og som panelet selv stiller senere.</li>
+        <li><strong>Og hvis der er en konstitueret.</strong> Er vedkommende kandidat. Stilles i den allerførste samtale, hvis det ikke allerede er afklaret.</li>
+      </ol>
+      <h4>Besøget</h4>
+      <p>Bed om det, og bed om det tidligt. Vonsild-afslaget nævnte det manglende skolebesøg, og Dybbøl-rundvisningen gav de bedste afsnit i hele den ansøgning. Bed specifikt om at se en NEST-klasse, hvis det kan lade sig gøre. Det er forskellen på at skrive om modellen og at have set den.</p>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-5">
+    <summary><h2>5️⃣ Ansøgningen · grebene, klar til opslaget</h2></summary>
+    <div class="fase-body">
+      <p>Skrives, når opslaget er læst, og efter opkald og besøg. Grebene ligger her, så der kun skal skrives og ikke tænkes fra bunden.</p>
+      <h4>Ansøgningens bærende greb</h4>
+      <ul>
+        <li><strong>Åbn på NEST, ikke på CV'et.</strong> Det er det sted, hvor skolen og jeg er mest det samme, og det er usædvanligt, at en ansøger kan tale om modellen fra begge sider. Første afsnit skal gøre tydeligt, at jeg kender broen mellem almen og special, fordi jeg har stået i begge ender af den, og ikke fordi jeg har læst om den.</li>
+        <li><strong>Specialbaggrunden er kernefaglighed her, ikke en sidegevinst.</strong> På de tre spor, der faldt, var specialdelen en krydderi-kompetence. På en NEST-skole er den selve opgaven. Det skal mærkes i tonen, at jeg ved det.</li>
+        <li><strong>Brug skolens egne ord.</strong> Trivsel som overordnet værdi, glæde, ansvarlighed, anerkendende tilgang, involvering og frisætning inden for et værdisæt, og <q>Vi gør det vi siger</q>. Den sidste er en gave, fordi den handler om at praktisere frem for at formulere, og det er præcis min egen ledelsestilgang.</li>
+        <li><strong>Overbygningen er stor, og den er min hverdag.</strong> 7., 8. og 9. klasse fylder mere end tre gange 0. klasse. Jeg har haft ansvaret for en udskoling og for prøveafviklingen uafbrudt siden 2019, og en efterskole er 8., 9. og 10. klasse og intet andet. Det er et match, de færreste ansøgere har.</li>
+        <li><strong>Matematik, men kun hvis de selv åbner for det.</strong> Linjefag og beskikket censor. Nævnes som en ressource jeg stiller til rådighed for matematikvejlederen og lærerne, aldrig som en diagnose af skolens tal.</li>
+        <li><strong>Overgangen fra Nybøl.</strong> At modtage en ny gruppe elever ind i en overbygning hvert år er præcis det, en efterskole gør hver sommer. Hele årgange, der ikke kender hinanden, skal blive til et fællesskab på få uger. Det er en konkret og usædvanlig overlapning.</li>
+        <li><strong>Ro og videreførelse, ikke omvæltning.</strong> Skolen præsterer på sin socioøkonomiske reference, trivslen er over landssnittet og fraværet under. Det er ikke en genopretningsopgave, og en ansøgning, der lover forandring, misforstår opgaven.</li>
+        <li><strong>Kommunekendskabet.</strong> Seks år som afdelingsleder og souschef i Sønderborg og seks år i digitaliseringsstyregruppen på skoleområdet. Samme argument som på Dybbøl, og det holder stadig.</li>
+      </ul>
+      <h4>Det ansøgningen ikke må gøre</h4>
+      <ul>
+        <li><strong>Ikke udlægge 12,2 procent i specialklasse som et problem.</strong> Tallet er højt, fordi skolen huser områdets ASF-klasser. Læses det som segregering, afsløres det, at skolen ikke er forstået.</li>
+        <li><strong>Ikke bruge matematikresultatet som løftestang uopfordret.</strong> En ansøger udefra, der peger på skolens svageste tal, lyder som en, der ved bedre.</li>
+        <li><strong>Ikke nævne de tre afslag.</strong> Hverken her eller i samtalen.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="svar">
+    <summary><h2>🎯 Forventede spørgsmål · optimale svar</h2></summary>
+    <div class="fase-body">
+      <details class="qa"><summary>Hvad ved du om NEST?</summary><p>At det er inklusion sat i system frem for inklusion som hensigt. Elever i autismespektret undervises i almenklassen med to voksne og en struktur, der er bygget til dem, men som viser sig at gavne alle. Og at det står og falder med, om de to voksne er et reelt makkerpar med fælles forberedelse, eller om den ene bliver en hjælper til den anden. Jeg har stået på begge sider af den bro. Seks år i ledelsen på en specialskole, hvor jeg tog imod de elever, almenområdet ikke kunne rumme, og i dag med unge, der kommer med vanskelige skoleerfaringer. Jeg kommer ikke for at lære, hvad NEST er. Jeg kommer for at lede en skole, der allerede kan det, og passe på, at den bliver ved.</p></details>
+      <details class="qa"><summary>Du har aldrig været skoleleder i en almen folkeskole. Hvorfor skal det være dig?</summary><p>Fordi jeg har haft begge halvdele af opgaven. Som viceskoleleder i en almen folkeskole havde jeg ansvaret for indskoling og mellemtrin, som souschef havde jeg økonomiansvaret og driften, når skolelederen ikke var der, og som forstander har jeg siden 2018 haft det fulde ansvar for økonomi, personale og bestyrelse uden en forvaltning at læne mig op ad. Det, der er nyt, er titlen, ikke opgaven. Og på netop denne skole er det, jeg kan bedst, det samme som det, skolen allerede har valgt at satse på.</p></details>
+      <details class="qa"><summary>Hvordan vil du bruge det første halve år?</summary><p>Først ro på og forstå. Jeg vil være i klasserne og især i NEST-klasserne, og jeg vil tale med hver enkelt medarbejder, med tillidsrepræsentanterne og med bestyrelsen. Derefter vil jeg holde fast i det, der virker, og sige højt hvad det er, for det er noget af det, en ny leder hurtigst kan ødelægge ved at overse det. Først derefter sætter jeg retning, og justeringer hører hjemme i planlægningen af næste skoleår, hvor de kan lægges ind som en del af det ordinære arbejde.</p></details>
+      <details class="qa"><summary>Overbygningen fylder meget hos os. Hvad betyder det for dig?</summary><p>At jeg er hjemme. Jeg har haft ansvaret for en udskoling og for prøveafviklingen uafbrudt siden 2019, først som afdelingsleder og i dag som forstander, og en efterskole er 8., 9. og 10. klasse og intet andet. Jeg kender, hvad der sker med unge mennesker, når de ikke oplever at høre til. Og jeg kender det, I gør hvert år, når I modtager en ny gruppe elever ind i overbygningen. På en efterskole kommer hele årgange, der ikke kender hinanden, og de skal blive til et fællesskab på få uger. Det er ikke teori for mig.</p></details>
+      <details class="qa"><summary>Hvorfor søger du væk fra efterskolen?</summary><p>Jeg søger ikke væk. Jeg søger hen mod en opgave, jeg gerne vil stå i. Jeg vil have det fulde ansvar for en folkeskole, og jeg vil bære det i et fællesskab med andre skoleledere frem for alene, som jeg gør i dag. Og jeg søger netop denne skole, fordi det, I har valgt at satse på, er det, jeg kan bedst.</p><p><em>Noten til mig selv. Ikke ét ord om de tre afslag i 2026. Kort, loyalt, og land på skolen.</em></p></details>
+      <details class="qa"><summary>Vores matematikresultater er ikke gode nok. Hvad vil du gøre?</summary><p>Først forstå, hvad tallet dækker over. Er det en årgang, er det et mønster over flere år, og hvad siger lærerne selv. Matematik er mit linjefag, og jeg er beskikket censor i faget, så jeg kan gå ind i den faglige samtale uden at tale udenom, og jeg ved, hvordan prøven vurderes. Men I har en matematikvejleder, og jeg kommer ikke udefra og fortæller hende, hvad hun skal. Jeg stiller mig til rådighed, og vi finder ud af det sammen.</p><p><em>Noten til mig selv. Dette svar bruges KUN, hvis de selv rejser emnet. Bring det aldrig op selv.</em></p></details>
+      <details class="qa"><summary>Hvad skal du selv lære?</summary><p>Folkeskolens skolelederrolle er ny for mig i titel, og rytmen med forvaltningen i dagligdagen skal jeg ind i. Selve opgaven er ikke ny, for ansvaret har jeg båret siden 2018. Det er jeg ikke bange for. Medarbejderne har fagligheden, og jeg regner med, at vi finder de gode løsninger sammen.</p></details>
+    </div>
+  </details>
+
+  <details class="card fase" id="kilder">
+    <summary><h2>📄 Kilder · research før opslaget</h2></summary>
+    <div class="fase-body">
+      <p><strong>Alle oplysninger er fra offentlige kilder og ikke fra et stillingsopslag.</strong> De skal bekræftes, når opslaget kommer.</p>
+      <ul>
+        <li><strong>Skolens egen side.</strong> <a href="https://nydamskolen.aula.dk/nydamskolen/grundoplysninger" target="_blank">Grundoplysninger på Nydamskolens Aula-side</a>, opdateret august 2025. Kilde til NEST, værdigrundlag, vejlederfunktioner, spor og overgangen fra Nybøl Skole.</li>
+        <li><strong>Nøgletal.</strong> <a href="https://danskeskoler.dk/skole/soenderborg-kommune/nydamskolen/" target="_blank">Danske Skoler</a> med data fra Uddannelsesstatistik.dk, tjekket november 2026. Kilde til elevtal, karakterer, trivsel, fravær og kompetencedækning.</li>
+        <li><strong>Uafklaret.</strong> Hvem der er skoleleder lige nu. Skolens side og databasen er uenige, og det skal afklares i opkaldet.</li>
+        <li><strong>Faglig genbrug.</strong> <a href="dybboel-skolen.html">Dybbøl-Skolen</a> for ansøgningens opbygning og hele svarbanken, <a href="dybboel-skolen.html#cases">casepakken</a> på otte ark, og <a href="kernebudskaber.html">kernebudskaberne</a>.</li>
+      </ul>
+    </div>
+  </details>
+</main>
+</div>
+  <script>
+    // Noter, sammenklappelige faser og fasemenu. Status kurateres i kilden, se CLAUDE.md.
+    (function () {
+      var page = location.pathname.split('/').pop() || 'index';
+
+      // Flueben + fremdrift
+      var KEY = 'jobhub:checklist:v1';
+      var state = {};
+      try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
+      var boxes = document.querySelectorAll('input[type=checkbox][data-check-id]');
+      function updateProgress() {
+        var bar = document.getElementById('prog-fill');
+        var txt = document.getElementById('prog-text');
+        if (!bar || !boxes.length) return;
+        var done = 0;
+        boxes.forEach(function (b) { if (b.checked) done++; });
+        bar.style.width = Math.round(100 * done / boxes.length) + '%';
+        if (txt) txt.textContent = done + ' af ' + boxes.length + ' punkter klaret';
+      }
+      boxes.forEach(function (box) {
+        var id = box.getAttribute('data-check-id');
+        box.checked = !!state[id];
+        box.addEventListener('change', function () {
+          state[id] = box.checked;
+          try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+          updateProgress();
+        });
+      });
+      updateProgress();
+
+      // Nedtælling til næste vigtige dato (forsiden)
+      var cd = document.getElementById('countdown');
+      if (cd) {
+        try {
+          var evs = JSON.parse(cd.getAttribute('data-events') || '[]');
+          var today = new Date(); today.setHours(0, 0, 0, 0);
+          var next = null;
+          evs.forEach(function (e) {
+            var d = new Date(e[0] + 'T00:00:00');
+            if (d >= today && (!next || d < next.d)) next = { d: d, label: e[1] };
+          });
+          if (next) {
+            var days = Math.round((next.d - today) / 86400000);
+            var hvornaar = days === 0 ? 'I dag' : days === 1 ? 'I morgen' : 'Om ' + days + ' dage';
+            var dato = next.d.getDate() + '/' + (next.d.getMonth() + 1);
+            cd.textContent = '⏰ ' + hvornaar + ': ' + next.label + ' (' + dato + ')';
+          }
+        } catch (e) {}
+      }
+
+      // Tilføj til kalender: .ics-download (Apple/Outlook/Google m.fl.) + Google Calendar-link.
+      (function () {
+        function compact(iso) { return iso.replace(/-/g, ''); }        // 2026-08-11 -> 20260811
+        function nextDay(iso) {
+          var d = new Date(iso + 'T00:00:00');
+          d.setDate(d.getDate() + 1);
+          function p(n) { return (n < 10 ? '0' : '') + n; }
+          return d.getFullYear() + p(d.getMonth() + 1) + p(d.getDate());
+        }
+        function stamp() {
+          var d = new Date();
+          function p(n) { return (n < 10 ? '0' : '') + n; }
+          return d.getUTCFullYear() + p(d.getUTCMonth() + 1) + p(d.getUTCDate()) + 'T' +
+                 p(d.getUTCHours()) + p(d.getUTCMinutes()) + p(d.getUTCSeconds()) + 'Z';
+        }
+        function esc(s) {
+          return String(s).replace(/\\/g, '\\\\').replace(/;/g, '\\;')
+                          .replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
+        }
+        function fold(line) {                                          // RFC 5545: maks. 75 tegn pr. linje
+          var out = '';
+          while (line.length > 74) { out += line.slice(0, 74) + '\r\n '; line = line.slice(74); }
+          return out + line;
+        }
+        function slug(s) {
+          return s.toLowerCase().replace(/[æ]/g, 'ae').replace(/[ø]/g, 'oe').replace(/[å]/g, 'aa')
+                  .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'begivenhed';
+        }
+        function readEvent(li) {
+          var url = li.getAttribute('data-cal-url');
+          var desc = li.getAttribute('data-cal-desc') || '';
+          var abs = url ? new URL(url, location.href).href : '';
+          if (abs) desc = desc ? desc + '\n\n' + abs : abs;
+          return {
+            start: li.getAttribute('data-cal-start'),
+            title: li.getAttribute('data-cal-title') || 'Begivenhed',
+            desc: desc,
+            url: abs
+          };
+        }
+        function vevent(ev) {
+          var lines = [
+            'BEGIN:VEVENT',
+            'UID:jobhub-' + compact(ev.start) + '-' + slug(ev.title) + '@jobs-gning',
+            'DTSTAMP:' + stamp(),
+            'DTSTART;VALUE=DATE:' + compact(ev.start),
+            'DTEND;VALUE=DATE:' + nextDay(ev.start),
+            'SUMMARY:' + esc(ev.title)
+          ];
+          if (ev.desc) lines.push('DESCRIPTION:' + esc(ev.desc));
+          if (ev.url) lines.push('URL:' + esc(ev.url));
+          lines.push('END:VEVENT');
+          return lines.map(fold).join('\r\n');
+        }
+        function calendar(events) {
+          var out = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//jobs-gning//kalender//DA',
+                     'CALSCALE:GREGORIAN', 'METHOD:PUBLISH'];
+          events.forEach(function (ev) { out.push(vevent(ev)); });
+          out.push('END:VCALENDAR');
+          return out.join('\r\n');
+        }
+        function download(name, text) {
+          var blob = new Blob([text], { type: 'text/calendar;charset=utf-8' });
+          var a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = name;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+        }
+        function googleUrl(ev) {
+          var p = new URLSearchParams({
+            action: 'TEMPLATE',
+            text: ev.title,
+            dates: compact(ev.start) + '/' + nextDay(ev.start)
+          });
+          if (ev.desc) p.set('details', ev.desc);
+          return 'https://calendar.google.com/calendar/render?' + p.toString();
+        }
+
+        var items = document.querySelectorAll('.event[data-cal-start]');
+        items.forEach(function (li) {
+          var ev = readEvent(li);
+          var body = li.querySelector('.event-body');
+          if (!body) return;
+          var wrap = document.createElement('div');
+          wrap.className = 'cal-actions';
+
+          var ics = document.createElement('button');
+          ics.type = 'button';
+          ics.className = 'cal-btn';
+          ics.textContent = '📅 Til kalender';
+          ics.title = 'Hent .ics — virker i Apple Kalender, Outlook, Google m.fl.';
+          ics.addEventListener('click', function () {
+            download(slug(ev.title) + '.ics', calendar([ev]));
+          });
+
+          var g = document.createElement('a');
+          g.className = 'cal-btn';
+          g.href = googleUrl(ev);
+          g.target = '_blank';
+          g.rel = 'noopener';
+          g.textContent = 'Google Calendar';
+
+          wrap.appendChild(ics);
+          wrap.appendChild(g);
+          body.appendChild(wrap);
+        });
+
+        document.querySelectorAll('.cal-all').forEach(function (b) {
+          if (!items.length) { b.style.display = 'none'; return; }
+          b.addEventListener('click', function () {
+            var evs = [];
+            items.forEach(function (li) { evs.push(readEvent(li)); });
+            download('jobsoegning-kalender.ics', calendar(evs));
+          });
+        });
+      })();
+
+      // Eksportér/importér flueben og noter (flyt data mellem enheder / backup)
+      document.querySelectorAll('.databtns .btn-export').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var data = {};
+          for (var i = 0; i < localStorage.length; i++) {
+            var k = localStorage.key(i);
+            if (k && k.indexOf('jobhub:') === 0) data[k] = localStorage.getItem(k);
+          }
+          var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+          var a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = 'jobhub-data.json';
+          a.click();
+          URL.revokeObjectURL(a.href);
+        });
+      });
+      document.querySelectorAll('.databtns .btn-import input[type=file]').forEach(function (inp) {
+        inp.addEventListener('change', function () {
+          var f = inp.files && inp.files[0];
+          if (!f) return;
+          var r = new FileReader();
+          r.onload = function () {
+            try {
+              var data = JSON.parse(r.result);
+              Object.keys(data).forEach(function (k) {
+                if (k.indexOf('jobhub:') === 0) localStorage.setItem(k, data[k]);
+              });
+              location.reload();
+            } catch (e) { alert('Kunne ikke læse filen. Er det en jobhub-data.json?'); }
+          };
+          r.readAsText(f);
+        });
+      });
+
+      // Download ansøgningen som Word-dokument (.doc, genereres i browseren)
+      document.querySelectorAll('.btn-word').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var scope = btn.closest('.fase-body') || document;
+          var doc = scope.querySelector('.worddoc');
+          if (!doc) return;
+          var name = (doc.getAttribute('data-filename') || 'ansoegning') + '.doc';
+          var html = '\ufeff<html xmlns:o="urn:schemas-microsoft-com:office:office" ' +
+            'xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">' +
+            '<head><meta charset="utf-8"><title>Ansøgning</title><style>' +
+            'body{font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.4;color:#000}' +
+            'h4{font-size:14pt;margin:18pt 0 6pt}p{margin:0 0 10pt}em{color:#666}' +
+            '</style></head><body>' +
+            doc.innerHTML.replace(/\[[^\]<>]*\]/g, function (m) {
+              return '<span style="background:#ffff00;mso-highlight:yellow">' + m + '</span>';
+            }) + '</body></html>';
+          var blob = new Blob([html], { type: 'application/msword;charset=utf-8' });
+          var a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = name;
+          a.click();
+          URL.revokeObjectURL(a.href);
+        });
+      });
+
+      // PDF-knap. Laver en rigtig PDF-fil i browseren med pdfmake (vendoret i lib/,
+      // ingen eksterne kald) og downloader den. Virker ens på telefon og computer.
+      // Brevopsætning. Adressat og dato som hoved, stor titel, mellemrubrikker med
+      // tynd streg, gule pladsholdere, sidetal, og afslutning holdt samlet med
+      // hilsen og underskrift.
+      var pdfLibs = null;
+      function hentScript(src) {
+        return new Promise(function (ok, fejl) {
+          var el = document.createElement('script');
+          el.src = src; el.onload = ok; el.onerror = function () { fejl(new Error(src)); };
+          document.head.appendChild(el);
+        });
+      }
+      function sikrPdfMake() {
+        if (window.pdfMake && window.pdfMake.createPdf) return Promise.resolve();
+        if (!pdfLibs) pdfLibs = hentScript('lib/pdfmake.min.js').then(function () { return hentScript('lib/vfs_fonts.js'); });
+        return pdfLibs;
+      }
+      var GUL = '#fef08a';
+      function pdfInline(node, st) {
+        var ud = [];
+        Array.prototype.forEach.call(node.childNodes, function (n) {
+          if (n.nodeType === 3) {
+            var t = n.nodeValue.replace(/\s+/g, ' ');
+            var re = /\[[^\]]*\]/g, sidst = 0, m;
+            while ((m = re.exec(t))) {
+              if (m.index > sidst) ud.push(Object.assign({ text: t.slice(sidst, m.index) }, st));
+              ud.push(Object.assign({ text: m[0] }, st, { background: GUL }));
+              sidst = m.index + m[0].length;
+            }
+            if (sidst < t.length) ud.push(Object.assign({ text: t.slice(sidst) }, st));
+          } else if (n.nodeType === 1) {
+            var tag = n.tagName.toLowerCase();
+            if (tag === 'br') { ud.push({ text: '\n' }); return; }
+            var s2 = Object.assign({}, st);
+            if (tag === 'em' || tag === 'i') { s2.italics = true; s2.color = '#6b7280'; }
+            if (tag === 'strong' || tag === 'b') s2.bold = true;
+            if (tag === 'mark') s2.background = GUL;
+            ud = ud.concat(pdfInline(n, s2));
+          }
+        });
+        return ud;
+      }
+      function pdfDefinition(doc) {
+        var blokke = [], h4 = 0, pNr = 0, sidsteRubrik = -1;
+        var streg = { canvas: [{ type: 'line', x1: 0, y1: 0, x2: 479, y2: 0, lineWidth: 0.6, lineColor: '#d1d5db' }], margin: [0, 0, 0, 6] };
+        Array.prototype.forEach.call(doc.children, function (el) {
+          var tag = el.tagName.toLowerCase();
+          if (tag === 'h4') {
+            h4++;
+            if (h4 === 1) blokke.push({ text: pdfInline(el, {}), style: 'titel' });
+            else { sidsteRubrik = blokke.length; blokke.push({ stack: [{ text: pdfInline(el, {}), style: 'rubrik' }, streg], headlineLevel: 1 }); }
+          } else if (tag === 'p') {
+            pNr++;
+            var txt = el.textContent.trim(), style = 'afsnit';
+            if (h4 === 0) style = pNr === 1 ? 'adressat' : 'dato';
+            if (txt === 'Med venlig hilsen') style = 'hilsen';
+            if (/^\[MIT NAVN\]/.test(txt)) style = 'sign';
+            blokke.push({ text: pdfInline(el, {}), style: style });
+          }
+        });
+        var indhold = blokke;
+        if (sidsteRubrik > 0) {
+          indhold = blokke.slice(0, sidsteRubrik);
+          indhold.push({ stack: blokke.slice(sidsteRubrik), unbreakable: true });
+        }
+        return {
+          pageSize: 'A4',
+          pageMargins: [58, 56, 58, 64],
+          info: { title: 'Ansøgning' },
+          content: indhold,
+          defaultStyle: { fontSize: 10.5, lineHeight: 1.28, color: '#111111' },
+          styles: {
+            adressat: { fontSize: 10.5, color: '#333333', margin: [0, 0, 0, 2] },
+            dato: { fontSize: 10.5, color: '#333333', margin: [0, 0, 0, 22] },
+            titel: { fontSize: 17, bold: true, lineHeight: 1.15, margin: [0, 0, 0, 14] },
+            rubrik: { fontSize: 11.5, bold: true, color: '#1f2937', margin: [0, 10, 0, 2] },
+            afsnit: { margin: [0, 0, 0, 8] },
+            hilsen: { margin: [0, 12, 0, 20] },
+            sign: { margin: [0, 0, 0, 0] }
+          },
+          footer: function (side, antal) {
+            return { text: side + ' / ' + antal, alignment: 'right', fontSize: 9, color: '#9ca3af', margin: [0, 22, 58, 0] };
+          },
+          pageBreakBefore: function (node, efter) {
+            return node.headlineLevel === 1 && efter.length === 0;
+          }
+        };
+      }
+      window.jobhubPdf = { definition: pdfDefinition };
+      document.querySelectorAll('.btn-pdf').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var scope = btn.closest('.fase-body') || document;
+          var doc = scope.querySelector('.worddoc');
+          if (!doc) return;
+          var name = (doc.getAttribute('data-filename') || 'ansoegning') + '.pdf';
+          var label = btn.textContent;
+          btn.textContent = '⏳ Laver PDF …'; btn.disabled = true;
+          sikrPdfMake().then(function () {
+            window.pdfMake.createPdf(pdfDefinition(doc)).download(name);
+          }).catch(function () {
+            alert('PDF-filen kunne ikke laves. Prøv Word-knappen, eller genindlæs siden.');
+          }).then(function () {
+            btn.textContent = label; btn.disabled = false;
+          });
+        });
+      });
+
+      // Print: fold alt ud før print, og fold sammen igen bagefter
+      var printPrev = null;
+      window.addEventListener('beforeprint', function () {
+        var all = document.querySelectorAll('details');
+        printPrev = [];
+        all.forEach(function (d) { printPrev.push(d.open); d.open = true; });
+      });
+      window.addEventListener('afterprint', function () {
+        if (!printPrev) return;
+        var all = document.querySelectorAll('details');
+        all.forEach(function (d, i) { d.open = printPrev[i]; });
+        printPrev = null;
+      });
+
+      // Private noter: gemmes kun lokalt i browseren
+      document.querySelectorAll('textarea.notes[data-notes]').forEach(function (t) {
+        var nkey = 'jobhub:notes:' + t.getAttribute('data-notes');
+        try { t.value = localStorage.getItem(nkey) || ''; } catch (e) {}
+        t.addEventListener('input', function () {
+          try { localStorage.setItem(nkey, t.value); } catch (e) {}
+        });
+      });
+
+      // Sammenklappelige faser: åben/lukket huskes pr. side.
+      // Faser med et ✓-tag i overskriften er færdige og starter altid foldet ind,
+      // så scrollet hurtigt når frem til den aktuelle status.
+      var OPENKEY = 'jobhub:open:' + page;
+      var openState = null;
+      try { openState = JSON.parse(localStorage.getItem(OPENKEY)); } catch (e) {}
+      var faser = document.querySelectorAll('details.fase');
+      function faseDone(d) {
+        var tag = d.querySelector('summary .tag');
+        return !!(tag && tag.textContent.indexOf('✓') !== -1);
+      }
+      faser.forEach(function (d, i) {
+        if (faseDone(d)) d.open = false;
+        else if (openState && (d.id in openState)) d.open = !!openState[d.id];
+        else if (!openState && i === 0 && !d.classList.contains('fase-luk')) d.open = true;
+        d.addEventListener('toggle', function () {
+          var st = {};
+          faser.forEach(function (x) { st[x.id] = x.open; });
+          try { localStorage.setItem(OPENKEY, JSON.stringify(st)); } catch (e) {}
+        });
+      });
+
+      // Ankerlinks skal åbne den fase, de peger på
+      function openFromHash() {
+        if (!location.hash) return;
+        var el;
+        try { el = document.querySelector(location.hash); } catch (e) { return; }
+        if (!el) return;
+        var d = el.tagName === 'DETAILS' ? el : (el.closest && el.closest('details'));
+        if (d && !d.open) d.open = true;
+        el.scrollIntoView();
+      }
+      window.addEventListener('hashchange', openFromHash);
+      openFromHash();
+
+      // Åbn alle / luk alle
+      var toggleAll = document.getElementById('toggle-all');
+      if (toggleAll) toggleAll.addEventListener('click', function () {
+        var anyClosed = false;
+        faser.forEach(function (d) { if (!d.open) anyClosed = true; });
+        faser.forEach(function (d) { d.open = anyClosed; });
+        toggleAll.textContent = anyClosed ? 'Luk alle' : 'Åbn alle';
+      });
+
+      // Fasemenuen kan foldes sammen på mobil (knappen vises kun dér via CSS)
+      var fasebar = document.querySelector('.fasebar');
+      if (fasebar) {
+        var mtoggle = document.createElement('button');
+        mtoggle.type = 'button';
+        mtoggle.className = 'fasebar-toggle';
+        mtoggle.textContent = '☰ Menu';
+        fasebar.appendChild(mtoggle);
+        mtoggle.addEventListener('click', function () {
+          var aaben = fasebar.classList.toggle('udfoldet');
+          mtoggle.textContent = aaben ? '✕ Luk' : '☰ Menu';
+        });
+        fasebar.addEventListener('click', function (e) {
+          if (e.target.tagName === 'A' && fasebar.classList.contains('udfoldet')) {
+            fasebar.classList.remove('udfoldet');
+            mtoggle.textContent = '☰ Menu';
+          }
+        });
+      }
+
+      // Klikbare telefonnumre. Mobilnumre i brødteksten bliver til tel:-links,
+      // dog ikke inde i de arkiverede opslags-citater, som skal gengives urørt.
+      var telRe = /\b(\d{2} \d{2} \d{2} \d{2}|\d{4} \d{4})\b/g;
+      var telWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+      var telNodes = [];
+      while (telWalker.nextNode()) {
+        var tn = telWalker.currentNode;
+        telRe.lastIndex = 0;
+        if (!telRe.test(tn.nodeValue)) continue;
+        var tEl = tn.parentElement;
+        if (!tEl || tEl.closest('a, script, style, textarea, button, details.qa blockquote')) continue;
+        telNodes.push(tn);
+      }
+      telNodes.forEach(function (tn) {
+        var frag = document.createDocumentFragment();
+        var text = tn.nodeValue, m, last = 0;
+        telRe.lastIndex = 0;
+        while ((m = telRe.exec(text))) {
+          frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+          var telA = document.createElement('a');
+          telA.className = 'tel-link';
+          telA.href = 'tel:+45' + m[0].replace(/ /g, '');
+          telA.textContent = m[0];
+          frag.appendChild(telA);
+          last = m.index + m[0].length;
+        }
+        frag.appendChild(document.createTextNode(text.slice(last)));
+        tn.parentNode.replaceChild(frag, tn);
+      });
+
+      // Send som SMS-knapper. Nummeret står i data-sms, og teksten hentes fra
+      // det nærmeste SMS-udkast (blockquote) ovenfor, så den altid følger udkastet.
+      document.querySelectorAll('a.btn-sms[data-sms]').forEach(function (a) {
+        var holder = a.closest('p, div');
+        var bq = holder ? holder.previousElementSibling : null;
+        while (bq && bq.tagName !== 'BLOCKQUOTE') bq = bq.previousElementSibling;
+        var nr = a.getAttribute('data-sms').replace(/\D/g, '');
+        var href = 'sms:+45' + nr;
+        if (bq) href += '?body=' + encodeURIComponent(bq.textContent.trim());
+        a.href = href;
+      });
+
+      // Markér aktiv fase i menuen under scroll
+      var links = document.querySelectorAll('.fasebar a[href^="#"]');
+      if ('IntersectionObserver' in window && links.length) {
+        var map = {};
+        links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting && map[en.target.id]) {
+              links.forEach(function (a) { a.classList.remove('active'); });
+              map[en.target.id].classList.add('active');
+            }
+          });
+        }, { rootMargin: '-15% 0px -70% 0px' });
+        faser.forEach(function (d) { if (map[d.id]) obs.observe(d); });
+      }
+    })();
+  </script>
+</body>
+</html>
