@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="da" class="laast">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Direktør · Bygma Aabenraa</title>
+  <script>
+    // Adgangslås. Siden er låst som udgangspunkt (class="laast" på html-elementet),
+    // og låses kun op her, hvis cookien er gyldig. Dermed forbliver siden låst,
+    // hvis JavaScript er slået fra (fail closed). Cookien tjekkes synkront i head,
+    // så indholdet aldrig når at blinke frem.
+    // Bemærk at låsen er klient-side. Den stopper almindelige besøgende, men indholdet
+    // findes stadig i sidens kilde, så personlige oplysninger skal fortsat holdes ude af siderne.
+    (function () {
+      var HASH = 'd2440ea6e006bccbde88a21f52ef8a23ebcb7fe80714f85ce7e2fe24cda9518c';
+      var m = document.cookie.match(/(?:^|; )hub_adgang=([^;]*)/);
+      if (m && m[1] === HASH) document.documentElement.classList.remove('laast');
+    })();
+  </script>
+  <style>
+    /* Adgangslås */
+    #laas { display: none; position: fixed; inset: 0; z-index: 100; align-items: center; justify-content: center;
+      background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%); padding: 20px; }
+    html.laast #laas { display: flex; }
+    html.laast .content { display: none !important; }
+    #laas form { width: 100%; max-width: 360px; text-align: center; background: rgba(30,41,59,.6);
+      border: 1px solid #334155; border-radius: 14px; padding: 32px 28px; }
+    #laas .laas-ikon { font-size: 40px; }
+    #laas h1 { font-size: 22px; margin: 10px 0 6px; color: #e2e8f0; }
+    #laas p { color: #94a3b8; font-size: 14px; margin: 6px 0 16px; }
+    #laas input { width: 100%; padding: 10px 12px; border: 1px solid #475569; border-radius: 10px;
+      background: #0b1220; color: #f1f5f9; font: inherit; text-align: center; }
+    #laas input:focus { outline: 2px solid #6366f1; border-color: #6366f1; }
+    #laas button { margin-top: 12px; width: 100%; padding: 10px 12px; border: 1px solid #6366f1;
+      border-radius: 10px; background: rgba(99,102,241,.25); color: #e0e7ff; font: inherit; cursor: pointer; }
+    #laas button:hover { background: rgba(99,102,241,.4); }
+    #laas .laas-fejl { color: #fca5a5; min-height: 18px; margin: 10px 0 0; }
+    #laas .laas-note { color: #64748b; font-size: 12.5px; margin: 10px 0 0; }
+    :root { color-scheme: light dark; }
+    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%); color: #e2e8f0;
+      display: block;
+    }
+    .content { max-width: 720px; margin: 40px auto; padding: 0 20px; }
+    .content .eyebrow { text-transform: uppercase; letter-spacing: .08em; font-size: 12px; color: #818cf8; }
+    .content .hero h1 { font-size: 40px; margin: 4px 0 8px; }
+    .content .lead { font-size: 18px; color: #cbd5e1; }
+    .content .card { background: rgba(30,41,59,.6); border: 1px solid #334155; border-radius: 14px;
+      padding: 20px 24px; margin: 20px 0; }
+    .content .card h2 { margin-top: 0; }
+    .content .commute { color: #94a3b8; font-size: 14px; margin: -6px 0 18px; }
+    .content .commute strong { color: #cbd5e1; }
+    .content .anonote { color: #94a3b8; font-size: 14px; margin: -6px 0 18px; }
+    .content .anonote strong { color: #fcd34d; }
+    /* Sticky fasemenu på undersider */
+    .content .fasebar { position: sticky; top: 0; z-index: 20; display: flex; flex-wrap: wrap; align-items: center;
+      gap: 6px; padding: 12px 0 10px; margin: 0 0 4px; border-bottom: 1px solid #334155;
+      background: linear-gradient(160deg, rgba(15,23,42,.97) 0%, rgba(30,41,59,.97) 100%); }
+    .content .fasebar a { padding: 5px 11px; border: 1px solid #334155; border-radius: 999px; font-size: 13px;
+      color: #cbd5e1; text-decoration: none; white-space: nowrap; }
+    .content .fasebar a:hover { border-color: #6366f1; }
+    .content .fasebar a.active { border-color: #6366f1; background: rgba(99,102,241,.18); color: #fff; }
+    .content .fasebar .home { color: #a5b4fc; }
+    .content .fasebar button { margin-left: auto; padding: 5px 11px; border: 1px solid #475569; border-radius: 999px;
+      background: transparent; color: #cbd5e1; font-size: 13px; cursor: pointer; }
+    .content .fasebar button:hover { border-color: #6366f1; }
+    /* Fasemenuen foldes sammen på mobil, kun Forside-link og menuknap vises */
+    .content .fasebar-toggle { display: none; }
+    @media (max-width: 640px) {
+      .content .fasebar-toggle { display: inline-block; }
+      .content .fasebar:not(.udfoldet) a:not(.home) { display: none; }
+      .content .fasebar:not(.udfoldet) #toggle-all { display: none; }
+    }
+    /* Fremdrift for tjeklister */
+    .content .progress { display: flex; align-items: center; gap: 12px; margin: 10px 0 0; }
+    .content .progress-track { flex: 1 1 auto; height: 8px; border-radius: 999px; background: #0b1220;
+      border: 1px solid #334155; overflow: hidden; }
+    .content .progress-fill { height: 100%; width: 0; background: #6366f1; border-radius: 999px; transition: width .3s; }
+    .content .progress span { font-size: 13px; color: #94a3b8; white-space: nowrap; }
+    /* Sammenklappelige fase-kort */
+    .content details.card { scroll-margin-top: 76px; }
+    .content details.card summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 12px; }
+    .content details.card summary::-webkit-details-marker { display: none; }
+    .content details.card summary h2 { margin: 0; flex: 1 1 auto; }
+    .content details.card summary::after { content: '▸'; color: #64748b; font-size: 18px; flex: 0 0 auto;
+      transition: transform .2s; }
+    .content details.card[open] summary::after { transform: rotate(90deg); }
+    .content details.card .fase-body { margin-top: 14px; }
+    /* Læsbarhed: luft, linjehøjde og tydeligt hierarki */
+    .content p { line-height: 1.65; }
+    .content li { line-height: 1.55; }
+    .content .fase-body li { margin: 7px 0; }
+    .content .fase-body h3 { margin: 28px 0 10px; padding-top: 18px; border-top: 1px solid #26334d; font-size: 19px; }
+    .content .fase-body h3:first-child { margin-top: 8px; padding-top: 0; border-top: 0; }
+    .content .fase-body h4 { margin: 24px 0 8px; color: #c7d2fe; }
+    .content .fase-body h5 { margin: 18px 0 6px; color: #a5b4fc; font-size: 14.5px; }
+    .content blockquote { margin: 14px 0; padding: 12px 16px; border-left: 3px solid #6366f1;
+      background: rgba(99,102,241,.08); border-radius: 0 10px 10px 0; }
+    .content blockquote p { margin: 8px 0; }
+    /* Nedtælling på forsiden */
+    .content .countdown { text-align: center; font-size: 15px; color: #fcd34d; background: rgba(251,191,36,.08);
+      border: 1px solid rgba(251,191,36,.4); border-radius: 10px; padding: 10px 14px; margin: 18px 0 0; }
+    .content .countdown:empty { display: none; }
+    /* Spørgsmål & svar (øve-kort: svaret er skjult til man klikker) */
+    .content details.qa { border: 1px solid #334155; border-radius: 10px; padding: 10px 14px; margin: 8px 0;
+      background: rgba(15,23,42,.35); }
+    .content details.qa summary { cursor: pointer; list-style: none; display: flex; gap: 10px;
+      align-items: baseline; font-weight: 600; color: #e2e8f0; }
+    .content details.qa summary::-webkit-details-marker { display: none; }
+    .content details.qa summary::before { content: 'Q'; color: #818cf8; font-weight: 700; flex: 0 0 auto; }
+    .content details.qa p { margin: 10px 0 4px; color: #cbd5e1; }
+    /* Eksport/import af flueben og noter */
+    .content .databtns { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+    .content .databtns button, .content .databtns .btn-import { display: inline-flex; align-items: center;
+      padding: 7px 12px; border: 1px solid #475569; border-radius: 999px; background: transparent;
+      color: #cbd5e1; font-size: 13px; cursor: pointer; }
+    .content .databtns button:hover, .content .databtns .btn-import:hover { border-color: #6366f1; }
+    .content .kal-tom { color: #94a3b8; font-size: 14px; padding: 18px 0; text-align: center; }
+    /* Næste skridt-panel på forsiden */
+    .content .card.naeste { border-color: #4f46e5; background: rgba(79,70,229,.07); }
+    .content .naeste-note { font-size: 13px; color: #94a3b8; margin: 0 0 10px; }
+    .content .naeste-liste { list-style: none; margin: 0; padding: 0; display: flex;
+      flex-direction: column; gap: 10px; counter-reset: naeste; }
+    .content .naeste-liste li { display: grid; grid-template-columns: 108px 1fr; gap: 12px;
+      align-items: baseline; padding: 9px 0; border-top: 1px solid rgba(148,163,184,.15); }
+    .content .naeste-liste li:first-child { border-top: 0; padding-top: 0; }
+    .content .naeste-dato { font-size: 13px; font-weight: 600; color: #a5b4fc;
+      white-space: nowrap; letter-spacing: .01em; }
+    .content .naeste-hvad { color: #cbd5e1; line-height: 1.6; }
+    .content .naeste-hvad strong { color: #e2e8f0; }
+    @media (max-width: 560px) {
+      .content .naeste-liste li { grid-template-columns: 1fr; gap: 2px; }
+    }
+    /* Klikbare mobilnumre: ring op og send SMS med færdig tekst */
+    .content a.tel-link { color: #a5b4fc; text-decoration: underline; text-decoration-style: dotted;
+      text-underline-offset: 3px; white-space: nowrap; }
+    .content a.tel-link:hover { text-decoration-style: solid; }
+    .content .databtns .btn-sms { display: inline-flex; align-items: center; padding: 7px 12px;
+      border: 1px solid #475569; border-radius: 999px; color: #cbd5e1; font-size: 13px;
+      text-decoration: none; }
+    .content .databtns .btn-sms:hover { border-color: #6366f1; }
+    .content .btn-word, .content .btn-pdf { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
+      border: 1px solid #475569; border-radius: 999px; background: rgba(99,102,241,.12);
+      color: #c7d2fe; font-size: 14px; cursor: pointer; margin: 4px 8px 14px 0; }
+    .content .btn-word:hover, .content .btn-pdf:hover { border-color: #6366f1; }
+    /* Print: ren sort-på-hvid A4 af det åbne indhold */
+    @media print {
+      body { background: #fff !important; }
+      .content { max-width: 100%; margin: 0; padding: 0; }
+      .content * { color: #000 !important; background: transparent !important; border-color: #bbb !important; }
+      .fasebar, .progress, .notes, .databtns, .anonote, .foot, #toggle-all, .cal-actions { display: none !important; }
+      .content .card { border: 0; border-radius: 0; padding: 10px 0; margin: 10px 0; }
+      .content details.card summary::after { display: none; }
+      .content a { text-decoration: none; }
+      /* Sideskift: hver fase starter på en ny side */
+      .content details.card { break-before: page; border-top: 0; }
+      .content main > details.card:first-of-type { break-before: auto; }
+      /* Hold sammenhængende blokke samlet på én side */
+      .content details.qa, .content blockquote, .content .huskeliste li,
+      .content .event, .content .fase-body > ul > li { break-inside: avoid; }
+      .content h2, .content h3, .content h4, .content h5 { break-after: avoid; }
+      .content p, .content li { orphans: 3; widows: 3; }
+      /* Hver forberedelsesmodel (STAR, Domæne, 4D, CMM, Tomm) starter på egen side */
+      .content #modeller .fase-body h3 { break-before: page; border-top: 0; }
+      .content #modeller .fase-body h3:first-of-type { break-before: auto; }
+    }
+    @page { margin: 15mm; }
+    /* Private noter (gemmes kun i browserens localStorage) */
+    .content .notes { width: 100%; border: 1px solid #475569; border-radius: 12px; padding: 12px;
+      background: #0b1220; color: #f1f5f9; font: inherit; font-size: 14px; resize: vertical; }
+    .content .notes:focus { outline: 2px solid #6366f1; border-color: #6366f1; }
+    .content a { color: #a5b4fc; }
+    .content .backlink { font-size: 14px; margin: 28px 0 -24px; }
+    .content .backlink a { text-decoration: none; }
+    /* Klikbare stillinger på forsiden */
+    .content .joblink { display: block; padding: 16px 20px; margin: 14px 0; border: 1px solid #334155;
+      border-radius: 12px; background: rgba(15,23,42,.4); color: inherit; text-decoration: none; }
+    .content .joblink:hover { border-color: #6366f1; }
+    .content .joblink h3 { margin: 0 0 6px; font-size: 17px; }
+    .content .joblink p { margin: 0; color: #94a3b8; font-size: 14px; }
+    .content code { background: #0b1220; padding: 2px 6px; border-radius: 6px; font-size: 90%; }
+    .content .foot { color: #64748b; font-size: 13px; margin: 40px 0; text-align: center; }
+    /* Kalender / tidslinje */
+    .content .timeline { list-style: none; margin: 8px 0 0; padding: 0; }
+    .content .event { display: flex; gap: 16px; padding: 16px 0; border-top: 1px solid #334155; }
+    .content .event:first-child { border-top: 0; }
+    .content .event-date { flex: 0 0 64px; text-align: center; background: #0b1220;
+      border: 1px solid #334155; border-radius: 10px; padding: 8px 4px; align-self: flex-start; }
+    .content .event-date .day { display: block; font-size: 22px; font-weight: 700; line-height: 1.1; color: #f1f5f9; }
+    .content .event-date .mon { display: block; font-size: 11px; text-transform: uppercase;
+      letter-spacing: .05em; color: #94a3b8; }
+    .content .event-body { flex: 1 1 auto; }
+    .content .event-body h3 { margin: 6px 0 4px; font-size: 17px; }
+    .content .event-body p { margin: 0; color: #cbd5e1; font-size: 14px; }
+    .content .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 9px;
+      border-radius: 999px; text-transform: uppercase; letter-spacing: .04em; }
+    .content .tag--frist { background: rgba(248,113,113,.15); color: #fca5a5; border: 1px solid #f87171; }
+    .content .tag--samtale { background: rgba(129,140,248,.15); color: #a5b4fc; border: 1px solid #818cf8; }
+    .content .tag--tiltraedelse { background: rgba(52,211,153,.15); color: #6ee7b7; border: 1px solid #34d399; }
+    .content .tag--opfoelgning { background: rgba(251,191,36,.15); color: #fcd34d; border: 1px solid #fbbf24; }
+    .content .tag--kladde { background: rgba(251,191,36,.15); color: #fcd34d; border: 1px solid #fbbf24; }
+    .content .tag--sendt { background: rgba(52,211,153,.15); color: #6ee7b7; border: 1px solid #34d399; }
+    .content .tag--inspiration { background: rgba(34,211,238,.15); color: #67e8f9; border: 1px solid #22d3ee; }
+    /* Statusliste øverst på stillingssiderne */
+    .content .statusliste { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 14px 0 4px; }
+    .content .statusliste li { padding: 5px 13px; border-radius: 999px; font-size: 13px; background: rgba(148,163,184,.08); color: #94a3b8; border: 1px solid #334155; }
+    .content .statusliste .st-done { background: rgba(52,211,153,.13); color: #6ee7b7; border-color: #34d399; }
+    .content .statusliste .st-next { background: rgba(251,191,36,.13); color: #fcd34d; border-color: #fbbf24; font-weight: 600; }
+    .content .statusliste .st-stop { background: rgba(248,113,113,.13); color: #fca5a5; border-color: #f87171; }
+    /* Casebilleder (grafisk facilitering) */
+    .content .billedpar { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 12px 0; }
+    .content .casebillede { width: 100%; display: block; background: #fff; border-radius: 12px; border: 1px solid #334155; }
+    @media (max-width: 760px) { .content .billedpar { grid-template-columns: 1fr; } }
+    /* Månedskalender (kalender.html) */
+    .content .kal-legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 0 0 18px; }
+    .content .kal-key { font-size: 12.5px; color: #cbd5e1; display: inline-flex; align-items: center; gap: 7px; }
+    .content .kal-key::before { content: ''; width: 12px; height: 12px; border-radius: 4px; }
+    .content .kal-key--frist::before { background: #f87171; }
+    .content .kal-key--samtale::before { background: #818cf8; }
+    .content .kal-key--tiltraedelse::before { background: #34d399; }
+    .content .kal-month { margin: 0 0 26px; }
+    .content .kal-title { margin: 0 0 10px; font-size: 18px; text-transform: capitalize; }
+    .content .kal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+    .content .kal-head { text-align: center; font-size: 11px; text-transform: uppercase; letter-spacing: .04em;
+      color: #94a3b8; padding: 4px 0; }
+    .content .kal-cell { min-height: 60px; border: 1px solid #26334d; border-radius: 8px;
+      background: rgba(15,23,42,.4); padding: 4px; display: flex; flex-direction: column; gap: 3px; }
+    .content .kal-cell.kal-empty { border: 0; background: transparent; }
+    .content .kal-cell.kal-has { border-color: #475569; background: rgba(30,41,59,.6); }
+    .content .kal-cell.kal-idag { background: rgba(250,204,21,.16); border-color: #facc15;
+      box-shadow: inset 0 0 0 1px rgba(250,204,21,.35); }
+    .content .kal-cell.kal-idag.kal-has { background: rgba(250,204,21,.22); }
+    .content .kal-daynum { font-size: 12px; color: #94a3b8; font-weight: 600; }
+    .content .kal-cell.kal-idag .kal-daynum { color: #fde68a; }
+    .content .kal-cell.kal-has .kal-daynum { color: #f1f5f9; }
+    .content .kal-chip { display: block; text-decoration: none; border-radius: 6px; padding: 3px 6px;
+      font-size: 11px; line-height: 1.25; border: 1px solid transparent; }
+    .content .kal-filter { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; }
+    .content .kal-filter label { display: inline-flex; align-items: center; gap: 6px; padding: 4px 11px;
+      border: 1px solid #334155; border-radius: 999px; font-size: 12.5px; color: #cbd5e1; cursor: pointer; }
+    .content .kal-filter label:hover { border-color: #6366f1; }
+    .content .kal-filter input { accent-color: #6366f1; margin: 0; }
+    .content .kal-chip-tag { display: inline-block; min-width: 15px; margin-right: 5px; padding: 0 3px;
+      border-radius: 4px; font-size: 10px; font-weight: 700; text-align: center;
+      background: rgba(255,255,255,.16); }
+    .content .kal-chip-lab { font-weight: 600; }
+    .content .kal-chip--frist { background: rgba(248,113,113,.15); color: #fca5a5; border-color: #f87171; }
+    .content .kal-chip--samtale { background: rgba(129,140,248,.15); color: #a5b4fc; border-color: #818cf8; }
+    .content .kal-chip--tiltraedelse { background: rgba(52,211,153,.15); color: #6ee7b7; border-color: #34d399; }
+    .content .kal-legend-note { font-size: 12px; color: #94a3b8; margin: -8px 0 16px; }
+    .content .kal-foot { margin: 6px 0 0; font-size: 14px; }
+    @media (max-width: 560px) {
+      .content .kal-cell { min-height: 50px; }
+      .content .kal-chip { font-size: 10px; padding: 2px 4px; }
+    }
+    /* Huskelister */
+    .content .huskeliste { margin: 8px 0 22px; padding-left: 24px; }
+    .content .huskeliste li { padding: 3px 0; }
+    /* Svarnoter i samtaleforberedelsen (runde 2) */
+    .content .svarnote { display: block; margin-top: 4px; color: #cbd5e1; }
+    .content .svarnote em { color: #a5b4fc; font-style: normal; font-weight: 600; }
+    /* Tilføj til kalender-knapper (pr. begivenhed) */
+    .content .cal-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+    .content .cal-btn { display: inline-flex; align-items: center; padding: 5px 11px; border: 1px solid #475569;
+      border-radius: 999px; background: transparent; color: #cbd5e1; font-size: 12.5px; cursor: pointer;
+      text-decoration: none; }
+    .content .cal-btn:hover { border-color: #6366f1; }
+  </style>
+</head>
+<body>
+  <div id="laas" role="dialog" aria-label="Adgangskode">
+    <form id="laas-form">
+      <div class="laas-ikon">🔒</div>
+      <h1>Privat side</h1>
+      <p>Indtast adgangskoden for at se indholdet.</p>
+      <input type="password" id="laas-kode" autocomplete="current-password" aria-label="Adgangskode" />
+      <button type="submit">Lås op</button>
+      <p id="laas-fejl" class="laas-fejl" aria-live="polite"></p>
+      <p class="laas-note">Adgangen huskes i en time i denne browser.</p>
+      <noscript><p class="laas-fejl">Låsen kræver JavaScript. Slå JavaScript til for at logge ind.</p></noscript>
+    </form>
+  </div>
+  <script>
+    // Adgangslås. Koden gemmes kun som SHA-256-hash, og godkendelse huskes i en cookie i en time.
+    (function () {
+      var HASH = 'd2440ea6e006bccbde88a21f52ef8a23ebcb7fe80714f85ce7e2fe24cda9518c';
+      var form = document.getElementById('laas-form');
+      if (!form) return;
+      var input = document.getElementById('laas-kode');
+      var fejl = document.getElementById('laas-fejl');
+      if (document.documentElement.classList.contains('laast')) {
+        setTimeout(function () { input.focus(); }, 50);
+      }
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var v = input.value || '';
+        if (!(window.crypto && crypto.subtle)) {
+          fejl.textContent = 'Din browser understøtter ikke låsen. Prøv en nyere browser.';
+          return;
+        }
+        crypto.subtle.digest('SHA-256', new TextEncoder().encode(v)).then(function (buf) {
+          var hex = Array.prototype.map.call(new Uint8Array(buf), function (b) {
+            return ('0' + b.toString(16)).slice(-2);
+          }).join('');
+          if (hex === HASH) {
+            document.cookie = 'hub_adgang=' + hex + '; max-age=3600; path=/; SameSite=Strict';
+            document.documentElement.classList.remove('laast');
+            input.value = '';
+            fejl.textContent = '';
+          } else {
+            fejl.textContent = 'Forkert adgangskode. Prøv igen.';
+            input.select();
+          }
+        });
+      });
+    })();
+  </script>
+  <div class="content"><!-- Underside: Direktør · Bygma Aabenraa. Genereres til bygma-aabenraa.html af build.mjs.
+     Opslaget indsendt af ejeren og gemt 25. november 2026. Første private spor siden Sydgros. -->
+<p class="backlink"><a href="index.html">← Forsiden</a></p>
+<header class="hero">
+  <p class="eyebrow">Stilling · overvejes · første spor uden for skoleområdet</p>
+  <h1>🏗️ Direktør · Bygma Aabenraa</h1>
+  <p class="lead">Bygma A/S · frist søndag 3. januar 2027 · løbende samtaler, så stillingen kan besættes før fristen · cirka 40 medarbejdere inden for salg, lager og logistik · reference til regionsdirektøren i Region Syd.</p>
+  <p class="commute">🚗 <strong>Kørsel fra Aabenraa.</strong> Forretningen ligger i Aabenraa. Reelt ingen pendling, og det er den korteste vej til arbejde i hele porteføljen.</p>
+  <p class="anonote">🔒 <strong>Pladsholdere.</strong> Personlige oplysninger er erstattet med [MIT NAVN], [ALDER], [MIN NUVÆRENDE SKOLE] og [MIN TIDLIGERE SKOLE]. Indsæt de rigtige data i den version, jeg sender.</p>
+</header>
+
+<main>
+  <nav class="fasebar">
+    <a class="home" href="index.html">← Forside</a>
+    <a href="#vurdering">📊 Vurdering</a>
+    <a href="#fase-1">1 · Research</a>
+    <a href="#fase-2">2 · Kontakt</a>
+    <a href="#fase-3">3 · Opkald</a>
+    <a href="#fase-4">4 · Beslutning</a>
+    <a href="#fase-5">5 · Ansøgning</a>
+    <a href="#fase-6">6 · Samtaler</a>
+    <a href="#svar">🎯 Svar</a>
+    <a href="#fase-8">8 · Løn</a>
+    <a href="#kilder">📄 Kilder</a>
+    <a href="#noter">📝 Noter</a>
+    <button id="toggle-all" type="button">Åbn alle</button>
+  </nav>
+  <ul class="statusliste">
+    <li class="st-done">✓ Opslag indsendt og gemt 25/11</li>
+    <li class="st-next">▶ Beslut, om sporet skal åbnes · det er et brancheskifte, ikke et karriereskridt</li>
+    <li class="st-todo">○ Opkald til regionsdirektøren · afklarer det hele på ti minutter</li>
+    <li class="st-todo">○ Ansøgning · frist 3/1-2027, men løbende samtaler taler for tidligt</li>
+    <li class="st-todo">○ Samtaler</li>
+    <li class="st-todo">○ Svar</li>
+  </ul>
+  <p class="commute">✏️ <strong>Status.</strong> Opslaget blev indsendt onsdag den 25. november. Direktør for Bygma Aabenraa med det samlede ansvar for strategisk og operationel drift, cirka 40 medarbejdere inden for salg, lager og logistik, fuldt budget- og bundlinjeansvar og plads i ledergruppen i Region Syd. Bygma A/S har 64 forretninger og cirka 1.700 medarbejdere, og koncernen omsatte for 11,6 mia. kr. i 2025. Det er det første spor uden for skoleområdet siden Sydgros, og det er taget ind af to grunde. Opslaget siger to gange, at ledelseserfaring vejer tungere end branchekendskab, og det fjerner præcis den barriere, der har lukket de tre skolelederspor. Og forretningen ligger i Aabenraa. Til gengæld står der et reelt krav om kommerciel forståelse og erfaring med salg, og det er et hul, der ikke kan skrives væk. Næste skridt. Beslut, om sporet skal åbnes, og ring i så fald til regionsdirektøren, før ansøgningen skrives.</p>
+
+  <details class="card fase" id="vurdering">
+    <summary><h2>📊 Vurdering · chancer og det ærlige forbehold</h2></summary>
+    <div class="fase-body">
+      <p><em>Skøn sat efter kalibreringsreglen på <a href="analyse.html#kalibrering">analysesiden</a>. Forudsætter at ansøgningen sendes.</em></p>
+      <h4>🔓 Det, der gør opslaget interessant lige nu</h4>
+      <ul>
+        <li><strong>Titelbarrieren findes ikke her.</strong> Tre afsendte ansøgninger til almen skolelederstillinger i 2026 faldt alle ved indkaldelsen, og den eneste konstant var den manglende almene skoleleder-titel. Her står der direkte, at ledelseserfaring er vigtigere end branchekendskab, og at branchekendskab er en fordel men ikke et krav. Opslaget siger endda selv, at kandidaten kan komme fra en anden ledende rolle med betydeligt personaleansvar og være klar til at tage det samlede ansvar for en forretning. Det er en beskrivelse af en forstander.</li>
+        <li><strong>Det samlede ansvar er kendt terræn.</strong> Som forstander siden 2018 er hele ansvaret for økonomi, personale og bestyrelse båret alene, uden en forvaltning at læne sig op ad. Bygma beder om det overordnede ansvar for budgetter, økonomi og målopfyldelse plus eget bundlinjeansvar. Det er den samme form for ansvar i en anden valuta.</li>
+        <li><strong>Fire af de fem vægtede krav rammes.</strong> Dokumenteret erfaring med personaleledelse og udvikling af medarbejdere, ja. Skabe engagement, samarbejde og fælles retning, ja, og det er selve kernebudskabet. Arbejde struktureret med økonomi, prioriteringer og opfølgning, ja. Forstå værdien af gode relationer og et stærkt lokalt netværk, ja, og Aabenraa er hjemby.</li>
+        <li><strong>Geografien er den bedste i hele porteføljen.</strong> Forretningen ligger i Aabenraa. Der er ingen pendling.</li>
+        <li><strong>Markedet er tomt på skoleområdet.</strong> Markedstjekket den 7. november fandt nul ledelsesstillinger på skoler i de fire nærmeste kommuner. Alternativet til dette spor er ikke et andet spor, det er ingen spor.</li>
+      </ul>
+      <h4>⚠️ Det ærlige forbehold, og det er stort</h4>
+      <ul>
+        <li><strong>Kommerciel forståelse står som et vægtet krav, og det er et reelt hul.</strong> Der står, at der lægges særlig vægt på kommerciel forståelse og evnen til at omsætte muligheder til konkrete initiativer og resultater, og at kandidaten har erfaring med salg eller kommerciel udvikling. Det er ikke branchekendskab, som de siger er valgfrit. Det er en selvstændig kompetence, og den er ikke på CV'et. Det nærmeste er rekruttering af elever til en efterskole i et marked, hvor man skal vide, hvorfor nogen vælger os. Det er beslægtet, men det er ikke B2B-salg til professionelle håndværkere og entreprenører.</li>
+        <li><strong>Feltet har sine egne karriereveje.</strong> Kalibreringsreglens første punkt gælder i fuld styrke. En direktørstilling i byggematerialebranchen tiltrækker salgschefer, butikschefer og afdelingsdirektører med både ledelse og bundlinje i branchen. De rammer alle fem vægtede krav, hvor denne profil rammer fire.</li>
+        <li><strong>Lønpakken er resultatafhængig.</strong> Der står, at lønpakken bliver påvirket af gode resultater. Det er en anden lønlogik end den kommunale, og den skal forstås, før der forhandles. Tallene hører i de private noter, ikke her.</li>
+        <li><strong>Og så det, ingen analyse kan svare på.</strong> Hele porteføljen, alle kernebudskaber og hele elevsynet peger på skoleledelse. Det her er et brancheskifte, ikke et karriereskridt. Det kan være præcis det rigtige, og det kan være et nødgreb, der bliver fortrudt. Det afgøres ikke af et skøn, se afsnittet nedenfor.</li>
+      </ul>
+      <h4>📈 Skønnene</h4>
+      <ul>
+        <li><strong>Chance for 1. samtale. Skøn 20 til 30 procent.</strong> Ledelsesprofilen er stærk og udtrykkeligt velkommen, og opslagets usædvanligt åbne formuleringer om branchekendskab trækker op. Det kommercielle hul trækker tilsvarende ned mod et felt, der har det. Et opkald til regionsdirektøren kan løfte med højst 5 point, og det loft er bekræftet fire gange i 2026.</li>
+        <li><strong>Chance for at få stillingen tilbudt. Skøn 7 til 12 procent.</strong> Erfaringstallet er en tredjedel til halvdelen af samtale-skønnet. Trukket yderligere ned, fordi et brancheskifte normalt afgøres i sidste runde til fordel for den, der kender markedet, medmindre panelet bevidst søger en anden ledelseskultur.</li>
+        <li><strong>Løbende samtaler ændrer tidslogikken.</strong> Der står eksplicit, at den rette kandidat kan blive valgt før fristen. Fristen den 3. januar er derfor ikke den reelle deadline. Skal sporet åbnes, skal det åbnes i denne uge eller den næste, ikke i julen.</li>
+      </ul>
+      <h4>🧭 Spørgsmålet, der skal besvares før alt andet</h4>
+      <p>Det her er ikke en stilling, man søger halvhjertet. Et panel mærker forskel på en kandidat, der vil ind i branchen, og en kandidat, der vil væk fra noget andet. Og de tre skoleafslag har gjort det sidste til en nærliggende motivation.</p>
+      <p>Derfor er rækkefølgen omvendt af normalt. Normalt afklarer opkaldet, om stillingen er værd at søge. Her skal det først afklares, om et liv som direktør i byggematerialebranchen er noget, der vil ønskes om tre år. Hvis svaret er ja, er opslaget usædvanligt åbent og geografien perfekt, og så skal der ringes med det samme. Hvis svaret er nej eller måske, er det bedre at lade være, fordi løbende samtaler betyder, at en halvhjertet ansøgning brænder en relation i det lokale erhvervsliv, som kan være mere værd senere.</p>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-1">
+    <summary><h2>1️⃣ Research <span class="tag tag--sendt">✓ Opslag læst</span></h2></summary>
+    <div class="fase-body">
+      <h4>Stillingen i tal</h4>
+      <ul>
+        <li><strong>Cirka 40 medarbejdere</strong> inden for salg, lager og logistik.</li>
+        <li><strong>Fuldtid, 37 timer, fastansættelse.</strong></li>
+        <li><strong>Reference til regionsdirektøren</strong> og plads i ledergruppen i Region Syd.</li>
+        <li><strong>Bygma A/S.</strong> 64 forretninger og cirka 1.700 medarbejdere. Koncernen Bygma Gruppen A/S har over 3.000 medarbejdere og mere end 125 forretningsenheder i Nord- og Centraleuropa, med en omsætning på 11,6 mia. kr. i 2025. Danskejet.</li>
+        <li><strong>Frist 3. januar 2027</strong>, men med løbende samtaler og mulighed for at vælge før fristen.</li>
+      </ul>
+      <h4>Hvad opslaget beder om</h4>
+      <ul>
+        <li><strong>Det samlede ansvar</strong> for strategisk og operationel drift af forretningen.</li>
+        <li><strong>Fem vægtede krav.</strong> Dokumenteret erfaring med personaleledelse og udvikling af medarbejdere. At kunne skabe engagement, samarbejde og fælles retning. Kommerciel forståelse og evnen til at omsætte muligheder til resultater. Struktureret arbejde med økonomi, prioriteringer og opfølgning. Forståelse for gode kunderelationer og et stærkt lokalt netværk.</li>
+        <li><strong>Seks ansvarsområder.</strong> Lede, motivere og udvikle medarbejderne med fokus på trivsel, samarbejde og resultater. Sikre effektiv daglig drift med høj kundetilfredshed. Planlægge og udvikle salgsindsatsen. Det overordnede ansvar for budgetter, økonomi og målopfyldelse. Sikre lønsom vækst. Nå målene på en bæredygtig måde.</li>
+        <li><strong>Den udfordring, der nævnes.</strong> Kundebasen er stærk, men der ses et potentiale i at tiltrække flere kunder og styrke positionen i lokalområdet. Det er opgavens egentlige kerne, og det er den kommercielle del.</li>
+      </ul>
+      <h4>Nøgleord, der går igen</h4>
+      <p>Resultater gennem mennesker. Tydelig retning. Engagement og fælles ansvar. Trivsel og samarbejde. Lønsom vækst. Kunderelationer. Lokalt netværk. Handlefrihed og eget bundlinjeansvar.</p>
+      <p>De fire første er skrevet i samme sprog, som kernebudskaberne bruger. De tre næste er ikke. Det er præcis dér, ansøgningen skal arbejde hårdest.</p>
+      <h4>Match og hul, uden pyntning</h4>
+      <ul>
+        <li><strong>Rammer direkte.</strong> Personaleledelse i otte år. Resultater gennem andre. Budget- og driftsansvar. At sætte retning og samtidig involvere, så medarbejdere tager ansvar. Trivsel og arbejdsmiljø som dokumenteret ledelsespraksis. Lokalt netværk i Aabenraa.</li>
+        <li><strong>Rammer indirekte.</strong> Markedsforståelse fra en efterskole, der rekrutterer i konkurrence hvert år og skal kunne sige, hvad den er kendt for. Det er et ægte, men mindre, kommercielt argument.</li>
+        <li><strong>Rammer ikke.</strong> B2B-salg, kundeopsøgende arbejde, byggematerialer, entreprenørkunder, lager og logistik som fagområde. Ingen af delene er på CV'et.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-2">
+    <summary><h2>2️⃣ Første kontakt · opkald frem for SMS</h2></summary>
+    <div class="fase-body">
+      <p>Her skal der ringes og ikke sendes SMS. Det er en privat virksomhed, og en direktørstilling besættes af mennesker, der forventer, at en direktørkandidat tager telefonen selv. En SMS er kommunal høflighed, et opkald er erhvervsmæssig normal adfærd.</p>
+      <p>📞 <strong>Regionsdirektør Ejnar C. Andersen, telefon 28 44 02 74.</strong> Han er opslagets egen kontaktperson og bliver den nærmeste chef.</p>
+      <h4>Åbningen, 20 sekunder</h4>
+      <blockquote><p>Hej Ejnar, mit navn er [MIT NAVN]. Jeg har set opslaget på direktørstillingen i Aabenraa, og jeg ringer, fordi jeg kommer med otte års ledelse og fuldt ansvar for en virksomhed, men ikke fra byggebranchen. Jeg vil gerne bruge ti minutter på at finde ud af, om det er interessant for jer eller ej, før jeg bruger din og min tid på en ansøgning.</p></blockquote>
+      <ul>
+        <li><strong>Hullet nævnes af mig selv i første sætning.</strong> Det er modsat strategien på skolesporene, og grunden er, at det her ikke kan skjules alligevel. Lægges det frem med det samme, bliver det en præmis for samtalen frem for en indvending til sidst. Og det er en direktørmæssig måde at åbne på.</li>
+        <li><strong>Formålet siges højt.</strong> At finde ud af, om det er interessant for jer eller ej. Det giver ham en nem udvej og gør, at et nej bliver ærligt frem for høfligt.</li>
+        <li><strong>Hverdag mellem 8 og 15.</strong> Undgå fredag eftermiddag.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-3">
+    <summary><h2>3️⃣ Opkaldet · tre spørgsmål og ét svar, der afgør</h2></summary>
+    <div class="fase-body">
+      <h4>Spørgsmålene</h4>
+      <ol>
+        <li><strong>Hvor meget af direktørens tid går reelt til salg og kunder, og hvor meget til ledelse og drift?</strong> Det er dagens vigtigste spørgsmål. Er det halvt om halvt, er profilen i spil. Er det en sælgende direktør, der også leder, er den ikke.</li>
+        <li><strong>Hvad er det, I gerne vil have gjort anderledes i Aabenraa?</strong> Opslaget siger, at kundebasen er stærk, men at der er potentiale for flere kunder. Spørg, hvad der ligger under den sætning. Det er opgavens egentlige kerne.</li>
+        <li><strong>Hvad kendetegner en direktør, der lykkes hos jer, og hvad får en til at mislykkes?</strong> Det sidste led er det, der giver det ærlige svar.</li>
+        <li><strong>Hvor står I med en kandidat, der kommer udefra?</strong> Stil den direkte, hvis han ikke selv kommer ind på det. Opslaget inviterer, men et opslag og et ansættelsesudvalg er ikke altid enige.</li>
+      </ol>
+      <h4>Det ene svar, der afgør</h4>
+      <p>Hvis han svarer, at det vigtigste er at komme ud til kunderne og sælge, er sporet reelt lukket, uanset hvad opslaget siger. Hvis han svarer, at forretningen har dygtige sælgere, men mangler ledelse, retning og sammenhæng mellem salg, lager og logistik, er det en opgave, der kan løses med ledelse, og så er profilen stærk. Lyt efter, hvilken af de to historier han fortæller, og lad være med at tale den anden frem.</p>
+      <h4>Lyttepunkter</h4>
+      <ul>
+        <li><strong>Det, der nævnes først,</strong> er den reelle topprioritet.</li>
+        <li><strong>Tallene.</strong> Omsætning, antal kunder, udviklingen de seneste år. En erhvervsleder nævner dem uopfordret, hvis de er gode.</li>
+        <li><strong>Hvorfor er stillingen ledig.</strong> Stopper den tidligere direktør, forfremmes han, eller er der sket noget. Det siger mere end resten af opkaldet.</li>
+        <li><strong>Hans eget sprog om medarbejderne.</strong> Tales der om teamet eller om bemandingen. Det afgør, om kernebudskaberne overhovedet passer ind i huset.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-4">
+    <summary><h2>4️⃣ Fra opkald til beslutning</h2></summary>
+    <div class="fase-body">
+      <p>Noterne fra opkaldet skrives ind her samme dag.</p>
+      <h4>Beslutningsreglen, sat på forhånd</h4>
+      <ul>
+        <li><strong>Send, hvis</strong> opkaldet viser, at opgaven er ledelsestung, at han selv åbner for en kandidat udefra, og at svaret på hvorfor direktør i byggebranchen er et ja uden tøven.</li>
+        <li><strong>Lad være, hvis</strong> opgaven er salgstung, eller hvis motivationen er at komme væk frem for at komme hen. Løbende samtaler betyder, at en halvhjertet ansøgning bliver vurderet i konkurrence med kandidater, der brænder for det, og et nej her koster en relation i det lokale erhvervsliv.</li>
+        <li><strong>Timingen.</strong> Besluttes der at søge, skal ansøgningen af sted inden for en uge. Fristen den 3. januar er formel, men der holdes samtaler løbende, og julen gør, at ugerne 50 og 51 reelt er de sidste, hvor en ansøgning bliver læst i tide.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-5">
+    <summary><h2>5️⃣ Ansøgningen · frist søndag 3. januar 2027</h2></summary>
+    <div class="fase-body">
+      <p>Skrives først efter opkaldet, og kun hvis beslutningsreglen i fase 4 siger send. Her er grebene, så de ligger klar.</p>
+      <h4>Ansøgningens bærende greb</h4>
+      <ul>
+        <li><strong>Åbn på det samlede ansvar, ikke på skolen.</strong> Første sætning skal placere mig som en leder, der i otte år har båret hele ansvaret for en virksomhed med økonomi, personale og bestyrelse, uden en forvaltning bag sig. Ordet skole kommer senere. Det er ikke for at skjule noget, det er fordi ansvaret er det, der er relevant, og skolen er konteksten.</li>
+        <li><strong>Nævn hullet selv, tidligt, og én gang.</strong> Jeg kommer ikke fra byggebranchen og har ikke solgt byggematerialer. Det skrives roligt, og det efterfølges straks af, hvad der kommer i stedet. Et panel, der selv har skrevet at ledelseserfaring vejer tungest, skal have lov at se, at jeg har læst det.</li>
+        <li><strong>Oversæt efterskolens marked til kommerciel forståelse, uden at overdrive.</strong> En efterskole rekrutterer sine elever i konkurrence hvert eneste år. Jeg ved, hvad det kræver at vide, hvorfor nogen vælger os, at kunne sige det højt uden at love noget, vi ikke holder, og at fortællingen skal passe med hverdagen. Det er ikke B2B-salg, og det skal ikke påstås at være det. Men det er markedsforståelse, og den er erhvervet og ikke læst.</li>
+        <li><strong>Resultater gennem mennesker er opslagets egen overskrift og mit eget felt.</strong> Dette afsnit skal være det stærkeste i brevet. Konkret eksempel på at sætte retning, involvere og få medarbejdere til at tage ansvar, med et resultat man kan se.</li>
+        <li><strong>Sammenhængen mellem salg, lager og logistik er en ledelsesopgave.</strong> Opslaget beder om god sammenhæng mellem de tre. Som forstander skal undervisning, kostskole, køkken og service spille sammen hver eneste dag, og ingen faggruppe kan undværes, hvis dagen skal hænge sammen. Det er den samme opgave i en anden bygning, og det er det stærkeste analogi-greb, brevet har.</li>
+        <li><strong>Økonomien som fagligt redskab.</strong> Budgetansvar gennem hele ledertiden, også når rammerne strammede. De gode prioriteringer kommer, når medarbejderne forstår rammen og er med til at bruge den.</li>
+        <li><strong>Det lokale.</strong> Jeg bor i Aabenraa, og jeg bliver. For en forretning, der skal styrke sin position i lokalområdet, er det et argument og ikke en biting.</li>
+        <li><strong>Afslutningen skal være kommerciel i tonen.</strong> Ikke en pædagogisk slutning. Noget i retning af, at jeg gerne vil tage ansvaret for forretningen og for bundlinjen, og at jeg vil bruge det første halve år på at lære markedet at kende gennem dem, der kender det.</li>
+      </ul>
+      <h4>Det ansøgningen ikke må gøre</h4>
+      <ul>
+        <li><strong>Ikke pædagogisk sprog.</strong> Ord som elevsyn, inklusion, trivselsarbejde og dannelse hører ikke hjemme her. Trivsel må gerne nævnes, fordi opslaget selv bruger ordet, men som arbejdsmiljø og ikke som pædagogik.</li>
+        <li><strong>Ikke en undskyldning.</strong> Hullet nævnes én gang og vendes derefter. Nævnes det to gange, bliver det brevets emne.</li>
+        <li><strong>Ikke en antydning af at ville væk fra noget.</strong> Samme regel som på skolesporene, og den vejer tungere her, fordi et brancheskifte i forvejen rejser spørgsmålet.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-6">
+    <summary><h2>6️⃣ Samtalerne · løbende, så de kan komme hurtigt</h2></summary>
+    <div class="fase-body">
+      <ul>
+        <li><strong>Forvent et andet format end det kommunale.</strong> Sandsynligvis regionsdirektøren alene eller med en HR-partner, ikke et bredt ansættelsesudvalg med medarbejderrepræsentanter. Kortere, mere direkte, og med tal på bordet.</li>
+        <li><strong>Forbered tre tal om egen forretning.</strong> Antal medarbejdere, budgettets størrelse og en udvikling, der kan vises. En erhvervsleder vurderer en anden leder på, om tallene sidder løst i hovedet.</li>
+        <li><strong>Hav en holdning til de første 100 dage klar, og gør den kommerciel.</strong> Trappen fra <a href="dybboel-skolen.html#cases">casepakken</a> kan bruges direkte, hvis ordene skiftes. Ro på, forstå forretningen og kunderne, bevar det der virker, udvikl derefter. Modellen er generisk, og den virker også her.</li>
+        <li><strong>Vær klar på spørgsmålet om tempo.</strong> Privat drift har en anden puls end en skole, og de vil teste, om det er forstået. Svaret er, at en efterskole er døgndrift med 24 timers ansvar, og at beslutninger dér også skal tages samme dag.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="svar">
+    <summary><h2>🎯 Forventede spørgsmål · optimale svar</h2></summary>
+    <div class="fase-body">
+      <details class="qa"><summary>Du kommer fra skoleverdenen. Hvorfor skulle du kunne drive en byggeforretning?</summary><p>Fordi det, I beder om, er ledelse af en forretning, og det har jeg gjort i otte år. Jeg har det fulde ansvar for økonomi, personale og bestyrelse i en virksomhed, der skal hænge sammen hver eneste dag, og som skal tiltrække sine kunder i konkurrence hvert år. Jeg har ikke solgt byggematerialer, og det skal jeg lære. Men jeg kommer ikke for at lære at lede. Jeg kommer for at lede noget, hvor fagligheden allerede er til stede hos medarbejderne, og hvor min opgave er at sætte retning, holde rammen og få salg, lager og logistik til at spille sammen.</p></details>
+      <details class="qa"><summary>Hvad ved du om salg?</summary><p>Mindre end jeres sælgere, og det skal jeg ikke lade som om. Det, jeg kender, er markedet set fra ledelsen. Jeg driver en skole, der rekrutterer sine elever i konkurrence hvert eneste år, så jeg er vant til at skulle vide, hvorfor nogen vælger os, at kunne sige det uden at love noget vi ikke holder, og at sikre at fortællingen passer med hverdagen. Det er ikke B2B-salg. Men det betyder, at jeg forstår, at omsætning kommer af relationer og af at levere det, man har sagt, og at en direktør skal kunne stille de rigtige spørgsmål til en salgsindsats, også uden selv at være den bedste sælger i huset.</p></details>
+      <details class="qa"><summary>Hvordan vil du bruge dine første 100 dage?</summary><p>Jeg vil ud til kunderne og med ud i bilen, og jeg vil stå i forretningen og på lageret. Ikke for at vise mig, men fordi jeg ikke kan lede et marked, jeg ikke har set. Sideløbende vil jeg tale med hver enkelt medarbejder om, hvad der fungerer, og hvad der driller i samspillet mellem salg, lager og logistik. Først derefter sætter jeg retning, og den skal være så konkret, at folk kan se sig selv i den. Jeg kommer ikke med en plan på forhånd. Jeg kommer med en måde at finde den på.</p></details>
+      <details class="qa"><summary>Hvad gør du, hvis omsætningen ikke stiger?</summary><p>Så finder jeg ud af hvorfor, før jeg handler. Er det færre kunder, mindre pr. kunde eller tabte sager, vi burde have vundet. De tre ting kræver vidt forskellige svar. Jeg er vant til at arbejde med få tal, der betyder noget, frem for mange tal, der ser pæne ud. Og jeg er vant til at træffe beslutningen, når den skal træffes, også når den er upopulær, og at følge den til dørs.</p></details>
+      <details class="qa"><summary>Kan du holde tempoet i en privat virksomhed?</summary><p>Jeg driver en døgnvirksomhed. Når noget går galt klokken 22, er der ingen forvaltning at ringe til, og beslutningen skal tages der. Det, der bliver nyt for mig, er ikke tempoet, det er at måle resultatet i kroner frem for i noget blødere. Det ser jeg ærligt talt som en lettelse, fordi det er tydeligere.</p></details>
+      <details class="qa"><summary>Hvorfor vil du skifte job nu?</summary><p>Fordi jeg synes, man skal skifte, mens man har det godt, og fordi jeg efterlader stedet bedre, end da jeg fik det. Og fordi jeg gerne vil stå med det fulde ansvar for en forretning i den by, jeg bor i, sammen med et hold, jeg kan udvikle. Jeg søger ikke væk fra noget.</p><p><em>Noten til mig selv. Ingen detaljer, og ikke et ord om de tre skoleafslag. Det er irrelevant for dem og ville gøre mig til en kandidat, der søger alt.</em></p></details>
+      <details class="qa"><summary>Hvad er din svaghed?</summary><p>Branchen. Jeg kender ikke byggematerialer, og jeg kender ikke jeres kunder endnu. Det kan jeg lære, men det tager et halvt år, og det skal I kalkulere med. Til gengæld skal I ikke bruge tid på at lære mig at lede, at styre en økonomi eller at tage ansvaret, når det bliver svært.</p><p><em>Noten til mig selv. Her er hullet den rigtige svaghed at give. Det er sandt, det er kendt i forvejen, og svaret viser, at jeg har regnet på det frem for at bortforklare det.</em></p></details>
+    </div>
+  </details>
+
+  <details class="card fase" id="fase-8">
+    <summary><h2>8️⃣ Lønforhandling</h2></summary>
+    <div class="fase-body">
+      <ul>
+        <li><strong>Resultatafhængig lønpakke.</strong> Opslaget siger, at lønpakken vil blive påvirket af gode resultater. Afklar tidligt, hvor stor den variable del er, hvad den måles på, og hvem der fastsætter målene. En variabel del, man ikke selv kan påvirke, er ikke løn, det er et lotteri.</li>
+        <li><strong>Spørg til grundlønnen separat.</strong> Forhandl den først, og tag bonusstrukturen bagefter. Ellers bliver den variable del brugt til at trække grundlønnen ned.</li>
+        <li><strong>Privat kontra kommunal.</strong> Pension, ferie, opsigelsesvarsel og eventuel firmabil regnes med i sammenligningen. En privat pakke kan se større ud og være mindre værd, og omvendt.</li>
+        <li><strong>Tallene hører i de private noter</strong> nederst på siden og aldrig i denne kilde.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="card fase" id="kilder">
+    <summary><h2>📄 Kilder · originalt opslag</h2></summary>
+    <div class="fase-body">
+      <ul>
+        <li><strong>Originalt opslag.</strong> <a href="https://jobs.bygma.dk/job/Aabenraa-Direkt%C3%B8r-til-Bygma-Aabenraa-6200/1378260555/" target="_blank">Direktør til Bygma Aabenraa</a> på Bygmas eget rekrutteringssite. Indsendt af ejeren og gemt 25. november 2026.</li>
+        <li><strong>Kontakt.</strong> Regionsdirektør Ejnar C. Andersen, telefon 28 44 02 74.</li>
+        <li><strong>Ansøgning</strong> sker udelukkende via Bygmas rekrutteringssystem.</li>
+        <li><strong>Faglig genbrug.</strong> <a href="kernebudskaber.html">Kernebudskaberne</a> for ledelsesafsnittene, <a href="dybboel-skolen.html#cases">casepakken</a> for de første 100 dage, og <a href="inspiration.html#sydgros">Sydgros</a> som det nærmeste tidligere private spor.</li>
+      </ul>
+    </div>
+  </details>
+</main>
+</div>
+  <script>
+    // Noter, sammenklappelige faser og fasemenu. Status kurateres i kilden, se CLAUDE.md.
+    (function () {
+      var page = location.pathname.split('/').pop() || 'index';
+
+      // Flueben + fremdrift
+      var KEY = 'jobhub:checklist:v1';
+      var state = {};
+      try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
+      var boxes = document.querySelectorAll('input[type=checkbox][data-check-id]');
+      function updateProgress() {
+        var bar = document.getElementById('prog-fill');
+        var txt = document.getElementById('prog-text');
+        if (!bar || !boxes.length) return;
+        var done = 0;
+        boxes.forEach(function (b) { if (b.checked) done++; });
+        bar.style.width = Math.round(100 * done / boxes.length) + '%';
+        if (txt) txt.textContent = done + ' af ' + boxes.length + ' punkter klaret';
+      }
+      boxes.forEach(function (box) {
+        var id = box.getAttribute('data-check-id');
+        box.checked = !!state[id];
+        box.addEventListener('change', function () {
+          state[id] = box.checked;
+          try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+          updateProgress();
+        });
+      });
+      updateProgress();
+
+      // Nedtælling til næste vigtige dato (forsiden)
+      var cd = document.getElementById('countdown');
+      if (cd) {
+        try {
+          var evs = JSON.parse(cd.getAttribute('data-events') || '[]');
+          var today = new Date(); today.setHours(0, 0, 0, 0);
+          var next = null;
+          evs.forEach(function (e) {
+            var d = new Date(e[0] + 'T00:00:00');
+            if (d >= today && (!next || d < next.d)) next = { d: d, label: e[1] };
+          });
+          if (next) {
+            var days = Math.round((next.d - today) / 86400000);
+            var hvornaar = days === 0 ? 'I dag' : days === 1 ? 'I morgen' : 'Om ' + days + ' dage';
+            var dato = next.d.getDate() + '/' + (next.d.getMonth() + 1);
+            cd.textContent = '⏰ ' + hvornaar + ': ' + next.label + ' (' + dato + ')';
+          }
+        } catch (e) {}
+      }
+
+      // Tilføj til kalender: .ics-download (Apple/Outlook/Google m.fl.) + Google Calendar-link.
+      (function () {
+        function compact(iso) { return iso.replace(/-/g, ''); }        // 2026-08-11 -> 20260811
+        function nextDay(iso) {
+          var d = new Date(iso + 'T00:00:00');
+          d.setDate(d.getDate() + 1);
+          function p(n) { return (n < 10 ? '0' : '') + n; }
+          return d.getFullYear() + p(d.getMonth() + 1) + p(d.getDate());
+        }
+        function stamp() {
+          var d = new Date();
+          function p(n) { return (n < 10 ? '0' : '') + n; }
+          return d.getUTCFullYear() + p(d.getUTCMonth() + 1) + p(d.getUTCDate()) + 'T' +
+                 p(d.getUTCHours()) + p(d.getUTCMinutes()) + p(d.getUTCSeconds()) + 'Z';
+        }
+        function esc(s) {
+          return String(s).replace(/\\/g, '\\\\').replace(/;/g, '\\;')
+                          .replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
+        }
+        function fold(line) {                                          // RFC 5545: maks. 75 tegn pr. linje
+          var out = '';
+          while (line.length > 74) { out += line.slice(0, 74) + '\r\n '; line = line.slice(74); }
+          return out + line;
+        }
+        function slug(s) {
+          return s.toLowerCase().replace(/[æ]/g, 'ae').replace(/[ø]/g, 'oe').replace(/[å]/g, 'aa')
+                  .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'begivenhed';
+        }
+        function readEvent(li) {
+          var url = li.getAttribute('data-cal-url');
+          var desc = li.getAttribute('data-cal-desc') || '';
+          var abs = url ? new URL(url, location.href).href : '';
+          if (abs) desc = desc ? desc + '\n\n' + abs : abs;
+          return {
+            start: li.getAttribute('data-cal-start'),
+            title: li.getAttribute('data-cal-title') || 'Begivenhed',
+            desc: desc,
+            url: abs
+          };
+        }
+        function vevent(ev) {
+          var lines = [
+            'BEGIN:VEVENT',
+            'UID:jobhub-' + compact(ev.start) + '-' + slug(ev.title) + '@jobs-gning',
+            'DTSTAMP:' + stamp(),
+            'DTSTART;VALUE=DATE:' + compact(ev.start),
+            'DTEND;VALUE=DATE:' + nextDay(ev.start),
+            'SUMMARY:' + esc(ev.title)
+          ];
+          if (ev.desc) lines.push('DESCRIPTION:' + esc(ev.desc));
+          if (ev.url) lines.push('URL:' + esc(ev.url));
+          lines.push('END:VEVENT');
+          return lines.map(fold).join('\r\n');
+        }
+        function calendar(events) {
+          var out = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//jobs-gning//kalender//DA',
+                     'CALSCALE:GREGORIAN', 'METHOD:PUBLISH'];
+          events.forEach(function (ev) { out.push(vevent(ev)); });
+          out.push('END:VCALENDAR');
+          return out.join('\r\n');
+        }
+        function download(name, text) {
+          var blob = new Blob([text], { type: 'text/calendar;charset=utf-8' });
+          var a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = name;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+        }
+        function googleUrl(ev) {
+          var p = new URLSearchParams({
+            action: 'TEMPLATE',
+            text: ev.title,
+            dates: compact(ev.start) + '/' + nextDay(ev.start)
+          });
+          if (ev.desc) p.set('details', ev.desc);
+          return 'https://calendar.google.com/calendar/render?' + p.toString();
+        }
+
+        var items = document.querySelectorAll('.event[data-cal-start]');
+        items.forEach(function (li) {
+          var ev = readEvent(li);
+          var body = li.querySelector('.event-body');
+          if (!body) return;
+          var wrap = document.createElement('div');
+          wrap.className = 'cal-actions';
+
+          var ics = document.createElement('button');
+          ics.type = 'button';
+          ics.className = 'cal-btn';
+          ics.textContent = '📅 Til kalender';
+          ics.title = 'Hent .ics — virker i Apple Kalender, Outlook, Google m.fl.';
+          ics.addEventListener('click', function () {
+            download(slug(ev.title) + '.ics', calendar([ev]));
+          });
+
+          var g = document.createElement('a');
+          g.className = 'cal-btn';
+          g.href = googleUrl(ev);
+          g.target = '_blank';
+          g.rel = 'noopener';
+          g.textContent = 'Google Calendar';
+
+          wrap.appendChild(ics);
+          wrap.appendChild(g);
+          body.appendChild(wrap);
+        });
+
+        document.querySelectorAll('.cal-all').forEach(function (b) {
+          if (!items.length) { b.style.display = 'none'; return; }
+          b.addEventListener('click', function () {
+            var evs = [];
+            items.forEach(function (li) { evs.push(readEvent(li)); });
+            download('jobsoegning-kalender.ics', calendar(evs));
+          });
+        });
+      })();
+
+      // Eksportér/importér flueben og noter (flyt data mellem enheder / backup)
+      document.querySelectorAll('.databtns .btn-export').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var data = {};
+          for (var i = 0; i < localStorage.length; i++) {
+            var k = localStorage.key(i);
+            if (k && k.indexOf('jobhub:') === 0) data[k] = localStorage.getItem(k);
+          }
+          var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+          var a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = 'jobhub-data.json';
+          a.click();
+          URL.revokeObjectURL(a.href);
+        });
+      });
+      document.querySelectorAll('.databtns .btn-import input[type=file]').forEach(function (inp) {
+        inp.addEventListener('change', function () {
+          var f = inp.files && inp.files[0];
+          if (!f) return;
+          var r = new FileReader();
+          r.onload = function () {
+            try {
+              var data = JSON.parse(r.result);
+              Object.keys(data).forEach(function (k) {
+                if (k.indexOf('jobhub:') === 0) localStorage.setItem(k, data[k]);
+              });
+              location.reload();
+            } catch (e) { alert('Kunne ikke læse filen. Er det en jobhub-data.json?'); }
+          };
+          r.readAsText(f);
+        });
+      });
+
+      // Download ansøgningen som Word-dokument (.doc, genereres i browseren)
+      document.querySelectorAll('.btn-word').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var scope = btn.closest('.fase-body') || document;
+          var doc = scope.querySelector('.worddoc');
+          if (!doc) return;
+          var name = (doc.getAttribute('data-filename') || 'ansoegning') + '.doc';
+          var html = '\ufeff<html xmlns:o="urn:schemas-microsoft-com:office:office" ' +
+            'xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">' +
+            '<head><meta charset="utf-8"><title>Ansøgning</title><style>' +
+            'body{font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.4;color:#000}' +
+            'h4{font-size:14pt;margin:18pt 0 6pt}p{margin:0 0 10pt}em{color:#666}' +
+            '</style></head><body>' +
+            doc.innerHTML.replace(/\[[^\]<>]*\]/g, function (m) {
+              return '<span style="background:#ffff00;mso-highlight:yellow">' + m + '</span>';
+            }) + '</body></html>';
+          var blob = new Blob([html], { type: 'application/msword;charset=utf-8' });
+          var a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = name;
+          a.click();
+          URL.revokeObjectURL(a.href);
+        });
+      });
+
+      // PDF-knap. Laver en rigtig PDF-fil i browseren med pdfmake (vendoret i lib/,
+      // ingen eksterne kald) og downloader den. Virker ens på telefon og computer.
+      // Brevopsætning. Adressat og dato som hoved, stor titel, mellemrubrikker med
+      // tynd streg, gule pladsholdere, sidetal, og afslutning holdt samlet med
+      // hilsen og underskrift.
+      var pdfLibs = null;
+      function hentScript(src) {
+        return new Promise(function (ok, fejl) {
+          var el = document.createElement('script');
+          el.src = src; el.onload = ok; el.onerror = function () { fejl(new Error(src)); };
+          document.head.appendChild(el);
+        });
+      }
+      function sikrPdfMake() {
+        if (window.pdfMake && window.pdfMake.createPdf) return Promise.resolve();
+        if (!pdfLibs) pdfLibs = hentScript('lib/pdfmake.min.js').then(function () { return hentScript('lib/vfs_fonts.js'); });
+        return pdfLibs;
+      }
+      var GUL = '#fef08a';
+      function pdfInline(node, st) {
+        var ud = [];
+        Array.prototype.forEach.call(node.childNodes, function (n) {
+          if (n.nodeType === 3) {
+            var t = n.nodeValue.replace(/\s+/g, ' ');
+            var re = /\[[^\]]*\]/g, sidst = 0, m;
+            while ((m = re.exec(t))) {
+              if (m.index > sidst) ud.push(Object.assign({ text: t.slice(sidst, m.index) }, st));
+              ud.push(Object.assign({ text: m[0] }, st, { background: GUL }));
+              sidst = m.index + m[0].length;
+            }
+            if (sidst < t.length) ud.push(Object.assign({ text: t.slice(sidst) }, st));
+          } else if (n.nodeType === 1) {
+            var tag = n.tagName.toLowerCase();
+            if (tag === 'br') { ud.push({ text: '\n' }); return; }
+            var s2 = Object.assign({}, st);
+            if (tag === 'em' || tag === 'i') { s2.italics = true; s2.color = '#6b7280'; }
+            if (tag === 'strong' || tag === 'b') s2.bold = true;
+            if (tag === 'mark') s2.background = GUL;
+            ud = ud.concat(pdfInline(n, s2));
+          }
+        });
+        return ud;
+      }
+      function pdfDefinition(doc) {
+        var blokke = [], h4 = 0, pNr = 0, sidsteRubrik = -1;
+        var streg = { canvas: [{ type: 'line', x1: 0, y1: 0, x2: 479, y2: 0, lineWidth: 0.6, lineColor: '#d1d5db' }], margin: [0, 0, 0, 6] };
+        Array.prototype.forEach.call(doc.children, function (el) {
+          var tag = el.tagName.toLowerCase();
+          if (tag === 'h4') {
+            h4++;
+            if (h4 === 1) blokke.push({ text: pdfInline(el, {}), style: 'titel' });
+            else { sidsteRubrik = blokke.length; blokke.push({ stack: [{ text: pdfInline(el, {}), style: 'rubrik' }, streg], headlineLevel: 1 }); }
+          } else if (tag === 'p') {
+            pNr++;
+            var txt = el.textContent.trim(), style = 'afsnit';
+            if (h4 === 0) style = pNr === 1 ? 'adressat' : 'dato';
+            if (txt === 'Med venlig hilsen') style = 'hilsen';
+            if (/^\[MIT NAVN\]/.test(txt)) style = 'sign';
+            blokke.push({ text: pdfInline(el, {}), style: style });
+          }
+        });
+        var indhold = blokke;
+        if (sidsteRubrik > 0) {
+          indhold = blokke.slice(0, sidsteRubrik);
+          indhold.push({ stack: blokke.slice(sidsteRubrik), unbreakable: true });
+        }
+        return {
+          pageSize: 'A4',
+          pageMargins: [58, 56, 58, 64],
+          info: { title: 'Ansøgning' },
+          content: indhold,
+          defaultStyle: { fontSize: 10.5, lineHeight: 1.28, color: '#111111' },
+          styles: {
+            adressat: { fontSize: 10.5, color: '#333333', margin: [0, 0, 0, 2] },
+            dato: { fontSize: 10.5, color: '#333333', margin: [0, 0, 0, 22] },
+            titel: { fontSize: 17, bold: true, lineHeight: 1.15, margin: [0, 0, 0, 14] },
+            rubrik: { fontSize: 11.5, bold: true, color: '#1f2937', margin: [0, 10, 0, 2] },
+            afsnit: { margin: [0, 0, 0, 8] },
+            hilsen: { margin: [0, 12, 0, 20] },
+            sign: { margin: [0, 0, 0, 0] }
+          },
+          footer: function (side, antal) {
+            return { text: side + ' / ' + antal, alignment: 'right', fontSize: 9, color: '#9ca3af', margin: [0, 22, 58, 0] };
+          },
+          pageBreakBefore: function (node, efter) {
+            return node.headlineLevel === 1 && efter.length === 0;
+          }
+        };
+      }
+      window.jobhubPdf = { definition: pdfDefinition };
+      document.querySelectorAll('.btn-pdf').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var scope = btn.closest('.fase-body') || document;
+          var doc = scope.querySelector('.worddoc');
+          if (!doc) return;
+          var name = (doc.getAttribute('data-filename') || 'ansoegning') + '.pdf';
+          var label = btn.textContent;
+          btn.textContent = '⏳ Laver PDF …'; btn.disabled = true;
+          sikrPdfMake().then(function () {
+            window.pdfMake.createPdf(pdfDefinition(doc)).download(name);
+          }).catch(function () {
+            alert('PDF-filen kunne ikke laves. Prøv Word-knappen, eller genindlæs siden.');
+          }).then(function () {
+            btn.textContent = label; btn.disabled = false;
+          });
+        });
+      });
+
+      // Print: fold alt ud før print, og fold sammen igen bagefter
+      var printPrev = null;
+      window.addEventListener('beforeprint', function () {
+        var all = document.querySelectorAll('details');
+        printPrev = [];
+        all.forEach(function (d) { printPrev.push(d.open); d.open = true; });
+      });
+      window.addEventListener('afterprint', function () {
+        if (!printPrev) return;
+        var all = document.querySelectorAll('details');
+        all.forEach(function (d, i) { d.open = printPrev[i]; });
+        printPrev = null;
+      });
+
+      // Private noter: gemmes kun lokalt i browseren
+      document.querySelectorAll('textarea.notes[data-notes]').forEach(function (t) {
+        var nkey = 'jobhub:notes:' + t.getAttribute('data-notes');
+        try { t.value = localStorage.getItem(nkey) || ''; } catch (e) {}
+        t.addEventListener('input', function () {
+          try { localStorage.setItem(nkey, t.value); } catch (e) {}
+        });
+      });
+
+      // Sammenklappelige faser: åben/lukket huskes pr. side.
+      // Faser med et ✓-tag i overskriften er færdige og starter altid foldet ind,
+      // så scrollet hurtigt når frem til den aktuelle status.
+      var OPENKEY = 'jobhub:open:' + page;
+      var openState = null;
+      try { openState = JSON.parse(localStorage.getItem(OPENKEY)); } catch (e) {}
+      var faser = document.querySelectorAll('details.fase');
+      function faseDone(d) {
+        var tag = d.querySelector('summary .tag');
+        return !!(tag && tag.textContent.indexOf('✓') !== -1);
+      }
+      faser.forEach(function (d, i) {
+        if (faseDone(d)) d.open = false;
+        else if (openState && (d.id in openState)) d.open = !!openState[d.id];
+        else if (!openState && i === 0 && !d.classList.contains('fase-luk')) d.open = true;
+        d.addEventListener('toggle', function () {
+          var st = {};
+          faser.forEach(function (x) { st[x.id] = x.open; });
+          try { localStorage.setItem(OPENKEY, JSON.stringify(st)); } catch (e) {}
+        });
+      });
+
+      // Ankerlinks skal åbne den fase, de peger på
+      function openFromHash() {
+        if (!location.hash) return;
+        var el;
+        try { el = document.querySelector(location.hash); } catch (e) { return; }
+        if (!el) return;
+        var d = el.tagName === 'DETAILS' ? el : (el.closest && el.closest('details'));
+        if (d && !d.open) d.open = true;
+        el.scrollIntoView();
+      }
+      window.addEventListener('hashchange', openFromHash);
+      openFromHash();
+
+      // Åbn alle / luk alle
+      var toggleAll = document.getElementById('toggle-all');
+      if (toggleAll) toggleAll.addEventListener('click', function () {
+        var anyClosed = false;
+        faser.forEach(function (d) { if (!d.open) anyClosed = true; });
+        faser.forEach(function (d) { d.open = anyClosed; });
+        toggleAll.textContent = anyClosed ? 'Luk alle' : 'Åbn alle';
+      });
+
+      // Fasemenuen kan foldes sammen på mobil (knappen vises kun dér via CSS)
+      var fasebar = document.querySelector('.fasebar');
+      if (fasebar) {
+        var mtoggle = document.createElement('button');
+        mtoggle.type = 'button';
+        mtoggle.className = 'fasebar-toggle';
+        mtoggle.textContent = '☰ Menu';
+        fasebar.appendChild(mtoggle);
+        mtoggle.addEventListener('click', function () {
+          var aaben = fasebar.classList.toggle('udfoldet');
+          mtoggle.textContent = aaben ? '✕ Luk' : '☰ Menu';
+        });
+        fasebar.addEventListener('click', function (e) {
+          if (e.target.tagName === 'A' && fasebar.classList.contains('udfoldet')) {
+            fasebar.classList.remove('udfoldet');
+            mtoggle.textContent = '☰ Menu';
+          }
+        });
+      }
+
+      // Klikbare telefonnumre. Mobilnumre i brødteksten bliver til tel:-links,
+      // dog ikke inde i de arkiverede opslags-citater, som skal gengives urørt.
+      var telRe = /\b(\d{2} \d{2} \d{2} \d{2}|\d{4} \d{4})\b/g;
+      var telWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+      var telNodes = [];
+      while (telWalker.nextNode()) {
+        var tn = telWalker.currentNode;
+        telRe.lastIndex = 0;
+        if (!telRe.test(tn.nodeValue)) continue;
+        var tEl = tn.parentElement;
+        if (!tEl || tEl.closest('a, script, style, textarea, button, details.qa blockquote')) continue;
+        telNodes.push(tn);
+      }
+      telNodes.forEach(function (tn) {
+        var frag = document.createDocumentFragment();
+        var text = tn.nodeValue, m, last = 0;
+        telRe.lastIndex = 0;
+        while ((m = telRe.exec(text))) {
+          frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+          var telA = document.createElement('a');
+          telA.className = 'tel-link';
+          telA.href = 'tel:+45' + m[0].replace(/ /g, '');
+          telA.textContent = m[0];
+          frag.appendChild(telA);
+          last = m.index + m[0].length;
+        }
+        frag.appendChild(document.createTextNode(text.slice(last)));
+        tn.parentNode.replaceChild(frag, tn);
+      });
+
+      // Send som SMS-knapper. Nummeret står i data-sms, og teksten hentes fra
+      // det nærmeste SMS-udkast (blockquote) ovenfor, så den altid følger udkastet.
+      document.querySelectorAll('a.btn-sms[data-sms]').forEach(function (a) {
+        var holder = a.closest('p, div');
+        var bq = holder ? holder.previousElementSibling : null;
+        while (bq && bq.tagName !== 'BLOCKQUOTE') bq = bq.previousElementSibling;
+        var nr = a.getAttribute('data-sms').replace(/\D/g, '');
+        var href = 'sms:+45' + nr;
+        if (bq) href += '?body=' + encodeURIComponent(bq.textContent.trim());
+        a.href = href;
+      });
+
+      // Markér aktiv fase i menuen under scroll
+      var links = document.querySelectorAll('.fasebar a[href^="#"]');
+      if ('IntersectionObserver' in window && links.length) {
+        var map = {};
+        links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting && map[en.target.id]) {
+              links.forEach(function (a) { a.classList.remove('active'); });
+              map[en.target.id].classList.add('active');
+            }
+          });
+        }, { rootMargin: '-15% 0px -70% 0px' });
+        faser.forEach(function (d) { if (map[d.id]) obs.observe(d); });
+      }
+    })();
+  </script>
+</body>
+</html>
