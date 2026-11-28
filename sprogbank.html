@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="da" class="laast">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Sprogbank · sektorens eget sprog</title>
+  <script>
+    // Adgangslås. Siden er låst som udgangspunkt (class="laast" på html-elementet),
+    // og låses kun op her, hvis cookien er gyldig. Dermed forbliver siden låst,
+    // hvis JavaScript er slået fra (fail closed). Cookien tjekkes synkront i head,
+    // så indholdet aldrig når at blinke frem.
+    // Bemærk at låsen er klient-side. Den stopper almindelige besøgende, men indholdet
+    // findes stadig i sidens kilde, så personlige oplysninger skal fortsat holdes ude af siderne.
+    (function () {
+      var HASH = 'd2440ea6e006bccbde88a21f52ef8a23ebcb7fe80714f85ce7e2fe24cda9518c';
+      var m = document.cookie.match(/(?:^|; )hub_adgang=([^;]*)/);
+      if (m && m[1] === HASH) document.documentElement.classList.remove('laast');
+    })();
+  </script>
+  <style>
+    /* Adgangslås */
+    #laas { display: none; position: fixed; inset: 0; z-index: 100; align-items: center; justify-content: center;
+      background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%); padding: 20px; }
+    html.laast #laas { display: flex; }
+    html.laast .content { display: none !important; }
+    #laas form { width: 100%; max-width: 360px; text-align: center; background: rgba(30,41,59,.6);
+      border: 1px solid #334155; border-radius: 14px; padding: 32px 28px; }
+    #laas .laas-ikon { font-size: 40px; }
+    #laas h1 { font-size: 22px; margin: 10px 0 6px; color: #e2e8f0; }
+    #laas p { color: #94a3b8; font-size: 14px; margin: 6px 0 16px; }
+    #laas input { width: 100%; padding: 10px 12px; border: 1px solid #475569; border-radius: 10px;
+      background: #0b1220; color: #f1f5f9; font: inherit; text-align: center; }
+    #laas input:focus { outline: 2px solid #6366f1; border-color: #6366f1; }
+    #laas button { margin-top: 12px; width: 100%; padding: 10px 12px; border: 1px solid #6366f1;
+      border-radius: 10px; background: rgba(99,102,241,.25); color: #e0e7ff; font: inherit; cursor: pointer; }
+    #laas button:hover { background: rgba(99,102,241,.4); }
+    #laas .laas-fejl { color: #fca5a5; min-height: 18px; margin: 10px 0 0; }
+    #laas .laas-note { color: #64748b; font-size: 12.5px; margin: 10px 0 0; }
+    :root { color-scheme: light dark; }
+    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%); color: #e2e8f0;
+      display: block;
+    }
+    .content { max-width: 720px; margin: 40px auto; padding: 0 20px; }
+    .content .eyebrow { text-transform: uppercase; letter-spacing: .08em; font-size: 12px; color: #818cf8; }
+    .content .hero h1 { font-size: 40px; margin: 4px 0 8px; }
+    .content .lead { font-size: 18px; color: #cbd5e1; }
+    .content .card { background: rgba(30,41,59,.6); border: 1px solid #334155; border-radius: 14px;
+      padding: 20px 24px; margin: 20px 0; }
+    .content .card h2 { margin-top: 0; }
+    .content .commute { color: #94a3b8; font-size: 14px; margin: -6px 0 18px; }
+    .content .commute strong { color: #cbd5e1; }
+    .content .anonote { color: #94a3b8; font-size: 14px; margin: -6px 0 18px; }
+    .content .anonote strong { color: #fcd34d; }
+    /* Sticky fasemenu på undersider */
+    .content .fasebar { position: sticky; top: 0; z-index: 20; display: flex; flex-wrap: wrap; align-items: center;
+      gap: 6px; padding: 12px 0 10px; margin: 0 0 4px; border-bottom: 1px solid #334155;
+      background: linear-gradient(160deg, rgba(15,23,42,.97) 0%, rgba(30,41,59,.97) 100%); }
+    .content .fasebar a { padding: 5px 11px; border: 1px solid #334155; border-radius: 999px; font-size: 13px;
+      color: #cbd5e1; text-decoration: none; white-space: nowrap; }
+    .content .fasebar a:hover { border-color: #6366f1; }
+    .content .fasebar a.active { border-color: #6366f1; background: rgba(99,102,241,.18); color: #fff; }
+    .content .fasebar .home { color: #a5b4fc; }
+    .content .fasebar button { margin-left: auto; padding: 5px 11px; border: 1px solid #475569; border-radius: 999px;
+      background: transparent; color: #cbd5e1; font-size: 13px; cursor: pointer; }
+    .content .fasebar button:hover { border-color: #6366f1; }
+    /* Fasemenuen foldes sammen på mobil, kun Forside-link og menuknap vises */
+    .content .fasebar-toggle { display: none; }
+    @media (max-width: 640px) {
+      .content .fasebar-toggle { display: inline-block; }
+      .content .fasebar:not(.udfoldet) a:not(.home) { display: none; }
+      .content .fasebar:not(.udfoldet) #toggle-all { display: none; }
+    }
+    /* Fremdrift for tjeklister */
+    .content .progress { display: flex; align-items: center; gap: 12px; margin: 10px 0 0; }
+    .content .progress-track { flex: 1 1 auto; height: 8px; border-radius: 999px; background: #0b1220;
+      border: 1px solid #334155; overflow: hidden; }
+    .content .progress-fill { height: 100%; width: 0; background: #6366f1; border-radius: 999px; transition: width .3s; }
+    .content .progress span { font-size: 13px; color: #94a3b8; white-space: nowrap; }
+    /* Sammenklappelige fase-kort */
+    .content details.card { scroll-margin-top: 76px; }
+    .content details.card summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 12px; }
+    .content details.card summary::-webkit-details-marker { display: none; }
+    .content details.card summary h2 { margin: 0; flex: 1 1 auto; }
+    .content details.card summary::after { content: '▸'; color: #64748b; font-size: 18px; flex: 0 0 auto;
+      transition: transform .2s; }
+    .content details.card[open] summary::after { transform: rotate(90deg); }
+    .content details.card .fase-body { margin-top: 14px; }
+    /* Læsbarhed: luft, linjehøjde og tydeligt hierarki */
+    .content p { line-height: 1.65; }
+    .content li { line-height: 1.55; }
+    .content .fase-body li { margin: 7px 0; }
+    .content .fase-body h3 { margin: 28px 0 10px; padding-top: 18px; border-top: 1px solid #26334d; font-size: 19px; }
+    .content .fase-body h3:first-child { margin-top: 8px; padding-top: 0; border-top: 0; }
+    .content .fase-body h4 { margin: 24px 0 8px; color: #c7d2fe; }
+    .content .fase-body h5 { margin: 18px 0 6px; color: #a5b4fc; font-size: 14.5px; }
+    .content blockquote { margin: 14px 0; padding: 12px 16px; border-left: 3px solid #6366f1;
+      background: rgba(99,102,241,.08); border-radius: 0 10px 10px 0; }
+    .content blockquote p { margin: 8px 0; }
+    /* Nedtælling på forsiden */
+    .content .countdown { text-align: center; font-size: 15px; color: #fcd34d; background: rgba(251,191,36,.08);
+      border: 1px solid rgba(251,191,36,.4); border-radius: 10px; padding: 10px 14px; margin: 18px 0 0; }
+    .content .countdown:empty { display: none; }
+    /* Spørgsmål & svar (øve-kort: svaret er skjult til man klikker) */
+    .content details.qa { border: 1px solid #334155; border-radius: 10px; padding: 10px 14px; margin: 8px 0;
+      background: rgba(15,23,42,.35); }
+    .content details.qa summary { cursor: pointer; list-style: none; display: flex; gap: 10px;
+      align-items: baseline; font-weight: 600; color: #e2e8f0; }
+    .content details.qa summary::-webkit-details-marker { display: none; }
+    .content details.qa summary::before { content: 'Q'; color: #818cf8; font-weight: 700; flex: 0 0 auto; }
+    .content details.qa p { margin: 10px 0 4px; color: #cbd5e1; }
+    /* Eksport/import af flueben og noter */
+    .content .databtns { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+    .content .databtns button, .content .databtns .btn-import { display: inline-flex; align-items: center;
+      padding: 7px 12px; border: 1px solid #475569; border-radius: 999px; background: transparent;
+      color: #cbd5e1; font-size: 13px; cursor: pointer; }
+    .content .databtns button:hover, .content .databtns .btn-import:hover { border-color: #6366f1; }
+    .content .kal-tom { color: #94a3b8; font-size: 14px; padding: 18px 0; text-align: center; }
+    /* Næste skridt-panel på forsiden */
+    .content .card.naeste { border-color: #4f46e5; background: rgba(79,70,229,.07); }
+    .content .naeste-note { font-size: 13px; color: #94a3b8; margin: 0 0 10px; }
+    .content .naeste-liste { list-style: none; margin: 0; padding: 0; display: flex;
+      flex-direction: column; gap: 10px; counter-reset: naeste; }
+    .content .naeste-liste li { display: grid; grid-template-columns: 108px 1fr; gap: 12px;
+      align-items: baseline; padding: 9px 0; border-top: 1px solid rgba(148,163,184,.15); }
+    .content .naeste-liste li:first-child { border-top: 0; padding-top: 0; }
+    .content .naeste-dato { font-size: 13px; font-weight: 600; color: #a5b4fc;
+      white-space: nowrap; letter-spacing: .01em; }
+    .content .naeste-hvad { color: #cbd5e1; line-height: 1.6; }
+    .content .naeste-hvad strong { color: #e2e8f0; }
+    @media (max-width: 560px) {
+      .content .naeste-liste li { grid-template-columns: 1fr; gap: 2px; }
+    }
+    /* Klikbare mobilnumre: ring op og send SMS med færdig tekst */
+    .content a.tel-link { color: #a5b4fc; text-decoration: underline; text-decoration-style: dotted;
+      text-underline-offset: 3px; white-space: nowrap; }
+    .content a.tel-link:hover { text-decoration-style: solid; }
+    .content .databtns .btn-sms { display: inline-flex; align-items: center; padding: 7px 12px;
+      border: 1px solid #475569; border-radius: 999px; color: #cbd5e1; font-size: 13px;
+      text-decoration: none; }
+    .content .databtns .btn-sms:hover { border-color: #6366f1; }
+    .content .btn-word, .content .btn-pdf { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
+      border: 1px solid #475569; border-radius: 999px; background: rgba(99,102,241,.12);
+      color: #c7d2fe; font-size: 14px; cursor: pointer; margin: 4px 8px 14px 0; }
+    .content .btn-word:hover, .content .btn-pdf:hover { border-color: #6366f1; }
+    /* Print: ren sort-på-hvid A4 af det åbne indhold */
+    @media print {
+      body { background: #fff !important; }
+      .content { max-width: 100%; margin: 0; padding: 0; }
+      .content * { color: #000 !important; background: transparent !important; border-color: #bbb !important; }
+      .fasebar, .progress, .notes, .databtns, .anonote, .foot, #toggle-all, .cal-actions { display: none !important; }
+      .content .card { border: 0; border-radius: 0; padding: 10px 0; margin: 10px 0; }
+      .content details.card summary::after { display: none; }
+      .content a { text-decoration: none; }
+      /* Sideskift: hver fase starter på en ny side */
+      .content details.card { break-before: page; border-top: 0; }
+      .content main > details.card:first-of-type { break-before: auto; }
+      /* Hold sammenhængende blokke samlet på én side */
+      .content details.qa, .content blockquote, .content .huskeliste li,
+      .content .event, .content .fase-body > ul > li { break-inside: avoid; }
+      .content h2, .content h3, .content h4, .content h5 { break-after: avoid; }
+      .content p, .content li { orphans: 3; widows: 3; }
+      /* Hver forberedelsesmodel (STAR, Domæne, 4D, CMM, Tomm) starter på egen side */
+      .content #modeller .fase-body h3 { break-before: page; border-top: 0; }
+      .content #modeller .fase-body h3:first-of-type { break-before: auto; }
+    }
+    @page { margin: 15mm; }
+    /* Private noter (gemmes kun i browserens localStorage) */
+    .content .notes { width: 100%; border: 1px solid #475569; border-radius: 12px; padding: 12px;
+      background: #0b1220; color: #f1f5f9; font: inherit; font-size: 14px; resize: vertical; }
+    .content .notes:focus { outline: 2px solid #6366f1; border-color: #6366f1; }
+    .content a { color: #a5b4fc; }
+    .content .backlink { font-size: 14px; margin: 28px 0 -24px; }
+    .content .backlink a { text-decoration: none; }
+    /* Klikbare stillinger på forsiden */
+    .content .joblink { display: block; padding: 16px 20px; margin: 14px 0; border: 1px solid #334155;
+      border-radius: 12px; background: rgba(15,23,42,.4); color: inherit; text-decoration: none; }
+    .content .joblink:hover { border-color: #6366f1; }
+    .content .joblink h3 { margin: 0 0 6px; font-size: 17px; }
+    .content .joblink p { margin: 0; color: #94a3b8; font-size: 14px; }
+    .content code { background: #0b1220; padding: 2px 6px; border-radius: 6px; font-size: 90%; }
+    .content .foot { color: #64748b; font-size: 13px; margin: 40px 0; text-align: center; }
+    /* Kalender / tidslinje */
+    .content .timeline { list-style: none; margin: 8px 0 0; padding: 0; }
+    .content .event { display: flex; gap: 16px; padding: 16px 0; border-top: 1px solid #334155; }
+    .content .event:first-child { border-top: 0; }
+    .content .event-date { flex: 0 0 64px; text-align: center; background: #0b1220;
+      border: 1px solid #334155; border-radius: 10px; padding: 8px 4px; align-self: flex-start; }
+    .content .event-date .day { display: block; font-size: 22px; font-weight: 700; line-height: 1.1; color: #f1f5f9; }
+    .content .event-date .mon { display: block; font-size: 11px; text-transform: uppercase;
+      letter-spacing: .05em; color: #94a3b8; }
+    .content .event-body { flex: 1 1 auto; }
+    .content .event-body h3 { margin: 6px 0 4px; font-size: 17px; }
+    .content .event-body p { margin: 0; color: #cbd5e1; font-size: 14px; }
+    .content .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 9px;
+      border-radius: 999px; text-transform: uppercase; letter-spacing: .04em; }
+    .content .tag--frist { background: rgba(248,113,113,.15); color: #fca5a5; border: 1px solid #f87171; }
+    .content .tag--samtale { background: rgba(129,140,248,.15); color: #a5b4fc; border: 1px solid #818cf8; }
+    .content .tag--tiltraedelse { background: rgba(52,211,153,.15); color: #6ee7b7; border: 1px solid #34d399; }
+    .content .tag--opfoelgning { background: rgba(251,191,36,.15); color: #fcd34d; border: 1px solid #fbbf24; }
+    .content .tag--kladde { background: rgba(251,191,36,.15); color: #fcd34d; border: 1px solid #fbbf24; }
+    .content .tag--sendt { background: rgba(52,211,153,.15); color: #6ee7b7; border: 1px solid #34d399; }
+    .content .tag--inspiration { background: rgba(34,211,238,.15); color: #67e8f9; border: 1px solid #22d3ee; }
+    /* Statusliste øverst på stillingssiderne */
+    .content .statusliste { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 14px 0 4px; }
+    .content .statusliste li { padding: 5px 13px; border-radius: 999px; font-size: 13px; background: rgba(148,163,184,.08); color: #94a3b8; border: 1px solid #334155; }
+    .content .statusliste .st-done { background: rgba(52,211,153,.13); color: #6ee7b7; border-color: #34d399; }
+    .content .statusliste .st-next { background: rgba(251,191,36,.13); color: #fcd34d; border-color: #fbbf24; font-weight: 600; }
+    .content .statusliste .st-stop { background: rgba(248,113,113,.13); color: #fca5a5; border-color: #f87171; }
+    /* Casebilleder (grafisk facilitering) */
+    .content .billedpar { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 12px 0; }
+    .content .casebillede { width: 100%; display: block; background: #fff; border-radius: 12px; border: 1px solid #334155; }
+    @media (max-width: 760px) { .content .billedpar { grid-template-columns: 1fr; } }
+    /* Månedskalender (kalender.html) */
+    .content .kal-legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 0 0 18px; }
+    .content .kal-key { font-size: 12.5px; color: #cbd5e1; display: inline-flex; align-items: center; gap: 7px; }
+    .content .kal-key::before { content: ''; width: 12px; height: 12px; border-radius: 4px; }
+    .content .kal-key--frist::before { background: #f87171; }
+    .content .kal-key--samtale::before { background: #818cf8; }
+    .content .kal-key--tiltraedelse::before { background: #34d399; }
+    .content .kal-month { margin: 0 0 26px; }
+    .content .kal-title { margin: 0 0 10px; font-size: 18px; text-transform: capitalize; }
+    .content .kal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+    .content .kal-head { text-align: center; font-size: 11px; text-transform: uppercase; letter-spacing: .04em;
+      color: #94a3b8; padding: 4px 0; }
+    .content .kal-cell { min-height: 60px; border: 1px solid #26334d; border-radius: 8px;
+      background: rgba(15,23,42,.4); padding: 4px; display: flex; flex-direction: column; gap: 3px; }
+    .content .kal-cell.kal-empty { border: 0; background: transparent; }
+    .content .kal-cell.kal-has { border-color: #475569; background: rgba(30,41,59,.6); }
+    .content .kal-cell.kal-idag { background: rgba(250,204,21,.16); border-color: #facc15;
+      box-shadow: inset 0 0 0 1px rgba(250,204,21,.35); }
+    .content .kal-cell.kal-idag.kal-has { background: rgba(250,204,21,.22); }
+    .content .kal-daynum { font-size: 12px; color: #94a3b8; font-weight: 600; }
+    .content .kal-cell.kal-idag .kal-daynum { color: #fde68a; }
+    .content .kal-cell.kal-has .kal-daynum { color: #f1f5f9; }
+    .content .kal-chip { display: block; text-decoration: none; border-radius: 6px; padding: 3px 6px;
+      font-size: 11px; line-height: 1.25; border: 1px solid transparent; }
+    .content .kal-filter { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; }
+    .content .kal-filter label { display: inline-flex; align-items: center; gap: 6px; padding: 4px 11px;
+      border: 1px solid #334155; border-radius: 999px; font-size: 12.5px; color: #cbd5e1; cursor: pointer; }
+    .content .kal-filter label:hover { border-color: #6366f1; }
+    .content .kal-filter input { accent-color: #6366f1; margin: 0; }
+    .content .kal-chip-tag { display: inline-block; min-width: 15px; margin-right: 5px; padding: 0 3px;
+      border-radius: 4px; font-size: 10px; font-weight: 700; text-align: center;
+      background: rgba(255,255,255,.16); }
+    .content .kal-chip-lab { font-weight: 600; }
+    .content .kal-chip--frist { background: rgba(248,113,113,.15); color: #fca5a5; border-color: #f87171; }
+    .content .kal-chip--samtale { background: rgba(129,140,248,.15); color: #a5b4fc; border-color: #818cf8; }
+    .content .kal-chip--tiltraedelse { background: rgba(52,211,153,.15); color: #6ee7b7; border-color: #34d399; }
+    .content .kal-legend-note { font-size: 12px; color: #94a3b8; margin: -8px 0 16px; }
+    .content .kal-foot { margin: 6px 0 0; font-size: 14px; }
+    @media (max-width: 560px) {
+      .content .kal-cell { min-height: 50px; }
+      .content .kal-chip { font-size: 10px; padding: 2px 4px; }
+    }
+    /* Huskelister */
+    .content .huskeliste { margin: 8px 0 22px; padding-left: 24px; }
+    .content .huskeliste li { padding: 3px 0; }
+    /* Svarnoter i samtaleforberedelsen (runde 2) */
+    .content .svarnote { display: block; margin-top: 4px; color: #cbd5e1; }
+    .content .svarnote em { color: #a5b4fc; font-style: normal; font-weight: 600; }
+    /* Tilføj til kalender-knapper (pr. begivenhed) */
+    .content .cal-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+    .content .cal-btn { display: inline-flex; align-items: center; padding: 5px 11px; border: 1px solid #475569;
+      border-radius: 999px; background: transparent; color: #cbd5e1; font-size: 12.5px; cursor: pointer;
+      text-decoration: none; }
+    .content .cal-btn:hover { border-color: #6366f1; }
+  </style>
+</head>
+<body>
+  <div id="laas" role="dialog" aria-label="Adgangskode">
+    <form id="laas-form">
+      <div class="laas-ikon">🔒</div>
+      <h1>Privat side</h1>
+      <p>Indtast adgangskoden for at se indholdet.</p>
+      <input type="password" id="laas-kode" autocomplete="current-password" aria-label="Adgangskode" />
+      <button type="submit">Lås op</button>
+      <p id="laas-fejl" class="laas-fejl" aria-live="polite"></p>
+      <p class="laas-note">Adgangen huskes i en time i denne browser.</p>
+      <noscript><p class="laas-fejl">Låsen kræver JavaScript. Slå JavaScript til for at logge ind.</p></noscript>
+    </form>
+  </div>
+  <script>
+    // Adgangslås. Koden gemmes kun som SHA-256-hash, og godkendelse huskes i en cookie i en time.
+    (function () {
+      var HASH = 'd2440ea6e006bccbde88a21f52ef8a23ebcb7fe80714f85ce7e2fe24cda9518c';
+      var form = document.getElementById('laas-form');
+      if (!form) return;
+      var input = document.getElementById('laas-kode');
+      var fejl = document.getElementById('laas-fejl');
+      if (document.documentElement.classList.contains('laast')) {
+        setTimeout(function () { input.focus(); }, 50);
+      }
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var v = input.value || '';
+        if (!(window.crypto && crypto.subtle)) {
+          fejl.textContent = 'Din browser understøtter ikke låsen. Prøv en nyere browser.';
+          return;
+        }
+        crypto.subtle.digest('SHA-256', new TextEncoder().encode(v)).then(function (buf) {
+          var hex = Array.prototype.map.call(new Uint8Array(buf), function (b) {
+            return ('0' + b.toString(16)).slice(-2);
+          }).join('');
+          if (hex === HASH) {
+            document.cookie = 'hub_adgang=' + hex + '; max-age=3600; path=/; SameSite=Strict';
+            document.documentElement.classList.remove('laast');
+            input.value = '';
+            fejl.textContent = '';
+          } else {
+            fejl.textContent = 'Forkert adgangskode. Prøv igen.';
+            input.select();
+          }
+        });
+      });
+    })();
+  </script>
+  <div class="content"><!-- Underside: Sprogbank. Modtagerens eget sprog, udledt af en stillings- og kompetenceprofil.
+     Genereres til sprogbank.html af build.mjs. Citater fra profilen gengives uændret
+     som eksterne citater i blockquote og er undtaget tegnsætningsreglerne. -->
+<p class="backlink"><a href="index.html">← Forsiden</a></p>
+<header class="hero">
+  <p class="eyebrow">Sprogreference · på tværs af alle stillinger</p>
+  <h1>🗣️ Sprogbank · sektorens eget sprog</h1>
+  <p class="lead">Her står det sprog, modtagerne selv skriver i, og min egen oversættelse ind i det. Kernebudskaberne siger, hvad jeg vil sige. Den her side siger, hvordan det skal lyde, for at et ansættelsesudvalg hører det som deres eget.</p>
+</header>
+
+<main>
+  <section class="card" id="kilde">
+    <h2>📄 Hvor sproget kommer fra</h2>
+    <p>Grundlaget er en stillings- og kompetenceprofil på seks sider til en distriktsskolelederstilling i en jysk kommune, dateret december 2026. <strong>Det er ikke en stilling, jeg søger.</strong> Den ligger geografisk forkert, og den er taget ind udelukkende som sprogreference.</p>
+    <p>Grunden til at netop den slags dokument er værd at læse som sprog er, at det ikke er et jobopslag. Det er et internt arbejdspapir, som forvaltning, skolebestyrelse og tillidsvalgte har skrevet sammen om, hvad de vil have. Et ansættelsesudvalg på ti personer har forhandlet hver eneste sætning. Når jeg bruger deres formuleringer, taler jeg ikke bare pænt. Jeg taler i de ord, de allerede er blevet enige om.</p>
+  </section>
+
+  <section class="card" id="grammatik">
+    <h2>🔧 Sådan bygger sektoren en sætning</h2>
+    <p>Det vigtigste ved profilen er ikke ordene. Det er sætningsbygningen, og den går igen hele vejen. Tre træk, som jeg kan efterligne uden at låne et eneste ord.</p>
+
+    <h4>1 · Opgaven står først, personen bagefter</h4>
+    <p>Alle opgaver er skrevet i navnemåde. At bidrage til, at lede gennem, at sikre, at være garant for. Lederen er ikke sætningens grundled. Opgaven er.</p>
+    <blockquote><p>At lede gennem ledere, sikre sammenhængskraft i skolens ledergruppe og koordinere og udnytte forskellighederne i ledergruppen.</p></blockquote>
+    <p><strong>Min efterligning.</strong> Jeg begynder ikke med jeg har, men med opgaven, og lader mig selv komme ind som den, der har båret den.</p>
+    <blockquote><p>At lede gennem andre ledere og holde en ledergruppe sammen om den samme retning har været min hverdag siden 2018, først med en afdeling og siden med det samlede ansvar.</p></blockquote>
+
+    <h4>2 · Hver påstand får en modererende tilføjelse</h4>
+    <p>Dette er det mest karakteristiske træk i hele teksten. Ingen egenskab står alene. Hver eneste får en halesætning, der viser dømmekraft om <em>hvornår</em> og <em>hvor meget</em>.</p>
+    <blockquote><p>Har en vis portion mod og risikovillighed, som bringes i spil i de rette doser og sammenhænge.</p>
+    <p>Har en sikker hånd i forhold til at balancere mellem de skiftende behov for at tage initiativ og afvente.</p>
+    <p>Er et empatisk menneske, som agerer kontekstafhængigt.</p></blockquote>
+    <p><strong>Hvad det betyder for mig.</strong> En ren påstand om egne egenskaber læses som ufærdig. Sektorens ros går ikke til styrken, den går til dømmekraften om, hvornår styrken skal bruges. Det er samme bevægelse som mit eget forstå før udvikle, bare sagt om en personlig egenskab i stedet for om en skole. <strong>Regel. Aldrig en egenskab uden en halesætning.</strong> Ikke jeg er beslutsom, men jeg træffer beslutningen, når den er moden, og jeg siger højt, hvornår jeg venter, og hvorfor.</p>
+
+    <h4>3 · Hver handling slutter i et formål</h4>
+    <p>Sætningerne stopper ikke ved handlingen. De fortsætter i et så der.</p>
+    <blockquote><p>Ledelsesstilen skal være tillidsbaseret, tydelig og inspirerende, så der opnås følgeskab og retning.</p>
+    <p>Det strategiske perspektiv skal bindes sammen med tydelighed om indsatser i hverdagen, som også kommunikeres opad, så dagligdagens fortællinger og handlinger bliver til bevidning.</p></blockquote>
+    <p><strong>Min efterligning.</strong> Hver gang jeg beskriver en praksis, slutter sætningen i, hvad praksissen gør ved andre mennesker. Ikke jeg er synlig i hverdagen, men jeg er til stede i hverdagen, så medarbejderne kan se, at retningen gælder også på en helt almindelig tirsdag.</p>
+  </section>
+
+  <section class="card" id="fire">
+    <h2>🧩 De fire kompetencer, og mine egne sætninger i samme register</h2>
+    <p>Profilen navngiver fire kompetencer med korte etiketter. Det er værd at bemærke i sig selv. En kompetence får et navn på to til fire ord, og så forklares den. Mine egne styrker skal have samme slags etiketter, så de kan huskes efter samtalen.</p>
+
+    <h4>1 · Kan lede gennem ledere</h4>
+    <blockquote><p>Det er en central kompetence for den kommende distriktsskoleleder at kunne lede gennem andre ledere for at bære beslutninger og den strategiske retning hele vejen gennem organisationen. Ledelsesstilen skal være tillidsbaseret, tydelig og inspirerende, så der opnås følgeskab og retning.</p></blockquote>
+    <p><strong>Nøgleordet er følgeskab.</strong> Det er sektorens ord for det, jeg plejer at kalde opbakning eller at tage folk med. Følgeskab er stærkere, fordi det siger, at lederen går forrest og at nogen vælger at gå med. Det ord skal med i hver eneste ansøgning til en lederstilling med ledere under sig.</p>
+    <blockquote><p>Min erfaring med at lede gennem ledere kommer fra at have haft en ledergruppe, hvor beslutninger kun holdt, hvis de blev båret videre af andre end mig. Jeg har lært, at følgeskab ikke opstår af en god beslutning, men af at de, der skal bære den, har været inde i den, før den blev truffet.</p></blockquote>
+
+    <h4>2 · Skabe sammenhæng</h4>
+    <blockquote><p>Dette indebærer blandt andet, at lederen skal prioritere indsatser, der medvirker til at skabe struktur, overblik og en "vi-følelse" i den samlede ledergruppe på skolen. Det indebærer også, at lederen kan identificere og udnytte afdelingernes forskelligheder og diversitet til at skabe synergieffekter.</p></blockquote>
+    <p><strong>Nøgleordene er sammenhængskraft og forskellighed som ressource.</strong> Læg mærke til, at forskellighed aldrig omtales som et problem, der skal udlignes. Den er noget, der skal udnyttes. Det er den samme logik som mellemformer, bare anvendt på en ledergruppe i stedet for på en børnegruppe, og det er en bro jeg kan bygge eksplicit.</p>
+
+    <h4>3 · De rette balancer</h4>
+    <blockquote><p>Distriktsskolelederen skal have flair for økonomi og kunne skabe balancer i flere sammenhænge. Derudover skal distriktsskolelederen kunne balancere mellem strategi, udvikling, drift og fokus på kerneopgaven. Distriktsskolelederen skal være udviklingsorienteret og samtidig finde det naturligt at delegere rammer, som sætter de tre afdelinger med tilhørende fritidstilbud i stand til at håndtere den daglige drift.</p></blockquote>
+    <p><strong>Det er en hel kompetence, der kun handler om at kunne to ting på én gang.</strong> Her ligger mit kernebudskab om sund drift som forudsætning for udvikling næsten ordret, bare i deres ord. Og her hører min budgethistorie hjemme, fordi flair for økonomi er en kompetence på linje med de andre og ikke en teknisk detalje.</p>
+
+    <h4>4 · Udadvendt og samarbejdende</h4>
+    <blockquote><p>Den kommende distriktsskoleleder forventes at være udadvendt, hvilket blandt andet indebærer, at lederen er opsøgende og dyrker relationer og kan agere lige overbevisende i alle sammenhænge. Lederen skal praktisere en åben og inviterende ledelsesstil, som medvirker til at skabe dialog, samarbejde og motivation hos ledere, medarbejdere og øvrige interessenter.</p></blockquote>
+    <p><strong>Lige overbevisende i alle sammenhænge</strong> er den præcise formulering af det, et udvalg leder efter, når de spørger til samarbejde på tværs. De vil vide, om jeg er den samme person over for en pædagogmedhjælper, en forvaltningschef og en bekymret forælder. Det svar har jeg, og det hedder mennesker først, systemer bagefter.</p>
+  </section>
+
+  <section class="card" id="oversaet">
+    <h2>🔁 Oversættelsen · fra min formulering til deres</h2>
+    <p>Venstre side er det, jeg plejer at sige. Højre side er det samme indhold i sektorens eget register. Ingen af oversættelserne påstår noget nyt. De siger det, der allerede står i kernebudskaberne, med de ord modtageren selv bruger.</p>
+    <ul>
+      <li><strong>Jeg leder tæt på i hverdagen.</strong> Jeg skaber tydelighed om indsatser i hverdagen, så den strategiske retning bliver til handling, der kan ses på en almindelig dag.</li>
+      <li><strong>Jeg lytter og involverer.</strong> Jeg leder gennem involvering, og jeg får truffet beslutninger og gennemført dem med følgeskab.</li>
+      <li><strong>Jeg samarbejder godt med mine lederkolleger.</strong> Jeg leder gennem ledere og prioriterer det, der skaber sammenhængskraft og en vi-følelse i ledergruppen.</li>
+      <li><strong>Jeg har styr på økonomien.</strong> Jeg sikrer gennemsigtighed i og tager ansvar for skolens økonomi, også når den demografiske udvikling kræver, at der handles i forkant.</li>
+      <li><strong>Jeg kommer fra specialområdet.</strong> Inklusion og velfungerende mellemformer er en mærkesag for mig.</li>
+      <li><strong>Jeg er god til IT og data.</strong> Jeg bruger ledelsesinformation til at skabe struktur og overblik, så beslutninger hviler på mere end fornemmelser, og uden at organisationen drukner i registrering.</li>
+      <li><strong>Jeg vil gerne forstå stedet, før jeg ændrer noget.</strong> Skolen står et godt sted, og fokus kan være rettet mod løbende forbedringer frem for store forandringer.</li>
+      <li><strong>Jeg er synlig.</strong> Jeg er rollemodel, kulturbærer og katalysator for skolens sammenhængskraft.</li>
+      <li><strong>Jeg kan tåle modstand.</strong> Jeg hviler i mig selv og kan rumme modsatrettede holdninger.</li>
+      <li><strong>Jeg tør træffe svære beslutninger.</strong> Jeg har mod og risikovillighed, og jeg bringer den i spil i de rette doser og sammenhænge.</li>
+      <li><strong>Jeg er nysgerrig på skolen.</strong> Jeg har en oprigtig nysgerrighed over for livet på afdelingerne og over for, hvordan tingene foregår i praksis.</li>
+      <li><strong>Jeg vil gerne have børnene i centrum.</strong> Jeg vil være garant for, at skolens arbejde og indsatser hele tiden har fokus på børnenes trivsel og udvikling.</li>
+    </ul>
+    <p><strong>Læg mærke til mønsteret.</strong> Venstre side beskriver mig. Højre side beskriver en virkning på organisationen. Det er hele forskellen, og det er den, der afgør, om et udvalg kan se mig i stillingen eller bare kan se mig.</p>
+  </section>
+
+  <section class="card" id="ordbank">
+    <h2>📚 Ordbanken, og hvad jeg må bruge</h2>
+    <p>Ordene herunder går igen i profilen. De er ikke pynt. De er sektorens fagsprog, og de signalerer, at jeg har læst mere end opslaget. Men de skal dækkes af noget, jeg faktisk har gjort, ellers bliver de til fyld, og fyld lugter et udvalg på afstand.</p>
+
+    <h4>Ord, jeg kan bruge uden forbehold</h4>
+    <ul>
+      <li><strong>Følgeskab.</strong> At beslutninger bæres videre af dem, der skal leve med dem. Dækket af otte års ledelse med en ledergruppe under mig.</li>
+      <li><strong>Sammenhængskraft.</strong> At afdelinger og faggrupper hænger sammen om den samme opgave. Dækket af arbejdet med at holde en skole samlet om et fælles værdigrundlag.</li>
+      <li><strong>Velfungerende mellemformer.</strong> Mit stærkeste kort, og nu i sektorens egne ord. Se fundet nedenfor.</li>
+      <li><strong>Kulturbærer.</strong> At lederen selv er et eksempel på det, der bedes om. Dækket af den lærende ledelsesforståelse, hvor ledelsen gør det, den beder organisationen om.</li>
+      <li><strong>Garant.</strong> At stå på mål for, at kerneopgaven ikke bliver væk i driften. Stærkt ord, og det tåler kun at blive brugt én gang i en ansøgning.</li>
+      <li><strong>Tydelighed om indsatser i hverdagen.</strong> Præcis det, jeg mener med at oversætte begge veje mellem strategi og praksis.</li>
+      <li><strong>Forskellighed som ressource.</strong> Dækket fra både special- og almenområdet, og det er den samme tanke som mellemformer.</li>
+      <li><strong>Retningssættende.</strong> Dækket, men brug det kun sammen med et eksempel, ellers er det en tom titel.</li>
+      <li><strong>Kontekstafhængigt.</strong> Den perfekte halesætning på enhver påstand om egne egenskaber.</li>
+    </ul>
+
+    <h4>Ord, der kræver et forbehold hos mig</h4>
+    <ul>
+      <li><strong>Politisk tæft, og at lede op i det politiske niveau.</strong> Jeg har betjent en bestyrelse, der både var arbejdsgiver og skulle have mit ærlige fagkundskab, og jeg har siddet seks år i en kommunal styregruppe. Det er den samme balance, men det er ikke et udvalgsmøde. Brug ordet, og sig i samme sætning, hvor erfaringen kommer fra. Aldrig påstanden alene.</li>
+      <li><strong>At lede gennem ledere.</strong> Jeg har ledet gennem ledere, men i en mindre ledergruppe end en distriktsskoles syv. Sig skalaen ærligt, og lad det være mekanikken og ikke antallet, der bærer argumentet.</li>
+      <li><strong>Distrikt og tværgående 0 til 25 års område.</strong> Det er en kommunal konstruktion, jeg ikke har arbejdet i. Lad være med at låne ordet. Brug i stedet den tværgående erfaring, jeg faktisk har, fra digitaliseringsstyregruppen og fra samarbejdet med afgivende skoler.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="fund">
+    <h2>🔍 De to fund, der betyder mest</h2>
+
+    <h4>1 · Min specialbaggrund er ikke et forsvar, den er en efterspørgsel</h4>
+    <p>Blandt de centrale opgaver for en distriktsskoleleder i en almen folkeskole står denne linje.</p>
+    <blockquote><p>At have vedvarende fokus på tilbud til børn med særlige behov og i det hele taget være optaget af inklusion og velfungerende mellemformer som en "mærkesag".</p></blockquote>
+    <p>Det er en kommune, der skriver mellemformer ind som et krav til en almen skoleleder og kalder det en mærkesag. Jeg har indtil nu formuleret min specialindsigt som et svar på et forventet forbehold, altså jeg kommer ikke for at gøre skolen til en specialskole. Det er en defensiv åbning, selv når den er velformuleret.</p>
+    <p><strong>Den nye åbning er offensiv.</strong> Mellemformer er en mærkesag for mig, og det er en mærkesag, kommunerne selv efterspørger. Jeg kommer med noget, de har skrevet ind i deres egne profiler, og som de fleste almene skoleledere har læst om frem for at have stået i.</p>
+
+    <h4>2 · Det skrevne krav og det reelle krav er ikke det samme</h4>
+    <p>Hele baggrundsafsnittet i den seks sider lange profil fylder to linjer.</p>
+    <blockquote><p>Den kommende distriktsskoleleder skal have et indgående kendskab til skoleområdet og erfaring med skoleledelse, herunder ansvar for drift, økonomi og udvikling.</p></blockquote>
+    <p>Der står ikke erfaring som skoleleder i en almen folkeskole. Der står ikke et antal år. Fire sider om kompetencer og personlige egenskaber, og to linjer om baggrund. På papiret ville jeg opfylde kravet.</p>
+    <p><strong>Det er præcis derfor, mønsteret fra 2026 gør ondt.</strong> Det formelle krav rammer jeg næsten altid. Det er den uskrevne barriere i screeningen, der stopper mig, og den står ikke i noget dokument. Den praktiske konsekvens er, at profiler som denne skal læses efter sprog og ikke efter odds. <a href="analyse.html#spor">Kalibreringen</a> ligger i analysen, og den skal ikke rettes efter et pænt baggrundsafsnit.</p>
+  </section>
+
+  <section class="card" id="egenskaber">
+    <h2>🙋 Personlige egenskaber, sådan som de faktisk skrives</h2>
+    <p>Afsnittet om personlige egenskaber er det sted, hvor registeret er mest brugbart, fordi det er præcis dét, jeg selv har sværest ved at skrive om. Læg mærke til, at ingen af linjerne er et superlativ, og at ingen af dem er et løfte om fremtiden. De beskriver en tilstand.</p>
+    <blockquote><p>Er et empatisk menneske, som agerer kontekstafhængigt.</p>
+    <p>Har en favnende profil med plads til afdelingernes forskellighed.</p>
+    <p>Fremstår som en åben og ærlig leder, der har en oprigtig interesse i skolens udvikling, i medarbejdernes trivsel og i børnenes udvikling.</p>
+    <p>Er fagligt velfunderet og kan håndtere pres fra omgivelserne på en professionel og konstruktiv måde.</p>
+    <p>Hviler i sig selv og kan rumme modsatrettede holdninger.</p>
+    <p>Har sans for humor som grundlag for at skabe et godt arbejdsmiljø og en omgangsform, der understøtter tryghed og arbejdsglæde.</p></blockquote>
+    <h4>Hvad jeg tager med mig</h4>
+    <ul>
+      <li><strong>Humor er en ledelseskompetence her, ikke en privat detalje.</strong> Den står som sidste punkt og er begrundet i arbejdsmiljø. Min livsglæde som drivkraft hører til lige dér, og den skal begrundes i virkningen på andre og ikke i, at jeg er et muntert menneske.</li>
+      <li><strong>Hviler i sig selv og kan rumme modsatrettede holdninger</strong> er et færdigt svar på det klassiske spørgsmål om modstand og konflikt. Det er stærkere end at tåle modstand, fordi rumme er aktivt og tåle er passivt.</li>
+      <li><strong>Åben og ærlig med oprigtig interesse</strong> peger på det samme som mit kernebudskab om hverdagsledelse. Forskellen er, at profilen beskriver en holdning og ikke en adfærd. Begge dele skal med. Holdningen gør adfærden troværdig.</li>
+      <li><strong>Ingen af linjerne nævner resultater.</strong> Personlige egenskaber og resultater holdes adskilt. Når jeg blander dem, bliver afsnittet om mig til endnu et CV-afsnit, og det var netop den kritik, min ven gav af Dybbøl-ansøgningen.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="faelder">
+    <h2>⚠️ Fælderne</h2>
+    <ul>
+      <li><strong>Papegøje.</strong> Hvis sammenhængskraft, følgeskab og kulturbærer alle står på samme side, læses det som afskrift. <strong>Reglen er ét lånt ord pr. afsnit</strong>, og det skal være båret af mit eget eksempel. Resten af afsnittet er i min egen stemme.</li>
+      <li><strong>Register uden indhold.</strong> Sektorsprog gør en tom sætning til en pænere tom sætning. Oversættelsen virker kun, fordi venstre side i oversættelsestabellen allerede er dækket af beviser i <a href="kernebudskaber.html">kernebudskaberne</a>. Et ord uden et bevis bagved skal ud.</li>
+      <li><strong>Det er ét konsulenthus og én kommune.</strong> Ordene går igen i branchen, men ikke alle kommuner skriver ens. Læs altid den konkrete stillings egne ord først, og brug sprogbanken til det, opslaget ikke selv giver.</li>
+      <li><strong>Modererende halesætninger kan tippe over i det vage.</strong> Formålet med halesætningen er at vise dømmekraft, ikke at tage forbehold. Hvis sætningen ender med, at jeg ikke lover noget, er den gået for langt.</li>
+      <li><strong>Min egen stemme skal stadig kunne høres.</strong> Det, der har gjort indtryk i de processer, der er kommet længst, var ikke registeret. Det var konkretheden. Sproget er emballagen, ikke varen.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="brug">
+    <h2>📌 Sådan bruges siden</h2>
+    <ul>
+      <li><strong>Efter udkastet, ikke før.</strong> Skriv ansøgningen i min egen stemme først. Læs derefter oversættelsestabellen igennem, og se, hvilke to eller tre sætninger der vinder ved at blive sagt i deres register. Flere end tre er papegøje.</li>
+      <li><strong>Før en samtale.</strong> Læs ordbanken og de fire kompetencers etiketter højt. Det er de fire kasser, et ansættelsesudvalg i forvejen tænker i, uanset om de har skrevet dem ned.</li>
+      <li><strong>Når en ny profil dukker op.</strong> Stillings- og kompetenceprofiler er bedre sprogmateriale end jobopslag, også for stillinger jeg ikke søger. Gem dem, og udvid banken her.</li>
+      <li><strong>Når noget her modsiger kernebudskaberne, vinder kernebudskaberne.</strong> Den side siger, hvem jeg er. Den her siger kun, hvordan det skal lyde.</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="foot">
+  <p><a href="index.html">← Tilbage til forsiden</a> · <a href="kernebudskaber.html">💬 Kernebudskaber</a> · <a href="inspiration.html">💡 Inspirationsarkiv</a></p>
+</footer>
+</div>
+  <script>
+    // Noter, sammenklappelige faser og fasemenu. Status kurateres i kilden, se CLAUDE.md.
+    (function () {
+      var page = location.pathname.split('/').pop() || 'index';
+
+      // Flueben + fremdrift
+      var KEY = 'jobhub:checklist:v1';
+      var state = {};
+      try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
+      var boxes = document.querySelectorAll('input[type=checkbox][data-check-id]');
+      function updateProgress() {
+        var bar = document.getElementById('prog-fill');
+        var txt = document.getElementById('prog-text');
+        if (!bar || !boxes.length) return;
+        var done = 0;
+        boxes.forEach(function (b) { if (b.checked) done++; });
+        bar.style.width = Math.round(100 * done / boxes.length) + '%';
+        if (txt) txt.textContent = done + ' af ' + boxes.length + ' punkter klaret';
+      }
+      boxes.forEach(function (box) {
+        var id = box.getAttribute('data-check-id');
+        box.checked = !!state[id];
+        box.addEventListener('change', function () {
+          state[id] = box.checked;
+          try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+          updateProgress();
+        });
+      });
+      updateProgress();
+
+      // Nedtælling til næste vigtige dato (forsiden)
+      var cd = document.getElementById('countdown');
+      if (cd) {
+        try {
+          var evs = JSON.parse(cd.getAttribute('data-events') || '[]');
+          var today = new Date(); today.setHours(0, 0, 0, 0);
+          var next = null;
+          evs.forEach(function (e) {
+            var d = new Date(e[0] + 'T00:00:00');
+            if (d >= today && (!next || d < next.d)) next = { d: d, label: e[1] };
+          });
+          if (next) {
+            var days = Math.round((next.d - today) / 86400000);
+            var hvornaar = days === 0 ? 'I dag' : days === 1 ? 'I morgen' : 'Om ' + days + ' dage';
+            var dato = next.d.getDate() + '/' + (next.d.getMonth() + 1);
+            cd.textContent = '⏰ ' + hvornaar + ': ' + next.label + ' (' + dato + ')';
+          }
+        } catch (e) {}
+      }
+
+      // Tilføj til kalender: .ics-download (Apple/Outlook/Google m.fl.) + Google Calendar-link.
+      (function () {
+        function compact(iso) { return iso.replace(/-/g, ''); }        // 2026-08-11 -> 20260811
+        function nextDay(iso) {
+          var d = new Date(iso + 'T00:00:00');
+          d.setDate(d.getDate() + 1);
+          function p(n) { return (n < 10 ? '0' : '') + n; }
+          return d.getFullYear() + p(d.getMonth() + 1) + p(d.getDate());
+        }
+        function stamp() {
+          var d = new Date();
+          function p(n) { return (n < 10 ? '0' : '') + n; }
+          return d.getUTCFullYear() + p(d.getUTCMonth() + 1) + p(d.getUTCDate()) + 'T' +
+                 p(d.getUTCHours()) + p(d.getUTCMinutes()) + p(d.getUTCSeconds()) + 'Z';
+        }
+        function esc(s) {
+          return String(s).replace(/\\/g, '\\\\').replace(/;/g, '\\;')
+                          .replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
+        }
+        function fold(line) {                                          // RFC 5545: maks. 75 tegn pr. linje
+          var out = '';
+          while (line.length > 74) { out += line.slice(0, 74) + '\r\n '; line = line.slice(74); }
+          return out + line;
+        }
+        function slug(s) {
+          return s.toLowerCase().replace(/[æ]/g, 'ae').replace(/[ø]/g, 'oe').replace(/[å]/g, 'aa')
+                  .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'begivenhed';
+        }
+        function readEvent(li) {
+          var url = li.getAttribute('data-cal-url');
+          var desc = li.getAttribute('data-cal-desc') || '';
+          var abs = url ? new URL(url, location.href).href : '';
+          if (abs) desc = desc ? desc + '\n\n' + abs : abs;
+          return {
+            start: li.getAttribute('data-cal-start'),
+            title: li.getAttribute('data-cal-title') || 'Begivenhed',
+            desc: desc,
+            url: abs
+          };
+        }
+        function vevent(ev) {
+          var lines = [
+            'BEGIN:VEVENT',
+            'UID:jobhub-' + compact(ev.start) + '-' + slug(ev.title) + '@jobs-gning',
+            'DTSTAMP:' + stamp(),
+            'DTSTART;VALUE=DATE:' + compact(ev.start),
+            'DTEND;VALUE=DATE:' + nextDay(ev.start),
+            'SUMMARY:' + esc(ev.title)
+          ];
+          if (ev.desc) lines.push('DESCRIPTION:' + esc(ev.desc));
+          if (ev.url) lines.push('URL:' + esc(ev.url));
+          lines.push('END:VEVENT');
+          return lines.map(fold).join('\r\n');
+        }
+        function calendar(events) {
+          var out = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//jobs-gning//kalender//DA',
+                     'CALSCALE:GREGORIAN', 'METHOD:PUBLISH'];
+          events.forEach(function (ev) { out.push(vevent(ev)); });
+          out.push('END:VCALENDAR');
+          return out.join('\r\n');
+        }
+        function download(name, text) {
+          var blob = new Blob([text], { type: 'text/calendar;charset=utf-8' });
+          var a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = name;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+        }
+        function googleUrl(ev) {
+          var p = new URLSearchParams({
+            action: 'TEMPLATE',
+            text: ev.title,
+            dates: compact(ev.start) + '/' + nextDay(ev.start)
+          });
+          if (ev.desc) p.set('details', ev.desc);
+          return 'https://calendar.google.com/calendar/render?' + p.toString();
+        }
+
+        var items = document.querySelectorAll('.event[data-cal-start]');
+        items.forEach(function (li) {
+          var ev = readEvent(li);
+          var body = li.querySelector('.event-body');
+          if (!body) return;
+          var wrap = document.createElement('div');
+          wrap.className = 'cal-actions';
+
+          var ics = document.createElement('button');
+          ics.type = 'button';
+          ics.className = 'cal-btn';
+          ics.textContent = '📅 Til kalender';
+          ics.title = 'Hent .ics — virker i Apple Kalender, Outlook, Google m.fl.';
+          ics.addEventListener('click', function () {
+            download(slug(ev.title) + '.ics', calendar([ev]));
+          });
+
+          var g = document.createElement('a');
+          g.className = 'cal-btn';
+          g.href = googleUrl(ev);
+          g.target = '_blank';
+          g.rel = 'noopener';
+          g.textContent = 'Google Calendar';
+
+          wrap.appendChild(ics);
+          wrap.appendChild(g);
+          body.appendChild(wrap);
+        });
+
+        document.querySelectorAll('.cal-all').forEach(function (b) {
+          if (!items.length) { b.style.display = 'none'; return; }
+          b.addEventListener('click', function () {
+            var evs = [];
+            items.forEach(function (li) { evs.push(readEvent(li)); });
+            download('jobsoegning-kalender.ics', calendar(evs));
+          });
+        });
+      })();
+
+      // Eksportér/importér flueben og noter (flyt data mellem enheder / backup)
+      document.querySelectorAll('.databtns .btn-export').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var data = {};
+          for (var i = 0; i < localStorage.length; i++) {
+            var k = localStorage.key(i);
+            if (k && k.indexOf('jobhub:') === 0) data[k] = localStorage.getItem(k);
+          }
+          var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+          var a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = 'jobhub-data.json';
+          a.click();
+          URL.revokeObjectURL(a.href);
+        });
+      });
+      document.querySelectorAll('.databtns .btn-import input[type=file]').forEach(function (inp) {
+        inp.addEventListener('change', function () {
+          var f = inp.files && inp.files[0];
+          if (!f) return;
+          var r = new FileReader();
+          r.onload = function () {
+            try {
+              var data = JSON.parse(r.result);
+              Object.keys(data).forEach(function (k) {
+                if (k.indexOf('jobhub:') === 0) localStorage.setItem(k, data[k]);
+              });
+              location.reload();
+            } catch (e) { alert('Kunne ikke læse filen. Er det en jobhub-data.json?'); }
+          };
+          r.readAsText(f);
+        });
+      });
+
+      // Download ansøgningen som Word-dokument (.doc, genereres i browseren)
+      document.querySelectorAll('.btn-word').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var scope = btn.closest('.fase-body') || document;
+          var doc = scope.querySelector('.worddoc');
+          if (!doc) return;
+          var name = (doc.getAttribute('data-filename') || 'ansoegning') + '.doc';
+          var html = '\ufeff<html xmlns:o="urn:schemas-microsoft-com:office:office" ' +
+            'xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">' +
+            '<head><meta charset="utf-8"><title>Ansøgning</title><style>' +
+            'body{font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.4;color:#000}' +
+            'h4{font-size:14pt;margin:18pt 0 6pt}p{margin:0 0 10pt}em{color:#666}' +
+            '</style></head><body>' +
+            doc.innerHTML.replace(/\[[^\]<>]*\]/g, function (m) {
+              return '<span style="background:#ffff00;mso-highlight:yellow">' + m + '</span>';
+            }) + '</body></html>';
+          var blob = new Blob([html], { type: 'application/msword;charset=utf-8' });
+          var a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = name;
+          a.click();
+          URL.revokeObjectURL(a.href);
+        });
+      });
+
+      // PDF-knap. Laver en rigtig PDF-fil i browseren med pdfmake (vendoret i lib/,
+      // ingen eksterne kald) og downloader den. Virker ens på telefon og computer.
+      // Brevopsætning. Adressat og dato som hoved, stor titel, mellemrubrikker med
+      // tynd streg, gule pladsholdere, sidetal, og afslutning holdt samlet med
+      // hilsen og underskrift.
+      var pdfLibs = null;
+      function hentScript(src) {
+        return new Promise(function (ok, fejl) {
+          var el = document.createElement('script');
+          el.src = src; el.onload = ok; el.onerror = function () { fejl(new Error(src)); };
+          document.head.appendChild(el);
+        });
+      }
+      function sikrPdfMake() {
+        if (window.pdfMake && window.pdfMake.createPdf) return Promise.resolve();
+        if (!pdfLibs) pdfLibs = hentScript('lib/pdfmake.min.js').then(function () { return hentScript('lib/vfs_fonts.js'); });
+        return pdfLibs;
+      }
+      var GUL = '#fef08a';
+      function pdfInline(node, st) {
+        var ud = [];
+        Array.prototype.forEach.call(node.childNodes, function (n) {
+          if (n.nodeType === 3) {
+            var t = n.nodeValue.replace(/\s+/g, ' ');
+            var re = /\[[^\]]*\]/g, sidst = 0, m;
+            while ((m = re.exec(t))) {
+              if (m.index > sidst) ud.push(Object.assign({ text: t.slice(sidst, m.index) }, st));
+              ud.push(Object.assign({ text: m[0] }, st, { background: GUL }));
+              sidst = m.index + m[0].length;
+            }
+            if (sidst < t.length) ud.push(Object.assign({ text: t.slice(sidst) }, st));
+          } else if (n.nodeType === 1) {
+            var tag = n.tagName.toLowerCase();
+            if (tag === 'br') { ud.push({ text: '\n' }); return; }
+            var s2 = Object.assign({}, st);
+            if (tag === 'em' || tag === 'i') { s2.italics = true; s2.color = '#6b7280'; }
+            if (tag === 'strong' || tag === 'b') s2.bold = true;
+            if (tag === 'mark') s2.background = GUL;
+            ud = ud.concat(pdfInline(n, s2));
+          }
+        });
+        return ud;
+      }
+      function pdfDefinition(doc) {
+        var blokke = [], h4 = 0, pNr = 0, sidsteRubrik = -1;
+        var streg = { canvas: [{ type: 'line', x1: 0, y1: 0, x2: 479, y2: 0, lineWidth: 0.6, lineColor: '#d1d5db' }], margin: [0, 0, 0, 6] };
+        Array.prototype.forEach.call(doc.children, function (el) {
+          var tag = el.tagName.toLowerCase();
+          if (tag === 'h4') {
+            h4++;
+            if (h4 === 1) blokke.push({ text: pdfInline(el, {}), style: 'titel' });
+            else { sidsteRubrik = blokke.length; blokke.push({ stack: [{ text: pdfInline(el, {}), style: 'rubrik' }, streg], headlineLevel: 1 }); }
+          } else if (tag === 'p') {
+            pNr++;
+            var txt = el.textContent.trim(), style = 'afsnit';
+            if (h4 === 0) style = pNr === 1 ? 'adressat' : 'dato';
+            if (txt === 'Med venlig hilsen') style = 'hilsen';
+            if (/^\[MIT NAVN\]/.test(txt)) style = 'sign';
+            blokke.push({ text: pdfInline(el, {}), style: style });
+          }
+        });
+        var indhold = blokke;
+        if (sidsteRubrik > 0) {
+          indhold = blokke.slice(0, sidsteRubrik);
+          indhold.push({ stack: blokke.slice(sidsteRubrik), unbreakable: true });
+        }
+        return {
+          pageSize: 'A4',
+          pageMargins: [58, 56, 58, 64],
+          info: { title: 'Ansøgning' },
+          content: indhold,
+          defaultStyle: { fontSize: 10.5, lineHeight: 1.28, color: '#111111' },
+          styles: {
+            adressat: { fontSize: 10.5, color: '#333333', margin: [0, 0, 0, 2] },
+            dato: { fontSize: 10.5, color: '#333333', margin: [0, 0, 0, 22] },
+            titel: { fontSize: 17, bold: true, lineHeight: 1.15, margin: [0, 0, 0, 14] },
+            rubrik: { fontSize: 11.5, bold: true, color: '#1f2937', margin: [0, 10, 0, 2] },
+            afsnit: { margin: [0, 0, 0, 8] },
+            hilsen: { margin: [0, 12, 0, 20] },
+            sign: { margin: [0, 0, 0, 0] }
+          },
+          footer: function (side, antal) {
+            return { text: side + ' / ' + antal, alignment: 'right', fontSize: 9, color: '#9ca3af', margin: [0, 22, 58, 0] };
+          },
+          pageBreakBefore: function (node, efter) {
+            return node.headlineLevel === 1 && efter.length === 0;
+          }
+        };
+      }
+      window.jobhubPdf = { definition: pdfDefinition };
+      document.querySelectorAll('.btn-pdf').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var scope = btn.closest('.fase-body') || document;
+          var doc = scope.querySelector('.worddoc');
+          if (!doc) return;
+          var name = (doc.getAttribute('data-filename') || 'ansoegning') + '.pdf';
+          var label = btn.textContent;
+          btn.textContent = '⏳ Laver PDF …'; btn.disabled = true;
+          sikrPdfMake().then(function () {
+            window.pdfMake.createPdf(pdfDefinition(doc)).download(name);
+          }).catch(function () {
+            alert('PDF-filen kunne ikke laves. Prøv Word-knappen, eller genindlæs siden.');
+          }).then(function () {
+            btn.textContent = label; btn.disabled = false;
+          });
+        });
+      });
+
+      // Print: fold alt ud før print, og fold sammen igen bagefter
+      var printPrev = null;
+      window.addEventListener('beforeprint', function () {
+        var all = document.querySelectorAll('details');
+        printPrev = [];
+        all.forEach(function (d) { printPrev.push(d.open); d.open = true; });
+      });
+      window.addEventListener('afterprint', function () {
+        if (!printPrev) return;
+        var all = document.querySelectorAll('details');
+        all.forEach(function (d, i) { d.open = printPrev[i]; });
+        printPrev = null;
+      });
+
+      // Private noter: gemmes kun lokalt i browseren
+      document.querySelectorAll('textarea.notes[data-notes]').forEach(function (t) {
+        var nkey = 'jobhub:notes:' + t.getAttribute('data-notes');
+        try { t.value = localStorage.getItem(nkey) || ''; } catch (e) {}
+        t.addEventListener('input', function () {
+          try { localStorage.setItem(nkey, t.value); } catch (e) {}
+        });
+      });
+
+      // Sammenklappelige faser: åben/lukket huskes pr. side.
+      // Faser med et ✓-tag i overskriften er færdige og starter altid foldet ind,
+      // så scrollet hurtigt når frem til den aktuelle status.
+      var OPENKEY = 'jobhub:open:' + page;
+      var openState = null;
+      try { openState = JSON.parse(localStorage.getItem(OPENKEY)); } catch (e) {}
+      var faser = document.querySelectorAll('details.fase');
+      function faseDone(d) {
+        var tag = d.querySelector('summary .tag');
+        return !!(tag && tag.textContent.indexOf('✓') !== -1);
+      }
+      faser.forEach(function (d, i) {
+        if (faseDone(d)) d.open = false;
+        else if (openState && (d.id in openState)) d.open = !!openState[d.id];
+        else if (!openState && i === 0 && !d.classList.contains('fase-luk')) d.open = true;
+        d.addEventListener('toggle', function () {
+          var st = {};
+          faser.forEach(function (x) { st[x.id] = x.open; });
+          try { localStorage.setItem(OPENKEY, JSON.stringify(st)); } catch (e) {}
+        });
+      });
+
+      // Ankerlinks skal åbne den fase, de peger på
+      function openFromHash() {
+        if (!location.hash) return;
+        var el;
+        try { el = document.querySelector(location.hash); } catch (e) { return; }
+        if (!el) return;
+        var d = el.tagName === 'DETAILS' ? el : (el.closest && el.closest('details'));
+        if (d && !d.open) d.open = true;
+        el.scrollIntoView();
+      }
+      window.addEventListener('hashchange', openFromHash);
+      openFromHash();
+
+      // Åbn alle / luk alle
+      var toggleAll = document.getElementById('toggle-all');
+      if (toggleAll) toggleAll.addEventListener('click', function () {
+        var anyClosed = false;
+        faser.forEach(function (d) { if (!d.open) anyClosed = true; });
+        faser.forEach(function (d) { d.open = anyClosed; });
+        toggleAll.textContent = anyClosed ? 'Luk alle' : 'Åbn alle';
+      });
+
+      // Fasemenuen kan foldes sammen på mobil (knappen vises kun dér via CSS)
+      var fasebar = document.querySelector('.fasebar');
+      if (fasebar) {
+        var mtoggle = document.createElement('button');
+        mtoggle.type = 'button';
+        mtoggle.className = 'fasebar-toggle';
+        mtoggle.textContent = '☰ Menu';
+        fasebar.appendChild(mtoggle);
+        mtoggle.addEventListener('click', function () {
+          var aaben = fasebar.classList.toggle('udfoldet');
+          mtoggle.textContent = aaben ? '✕ Luk' : '☰ Menu';
+        });
+        fasebar.addEventListener('click', function (e) {
+          if (e.target.tagName === 'A' && fasebar.classList.contains('udfoldet')) {
+            fasebar.classList.remove('udfoldet');
+            mtoggle.textContent = '☰ Menu';
+          }
+        });
+      }
+
+      // Klikbare telefonnumre. Mobilnumre i brødteksten bliver til tel:-links,
+      // dog ikke inde i de arkiverede opslags-citater, som skal gengives urørt.
+      var telRe = /\b(\d{2} \d{2} \d{2} \d{2}|\d{4} \d{4})\b/g;
+      var telWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+      var telNodes = [];
+      while (telWalker.nextNode()) {
+        var tn = telWalker.currentNode;
+        telRe.lastIndex = 0;
+        if (!telRe.test(tn.nodeValue)) continue;
+        var tEl = tn.parentElement;
+        if (!tEl || tEl.closest('a, script, style, textarea, button, details.qa blockquote')) continue;
+        telNodes.push(tn);
+      }
+      telNodes.forEach(function (tn) {
+        var frag = document.createDocumentFragment();
+        var text = tn.nodeValue, m, last = 0;
+        telRe.lastIndex = 0;
+        while ((m = telRe.exec(text))) {
+          frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+          var telA = document.createElement('a');
+          telA.className = 'tel-link';
+          telA.href = 'tel:+45' + m[0].replace(/ /g, '');
+          telA.textContent = m[0];
+          frag.appendChild(telA);
+          last = m.index + m[0].length;
+        }
+        frag.appendChild(document.createTextNode(text.slice(last)));
+        tn.parentNode.replaceChild(frag, tn);
+      });
+
+      // Send som SMS-knapper. Nummeret står i data-sms, og teksten hentes fra
+      // det nærmeste SMS-udkast (blockquote) ovenfor, så den altid følger udkastet.
+      document.querySelectorAll('a.btn-sms[data-sms]').forEach(function (a) {
+        var holder = a.closest('p, div');
+        var bq = holder ? holder.previousElementSibling : null;
+        while (bq && bq.tagName !== 'BLOCKQUOTE') bq = bq.previousElementSibling;
+        var nr = a.getAttribute('data-sms').replace(/\D/g, '');
+        var href = 'sms:+45' + nr;
+        if (bq) href += '?body=' + encodeURIComponent(bq.textContent.trim());
+        a.href = href;
+      });
+
+      // Markér aktiv fase i menuen under scroll
+      var links = document.querySelectorAll('.fasebar a[href^="#"]');
+      if ('IntersectionObserver' in window && links.length) {
+        var map = {};
+        links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting && map[en.target.id]) {
+              links.forEach(function (a) { a.classList.remove('active'); });
+              map[en.target.id].classList.add('active');
+            }
+          });
+        }, { rootMargin: '-15% 0px -70% 0px' });
+        faser.forEach(function (d) { if (map[d.id]) obs.observe(d); });
+      }
+    })();
+  </script>
+</body>
+</html>
