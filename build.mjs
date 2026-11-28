@@ -16,6 +16,7 @@ const pages = [
   { src: 'src/content.html', out: 'index.html', title: 'Jobsøgning' },
   { src: 'src/jobs/kalender.html', out: 'kalender.html', title: 'Kalender · vigtige datoer' },
   { src: 'src/jobs/kernebudskaber.html', out: 'kernebudskaber.html', title: 'Kernebudskaber' },
+  { src: 'src/jobs/sprogbank.html', out: 'sprogbank.html', title: 'Sprogbank · sektorens eget sprog' },
   { src: 'src/jobs/analyse.html', out: 'analyse.html', title: 'Data-analyse · jobsøgningen i tal' },
   { src: 'src/jobs/vonsild.html', out: 'vonsild.html', title: 'Skoleleder · Vonsild Specialskole' },
   { src: 'src/jobs/aabenraa.html', out: 'aabenraa.html', title: 'Digitaliseringskonsulent · Aabenraa' },
